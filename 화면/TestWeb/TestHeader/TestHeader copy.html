@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            .custom_header{
+                background-color: cadetblue;
+            }
+            .container .container-md {
+                padding-left: 16px;
+                padding-right: 16px;
+                width: 100%;
+            }
+            body {
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #323232;
+                text-align: left;
+            }
+            h1 {
+                display: block;
+                margin-block-start: 0.67em;
+                margin-block-end: 0.67em;
+                margin-inline-start: 0px;
+                margin-inline-end: 0px;
+            }
+            .underline {
+                border-bottom: .0625rem solid;
+                border-color: #f2f2f2;
+            }
+            .profile-container {
+                font-size: 0;
+                padding: 1rem 0;
+                margin-bottom: 2.5rem;
+                display:flex;
+                align-items: center;
+            }
+            .thumb {
+                width: 4.375rem;
+                height: 4.375rem;
+                min-width: 4.375rem;
+                border-radius: .75rem;
+                overflow: hidden;
+                border: 1px solid #f2f2f2f2;
+            }
+            .thumb-image {
+                position: relative;
+                width: 100%;
+                border: .0625em solid #f2f2f2;
+                overflow: hidden;
+                background-size: cover;
+                background-position-x: 50%;
+                background-position-y: 50%;
+                background-color: #e1e1e1;
+            }
+            .user-info {
+                flex: auto;
+                text-align: left;
+                padding-left: .75rem;
+            }
+            .user-name {
+                display: flex;
+                font-size: 1.125rem;
+                font-weight: 500;
+                color: #323232;
+            }
+            .name {
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                padding-right: .3125rem;
+                max-width: 8.45rem;
+            }
+            .user-email {
+                display: flex;
+                font-size: .75rem;
+                color: #b5b5b5;
+            }
+            .email {
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                max-width: 11.6875rem;
+            }
+        </style>
+    </head>
+
+    <body class="mypage">
+        <div id="mypage-body">
+            <div class="container-md container">
+                <div class="mypage-container">
+                    <h1 class="mypage-title">마이페이지</h1>
+                    <div class="profile-container underline">
+                        <div class="thumb">
+                            <div class="thumb-image">
+                                <img src="/image/thumb.svg" alt="" class="img-circle">
+                            </div>
+                        </div>
+                        <div class="user-info">
+                            <div class="user-name">
+                                <span class="name">홍길동<!--이름 호출--></span>  고객님 
+                            </div>
+                            <div class="user-email">
+                                <span class="email">xxx@naver.com<!--이메일 호출--></span>
+                            </div>
+                        </div>
+                        <span class="user-hobby-menu">관심사</span>
+                        <div class="user-hobby">
+                            <span class="user-hobby-text">음악</span><!--관심사 호출-->
+                        </div>
+                        
+                        <div class="sell-category-menu"><!--판매자만 보이도록 설정-->
+                            <span class="sell-category">판매자 카테고리</span>
+                            <div class="sell-category-info">
+                                <span class="sell-category-text">축구<!--카테고리 호출--></span>
+                            </div>
+                        </div>
+                        <div class="user-detail"><!--본인이 아니면 안보이도록 설정-->
+                            <span class="user-detail-menu">상세정보</span>
+                            <div class="user-address-menu">
+                                <span class="user-address">서울시 강남구<!--주소 호출--></span>
+                            </div>
+                            <div class="user-phoneNum-menu">
+                                <span class="user-phoneNum">010-xxxx-xxxx<!--전화번호 호출--></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="deal-menu">안전거래</span>
+                        <div class="deal-menu-container">
+                            <a href="##" class="deal-menu-link"><!-- 거래내역 페이지로 이동-->
+                                <div class="deal-menu-icon">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="deal-menu-text">
+                                    <span class="deal-menu">거래 내역</span>
+                                    <span class="glyphicon glyphicon-chevron-right">
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

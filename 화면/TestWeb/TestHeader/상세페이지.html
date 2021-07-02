@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            .section {
+                background-color: aquamarine;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            a:hover {
+                /* text-decoration: none; */
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            ul li {
+                list-style: none;
+            }
+
+            /* =================================== */
+            .section {
+                float: none;
+                margin: 0 auto;
+            }
+
+            .event_thumbnail {}
+
+            .left_area {
+                background-color: coral;
+                float: left;
+            }
+
+            .left_area img {
+                padding: 10px;
+            }
+
+            .right_area {
+                background-color: burlywood;
+                float: none;
+            }
+
+            /* =================================== */
+
+            .event_title {
+                padding: 7px 0 18px;
+                color: #333;
+                font-size: 24px;
+            }
+
+            .tag {
+                margin-bottom: 18px;
+            }
+
+            .event_info_wrap li {
+                display: inline-block;
+                border: 1px solid black;
+            }
+
+            .event_group_form p {
+                display: inline-block;
+                border: 1px solid black;
+            }
+
+            .event_group_form span {
+                float: right;
+                margin-right: 10px;
+                display: inline-block;
+                border: 1px solid black;
+            }
+
+            button {
+                display: inline;
+            }
+
+            textarea {
+                width: 100%;
+            }
+            .freeGrid{
+                float: right;
+                border: 1px solid black;
+                background-color: cornflowerblue;
+                width: 600px;
+                height: 300px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class=".container-fluid">
+                <div class="row">
+                    <div class="col-xs-6 section">
+                        <div class="event_summary">
+                            <div class="left_area">
+                                <div class="event_thumbnail main_thumbnail">
+                                    <img class="kkk" src="../TestHeader/image/blog2.jpg">
+                                    <div class="host_info_area">
+                                        <h4 class="title"></h4>
+                                        <ul class="hostInfo">
+                                            <li class="host_name">
+                                                <div class="host_img_wrap">
+                                                    <img src="image/nike/color1.jpg">
+                                                </div>
+                                                <div class="host_name_wrap">
+                                                    김이택
+                                                </div>
+                                            </li>
+                                            <li class="host_mail">
+                                                <span class="host_info_title">이메일</span>
+                                                <span class="host_info_txt">goldepond@naver.com</span>
+                                            </li>
+
+                                            <li class="host_phone">
+                                                <span class="host_info_title">전화번호</span>
+                                                <span class="host_info_txt">goldepond@naver.com</span>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="right_area">
+                                <h3 class="event_title">고기우님의 1특급 Spring 강의</h3>
+                                <div class="tag">
+                                    <span>
+                                        [
+                                        <a href="$$">카테고리1</a>
+                                        <a href="$$">카테고리1</a>
+                                        <a href="$$">카테고리1</a>
+                                        ]
+                                    </span>
+                                    <span>
+                                        [
+                                        <a href="$$">카테고리1</a>
+                                        <a href="$$">카테고리1</a>
+                                        <a href="$$">카테고리1</a>
+                                        ]
+                                    </span>
+
+
+                                </div>
+                                <ul class="event_info_wrap">
+                                    <li>
+                                        <h4>시간</h4>
+                                        <h4>월 수 금</h4>
+                                    </li>
+                                    <li>
+                                        <h4>장소</h4>
+                                        <h4>경기도 성남시 분당구 중앙공원로 54</h4>
+                                    </li>
+                                </ul>
+
+                                <form class="event_group_form">
+                                    <div class="group_area">
+                                        <p class="group_title_area">
+                                            고기우, Spring 강의
+                                        </p>
+                                        <span>
+                                            무료
+                                        </span>
+
+                                        <div class="attend_wrap">
+                                            <span>선착순</span>
+                                            <span>20명</span>
+                                            <span>####</span>
+                                            <span>%%%%</span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="btn_area">
+                                        <button type="button" class="btn btn-primary btn-lg"> 신청_________버튼 </button>
+                                    </div>
+                                </form>
+                                <div class="freeGrid">
+                                    <h1>무언가를 적을 영역</h1>
+                                </div>
+                            </div>
+
+                            <div class="buttom_area">
+                                <textarea id="story" name="story" rows="500">
+                                       It was a dark and stormy night...
+                                 </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </header>
+    </body>
+
+</html>

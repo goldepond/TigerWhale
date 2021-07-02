@@ -1,0 +1,41 @@
+ .prod-list{margin-bottom: 20px;}
+ 
+.prod_color>ul{
+   overflow: hidden;
+}
+
+.prod_color>ul>li{
+    width: 50px;
+    float: left;
+}
+.prod-list{
+    overflow: hidden;
+}
+.prod-content{
+    overflow: hidden;
+    padding: 15px 0px;
+}
+
+.prod-content>.info{
+    float: left;
+}
+.prod-content>.price{
+    float: right;
+}
+
+.prod-content>.info> span{
+    display: block;
+}
+
+.prod-img>img{
+    width: 100%;
+}
+
+.prod-list:hover > .prod_color{
+    transition:  all 0.5s ease-in-out;
+    opacity: 1;
+}
+
+.prod_color{
+    opacity: 0;
+}

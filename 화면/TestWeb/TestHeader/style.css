@@ -1,0 +1,210 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Gugi&display=swap');
+body , html{
+    font-family: 'Gugi', cursive;
+    width: 100%;
+    min-width: 320px;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+input, textarea, button, select{
+    -webkit-animation: none;
+    -moz-appearance: none;
+    -moz-appearance: none;
+    
+    /* 브라우져별로 고유하게 적용되는 form관련요소 css제거 */
+}
+
+ul, li, dl,ol{
+    list-style: none;
+}
+
+.header_col1{
+    background-color:lightgray;
+    overflow: hidden;
+    height: 52px;
+    line-height: 52px;
+}
+.top_width>ul>li{
+    display: inline-block;
+    width: 135px;
+    font-weight: 700;
+    width: 182;
+    text-align: center;
+}
+
+.top_width>ul>li.on{
+    /* 선택자를 붙여서 사용하면 li태그안에 클래스 이름이 on인것을 의미 */
+    border-top: 1px solid #d2d0d0;
+    line-height: 42px;
+    border-left: 1px solid  #d2d0d0;
+    border-right: 1px solid  #d2d0d0;
+    border-bottom: 1px solid  #d2d0d0;
+    background: #fff;
+    font-weight: 500;
+
+    border-bottom: 5px solid#037fc3;
+}
+
+.top_width>ul>li>a{
+    
+    text-decoration: none;
+    font-size: 14px;
+    color: #666;
+}
+
+.ft_left{
+    float: left;
+}
+.ft_right{
+    float: right;
+}
+.top_width{
+    overflow: hidden;
+    width: 1240px;
+    margin: 0 auto;
+}
+
+.ft_right > a{
+    background-color: #fff;
+    text-decoration: none;
+    color: #666;
+    padding: 7px;
+    border: 1px solid #666;
+}
+
+.top_hide{
+    display: none;
+}
+/* .logo{float: left;}
+.logo a{
+    background-image: url("image/logo.png");
+    display: block;
+    width: 200px;
+    height: 33px;
+
+    margin:  23px 0 0;
+    background-repeat: no-repeat;
+} */
+.top_menu {float: left;}
+.top_menu > ul >li{
+    display: inline-block;
+}
+
+.top_menu > ul >li > a{
+    display: block; 
+    height: 80px;
+    line-height: 80px;
+
+    padding: 0 5px;
+    margin: 0 10px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+}
+
+.top_menu > ul >li > a:hover{
+    color: aqua;
+}
+/* ========================================= */
+
+.custon_header{
+    background-color: black;
+}
+
+.custon_header nav a{
+    color: white;
+}
+
+.navbar-brand{
+    padding: 10px 15px;
+}
+
+/* ======================== */
+footer{
+    background-color: black;
+    color: #eee;
+}
+
+/* ---------------- */
+.slider_list{
+    padding: 0;
+    margin: 0;;
+}
+
+.promd-innd > a> .hover{
+    width: 1oopx;
+    color: #666;
+    opacity: 0;
+    /* opcity0 0이면 투명 */
+}
+
+.promd-innd > a> .arrow{
+    display: block;
+    width: 25px;
+    background-color: #666;
+    position: absolute;
+}
+
+/* ================================================================ */
+.blog_style{
+    
+    padding-bottom: 15px;
+    padding:  10px;
+    border: 1px solid black;
+    
+    overflow:hidden;
+    text-align: center;
+    position: relative; 
+    box-sizing: border-box;
+}
+.col{
+    padding:  10px;
+}
+.blog-info>ul >li {
+}
+.col .bolg-hover{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    background-color: rgba(0,0,0,.8);
+    opacity: 0;
+}
+
+.col .bolg-hover  a{
+    color: crimson;
+    display: block;
+    width: 100%;
+    height: 100%;    
+}
+
+.col .blog-info p{
+    float: right;
+}
+.col .blog-info ul i{
+    color: gold;
+    float: left;
+}
+
+.col .bolg-hover:hover{
+    opacity: 1;
+}
+
+@media(min-width:1200px)
+{
+    .blog_style >li[class*="col-"]{
+        width:20%;
+    }
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            .section {
+                background-color: aquamarine;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            a:hover {
+                /* text-decoration: none; */
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            ul li {
+                list-style: none;
+            }
+
+            /* =================================== */
+            .section {
+                float: none;
+                margin: 0 auto;
+                text-align: center;
+                background-color: cadetblue;
+            }
+
+            select{
+                text-align: center;
+                margin: 0 auto; 
+                height: 100px;
+                width: 50%;
+            }
+            textarea{
+                width: 50%;
+            }
+
+             h1{
+                 background-color: burlywood;
+                 margin: 30px;
+             }
+             .catagori .line{
+                margin: 30px;
+             }
+             table{
+                 font-size: 18px;
+                 background-color: aliceblue;
+                 margin:  0 auto;
+             }
+
+             th{
+                 padding: 10px;
+                 margin: 10px;
+             }
+             button {
+                 margin: 30px;
+                padding: 10px;
+                display: inline;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class=".container-fluid">
+                <div class="row">
+                    <div class="col-xs-6 section">
+                        <h1>나의 수강내역</h1>
+                        <div class="catagori">
+                            <select class="line" name="catagori" >
+                                <option value="korean">중국요리 </option>
+                                <option value="english">일식</option>
+                                <option value="chinese">한식</option>
+                                <option value="spanish">양식</option>
+                              </select>
+
+                              <table border="4">
+                                <th>이름 </th>
+                                <th>소분류 카테고리</th>
+                                <th>이메일</th>
+                                <th>젠더</th>
+                                <th>나이</th>
+                                <th>거주지</th>
+                                <th>문의 사항</th>
+                                <th>평점</th>
+                                <th>체크</th>
+                                <tr><!-- 첫번째 줄 시작 -->
+                                    <td>김갑수</td>
+                                    <td>일식</td>
+                                    <td>경력없음</td>
+                                    <td>남성</td>
+                                    <td>40대</td>
+                                    <td>성남시 분당구 중앙공원로54</td>
+                                    <td>오네짱 요리가르쳐줘</td>
+                                    <th>3.3</th>
+                                    <td><input type="checkbox"></td>
+                                </tr><!-- 첫번째 줄 끝 -->
+
+                              
+                                <div class="btn_area">
+                                    <button type="button" class="btn btn-primary btn-lg"> 초대장 보내기  </button>
+                                </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </header>
+    </body>
+
+</html>

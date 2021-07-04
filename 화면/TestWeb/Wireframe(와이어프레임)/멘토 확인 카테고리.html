@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            .section {;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            a:hover {
+                /* text-decoration: none; */
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            ul li {
+                list-style: none;
+            }
+
+            /* =================================== */
+            .section {
+                float: none;
+                margin: 0 auto;
+                text-align: center;
+                background-color: cadetblue;
+            }
+
+            select{
+                text-align: center;
+                margin: 0 auto; 
+                height: 100px;
+                width: 50%;
+            }
+            textarea{
+                width: 50%;
+            }
+
+             h1{
+                 background-color: #4195f5;
+                 margin: 30px;
+             }
+             .catagori .line{
+                margin: 30px;
+             }
+             table{
+                 font-size: 18px;
+                 background-color: aliceblue;
+                 margin:  0 auto;
+             }
+
+             th{
+                 padding: 10px;
+                 margin: 10px;
+             }
+             button {
+                 margin: 30px;
+                padding: 10px;
+                display: inline;
+            }
+        </style>
+
+<style>
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        /* text-decoration: none; */
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul li {
+        list-style: none;
+    }
+
+    /* =================================== */
+    #headerWrap{
+        background-color: burlywood;
+    }
+    #header {
+        float: none;
+        margin: 0 auto;
+    }
+
+    #header .header_top {
+        position: relative;
+        padding: 67px 0 53px;
+
+        height: 167px;
+    }
+
+    /* =================================== */
+    #header .logo {
+        border: 1px solid black;
+
+        top: 50px;
+        left: 6px;
+        display: inline-block;
+        position: absolute;
+    }
+
+    #header .logo a {
+        display: block;
+    }
+
+    #header .logo .text_logo {
+        margin-top: 1px;
+        margin-bottom: 9px;
+        font-size: 33px;
+        color: #666666;
+    }
+
+    /* =================================== */
+
+    #header .user_area {
+
+        /* background-color: floralwhite; */
+        /* border: 1px solid black; */
+
+        float: right;
+        margin-right: 1px;
+    }
+
+    #header .header_top .service_menu {
+        /* border: 1px solid black; */
+        position: absolute;
+        top: 13px;
+        right: 0;
+
+        font-size: 12px;
+    }
+
+    #header .service_menu .list_item {
+        
+        border: 1px solid black;    
+        float: left;
+        margin-left: 31px;
+
+    }
+
+    /* =================================== */
+
+    #header .member_menu .list_item {
+        position: relative;
+        /* border: 1px solid black; */
+        float: left;
+        text-align: center;
+        padding-left: 50px;
+        position: relative;
+        border: 1px solid black;
+        float: left;
+        text-align: center;
+    }
+
+    /* =================================== */
+    #header .search_area {
+        position: absolute;
+        top: 77px;
+        left: 300px;
+    }
+
+    #header .search_area .search_form {
+
+        margin: 0 auto;
+          font-size: 25px;
+    }
+
+    #header .search_area .search_input {
+        /* width: 460px;
+        height: 48px; */
+        /* padding: 0 8px 0 22px; */
+        /* -webkit-box-sizing: border-box; */
+        box-sizing: border-box;
+        border: 2px solid #4195f5;
+        /* border-radius: 24px; */
+        background-color: transparent;
+        /* font-size: 14px; */
+        /* outline: none; */
+        color: #333333;
+    }
+    #header .header_bottom:hover{
+        height: 100px;
+    }
+    #header .header_bottom{
+        float: none;
+        display: inline-block;
+        height: 20px;
+        width: 100%;
+        background-color: crimson;
+    }
+
+
+</style>
+    </head>
+    <header>
+        <div class=".container-fluid">
+            <div class="row">
+                <div class="col-xs-12" id="headerWrap">
+                    <!-- 부트스트랩 기본 그리드  -->
+                    <div class="col-lg-6" id="header">
+
+                        <div class="header_top">
+                            <!-- 로고 -->
+                            <h1 class="logo">
+                                <a href="##">
+                                    <span class="text_logo">
+                                        Logo 프로젝트F
+                                    </span>
+                                </a>
+                            </h1>
+
+                            <!-- 유저 정보 -->
+                            <div class="user_area">
+                                <ul class="service_menu">
+                                    <li class="list_item">
+                                        <a href="##">로그인</a>
+                                    </li>
+
+                                    <li class="list_item">
+                                        <a href="##">회원가입</a>
+                                    </li>
+
+                                    <li class="list_item">
+                                        <a href="##">고객 센터</a>
+                                    </li>
+                                </ul>
+
+                                <ul class="member_menu">
+                                    <li class="list_item">
+                                        <a href="##">
+                                            마이페이지
+                                        </a>
+                                    </li>
+                                    <li class="list_item">
+                                        <a href="##">
+                                            ____강좌보기
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="search_area">
+                                <form class="search_form">
+                                    <input type="text" id="searchInput" title="검색검색">
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="header_bottom">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <body>
+        <header>
+            <div class=".container-fluid">
+                <div class="row">
+                    <div class="col-xs-6 section">
+                        <h1>나의 수강내역</h1>
+                        <div class="catagori">
+                            <select class="line" name="catagori" >
+                                <option value="korean">중국요리 </option>
+                                <option value="english">일식</option>
+                                <option value="chinese">한식</option>
+                                <option value="spanish">양식</option>
+                              </select>
+
+                              <table border="4">
+                                <th>선생님 </th>
+                                <th>강의명</th>
+                                <th>이메일</th>
+                                <th>젠더</th>
+                                <th>나이</th>
+                                <th>학습공간</th>
+                                <th>전화번호</th>
+                                <th>평점</th>
+                                <th>체크</th>
+                                <tr><!-- 첫번째 줄 시작 -->
+                                    <td>김갑수</td>
+                                    <td>일식요리</td>
+                                    <td>goldepoond@AAAA</td>
+                                    <td>남성</td>
+                                    <td>40대</td>
+                                    <td>성남시 분당구 중앙공원로54</td>
+                                    <td>010-1234-1234</td>
+                                    <th>3.3</th>
+                                    <td><input type="checkbox"></td>
+                                </tr><!-- 첫번째 줄 끝 -->
+
+                                <tr><!-- 첫번째 줄 시작 -->
+                                    <td>김갑수</td>
+                                    <td>중식요리</td>
+                                    <td>goldepoond@AAAA</td>
+                                    <td>남성</td>
+                                    <td>40대</td>
+                                    <td>성남시 분당구 중앙공원로54</td>
+                                    <td>010-1234-1234</td>
+                                    <th>3.3</th>
+                                    <td><input type="checkbox"></td>
+                                </tr><!-- 첫번째 줄 끝 -->
+
+                                <tr><!-- 첫번째 줄 시작 -->
+                                    <td>김철수</td>
+                                    <td>축구</td>
+                                    <td>goldepoond@AAAA</td>
+                                    <td>남성</td>
+                                    <td>40대</td>
+                                    <td>성남시 분당구 중앙공원로54</td>
+                                    <td>010-1234-1234</td>
+                                    <th>3.3</th>
+                                    <td><input type="checkbox"></td>
+                                </tr><!-- 첫번째 줄 끝 -->
+
+                                <tr><!-- 첫번째 줄 시작 -->
+                                    <td>김갑수</td>
+                                    <td>일식요리</td>
+                                    <td>goldepoond@AAAA</td>
+                                    <td>남성</td>
+                                    <td>40대</td>
+                                    <td>성남시 분당구 중앙공원로54</td>
+                                    <td>010-1234-1234</td>
+                                    <th>3.3</th>
+                                    <td><input type="checkbox"></td>
+                                </tr><!-- 첫번째 줄 끝 -->
+
+                                <tr><!-- 첫번째 줄 시작 -->
+                                    <td>김갑수</td>
+                                    <td>일식요리</td>
+                                    <td>goldepoond@AAAA</td>
+                                    <td>남성</td>
+                                    <td>40대</td>
+                                    <td>성남시 분당구 중앙공원로54</td>
+                                    <td>010-1234-1234</td>
+                                    <th>3.3</th>
+                                    <td><input type="checkbox"></td>
+                                </tr><!-- 첫번째 줄 끝 -->
+
+<!--                               
+                                <div class="btn_area">
+                                    <button type="button" class="btn btn-primary btn-lg"> 초대장 보내기  </button>
+                                </div> -->
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </header>
+    </body>
+
+</html>

@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* 임시 */
+.header {
+    height: 170px;
+}
+
+body {
+    overflow: hidden;
+    position: relative;
+}
+body .all-category, .main-fluid {
+    float: left;
+}
+
+.all-category {
+    position: relative;
+    display: inline-block;
+}
+.all-category-btn {
+    background-color: rgb(85, 115, 154);
+    color: #fff;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+}
+.big-category-content {
+    display: block;
+    position: absolute;
+    background-color: rgb(135, 177, 232);
+    width: 200px;
+   /*  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+    z-index: 1;
+}
+.big-category-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.big-category-content a:hover {
+    background-color: #fff;
+    color: rgb(135, 177, 232);
+}
+.big-title:hover .mid-category-content{
+    display: block;
+}
+
+.mid-category-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 200px;
+    background-color: rgb(135, 177, 232);
+    width: 200px;
+}
+.mid-category-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.sm-category-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 200px;
+    background-color: rgb(135, 177, 232);
+    width: 200px;
+}
+.mid-title:hover .sm-category-content {
+    display: block;
+}
+
+.main-fluid {
+    position: absolute;
+    left: 200px;
+    width: 976px;
+    height: 400px;
+}
+.carousel-inner .item img {
+    text-align: center;
+}

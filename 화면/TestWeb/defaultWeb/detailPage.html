@@ -12,250 +12,7 @@
         <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <style>
-            a {
-                text-decoration: none;
-            }
-
-            a:hover {
-                text-decoration: none;
-            }
-
-            * {
-                margin: 0;
-                padding: 0;
-            }
-
-            ul li {
-                list-style: none;
-            }
-
-            /* ############################################################ */
-            .container {
-                background-color: rgb(85, 115, 154);
-                overflow: hidden;
-            }
-
-            img {
-                width: 100%;
-                height: 100%;
-            }
-
-            /* ############################################################ */
-            .GigDetailContainer .LeftModules {
-                width: 55%;
-                float: left;
-
-            }
-
-            .GigDetailContainer .RightModules {
-                width: 40%;
-                float: right;
-                border: 3px black solid;
-                background-color: white;
-                padding: 20px;
-            }
-
-            .GigDetailContainer .RightButtomModules {
-                margin-top: 36px;
-                width: 40%;
-                float: right;
-                border: 3px black solid;
-                background-color: white;
-                padding: 20px;
-            }
-
-            /* ############################################################ */
-            .GigBreadcrumb {
-                background-color: #000000;
-                margin-bottom: 15px;
-            }
-
-            .GigBreadcrumb span,
-            .GigBreadcrumb a {
-                color: #ffffff;
-                padding-right: 3px;
-            }
-
-            .GigMainGallery {
-                position: relative;
-                margin-bottom: 36px;
-            }
-
-            .GigMainGallery img {
-                border: 10px solid black;
-                vertical-align: middle;
-            }
-
-            /* ############################################################ */
-
-            .GigRate {
-                border: 3px black solid;
-                padding: 15px;
-                background-color: white;
-                margin-bottom: 30px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .GigRate__content {
-                display: flex;
-                padding: 0 16px;
-                cursor: pointer;
-                align-items: center;
-            }
-
-            .GigRate .rate {
-                margin: 0 0 0 4px;
-                color: #303441;
-                font-size: 18px !important;
-                font-weight: 700;
-            }
-
-            .GigRate .count {
-                margin: 0 0 0 4px;
-                /* color: #9a9ba7; */
-                /* font-size: 14px !important; */
-            }
-
-            /* ############################################################ */
-            .GigBookMarks {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                /* background-color: brown; */
-            }
-
-            .GigBookMarks .GigDetailShare {
-                float: left;
-                /* background-color: antiquewhite; */
-                border: 1px solid black;
-            }
-
-            .GigBookMarks .GigHeart {
-                float: right;
-                /* background-color: antiquewhite; */
-                border: 1px solid black;
-            }
-
-            /* ############################################################ */
-
-            .GigTitle {
-                margin-top: 10px;
-            }
-
-            .GigTitle h1,
-            .GigTitle h3 {
-                font-weight: 500;
-                margin: 0;
-                line-height: 1.5;
-                color: #303441;
-            }
-
-            /* ############################################################ */
-            .GigTitle .gig-detail-price {
-                margin-bottom: 20px;
-                text-align: right;
-                margin-top: 8px;
-            }
-
-            .GigTitle h1,
-            .GigTitle h3 {
-                font-weight: 500;
-                margin: 0;
-                line-height: 1.5;
-                color: #303441;
-            }
-
-            /* ############################################################ */
-            .GigPackages {
-                margin-bottom: 20px;
-            }
-
-            .GigPackages .gig-detail-pacakage-panel {
-                border: 1px solid #9a9ba7;
-                padding-bottom: 12px;
-            }
-
-
-            .GigPackages .package-header {
-                cursor: pointer;
-                padding: 20px 30px;
-            }
-
-            .GigPackages .package-body {
-                padding: 0 30px;
-            }
-
-            .GigPackages .package-direct-order {
-                margin-top: 30px;
-            }
-
-            .GigPackages .package-direct-order button {
-
-                color: white;
-                background: rgb(85, 115, 154);
-                font-size: 16px;
-                width: 100%;
-                font-weight: 500;
-            }
-
-            /* ############################################################ */
-            .GigNavigator {
-                margin-bottom: 42px;
-            }
-
-
-            .GigNavigator .gig-navigation-box {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-
-            .GigNavigator .gig-navigation {
-                margin: 5px;
-                padding: 0 5px;
-                border-top: 1px solid #e4e5ed;
-                border-right: 1px solid #e4e5ed;
-                border-bottom: 1px solid #000000;
-                background: #fafafc;
-                text-align: center;
-                color: #9a9ba7;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 60px;
-                flex: 1;
-                cursor: pointer;
-                position: relative;
-            }
-
-            .GigNavigator .gig-navigation.active {
-                background: #ffffff;
-                border-top: 1px solid #000000;
-                border-right: 1px solid #000000;
-                border-left: 1px solid #000000;
-                border-bottom: 0;
-                color: #303441;
-                font-weight: 700;
-            }
-
-            /* ################################### */
-
-            .GigDescription {
-                padding-bottom: 50px;
-                border-bottom: 1px solid #e4e5ed;
-                margin-bottom: 50px;
-            }
-
-            .GigDescription {
-                width: 100%;
-                display: inline-block;
-                background-color: #ffffff;
-            }
-
-        </style>
+        <link rel="stylesheet" href="detailPage.CSS">
     </head>
 
     <body>
@@ -263,7 +20,7 @@
             <div class="container">
                 <!--container => 중앙위치 /      container-fluid -->
                 <div class="row">
-                    <div class="col-lg-12 col-sm-12">
+                    <div class="col-sm-12" style="float: none; margin:0 auto;">
                         <div class="GigDetailContainer">
                             <!--//////////////////////-->
                             <div class="LeftModules">
@@ -536,8 +293,6 @@
                                     </div>
 
                                     <!------------------------------------->
-
-
                                     <div class="GigPackages">
                                         <div class="gig-detail-pacakage-panel">
                                             <!-- //////////////////////////////////////////////////////// -->
@@ -555,22 +310,30 @@
                                                     </div>
                                                     <div class="package-body">
                                                         <div class="GigPackageOption">
-
-                                                            <table border="1">
+                                                            <table border="1px">
                                                                 <tr>
-                                                                    <!-- 첫번째 줄 시작 -->
-                                                                    <td>월</td>
-                                                                    <td>화</td>
-                                                                    <td>수</td>
-                                                                    <td>목</td>
-                                                                    <td>금</td>
-                                                                    <td>토</td>
-                                                                    <td>일</td>
-                                                                </tr><!-- 첫번째 줄 끝 -->
+                                                                    <td class="A"><a  href="##">월</a></td>
+                                                                    <td class="B"><a  href="##">화</a></td>
+                                                                    <td class="C"><a  href="##">수</a></td>
+                                                                    <td class="D"><a  href="##">목</a></td>
+                                                                    <td class="E"><a  href="##">금</a></td>
+                                                                    <td class="F"><a  href="##">토</a></td>
+                                                                    <td class="G"><a  href="##">일</a></td>
+                                                                </tr>
                                                             </table>
-
-
                                                         </div>
+
+                                                        <div class="map">
+                                                            <div class="address">
+                                                                <span> - 만남장소</span>
+                                                                <p>경기도 성남시 분당구 중앙공원로 54</p>
+                                                            </div>
+                                                            <div class="mapinmap">
+                                                                맵이 들어갈 자리
+                                                            </div>
+                                                            
+                                                        </div>
+
                                                         <div class="package-direct-order">
                                                             <button type="button" class="btn">
                                                                 <span>구매하기</span>
@@ -590,19 +353,7 @@
 
                                         </div>
                                     </div>
-
                                 </div>
-
-
-                                <div class="gig-detail-pacakage-panel in">
-
-                                </div>
-
-                                <div class="GigPackages">
-
-
-                                </div>
-                                <div class="gig-detail-pacakage-panel"></div>
                             </div>
 
                             <div class="RightButtomModules">
@@ -617,31 +368,77 @@
                                     </li>
                                     <li class="host_mail">
                                         <span class="host_info_title">이메일</span>
+                                        <span> : </span>
                                         <span class="host_info_txt">goldepond@naver.com</span>
                                     </li>
 
                                     <li class="host_phone">
                                         <span class="host_info_title">전화번호</span>
+                                        <span> : </span>
                                         <span class="host_info_txt">goldepond@naver.com</span>
                                     </li>
-                                    <li>
-                                        <span>자기소개</span>
-                                        <p>
-                                            1 가나다라마바사<br />
-                                            2 가나다라마바사<br />
-                                            3 가나다라마바사<br />
-                                        </p>
-                                    </li>
+                                    <div class="host_intro">
+                                            <p class="host_intro_2">
+                                                1 가나다라마바사<br />
+                                                2 가나다라마바사<br />
+                                                3 가나다라마바사<br />
+                                            </p>
+                                    </div>
 
                                 </ul>
 
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
 
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 write-wrap">
+                        <form class="reply-wrap">
+                            <div class="reply-image">
+                                <img src="image/2222.jpg">
+                            </div>
+                            <!--form-control은 부트스트랩의 클래스입니다-->
+                            <div class="reply-content">
+                                <textarea class="form-control" rows="3" name="reply" id="reply"></textarea>
+                                <div class="reply-group">
+                                    <div class="reply-input">
+                                        <input type="text" class="form-control" placeholder="이름" name="replyID"
+                                            id="replyID"> <input type="password" class="form-control" placeholder="비밀번호"
+                                            name="replyPW" id="replyPW">
+                                    </div>
+
+                                    <button type="button" class="right btn btn-info" id="replyRegist">등록하기</button>
+                                </div>
+
+                            </div>
+                        </form>
+
+                        <div id="replyList">
+                            <div class='reply-wrap'>
+                                <div class='reply-image'>
+                                    <img src='image/2222.jpg'>
+                                </div>
+                                <div class='reply-content'>
+                                    <div class='reply-group'>
+                                        <strong class='left'>honggildong</strong>
+                                        <small class='left'>2019/12/10</small>
+                                        <a href='#' class='right'><span class='glyphicon glyphicon-pencil'></span>수정</a>
+                                        <a href='#' class='right'><span class='glyphicon glyphicon-remove'></span>삭제</a>
+                                    </div>
+                                    <p class='clearfix'>여기는 댓글영역</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div id="comment_people"></div>
+                        <button type="button" class="btn btn-default btn-block" id="moreList">더보기</button>
+                    </div>
+                </div>
+            </div>
         </section>
         <script>
             $(document).ready(function () {

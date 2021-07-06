@@ -10,52 +10,14 @@
         <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <style>
-            .custom_header{
-                background-color: cadetblue;
-            }
-            .container .container-md {
-                padding-left: 16px;
-                padding-right: 16px;
-                width: 100%;
-            }
-            body {
-                background-color: beige;
-                font-size: 2rem;
-                font-weight: 400;
-                line-height: 1.5;
-                color: #323232;
-                text-align: left;
-                display: flex;
-                justify-content: space-between;
-                flex-direction: column;
-            }
-            h1 {
-                background-color: aqua;
-                display: block;
-                margin-block-start: 0.67em;
-                margin-block-end: 0.67em;
-                margin-inline-start: 0px;
-                margin-inline-end: 0px;
-            }
-            a, a:hover {
-                text-decoration: none;
-            }
-            .main-menu {
-                font-size: 2.3rem;
-                font-weight: 700;
-                color: black;
-            }
-            .underline {
-                border-bottom: .0625rem solid;
-                border-color: #f2f2f2;
-            }
             .profile-container {
-                background-color: blueviolet;
+                
                 font-size: 0;
                 padding: 1rem 0;
                 margin-bottom: 2.5rem;
                 display:flex;
                 align-items: center;
+                flex-direction: column;
             }
             .thumb {
                 width: 4.375rem;
@@ -64,6 +26,7 @@
                 border-radius: .75rem;
                 overflow: hidden;
                 border: 1px solid #f2f2f2f2;
+                
             }
             .thumb-image {
                 position: relative;
@@ -78,7 +41,7 @@
                 border-radius: .75rem;
                 padding: 0;
                 height: 100%;
-                background-image: url(../image/thumb.svg);
+                
             }
             .user-info {
                 flex: auto;
@@ -109,47 +72,71 @@
                 overflow: hidden;
                 max-width: 11.6875rem;
             }
-            .deal-menu-container {
-                padding: 0;
-            }
-            ul {
-                background: #e1e1e1;
-                display:block;
-                list-style-type: disc;
-                margin-block-start: 1em;
-                margin-block-end: 1em;
-                margin-inline-start: 0px;
-                margin-inline-end: 0px;
-                padding-inline-start: 40px;
-            }
-            ul li {
+            
+            /* .container {
+                width: 640px;
+            } */
+           .main {
+               line-height: 50px;
+               font-size: 2.125rem;
+               font-weight: 500;
+               margin-top: 10rem;
+               margin-bottom: 3rem;
+               margin-left: 3rem;
+           }
+           .profile-image {
+               position : relative;
+               width: 6.25rem;
+               height: 6.25rem;
+               margin: 0 auto;
+           }
+           .account-info {
+            display: block;
+            list-style-type: disc;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            padding-inline-start: 40px;
+            margin-bottom: 3rem;
+           }
+           .item-container {
+               cursor:pointer;
+               display: flex;
+               align-items: center;
+                padding: 1rem 0 1rem .5rem;
+                border-bottom: 1px solid #f2f2f2;
                 list-style: none;
-            }
-            .sub-menu-container a, .sub-menu-list {
-                display: flex;
-                align-items: center;
-            }
-            .icon-container {
-                align-self: baseline;
-            }
-            .text-icon-container {
-                font-size: 2rem;
-            }
+           }
+           .user-picture {
+               width: 100%;
+           }
+           .item {
+               flex: 1;
+               color: #323232;
+           }
+           .item-title {
+               color: #b5b5b5;
+           }
+           .item-info {
+               padding-top: .25rem;
+           }
         </style>
     </head>
 
     <body class="mypage">
-        <div class=".container">
-            <div class="row">
+        <div class="container-md container">
+            <div class="row container">
                 <div class="col-xs-12">
 
                     <div id="mypage-body">
                         <div class="container-md container">
                             <div class="mypage-container">
-                                <h1 class="mypage-title">마이페이지</h1>
-                                <div class="profile-container underline">
+                                <h1 class="main">마이페이지</h1>
+                                <a href="../Wireframe(와이어프레임)/마이페이지 수정.html" class="profile-container underline">
                                     <div class="thumb">
                                         <div class="thumb-image">
+                                            <img src="../image/default-profile.svg" class="user-picture" alt="기본이미지">
                                         </div>
                                     </div>
                                     <div class="user-info">
@@ -160,115 +147,70 @@
                                             <span class="glyphicon glyphicon-envelope"> xxx@naver.com<!--이메일 호출--></span>
                                         </div>
                                     </div>
-                                </div>
-                                    <ul>
-                                        <span class="main-menu">유저 평점
-                                        </span>
-                                    <li class="sub-menu-container underline">
-                                        <div class="icon-container">
-                                            <img src="" alt="">
-                                        </div>
-                                            <div class="sub-list-container">
-                                                <span class="buy-score-text">수강생 평점
-                                                </span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star-empty"></span>
-                                                <span class="glyphicon glyphicon-star-empty"></span>
-                                                <span class="glyphicon glyphicon-star-empty"></span>
-                                            </div>
-                                    </li>
-                                    <li class="sub-menu-container underline">
-                                        <div class="icon-container">
-                                                <img src="" alt="">
-                                        </div>
-                                            <div class="sub-list-container underline">
-                                                <span class="sell-score-text">강사 평점      
-                                                </span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star-empty"></span>
-                                            </div>
-                                    </li> 
-                                    </ul>
-                                    <ul>
-                                        <li class="sub-menu-container">
-                                            <span class="main-menu">관심사
-                                            </span>
-                                            <div class="sub-menu-container underline">
-                                                <span class="glyphicon glyphicon-th-list"> 음악</span><!--관심사 호출-->
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    
-                                    <ul>
-                                        <li class="sub-menu-container underline"><!--판매자만 보이도록 설정-->
-                                            <span class="main-menu">판매자 카테고리
-                                            </span>
-                                            <div class="sub-list-container">
-                                                <span class="glyphicon glyphicon-th-list"> 축구<!--카테고리 호출-->
-                                                </span>
-                                            </div>        
-                                        </li>
-                                    </ul>
-                                    <ul>
-            
-                                        <li class="sub-menu-container underline"><!--본인이 아니면 안보이도록 설정-->
-                                            <span class="main-menu">상세정보
-                                            </span>
-                                            <div class="sub-list-container">
-                                                <span class="glyphicon glyphicon-home"> 서울시 강남구<!--주소 호출--></span>
-                                            </div>
-                                            <div class="sub-list-container">
-                                                <span class="glyphicon glyphicon-earphone"> 010-xxxx-xxxx<!--전화번호 호출--></span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                <ul>
-                                    <span class="main-menu">거래내역</span>
-                                    <li class="sub-menu-container underline">
-                                        <a href="##" class="sub-list-container"><!-- 수강내역 페이지로 이동-->
-                                            <div class="icon-container">
-                                                <img src="../image/icon-mypage-escrow-list.svg">
-                                            </div>
-                                            <div class="buy-menu-text">
-                                                <span class="buy-menu">수강 내역</span>
-                                            </div>
-                                            <span class="glyphicon glyphicon-chevron-right">
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="sub-menu-container underline">
-            
-                                        <a href="##" class="sub-list-container"><!--강의내역 페이지로 이동-->
-                                            <div class="icon-container">
-                                                <img src="../image/icon-mypage-escrow-list.svg">
-                                            </div>
-                                            <div class="sell-menu-text">
-                                                <span class="sell-menu">강의 내역</span>
-                                            </div>
-                                            <span class="glyphicon glyphicon-chevron-right">
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <span class="main-menu">환경설정</span>
-                                    <li class="sub-menu-container underline">
-                                        <a href="##" class="sub-list-container">
-                                            <div class="text-icon-container">
-                                                <span class="glyphicon glyphicon-cog"></span>
-                                            </div>
-                                            <div class="fix">
-                                                <span class="fix-text">설정</span>
-                                            </div>
-                                            <span class="glyphicon glyphicon-chevron-right"></span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                    <div class="arrow">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </a>
                                 
+                                <ul class="account-info">
+                                    <li class="item-container">
+                                        <div class="item">
+                                            <div class="item-title">유저 평점</div>
+                                            <div class="item-info">수강생 평점</div>
+                                            <div class="item-info">강사 평점</div>
+                                        </div>
+                                    </li>
+                                    <li class="item-container">
+                                        <div class="item">
+                                            <div class="item-title">관심사</div>
+                                            <div class="item-info">음악</div>
+                                        </div>
+                                        <div class="glyphicon glyphicon-chevron-right">
+                                        </div>
+                                    </li>
+                                    <li class="item-container">
+                                        <div class="item">
+                                            <div class="item-title">판매자 카테고리</div>
+                                            <div class="item-info">스포츠</div>
+                                        </div>
+                                        <div class="glyphicon glyphicon-chevron-right">
+                                        </div>
+                                    </li>
+                                    <li class="item-container">
+                                        <div class="item">
+                                            <div class="item-title">선호 지역</div>
+                                            <div class="item-info">서울시 강남구</div>
+                                        </div>
+                                        <div class="glyphicon glyphicon-chevron-right">
+                                        </div>
+                                    </li>
+                
+                                </ul>
+                                <ul class="account-info">
+                                    <li class="item-container">
+                                        <div class="item">
+                                            <div class="item-info">수강 내역</div>
+                                        </div>
+                                        <div class="glyphicon glyphicon-chevron-right">
+                                        </div>
+                                    </li>
+                                    <li class="item-container">
+                                        <div class="item">
+                                            <div class="item-info">강의 내역</div>
+                                        </div>
+                                        <div class="glyphicon glyphicon-chevron-right">
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="account-info">
+                                    <li class="item-container">
+                                        <div class="item">
+                                            <div class="item-title">환경설정</div>
+                                        </div>
+                                        <div class="glyphicon glyphicon-chevron-right">
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
             

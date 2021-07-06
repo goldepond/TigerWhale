@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+
+            .container {
+                width: 640px
+            }
+           .main {
+               line-height: 50px;
+               font-size: 2.125rem;
+               font-weight: 500;
+               margin-top: 10rem;
+               margin-bottom: 3rem;
+               margin-left: 3rem;
+           }
+           .profile-image {
+               position : relative;
+               width: 6.25rem;
+               height: 6.25rem;
+               margin: 0 auto;
+           }
+           .user-profile-picture {
+               position: relative;
+               width: 100%;
+               border-radius: 50%;
+               border: .0625rem solid #f2f2f2;
+               overflow: hidden;
+               background-size: cover;
+               background-position: 50% 50%;
+               background-color: #e1e1e1;
+           }
+           .camera-icon {
+               cursor: pointer;
+               position: absolute;
+               right: 0;
+               bottom: 0;
+           }
+           .user-picture {
+               width:100%;
+           }
+           .account-info {
+            display: block;
+            list-style-type: disc;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            padding-inline-start: 40px;
+            margin-bottom: 3rem;
+           }
+           .item-container {
+               cursor:pointer;
+               display: flex;
+               align-items: center;
+                padding: 1rem 0 1rem .5rem;
+                border-bottom: 1px solid #f2f2f2;
+                list-style: none;
+           }
+           .item {
+               flex: 1;
+               color: #323232;
+           }
+           .item-title {
+               color: #b5b5b5;
+           }
+           .item-info {
+               padding-top: .25rem;
+           }
+        </style>
+    </head>
+
+    <body class="mypage">
+        <div class="container-md container">
+            <div class="account-info-container">
+                <h1 class="main">계정 설정</h1>
+                <div class="profile-image">
+                    <div class="user-profile-picture">
+                        <img src="../image/default-profile.svg" class="user-picture" alt="기본이미지">
+                    </div>
+                    <img src="../image/camera.svg" class="camera-icon">
+                </div>
+                <ul class="account-info">
+                    <li class="item-container">
+                        <div class="item">
+                            <div class="item-title">이름</div>
+                            <div class="item-info">이성빈</div>
+                        </div>
+                        <div class="glyphicon glyphicon-chevron-right">
+                        </div>
+                    </li>
+                    <li class="item-container">
+                        <div class="item">
+                            <div class="item-title">이메일</div>
+                            <div class="item-info">xxxx33@naver.com</div>
+                        </div>
+                        <div class="glyphicon glyphicon-chevron-right">
+                        </div>
+                    </li>
+                    <li class="item-container">
+                        <div class="item">
+                            <div class="item-title">비밀번호</div>
+                            <div class="item-info">●●●●●●●●●</div>
+                        </div>
+                        <div class="glyphicon glyphicon-chevron-right">
+                        </div>
+                    </li>
+                    <li class="item-container">
+                        <div class="item">
+                            <div class="item-title">휴대전화 번호</div>
+                            <div class="item-info">010-xxxx-xxxx</div>
+                        </div>
+                        <div class="glyphicon glyphicon-chevron-right">
+                        </div>
+                    </li>
+
+                </ul>
+                <ul class="account-info">
+                    <li class="item-container">
+                        <div class="item">
+                            <div class="item-title">계정 탈퇴</div>
+                        </div>
+                        <div class="glyphicon glyphicon-chevron-right">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+
+</html>

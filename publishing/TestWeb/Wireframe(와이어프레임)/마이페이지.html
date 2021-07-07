@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            .profile-container {
+                
+                font-size: 0;
+                padding: 1rem 0;
+                margin-bottom: 2.5rem;
+                display:flex;
+                align-items: center;
+                flex-direction: column;
+            }
+            .thumb {
+                width: 4.375rem;
+                height: 4.375rem;
+                min-width: 4.375rem;
+                border-radius: .75rem;
+                overflow: hidden;
+                border: 1px solid #f2f2f2f2;
+                
+            }
+            .thumb-image {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                border: .0625rem solid #f2f2f2;
+                overflow: hidden;
+                background-size: cover;
+                background-position: 50% 50%;
+                background-color: #e1e1e1;
+                border-radius: .75rem;
+                padding: 0;
+                height: 100%;
+                
+            }
+            .user-info {
+                flex: auto;
+                text-align: left;
+                padding-left: .75rem;
+            }
+            .user-name {
+                display: flex;
+                font-size: 2.3rem;
+                font-weight: 500;
+                color: #323232;
+            }
+            .name {
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                padding-right: .3125rem;
+                max-width: 8.45rem;
+            }
+            .user-email {
+                display: flex;
+                font-size: 1.5rem;
+                color: #b5b5b5;
+            }
+            .email {
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                max-width: 11.6875rem;
+            }
+            
+            /* .container {
+                width: 640px;
+            } */
+           .main {
+               line-height: 50px;
+               font-size: 2.125rem;
+               font-weight: 500;
+               margin-top: 10rem;
+               margin-bottom: 3rem;
+               margin-left: 3rem;
+           }
+           .profile-image {
+               position : relative;
+               width: 6.25rem;
+               height: 6.25rem;
+               margin: 0 auto;
+           }
+           .account-info {
+            display: block;
+            list-style-type: disc;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            padding-inline-start: 40px;
+            margin-bottom: 3rem;
+           }
+           .item-container {
+               cursor:pointer;
+               display: flex;
+               align-items: center;
+                padding: 1rem 0 1rem .5rem;
+                border-bottom: 1px solid #f2f2f2;
+                list-style: none;
+           }
+           .user-picture {
+               width: 100%;
+           }
+           .item {
+               flex: 1;
+               color: #323232;
+           }
+           .item-title {
+               color: #b5b5b5;
+           }
+           .item-info {
+               padding-top: .25rem;
+           }
+           .a, .a:hover , a:visited, a:link {
+               text-decoration: none;
+           }
+        </style>
+    </head>
+
+    <body class="mypage">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" style="float: none; margin:0 auto;">
+
+                    <div id="mypage-body">
+                        <div class="account-info-container">
+                            <div class="mypage-container">
+                                <h1 class="main">마이페이지</h1>
+                                <a href="../Wireframe(와이어프레임)/마이페이지 수정.html" class="profile-container underline">
+                                    <div class="thumb">
+                                        <div class="thumb-image">
+                                            <img src="../image/default-profile.svg" class="user-picture" alt="기본이미지">
+                                        </div>
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="user-name">
+                                            <span class="name">홍길동<!--이름 호출--></span>  고객님 
+                                        </div>
+                                        <div class="user-email">
+                                            <span class="glyphicon glyphicon-envelope"> xxx@naver.com<!--이메일 호출--></span>
+                                        </div>
+                                    </div>
+                                    <div class="arrow">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </div>
+                                </a>
+                                
+                                <ul class="account-info">
+                                    <li class="item-container">
+                                        <div class="item">
+                                            <div class="item-title">유저 평점</div>
+                                            <div class="item-info">수강생 평점</div>
+                                            <div class="item-info">강사 평점</div>
+                                        </div>
+                                    </li>
+                                    <li class="item-container">
+                                        <div class="item">
+                                            <div class="item-title">관심사</div>
+                                            <div class="item-info">음악</div>
+                                        </div>
+                                        <div class="glyphicon glyphicon-chevron-right">
+                                        </div>
+                                    </li>
+                                    <li class="item-container">
+                                        <div class="item">
+                                            <div class="item-title">판매자 카테고리</div>
+                                            <div class="item-info">스포츠</div>
+                                        </div>
+                                        <div class="glyphicon glyphicon-chevron-right">
+                                        </div>
+                                    </li>
+                                    <li class="item-container">
+                                        <div class="item">
+                                            <div class="item-title">선호 지역</div>
+                                            <div class="item-info">서울시 강남구</div>
+                                        </div>
+                                        <div class="glyphicon glyphicon-chevron-right">
+                                        </div>
+                                    </li>
+                
+                                </ul>
+                                <ul class="account-info">
+                                    <li class="item-container">
+                                        <div class="item">
+                                            <div class="item-info">수강 내역</div>
+                                        </div>
+                                        <div class="glyphicon glyphicon-chevron-right">
+                                        </div>
+                                    </li>
+                                    <li class="item-container">
+                                        <div class="item">
+                                            <div class="item-info">강의 내역</div>
+                                        </div>
+                                        <div class="glyphicon glyphicon-chevron-right">
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="account-info">
+                                    <li class="item-container">
+                                        <div class="item">
+                                            <div class="item-title">환경설정</div>
+                                        </div>
+                                        <div class="glyphicon glyphicon-chevron-right">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

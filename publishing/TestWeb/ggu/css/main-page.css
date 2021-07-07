@@ -18,8 +18,9 @@ body .all-category, .main-fluid {
 }
 
 .all-category {
-    position: relative;
+    /* position: relative; */
     display: inline-block;
+    width: 100%;
 }
 .all-category-btn {
     background-color: rgb(85, 115, 154);
@@ -28,21 +29,21 @@ body .all-category, .main-fluid {
     font-size: 16px;
     border: none;
     cursor: pointer;
-    width: 200px;
+    width: 100%;
 }
 .big-category-content {
     display: block;
-    position: absolute;
     background-color: rgb(135, 177, 232);
-    width: 200px;
-   /*  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
-    z-index: 1;
+    width: 100%;
+    position: relative;
 }
 .big-category-content a {
     color: #fff;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    width: 100%;
+    
 }
 .big-category-content a:hover {
     background-color: #fff;
@@ -50,15 +51,17 @@ body .all-category, .main-fluid {
 }
 .big-title:hover .mid-category-content{
     display: block;
+    position: absolute;
+    z-index: 1;
 }
 
 .mid-category-content {
     display: none;
     position: absolute;
     top: 0;
-    left: 200px;
+    left: 100%;
     background-color: rgb(135, 177, 232);
-    width: 200px;
+    width: 100%;
 }
 .mid-category-content a {
     color: #fff;
@@ -70,20 +73,29 @@ body .all-category, .main-fluid {
     display: none;
     position: absolute;
     top: 0;
-    left: 200px;
+    left: 100%;
     background-color: rgb(135, 177, 232);
-    width: 200px;
+    width: 100%;
 }
 .mid-title:hover .sm-category-content {
     display: block;
 }
 
-.main-fluid {
-    position: absolute;
-    left: 200px;
-    width: 976px;
-    height: 400px;
-}
 .carousel-inner .item img {
-    text-align: center;
+    margin: 0 auto;
+}
+
+.main2 {
+    margin-top: 10px;
+}
+
+.lecture-ad {
+    margin-top: 10px;
+}
+
+.lecture a {
+    width: 100%;
+    height: ;
+    display: block;
+    background-color: aqua;
 }

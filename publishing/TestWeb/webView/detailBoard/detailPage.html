@@ -7,12 +7,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
-        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="/publishing/TestWeb/resources/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="/publishing/TestWeb/resources/bootstrap/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="/publishing/TestWeb/resources/bootstrap/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="detailPage.CSS">
+        <link rel="stylesheet" href="/publishing/TestWeb/resources/css/detailPage.CSS">
+        <script src="/publishing/TestWeb/webView/detailBoard/detailPage.js"></script>
     </head>
 
     <body>
@@ -349,9 +350,8 @@
                                                                 <span> - 만남장소</span>
                                                                 <p>경기도 성남시 분당구 중앙공원로 54</p>
                                                             </div>
-                                                            <div class="mapinmap">
-                                                                맵이 들어갈 자리
-                                                            </div>
+                                                            <div id="map" class="mapinmap">
+                                                            </div>  
 
                                                         </div>
 
@@ -431,7 +431,8 @@
                                             name="replyPW" id="replyPW">
                                     </div>
 
-                                    <button type="button" class="right btn btn-info" id="replyRegist">등록하기</button>
+                                    <button type="button" class="right btn btn-info" id="replyRegist" >등록하기</button>
+                                    
                                 </div>
 
                             </div>
@@ -468,21 +469,37 @@
                 });
             });
         </script>
-
         <script>
-            console.log( $(".gig-navigation-title"));
-            var toggle = document.querySelectorAll(".gig-navigation-title");
-            console.log( toggle);
-            console.log("#################");
-            toggle.onclick = function () {
-                toggle.classList.toggle("aaa");
 
-            }
-            console.log( $(".GigLeftTitle"));
-            var toggle2 = document.querySelectorAll(".GigLeftTitle");
-            console.log( toggle2);
+            $("#gig-navigation-title_A").click(function () {
+                var location = document.querySelector(".A").offsetTop;
+                window.scrollTo({ top: location, behavior: 'smooth' });
+            });
+
+            $("#gig-navigation-title_B").click(function () {
+                var location = document.querySelector(".B").offsetTop;
+                window.scrollTo({ top: location, behavior: 'smooth' });
+            });
+
+            $("#gig-navigation-title_C").click(function () {
+                var location = document.querySelector(".C").offsetTop;
+                window.scrollTo({ top: location, behavior: 'smooth' });
+            });
 
 
+
+        </script>
+
+        <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c9c2c80f44b7412a52bfb0036f525c9"></script>
+        <script>
+            var container = document.getElementById('map');
+            var options = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667),
+                level: 3
+            };
+
+            var map = new kakao.maps.Map(container, options);
         </script>
     </body>
 

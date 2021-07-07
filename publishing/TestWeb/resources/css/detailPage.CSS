@@ -38,6 +38,7 @@ img {
     float: right;
     border: 3px black solid;
     background-color: white;
+    
     padding: 20px;
 }
 
@@ -77,7 +78,7 @@ img {
 .GigRate {
     border: 3px black solid;
     padding: 15px;
-    background-color: white;
+    background-color: antiquewhite;
     margin-bottom: 30px;
     display: flex;
     align-items: center;
@@ -181,12 +182,9 @@ img {
     margin: 20px;
 }
 .GigPackages .package-body .map .mapinmap{
-    display: block;
     height: 200px;
     width: 100%;
     text-align: center;
-    background-color: black;
-    color: white;
 }
 
 .GigPackages .package-direct-order {

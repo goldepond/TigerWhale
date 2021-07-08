@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+  "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+  
+<tiles-definitions>
+	
+	<!-- 1. 타일즈 파일이 가져야하는 레이아웃형식을 정의 -->
+	<!-- name속성은 상속받아서 사용할 이름, template은 타일즈템플릿의 경로 -->
+	<definition name="" template="">
+	
+	</definition>
+	
+	
+	
+	
+</tiles-definitions>  

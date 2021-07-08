@@ -11,21 +11,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
-public class HomeController {
+@RequestMapping("/detailBoard")
+public class detailBoardController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		
+	@RequestMapping("/detailPage")
+	public String detailPage() {
 		return "detailBoard/detailPage";
 	}
+	
+	@RequestMapping("/detailBuy")
+	public String detailBuy() {
+		return "detailBoard/detailBuy";
+	}
+	
+	@RequestMapping("/detailWrite")
+	public String detailWrite() {
+		return "detailBoard/detailWrite";
+	}
+	
 	
 }

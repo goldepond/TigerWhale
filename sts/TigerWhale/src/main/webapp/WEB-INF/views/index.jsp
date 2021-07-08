@@ -16,9 +16,45 @@
     <script src="${pageContext.request.contextPath }/resources/bootstrap/js/bootstrap.js"></script>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main-page.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/header.css ">
 </head>
 <body>
-<h1 class="header">TW_Company</h1>
+
+    <section>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" style="float: none; margin:0 auto; padding: 0; background-color: aquamarine;">
+                    <div class="header">
+                        <div>
+                            <img src="${pageContext.request.contextPath }/resources/img/mainPageImg/icon_profile.png">
+                        </div>
+                        <div class="search-tag">
+                            <form>
+                                <input type="text"><a href="#"><a href="#"><i class="fas fa-search fa-2x"></i></a>
+                            </form>
+                        </div>
+                        <div class="icon-set">
+                            <span><a href="#"><i class="far fa-user fa-3x"></i></a></span>
+                            <span><a href="#"><i class="far fa-clone fa-3x"></i></a></span>
+                            <span><a href="#"><i class="fas fa-shopping-basket fa-3x"></i></a></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 header2">
+                        <div class="category">
+                            <i class="fas fa-bars"></i>  
+                            <span>전체 카테고리</span>
+                        </div>
+                        <div class="regist">
+                            <a href="#">로그인</a>
+                            <a href="#">회원가입</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
 
     <div class="container main1">
         <div class="row">
@@ -26,7 +62,7 @@
             <aside class="col-xs-12 col-sm-3 col-md-3" style="padding: 0;">
     
                 <div class="all-category">
-                    <button class="all-category-btn">전체카테고리</button>
+                    <button class="all-category-btn">카테고리</button>
                     <div class="big-category-content">
                         <div class="big-title">
                             <a href="#">IT · 프로그래밍</a> <!-- hover : 카테고리 펼치기, click : 해당조건 검색페이지 -->

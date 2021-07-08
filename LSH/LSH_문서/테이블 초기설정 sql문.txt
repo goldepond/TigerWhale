@@ -1,0 +1,140 @@
+1) PDB 계정에 접속한후 아래 명령어 작성
+
+create user PROJECT IDENTIFIED by PROJECT;
+-- 아이디 "project" 비밀번호 "project"로 계정생성한다
+
+grant resource,connect,dba to PROJECT;
+-- "project"라는 계정에게 객체를 생성,수정삭제할권한과 데이터를 입력,수정,조회,삭제할 권한을부여한다
+-- db에관한 권한을 부여한다
+
+alter user PROJECT DEFAULT TABLESPACE users QUOTA UNLIMITED on users;
+-- "project"에게 제한이없는 테이블스페이스를 부여한다.
+
+2) "PROJECT" DB생성하기
+2-1) 좌측메뉴에서 + 접속버튼 클릭후
+Name - PROJECT
+사용자이름 - PROJECT  // 비밀번호 - PROJECT // 롤 -기본값
+세부정보 --> 서비스이름 - XEPDB1
+접속or 저장후 연결
+
+
+3)PROJECT계정 연결
+
+트리거 사용할곳
+
+주문번호
+bno
+select * from user_role_privs;
+
+--회원(멘티) 정보테이블 
+CREATE TABLE userBoard
+(
+    user_ID VARCHAR2(40) PRIMARY KEY,
+    user_PW VARCHAR2(40) NOT NULL,
+    userAdress VARCHAR2(100)NOT NULL,
+    userPhoneNumber VARCHAR2(60)NOT NULL,
+    userEmail1 VARCHAR2(50)NOT NULL,
+    userEmail2 VARCHAR2(50)NOT NULL,
+    userGender VARCHAR2(6)NOT NULL, --남,여로 성별입력 받음
+    buyScore_AVG NUMBER(3)
+);
+
+--회원(멘토) 테이블
+CREATE TABLE mentorBoard
+(
+    user_ID VARCHAR2(20) NOT NULL,
+    accountNum VARCHAR2(20)UNIQUE NOT NULL,
+    sellScore_AVG number(3)판매평점 평균 기본값0
+);
+
+
+
+
+
+--회원(멘토)의 경력 테이블
+CREATE TABLE careerBoard
+(
+    user_ID VARCHAR2(20) UNIQUE NOT NULL,
+    careerList VARCHAR2(100) UNIQUE NOT NULL
+);
+
+--회원(멘토,멘티)의 구매내역을 확인할수 있는테이블
+CREATE TABLE detailBoard
+(
+    orderNum NUMBER(10) PRIMARY KEY, --거래내역의 고유번호
+    sell_ID NUMBER(10)UNIQUE NOT NULL, --해당 bno에서 일어난 거래의 구매아이디
+    buy_ID VARCHAR2(20) UNIQUE NOT NULL, --해당 bno에서 일어난 거래의 판매아이디
+    bno NUMBER(10) UNIQUE NOT NULL,
+    price NUMBER(10) NOT NULL, --판매가
+    sellScore NUMBER(3), --구매자가 판매자에게 주는평점
+    buyScore NUMBER(3)-- 판매자가 구매자에게 주는평점
+);
+
+--회원의 관심카테고리를 정리한 테이블
+CREATE TABLE interestBoard
+(
+    user_ID VARCHAR2(20) UNIQUE NOT NULL, 
+    C_key NUMBER(5) NOT NULL --카테고리의 키번호
+);
+
+--게시글 테이블
+CREATE TABLE mainBoard
+(
+    bno NUMBER(10),
+    user_ID VARCHAR2(20) UNIQUE NOT NULL,
+    C_code NUMBER(5) UNIQUE NOT NULL,
+    boardType VARCHAR(6) NOT NULL, --게시글의 종류를 확인함 입력값은'구매','판매'
+    title VARCHAR2(30) NOT NULL,
+    text VARCHAR2(500) NOT NULL,
+    price NUMBER(10) NOT NULL,
+    M_registDate DATE DEFAULT SYSDATE, --게시글등록 시간
+    M_updateDate DATE DEFAULT SYSDATE -- 게시글수정 시간
+);
+
+--댓글 테이블
+CREATE TABLE replyBoard
+(
+    user_ID VARCHAR2(20) UNIQUE NOT NULL,
+    bno NUMBER(10) UNIQUE NOT NULL,
+    orderNum NUMBER(10) UNIQUE NOT NULL, --거래내역의 고유번호
+    reply VARCHAR(200) NOT NULL,
+    R_replyDate DATE DEFAULT SYSDATE, -- 답글생성 시간
+    R_updateDate DATE DEFAULT SYSDATE -- 답글수정 시간
+);
+
+
+--카테고리의 정보를 모아놓은 테이블
+CREATE TABLE categoryBoard
+(
+    C_code NUMBER(5) UNIQUE NOT NULL, --해당행의 코드번호(고유값)
+    middleCategory VARCHAR2(60) UNIQUE NOT NULL, --대분류명
+    smallCategory VARCHAR2(60) UNIQUE NOT NULL, -- 중분류명
+    bigCategory VARCHAR2(60) UNIQUE NOT NULL --소분류명
+);
+
+);
+
+--게시글의 작성자가 허용한 날짜와 시간대를 저장하는 테이블
+CREATE TABLE D_T_Board
+(
+    bno NUMBER(10) UNIQUE NOT NULL,
+    M_day CHAR(3),
+    M_time1 NUMBER(2), -- 00:00 중 첫번째값 입력받음
+    M_time2 NUMBER(2) -- 00::00중 두번째값 입력받음
+);
+
+
+--게시글의 작성자가 허용한 날짜와 시간대를 저장하는 테이블
+CREATE TABLE Y_M_Board
+(
+    bno NUMBER(10) UNIQUE NOT NULL,
+    M_year1 NUMBER(4), -- 허용기간이 시작되는 년도를 입력받음
+    M_year2 NUMBER(4),-- 허용기간이 끝나는 년도를 입력받음
+    M_month1 NUMBER(1), -- 허용기간이 시작되는 달을 입력받음 
+    M_month2 NUMBER(1) -- 허용기간이 끝나는 달을 입력받음
+);
+
+
+create SEQUENCE MAINBoard_SEQ INCREMENT BY 1 START WITH 1 NOCACHE; --게시글의 bno 시퀀스입니다
+create SEQUENCE DETAILBoard_SEQ INCREMENT BY 1 START WITH 1 NOCACHE; --거래내역의 orderNum(주문내역번호) 시퀀스입니다
+

@@ -1,82 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+<meta charset="UTF-8">
+<title>Insert title here</title>
     <!-- 부트스트랩 css파일 참조 -->
-    <link rel="stylesheet" href="../../resources/bootstrap/css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css"> -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/bootstrap/css/bootstrap.css">
 
     <!-- 부트스트랩 js를 사용하기 위해 jquery 라이브러리 참조 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- 부트스트랩 js 참조 -->
-    <script src="../../resources/bootstrap/js/bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/bootstrap/js/bootstrap.js"></script>
 
-    <link rel="stylesheet" href="../../resources/css/main-page.css">
-
-    <!-- 부트스트랩 테마파일참조 -->
-    <!-- <link rel="stylesheet" href="css/bootstrap-theme.css"> -->
-    <link rel="stylesheet" href="../../resources/bootstrap/css/bootstrap-theme.css">
-
-    <!-- 부트스트랩 js참조 -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-    <!-- <script src="js/bootstrap.js"></script> -->>
-   
-    <link rel="stylesheet" href="../../resources/css/header.css ">
-
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main-page.css">
 </head>
-
 <body>
-    <section> 
-
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12" style="float: none; margin:0 auto; padding: 0; background-color: aquamarine;">
-                    <div class="header">
-                        <div>
-                            <img src="../../resources/img/mainPageImg/icon_profile.png">
-                        </div>
-                        <div class="search-tag">
-                            <form>
-                                <input type="text"><a href="#"><a href="#"><i class="fas fa-search fa-2x"></i></a>
-                            </form>
-                        </div>
-                        <div class="icon-set">
-                            <span><a href="#"><i class="far fa-user fa-3x"></i></a></span>
-                            <span><a href="#"><i class="far fa-clone fa-3x"></i></a></span>
-                            <span><a href="#"><i class="fas fa-shopping-basket fa-3x"></i></a></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 header2">
-                        <div class="category">
-                            <i class="fas fa-bars"></i>  
-                            <span>전체 카테고리</span>
-                        </div>
-                        <div class="regist">
-                            <a href="#">로그인</a>
-                            <a href="#">회원가입</a>
-                        </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-
-    <!-- <h1 class="header">TW_Company</h1> -->
-    <section>
-
-        
-    </section>
+<h1 class="header">TW_Company</h1>
 
     <div class="container main1">
         <div class="row">
+
             <aside class="col-xs-12 col-sm-3 col-md-3" style="padding: 0;">
     
                 <div class="all-category">
@@ -244,7 +190,7 @@
                         <div class="carousel-inner">
     
                             <div class="item active">
-                                <img src="../../resources/img/mainPageImg/css3.png" alt="CSS" style="height:450px;">
+                                <img src="${pageContext.request.contextPath }/resources/img/mainPageImg/css3.png" alt="CSS" style="height:450px;">
                                 <div class="carousel-caption">
                                     <h3>1</h3>
                                     <p>죽겠다!</p>
@@ -252,7 +198,7 @@
                             </div>
     
                             <div class="item">
-                                <img src="../../resources/img/mainPageImg/html5.png" alt="HTML" style="height:450px;">
+                                <img src="${pageContext.request.contextPath }/resources/img/mainPageImg/html5.png" alt="HTML" style="height:450px;">
                                 <div class="carousel-caption">
                                     <h3>2</h3>
                                     <p>죽겠다데스!</p>
@@ -260,7 +206,7 @@
                             </div>
     
                             <div class="item">
-                                <img src="../../resources/img/mainPageImg/jquery.png" alt="jquery" style="height:450px;">
+                                <img src="${pageContext.request.contextPath }/resources/img/mainPageImg/jquery.png" alt="jquery" style="height:450px;">
                                 <div class="carousel-caption">
                                     <h3>3</h3>
                                     <p>We love Apple!</p>
@@ -295,7 +241,7 @@
         <ul class="row recommand-list">
             <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">
                 <div class="recommand-lecture">
-                    <img src="../../resources/img/mainPageImg/java.png" alt="java">
+                    <img src="${pageContext.request.contextPath }/resources/img/mainPageImg/java.png" alt="java">
                     <div class="lecture-content">
                         <p>자바 입문</p>
                     </div>
@@ -306,7 +252,7 @@
             </li>
             <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">
                 <div class="recommand-lecture">
-                    <img src="../../resources/img/mainPageImg/javascript.png" alt="es6">
+                    <img src="${pageContext.request.contextPath }/resources/img/mainPageImg/javascript.png" alt="es6">
                     <div class="lecture-content">
                         <p>자바스크립트 기본</p>
                     </div>
@@ -317,7 +263,7 @@
             </li>
             <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">
                 <div class="recommand-lecture">
-                    <img src="../../resources/img/mainPageImg/es6.png" alt="es6">
+                    <img src="${pageContext.request.contextPath }/resources/img/mainPageImg/es6.png" alt="es6">
                     <div class="lecture-content">
                         <p>자바스크립트es6</p>
                     </div>
@@ -328,7 +274,7 @@
             </li>
             <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">
                 <div class="recommand-lecture">
-                    <img src="../../resources/img/mainPageImg/spring.jpg" alt="spring">
+                    <img src="${pageContext.request.contextPath }/resources/img/mainPageImg/spring.jpg" alt="spring">
                     <div class="lecture-content">
                         <p>스프링</p>
                     </div>
@@ -339,7 +285,7 @@
             </li>
             <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">
                 <div class="recommand-lecture">
-                    <img src="../../resources/img/mainPageImg/react.png" alt="react">
+                    <img src="${pageContext.request.contextPath }/resources/img/mainPageImg/react.png" alt="react">
                     <div class="lecture-content">
                         <p>리액트</p>
                     </div>
@@ -350,7 +296,7 @@
             </li>
             <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">
                 <div class="recommand-lecture">
-                    <img src="../../resources/img/mainPageImg/react.png" alt="react">
+                    <img src="${pageContext.request.contextPath }/resources/img/mainPageImg/react.png" alt="react">
                     <div class="lecture-content">
                         <p>리액트</p>
                     </div>
@@ -361,7 +307,7 @@
             </li>
             <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">
                 <div class="recommand-lecture">
-                    <img src="../../resources/img/mainPageImg/react.png" alt="react">
+                    <img src="${pageContext.request.contextPath }/resources/img/mainPageImg/react.png" alt="react">
                     <div class="lecture-content">
                         <p>리액트</p>
                     </div>
@@ -372,7 +318,7 @@
             </li>
             <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">
                 <div class="recommand-lecture">
-                    <img src="../../resources/img/mainPageImg/react.png" alt="react">
+                    <img src="${pageContext.request.contextPath }/resources/img/mainPageImg/react.png" alt="react">
                     <div class="lecture-content">
                         <p>리액트</p>
                     </div>
@@ -394,7 +340,7 @@
             <div class="content-recent">
                 <a href="#" class="profile-board">
                     <div class="profile-img">
-                        <img src="../../resources/img/mainPageImg/icon_profile.png">
+                        <img src="${pageContext.request.contextPath }/resources/img/mainPageImg/icon_profile.png">
                     </div>
                     <div class="profile-info">
                         <span class="profile-name">닉네임</span>
@@ -430,7 +376,7 @@
                 <div class="thumbnail-recent">
                     <div class="thumbnail-area">
                         <a href="#" class="thumbnail-inner">
-                            <img class="img-post" alt="postthumbnail" src="../../resources/img/mainPageImg/content1.jpg" width="167" height="167">
+                            <img class="img-post" alt="postthumbnail" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content1.jpg" width="167" height="167">
                         </a>
                         <a href="#" class="button-more-img">
                             <i class="sp_common icon_more"><span class="blind">글 썸네일 펼치기</span></i>
@@ -438,13 +384,13 @@
                         <div class="plus-thumbnail-list">
                             <a href="#" class="list-inner">
                                 <div class="plus-list">
-                                    <img class="plus-img" alt="추가이미지" width="167" height="167" src="../../resources/img/mainPageImg/content2.jpg">
+                                    <img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content2.jpg">
                                 </div>
                                 <div class="plus-list">
-                                    <img class="plus-img" alt="추가이미지" width="167" height="167" src="../../resources/img/mainPageImg/content3.jpg">
+                                    <img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content3.jpg">
                                 </div>
                                 <div class="plus-list">
-                                    <img class="plus-img" alt="추가이미지" width="167" height="167" src="../../resources/img/mainPageImg/content4.jfif">
+                                    <img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content4.jfif">
                                 </div>
                             </a>
                         </div>
@@ -460,7 +406,7 @@
             <div class="content-recent">
                 <a href="#" class="profile-board">
                     <div class="profile-img">
-                        <img src="../../resources/img/mainPageImg/icon_profile.png">
+                        <img src="${pageContext.request.contextPath }/resources/img/mainPageImg/icon_profile.png">
                     </div>
                     <div class="profile-info">
                         <span class="profile-name">닉네임</span>
@@ -496,7 +442,7 @@
                 <div class="thumbnail-recent">
                     <div class="thumbnail-area">
                         <a href="#" class="thumbnail-inner">
-                            <img class="img-post" alt="postthumbnail" src="../../resources/img/mainPageImg/content1.jpg" width="167" height="167">
+                            <img class="img-post" alt="postthumbnail" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content1.jpg" width="167" height="167">
                         </a>
                         <a href="#" class="button-more-img">
                             <i class="sp_common icon_more"><span class="blind">글 썸네일 펼치기</span></i>
@@ -504,13 +450,13 @@
                         <div class="plus-thumbnail-list">
                             <a href="#" class="list-inner">
                                 <div class="plus-list">
-                                    <img class="plus-img" alt="추가이미지" width="167" height="167" src="../../resources/img/mainPageImg/content2.jpg">
+                                    <img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content2.jpg">
                                 </div>
                                 <div class="plus-list">
-                                    <img class="plus-img" alt="추가이미지" width="167" height="167" src="../../resources/img/mainPageImg/content3.jpg">
+                                    <img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content3.jpg">
                                 </div>
                                 <div class="plus-list">
-                                    <img class="plus-img" alt="추가이미지" width="167" height="167" src="../../resources/img/mainPageImg/content4.jfif">
+                                    <img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content4.jfif">
                                 </div>
                             </a>
                         </div>
@@ -525,5 +471,4 @@
 
 
 </body>
-
 </html>

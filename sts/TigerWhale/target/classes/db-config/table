@@ -1,5 +1,7 @@
+--계정 project 생성, 권한부여
+create user project identified by project;
+grant connect, resource, dba to project;
 
---회원(멘티) 정보테이블 
 CREATE TABLE userBoard
 (
     user_ID VARCHAR2(40) PRIMARY KEY,
@@ -16,8 +18,9 @@ CREATE TABLE userBoard
 CREATE TABLE mentorBoard
 (
     user_ID VARCHAR2(20) NOT NULL,
+    userBank VARCHAR2(30) NOt NULL,
     accountNum VARCHAR2(20)UNIQUE NOT NULL,
-    sellScore_AVG number(3)판매평점 평균 기본값0
+    sellScore_AVG number(3)--판매평점 평균 기본값0
 );
 
 --회원(멘토)의 경력 테이블

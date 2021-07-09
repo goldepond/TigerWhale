@@ -105,41 +105,42 @@
                                 <input class="form-control" name='bno' value="${vo.bno }">
                             </div>
 
-
-                            <div class="option">
-
-                                <div class="form-group">
-                                    <label>금액</label>
-                                    <input class="form-control" name='bno' value="${vo.bno }">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>날짜</label>
-                                    <input class="form-control" name='bno' value="${vo.bno }">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="addr-num">주소</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="addrZipNum" id="addrZipNum"
-                                            placeholder="우편번호" readonly>
-                                        <div class="input-group-addon">
-                                            <button type="button" class="btn btn-primary"
-                                                onclick="goPopup()">주소찾기</button>
+                            <div id="addoption">
+                                <div class="option">
+    
+                                    <div class="form-group">
+                                        <label>금액</label>
+                                        <input class="form-control" name='bno' value="${vo.bno }">
+                                    </div>
+    
+                                    <div class="form-group">
+                                        <label>날짜</label>
+                                        <input class="form-control" name='bno' value="${vo.bno }">
+                                    </div>
+    
+                                    <div class="form-group">
+                                        <label for="addr-num">주소</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="addrZipNum" id="addrZipNum"
+                                                placeholder="우편번호" readonly>
+                                            <div class="input-group-addon">
+                                                <button type="button" class="btn btn-primary"
+                                                    onclick="goPopup()">주소찾기</button>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="addrBasic" id="addrBasic"
+                                            placeholder="기본주소">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="addrDetail" id="addrDetail"
+                                            placeholder="상세주소">
+                                    </div>
+    
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="addrBasic" id="addrBasic"
-                                        placeholder="기본주소">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="addrDetail" id="addrDetail"
-                                        placeholder="상세주소">
-                                </div>
-
                             </div>
-                            <button type="button" class="right btn btn-default btn_option" id="replyRegist">옵션
+                            <button type="button" class="right btn btn-default btn_option" id="replyRegis">옵션
                                 추가하기</button>
 
 
@@ -167,10 +168,9 @@
                             <button type="button" class="btn btn-dark" onclick="location.href = 'freeList'">목록</button>
                             <button type="submit" class="btn btn-primary">저장</button>
                         </form>
-                        <img src="/publishing/TestWeb/resources/js/pop/jusoPopup.jsp"
+                        <img src="/publishing/TestWeb/resources/js/pop/jusoPopup.jsp">
                     </div>
                 </div>
-            </div>
         </section>
 
         <script>
@@ -187,6 +187,47 @@
                 document.getElementById("addrDetail").value = addrDetail;
                 document.getElementById("addrZipNum").value = zipNo;
             }
+            var btn = document.getElementById("replyRegis");
+            console.log(addoption);
+            var strAdd = "";
+            btn.onclick = function () {
+                strAdd += '<div class="option">'
+                strAdd += '<div class="form-group">'
+                strAdd += '<label>금액</label>'
+                strAdd += '<input class="form-control" name="bno" value="${vo.bno }">'
+                strAdd += '</div>'
+                strAdd += '<div class="form-group">'
+                strAdd += '<label>날짜</label>'
+                strAdd += '<input class="form-control" name="bno" value="${vo.bno }">'
+                strAdd += '</div>'
+                strAdd += '<div class="form-group">'
+                strAdd += '<label for="addr-num">주소</label>'
+                strAdd += '<div class="input-group">'
+                strAdd += '<input type="text" class="form-control" name="addrZipNum" id="addrZipNum"'
+                strAdd += 'placeholder="우편번호" readonly>'
+                strAdd += '<div class="input-group-addon">'
+                strAdd += '<button type="button" class="btn btn-primary"'
+                strAdd += 'onclick="goPopup()">주소찾기</button>'
+                strAdd += '</div>'
+                strAdd += '</div>'
+                strAdd += '</div>'
+                strAdd += '<div class="form-group">'
+                strAdd += '<input type="text" class="form-control" name="addrBasic" id="addrBasic"'
+                strAdd += 'placeholder="기본주소">'
+                strAdd += '</div>'
+                strAdd += '<div class="form-group">'
+                strAdd += '<input type="text" class="form-control" name="addrDetail" id="addrDetail"'
+                strAdd += 'placeholder="상세주소">'
+                strAdd += '</div>'
+                strAdd += '</div>'
+                $("#addoption").html(strAdd);
+                console.log($("#addoption"));
+
+            }
+
+            //버튼 추가시 옵션 추가
+
+
         </script>
     </body>
 

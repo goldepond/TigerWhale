@@ -14,6 +14,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="/publishing/TestWeb/resources/css/detailPage.CSS">
         <script src="/publishing/TestWeb/webView/detailBoard/detailPage.js"></script>
+
+        <style>
+     
+        </style>
     </head>
 
     <body>
@@ -45,25 +49,18 @@
                                 </div>
 
                                 <div class="GigNavigator">
-                                    <ul class="gig-navigation-box">
-                                        <li class="gig-navigation active">
-                                            <div class="gig-navigation-title A">
-                                                설명1
-                                            </divc>
-                                        </li>
+                                    <div class="gig-navigation-box menuBtn">
+                                            <button class="share-btn btn-xss btn dropdown-toggle gig-navigation active sidenav"
+                                                id="gig-navigation-title_A"> 설명1</button>
 
-                                        <li class="gig-navigation active">
-                                            <div class="gig-navigation-title B">
-                                                설명2
-                                                </divc>
-                                        </li>
+                                            <button class="share-btn  btn dropdown-toggle gig-navigation active"
+                                                id="gig-navigation-title_B"> 설명12</button>
 
-                                        <li class="gig-navigation active">
-                                            <div class="gig-navigation-title C">
-                                                설명3
-                                                </divc>
-                                        </li>
-                                    </ul>
+ <!--  -->
+                                            <button class="share-btn btn-xss btn dropdown-toggle gig-navigation active"
+                                                id="gig-navigation-title_C"> 설명13</button>
+
+                                    </div>
                                 </div>
                                 <div class="GigDescription">
                                     <div class="description-box">
@@ -290,7 +287,9 @@
                                 <div class="upBox">
                                     <div class="GigBookMarks">
                                         <div class="GigDetailShare">
-                                            <button class="share-btn btn-xss btn dropdown-toggle">*</button>
+                                            <button class="share-btn btn-xss btn dropdown-toggle">
+                                                <img src="../../resources/img/detailPageImg/hearts (1).png">
+                                            </button>
                                         </div>
                                         <div class="GigHeart">
                                             <button id="carBtn" type="button">
@@ -334,13 +333,13 @@
                                                         <div class="GigPackageOption">
                                                             <table border="1px">
                                                                 <tr>
-                                                                    <td class="A"><a href="##">월</a></td>
-                                                                    <td class="B"><a href="##">화</a></td>
-                                                                    <td class="C"><a href="##">수</a></td>
-                                                                    <td class="D"><a href="##">목</a></td>
-                                                                    <td class="E"><a href="##">금</a></td>
-                                                                    <td class="F"><a href="##">토</a></td>
-                                                                    <td class="G"><a href="##">일</a></td>
+                                                                    <td class="A1"><a href="##">월</a></td>
+                                                                    <td class="B1"><a href="##">화</a></td>
+                                                                    <td class="C1"><a href="##">수</a></td>
+                                                                    <td class="D1"><a href="##">목</a></td>
+                                                                    <td class="E1"><a href="##">금</a></td>
+                                                                    <td class="F1"><a href="##">토</a></td>
+                                                                    <td class="G1"><a href="##">일</a></td>
                                                                 </tr>
                                                             </table>
                                                         </div>
@@ -351,7 +350,7 @@
                                                                 <p>경기도 성남시 분당구 중앙공원로 54</p>
                                                             </div>
                                                             <div id="map" class="mapinmap">
-                                                            </div>  
+                                                            </div>
 
                                                         </div>
 
@@ -431,8 +430,8 @@
                                             name="replyPW" id="replyPW">
                                     </div>
 
-                                    <button type="button" class="right btn btn-info" id="replyRegist" >등록하기</button>
-                                    
+                                    <button type="button" class="right btn btn-info" id="replyRegist">등록하기</button>
+
                                 </div>
 
                             </div>
@@ -501,6 +500,7 @@
 
             var map = new kakao.maps.Map(container, options);
         </script>
+
     </body>
 
 </html>

@@ -48,3 +48,12 @@
 .link_info {
     color: #8b8989;
 }
+
+.btn_comm p{
+    width: 300px;
+    display: inline-block;
+    padding: 15px;
+    font-size: 24px;
+    border: #8b8989 solid 3px;
+    color: #8b8989;
+}

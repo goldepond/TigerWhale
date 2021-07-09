@@ -15,7 +15,7 @@ body {
     position: relative;
 }
 body .all-category, .main-fluid {
-    float: left;
+   
 }
 /* 카테고리 */
 .all-category {
@@ -83,6 +83,7 @@ body .all-category, .main-fluid {
 }
 
 .carousel-inner .item img {
+    width: 50%;
     margin: 0 auto;
 }
 /* 추천강의 목록 */

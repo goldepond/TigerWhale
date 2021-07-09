@@ -17,7 +17,7 @@ ul li {
 
 /* ############################################################ */
 .CCC {
-    background-color: rgb(85, 115, 154);
+    /* background-color: rgb(85, 115, 154); */
     overflow: hidden;
 }
 
@@ -119,11 +119,20 @@ img {
     border: 1px solid black;
 }
 
-.GigBookMarks .GigHeart {
+.GigBookMarks .GigHeart{
     float: right;
-    /* background-color: antiquewhite; */
     border: 1px solid black;
 }
+
+.GigBookMarks .GigHeart button {
+    padding: 10px;
+}
+.GigBookMarks .share-btn img{
+    /* background-color: antiquewhite; */
+    width: 30px;
+    height: 30px;
+}
+
 
 /* ############################################################ */
 
@@ -242,7 +251,6 @@ img {
 
 .GigNavigator .gig-navigation {
     margin: 5px;
-    padding: 0 5px;
     border-top: 1px solid #e4e5ed;
     border-right: 1px solid #e4e5ed;
     border-bottom: 1px solid #000000;
@@ -404,8 +412,10 @@ vertical-align: middle;
     height: 50px;
     width: 50px;
 }
+/* ========================= */
 
 
+/* ============================= */
 @media(max-width: 767px)
 {      
     .GigDetailContainer .LeftModules{

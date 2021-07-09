@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <section>
+<section>
             <div class="container CCC">
                 <!--container => 중앙위치 /      container-fluid -->
                 <div class="row">
@@ -148,7 +148,6 @@
 
             var map = new kakao.maps.Map(container, options);
         </script>
-
     </body>
 
 </html>

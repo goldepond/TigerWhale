@@ -1,29 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 
-     <!-- 부트스트랩 css파일참조 -->
-     <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
-     <link rel="stylesheet" href="/publishing/TestWeb/bootstrap/css/bootstrap.css">
-     <!-- 부트스트랩 테마파일참조 -->
-     <!-- <link rel="stylesheet" href="css/bootstrap-theme.css"> -->
-     <link rel="stylesheet" href="/publishing/TestWeb/bootstrap/css/bootstrap-theme.css">
-
-     <!-- 부트스트랩 js참조 -->
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-     <!-- <script src="js/bootstrap.js"></script> -->
-     <script src="/publishing/TestWeb/resources/bootstrap/js/bootstrap.js"></script>
-    
-     <link rel="stylesheet" href="/publishing/TestWeb/resources/css/header.css ">
-</head>
-<body>
-    
     <section>
 
         <div class="container">
@@ -51,7 +28,7 @@
                             <span>전체 카테고리</span>
                         </div>
                         <div class="regist">
-                            <a href="#">로그인</a>
+                            <span><a href="${pageContext.request.contextPath }">로그인</a></span>
                             <a href="#">회원가입</a>
                         </div>
                 </div>
@@ -59,6 +36,3 @@
         </div>
 
     </section>
-
-</body>
-</html>

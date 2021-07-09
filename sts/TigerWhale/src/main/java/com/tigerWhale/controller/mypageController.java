@@ -12,22 +12,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/detailBoard")
+@RequestMapping("/mypage")
 public class mypageController {
 	
-	@RequestMapping("/detailPage")
-	public String detailPage() {
-		return "detailBoard/detailPage";
+	@RequestMapping("/mypage")
+	public String myPage() {
+		return "mypage/mypage";
 	}
 	
-	@RequestMapping("/detailBuy")
-	public String detailBuy() {
-		return "detailBoard/detailBuy";
+	@RequestMapping("/mypage-email")
+	public String mypageEmail() {
+		return "mypage/mypage-email";
 	}
 	
-	@RequestMapping("/detailWrite")
-	public String detailWrite() {
-		return "detailBoard/detailWrite";
+	@RequestMapping("/mypage-name")
+	public String mypageName() {
+		return "mypage/mypage-name";
+	}
+	
+	@RequestMapping("/mypage-password")
+	public String mypagePassword() {
+		return "mypage/mypage-password";
+	}
+	
+	@RequestMapping("/mypage-phone")
+	public String mypagePhone() {
+		return "mypage/mypage-phone";
 	}
 	
 	

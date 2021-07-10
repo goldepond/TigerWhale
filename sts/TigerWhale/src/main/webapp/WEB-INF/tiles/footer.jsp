@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/publishing/TestWeb/resources/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/publishing/TestWeb/resources/bootstrap/css/bootstrap-theme.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-    <link rel="stylesheet" href="/publishing/TestWeb/resources/css/20210709update/Footer.css">
-</head>
-
-<body>
-    <footer>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <section>
         <div class=".container-fluid custon_footer">
             <div class="row">
                 <div class="col-xs-12">
@@ -51,7 +37,4 @@
                 </div>
             </div>
         </div>
-    </footer>
-</body>
-
-</html>
+    </section>

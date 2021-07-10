@@ -15,7 +15,8 @@
 <!-- //////////////// -->
 <!-- /////mypage///// -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage.CSS">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/myPage.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
 
 
 </head>

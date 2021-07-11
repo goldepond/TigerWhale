@@ -5,61 +5,67 @@
   
  
 <tiles-definitions>
-		<!-- 1. 타일즈 파일이 가져야하는 레이아웃형식을 정의 -->
-	<!-- name속성은 상속받아서 사용할 이름, template은 타일즈템플릿의 경로 -->
+
+
+	<!--############마이페이지 탬플릿###########-->
 	<definition name="templateMypage" template="/WEB-INF/tiles/templateMypage.jsp">
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
 		<put-attribute name="body" value="" />
+		<put-attribute name="footer"  value="/WEB-INF/tiles/footer.jsp"/>
 	</definition>
-	
-	<!-- 위에 선언된 타일즈템플릿을 상속 -->
-	<!-- name속성은 controller에서 연결할 이름 -->
+
 	<definition name="mypage/*" extends="templateMypage">
 		<put-attribute name="body" value="/WEB-INF/mypage/{1}.jsp" />
 	</definition>
+	<!--#################################-->
 	
 	
-	<!-- 1. 타일즈 파일이 가져야하는 레이아웃형식을 정의 -->
-	<!-- name속성은 상속받아서 사용할 이름, template은 타일즈템플릿의 경로 -->
+	<!--############디테일보드 탬플릿###########-->
 	<definition name="templateDetailBoard" template="/WEB-INF/tiles/templateDetailBoard.jsp">
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
 		<put-attribute name="body" value="" />
+		<put-attribute name="footer"  value="/WEB-INF/tiles/footer.jsp"/>
 	</definition>
 	
-	<!-- 위에 선언된 타일즈템플릿을 상속 -->
-	<!-- name속성은 controller에서 연결할 이름 -->
 	<definition name="detailBoard/*" extends="templateDetailBoard">
 		<put-attribute name="body" value="/WEB-INF/detailBoard/{1}.jsp" />
 	</definition>
+	<!--#################################-->
 	
-	<!-- fqa타일즈 테믈릿 -->	
+	
+	<!-- ############fqa타일즈 테믈릿############ -->	
 	<definition name="templateFaqBoard" template="/WEB-INF/tiles/templateFaqBoard.jsp">
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
 		<put-attribute name="body" value="" />
+		<put-attribute name="footer"  value="/WEB-INF/tiles/footer.jsp"/>
 	</definition>
 	
 	<definition name="faqBoard/*" extends="templateFaqBoard">
 		<put-attribute name="body" value="/WEB-INF/faqBoard/{1}.jsp" />
 	</definition>
+		<!--#################################-->
 	
 	
 	
 	
 	
-	 <!--  공통화면에 대한 정의 맵핑-->
+	 <!--  공통화면에 대한 정의 맵핑(메인 페이지 맵핑)-->
 	<definition name="templateBasic" template="/WEB-INF/tiles/templateBasic.jsp">
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"  value="/WEB-INF/tiles/footer.jsp"/>
 	</definition>
 	
 	<definition name="*" extends="templateBasic">
-		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
+		<put-attribute name="body" value="/WEB-INF/{1}.jsp" />
 	</definition>
 	
 	<definition name="*/*" extends="templateBasic">
-		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />	
+		<put-attribute name="body" value="/WEB-INF/{1}/{2}.jsp" />	
 	</definition>
 	
 	<definition name="*/*/*" extends="templateBasic">
-		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+		<put-attribute name="body" value="/WEB-INF/{1}/{2}/{3}.jsp" />
 	</definition> 
 </tiles-definitions>  
 

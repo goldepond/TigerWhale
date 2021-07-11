@@ -356,3 +356,44 @@ body .all-category, .main-fluid {
     letter-spacing: -1px;
     padding-bottom: 10px;
 }
+
+.quick-area {
+    position: fixed;
+    top: 500px;
+    right: 0;
+    width: 100px;
+}
+
+.quick-area ul li {
+    text-align: center;
+    background: #282828;
+    font-size: 15px;
+}
+
+.quick-area a {
+    display: block;
+    padding: 15px 0;
+    border-top: 1px solid #4d4d4d;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1.3;
+    letter-spacing: -1px;
+    padding-bottom: 10px;
+}
+
+
+.AllBox {
+    padding: 0px;
+}
+
+.carousel-control {
+    opacity: 1;
+}
+
+.slide {
+    background-color: rgb(1, 1, 1, 0.5);
+}
+
+.carousel-inner {
+    opacity: 1;
+}

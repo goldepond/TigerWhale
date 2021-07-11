@@ -13,9 +13,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detailPage.CSS">
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css ">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detailPageBuy.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/detailPage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
 
 
 </head>
@@ -25,6 +26,6 @@
 	<!-- name속성에는 실제파일명과 함께 tils.xml에서 사용할 이름이 지정됩니다. -->
 	<tiles:insertAttribute name="header" />
 	<tiles:insertAttribute name="body" />
-
+	<tiles:insertAttribute name="footer" />
 </body>
 </html>

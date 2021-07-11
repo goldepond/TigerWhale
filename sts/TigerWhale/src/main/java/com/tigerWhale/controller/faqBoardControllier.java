@@ -12,6 +12,7 @@ public class faqBoardControllier
 	{
 		System.out.println("===================================");
 		return "faqBoard/faqDetail";
+		
 	}
 	
 	@RequestMapping("/faqList")

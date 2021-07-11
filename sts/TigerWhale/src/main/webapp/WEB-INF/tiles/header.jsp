@@ -12,7 +12,7 @@
                         </div>
                         <div class="search-tag">
                             <form>
-                                <input type="text"><a href="#"><a href="#"><i class="fas fa-search fa-2x"></i></a>
+                                <input type="text"><a href="#"><i class="fas fa-search fa-2x"></i></a>
                             </form>
                         </div>
                         <div class="icon-set">

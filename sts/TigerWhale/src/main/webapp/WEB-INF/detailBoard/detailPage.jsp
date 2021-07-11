@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <section>
             <div class="container CCC">
                 <!--container => 중앙위치 /      container-fluid -->
@@ -367,7 +366,7 @@
                                             <img src="/publishing/TestWeb/resources/img/detailPageImg/user.jpg">
                                         </div>
                                         <div class="host_name_wrap">
-                                            박인욱
+                                            	박인욱
                                         </div>
                                     </li>
                                     <li class="host_mail">
@@ -381,13 +380,13 @@
                                         <span> : </span>
                                         <span class="host_info_txt">goldepond@naver.com</span>
                                     </li>
-                                    <div class="host_intro">
+                                    <li class="host_intro">
                                         <p class="host_intro_2">
                                             1 가나다라마바사<br />
                                             2 가나다라마바사<br />
                                             3 가나다라마바사<br />
                                         </p>
-                                    </div>
+                                    </li>
 
                                 </ul>
 

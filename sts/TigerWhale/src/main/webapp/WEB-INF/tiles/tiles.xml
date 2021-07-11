@@ -46,6 +46,17 @@
 		<!--#################################-->
 	
 	
+		<!-- ############users 타일즈 테믈릿############ -->	
+	<definition name="templateUsers" template="/WEB-INF/tiles/templateUsers.jsp">
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"  value="/WEB-INF/tiles/footer.jsp"/>
+	</definition>
+	
+	<definition name="users/*" extends="templateUsers">
+		<put-attribute name="body" value="/WEB-INF/users/{1}.jsp" />
+	</definition>
+	
 	
 	
 	

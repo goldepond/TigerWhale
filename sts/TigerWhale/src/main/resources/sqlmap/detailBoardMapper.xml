@@ -6,7 +6,7 @@
 <mapper namespace="com.tigerWhale.detailBoard.mapper.detailBoardMapper">
 
 	<select id="getUserDetail" resultType="UsersVO">
-		select * from mainboard where user_id == #{id};
+		select * from userboard where user_id like #{user_ID}
 	</select>
 
 </mapper>

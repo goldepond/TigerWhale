@@ -366,19 +366,19 @@
                                             <img src="/publishing/TestWeb/resources/img/detailPageImg/user.jpg">
                                         </div>
                                         <div class="host_name_wrap">
-                                            	박인욱
+                                            	${usersVO.user_ID}
                                         </div>
                                     </li>
                                     <li class="host_mail">
                                         <span class="host_info_title">이메일</span>
                                         <span> : </span>
-                                        <span class="host_info_txt">goldepond@naver.com</span>
+                                        <span class="host_info_txt">${usersVO.userEmail1}@n${usersVO.userEmail2}</span>
                                     </li>
 
                                     <li class="host_phone">
                                         <span class="host_info_title">전화번호</span>
                                         <span> : </span>
-                                        <span class="host_info_txt">goldepond@naver.com</span>
+                                        <span class="host_info_txt">${usersVO.userPhoneNumber}</span>
                                     </li>
                                     <li class="host_intro">
                                         <p class="host_intro_2">

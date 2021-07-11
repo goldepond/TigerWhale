@@ -14,10 +14,6 @@ public class detailBoardServiceImpl implements detailBoardService {
 	
 	@Override
 	public UsersVO getUserDetail(String id) {
-		System.out.println(" 여기까지 성공11111111111111111111111");
-		System.out.println(id);
-		System.out.println(detailBoardMapper);
-		System.out.println(detailBoardMapper.getUserDetail(id));
 		return detailBoardMapper.getUserDetail(id);
 	}
 

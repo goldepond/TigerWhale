@@ -29,8 +29,9 @@ public class detailBoardController {
 	public String detailPage(Model model) {
 		String user_ID = "ID_1";
 		UsersVO usersVO = detailBoardService.getUserDetail(user_ID);
+		System.out.println("/////////////////////////////////////////");
 		System.out.println(usersVO);
-//		model.addAttribute("vo", usersVO);
+		model.addAttribute("usersVO", usersVO);
 		return "detailBoard/detailPage";
 	}
 	

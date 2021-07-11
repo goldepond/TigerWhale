@@ -35,6 +35,7 @@
 	
 	<!-- ############fqa타일즈 테믈릿############ -->	
 	<definition name="templateFaqBoard" template="/WEB-INF/tiles/templateFaqBoard.jsp">
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer"  value="/WEB-INF/tiles/footer.jsp"/>
 	</definition>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <section>
-        <div class=".container-fluid custon_footer">
+        <div class=".container-fluid custon_footer" style="margin-top: 100px;">
             <div class="row">
                 <div class="col-xs-12">
                     <div id="daumFoot">

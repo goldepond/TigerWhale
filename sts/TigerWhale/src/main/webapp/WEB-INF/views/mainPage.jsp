@@ -1,6 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<section>
 	<section>
 		<div class="container-fluid AllBox">
 			<div class="main-img">
@@ -706,27 +706,28 @@
 			</div>
 		</div>
 	</div>
+</section>
+<!-- ###################### -->
+
+<aside class="quick-area">
+	<ul class="quick-list">
+		<li><a href="@@@">
+				<h3>전화문의</h3>
+				<p>010-123-456</p>
+		</a></li>
+		<li><a href="@@@">
+				<h3>카카오톡</h3>
+				<p>1:1상담</p>
+		</a></li>
+		<li><a href="@@@">
+				<h3>오시는길</h3>
+		</a></li>
+	</ul>
 	<!-- ###################### -->
+</aside>
 
-	<aside class="quick-area">
-		<ul class="quick-list">
-			<li><a href="@@@">
-					<h3>전화문의</h3>
-					<p>010-123-456</p>
-			</a></li>
-			<li><a href="@@@">
-					<h3>카카오톡</h3>
-					<p>1:1상담</p>
-			</a></li>
-			<li><a href="@@@">
-					<h3>오시는길</h3>
-			</a></li>
-		</ul>
-		<!-- ###################### -->
-	</aside>
-
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c9c2c80f44b7412a52bfb0036f525c9"></script>
-	<script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c9c2c80f44b7412a52bfb0036f525c9"></script>
+<script>
             var container = document.getElementById('map');
             var options = {
                 center: new kakao.maps.LatLng(33.450701, 126.570667),
@@ -734,4 +735,4 @@
             };
 
             var map = new kakao.maps.Map(container, options);
-        </script>
+            </script>

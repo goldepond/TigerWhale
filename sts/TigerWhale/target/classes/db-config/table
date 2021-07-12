@@ -34,7 +34,7 @@ CREATE TABLE careerBoard
 CREATE TABLE detailBoard
 (
     orderNum NUMBER(10) PRIMARY KEY, --거래내역의 고유번호
-    sell_ID NUMBER(10) NOT NULL, --해당 bno에서 일어난 거래의 구매아이디
+    sell_ID VARCHAR2(10) NOT NULL, --해당 bno에서 일어난 거래의 구매아이디
     buy_ID VARCHAR2(20) NOT NULL, --해당 bno에서 일어난 거래의 판매아이디
     bno NUMBER(10) UNIQUE NOT NULL,
     price NUMBER(10) NOT NULL, --판매가
@@ -52,7 +52,7 @@ CREATE TABLE interestBoard
 --게시글 테이블
 CREATE TABLE mainBoard
 (
-    bno NUMBER(10) ,
+    bno NUMBER(10) PRIMARY KEY,
     user_ID VARCHAR2(20) UNIQUE NOT NULL,
     C_code NUMBER(5) UNIQUE NOT NULL,
     boardType VARCHAR(6) NOT NULL, --게시글의 종류를 확인함 입력값은'구매','판매'
@@ -67,7 +67,7 @@ CREATE TABLE mainBoard
 CREATE TABLE replyBoard
 (
     user_ID VARCHAR2(20) UNIQUE NOT NULL,
-    bno NUMBER(10) UNIQUE NOT NULL,
+    bno NUMBER(10) NOT NULL,
     orderNum NUMBER(10) UNIQUE NOT NULL, --거래내역의 고유번호
     reply VARCHAR(200) NOT NULL,
     R_replyDate DATE DEFAULT SYSDATE, -- 답글생성 시간
@@ -87,7 +87,7 @@ CREATE TABLE categoryBoard
 --게시글의 작성자가 허용한 날짜와 시간대를 저장하는 테이블
 CREATE TABLE D_T_Board
 (
-    bno NUMBER(10) UNIQUE NOT NULL,
+    bno NUMBER(10) NOT NULL,
     M_day CHAR(3),
     M_time1 NUMBER(2), -- 00:00 중 첫번째값 입력받음
     M_time2 NUMBER(2) -- 00::00중 두번째값 입력받음
@@ -97,11 +97,11 @@ CREATE TABLE D_T_Board
 --게시글의 작성자가 허용한 날짜와 시간대를 저장하는 테이블
 CREATE TABLE Y_M_Board
 (
-    bno NUMBER(10) UNIQUE NOT NULL,
-    M_year1 NUMBER(4), -- 허용기간이 시작되는 년도를 입력받음
-    M_year2 NUMBER(4),-- 허용기간이 끝나는 년도를 입력받음
-    M_month1 NUMBER(1), -- 허용기간이 시작되는 달을 입력받음 
-    M_month2 NUMBER(1) -- 허용기간이 끝나는 달을 입력받음
+    bno NUMBER(10) NOT NULL,
+    M_year1 NUMBER(20), -- 허용기간이 시작되는 년도를 입력받음
+    M_year2 NUMBER(20),-- 허용기간이 끝나는 년도를 입력받음
+    M_month1 NUMBER(20), -- 허용기간이 시작되는 달을 입력받음 
+    M_month2 NUMBER(20) -- 허용기간이 끝나는 달을 입력받음
 );
 
 create SEQUENCE MainBoard_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;

@@ -9,9 +9,9 @@
                             <div class="LeftModules">
                                 <div class="GigBreadcrumb">
                                     <!-- 카테고라ㅣ-->
-                                    <a href="###" class="vgig-site-map">마케팅</a><span>></span>
-                                    <a href="###" class="vgig-site-map">블로그마케팅</a><span>></span>
-                                    <a href="###" class="vgig-site-map">포스팅</a>
+                                    <a href="###" class="vgig-site-map">${catagoryBoardVO.bigCategory}</a><span>></span>
+                                    <a href="###" class="vgig-site-map">${catagoryBoardVO.middleCategory}</a><span>></span>
+                                    <a href="###" class="vgig-site-map">${catagoryBoardVO.smallCategory}</a>
                                 </div>
 
                                 <div class="GigMainGallery">

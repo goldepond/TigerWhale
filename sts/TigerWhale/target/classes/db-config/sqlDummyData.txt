@@ -91,7 +91,7 @@ end;
 select * from interestboard;
 
 begin
-for i in 1 .. 50 loop
+for i in 1 .. 50 loop			
 insert into interestboard(
                         USER_ID,
                         C_code
@@ -166,7 +166,7 @@ insert into y_M_board(
                         M_MONTH2
                     )
              values (
-                        
+                        1,
                         2021,
                         2021,
                         ROUND(DBMS_RANDOM.VALUE(1,6)),

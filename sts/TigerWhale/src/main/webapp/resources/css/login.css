@@ -1,25 +1,27 @@
 
 * {
-box-sizing: border-box;
-font-family: 'Noto Sans KR', sans-serif;
-border-radius: 5px;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 body {
-margin: 0;
-background-color: rgb(255, 255, 255);
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255);
 }
-
+.login-body {
+    margin: 0 auto;
+    
+}
 .login-form {
-width: 300px;
-background-color: #EEEFF1;
-margin-right: auto;
-margin-left: auto;
-margin-top: 50px;
-padding: 20px;
-text-align: center;
-border: none;
-
+    width: 300px;
+    background-color: #EEEFF1;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
 }
 
 .text-field {

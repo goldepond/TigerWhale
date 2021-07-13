@@ -194,3 +194,49 @@ insert into replyboard(
                     );
 end loop; 
 end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--///////////////////유저 이미지 생성 
+begin
+for i in 1 .. 50 loop
+insert into UserIMGBoard(
+                        bno,
+                        img
+                    )
+             values (
+                        i,
+                        'ID_'||i
+                    );
+end loop; 
+end;
+--///////////////////상세페이지 설명문 생성 
+begin
+for i in 1 .. 50 loop
+insert into textBoard(
+                        bno,
+                        text1,
+                        text2,
+                        text3
+                    )
+             values (
+                        i,
+                        '자동생성문1 _'||i,
+                        '자동생성문2 _'||i,
+                        '자동생성문3 _'||i
+                    );
+end loop; 
+end;

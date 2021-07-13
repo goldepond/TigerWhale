@@ -18,7 +18,7 @@ ul li {
 /* ############################################################ */
 .CCC {
     /* background-color: rgb(85, 115, 154); */
-    overflow: hidden;
+
 }
 
 img {
@@ -28,6 +28,7 @@ img {
 
 /* ############################################################ */
 .GigDetailContainer .LeftModules {
+    padding-bottom: 500px;
     width: 55%;
     float: left;
 
@@ -212,34 +213,32 @@ img {
 
 .GigPackages .tab-content .package-body table tr td {
     padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
     margin: 5px;
-    font-size: 24px;
+    font-size: 40px;
    
 }
+
 /* ############################################################ */
-/* ############################################################ */
-/* ############################################################ */
-/* ############################################################ */
-.GigPackages .tab-content .package-body table tr  .A,
-.GigPackages .tab-content .package-body table tr  .C,
-.GigPackages .tab-content .package-body table tr  .D{
+.GigPackages .tab-content .package-body table tr  .A1,
+.GigPackages .tab-content .package-body table tr  .C1,
+.GigPackages .tab-content .package-body table tr  .D1{
     background-color: #000000;
 }
 
-.GigPackages .tab-content .package-body table tr  .A a,
-.GigPackages .tab-content .package-body table tr  .C a,
-.GigPackages .tab-content .package-body table tr  .D a{
+.GigPackages .tab-content .package-body table tr  .B1 ,
+.GigPackages .tab-content .package-body table tr  .E1 ,
+.GigPackages .tab-content .package-body table tr  .F1 ,
+.GigPackages .tab-content .package-body table tr  .G1 {
     color: #ffffff;
 }
 
 /* ############################################################ */
-/* ############################################################ */
-/* ############################################################ */
-/* ############################################################ */
 .GigNavigator {
     margin-bottom: 42px;
+    position: sticky; 
+    top: 0; 
+    background-color: white;
+    border:  1px solid black;
 }
 
 
@@ -247,16 +246,13 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: sticky; 
-    top: 0; 
+
 }
 
 .GigNavigator .gig-navigation {
 
     margin: 5px;
-    border-top: 1px solid #e4e5ed;
-    border-right: 1px solid #e4e5ed;
-    border-bottom: 1px solid #000000;
+    border: 2px solid black;
     background: #fafafc;
     text-align: center;
     color: #9a9ba7;
@@ -271,9 +267,8 @@ img {
 
 .GigNavigator .gig-navigation.active {
     background: #ffffff;
-    border-top: 1px solid #000000;
-    border-right: 1px solid #000000;
-    border-left: 1px solid #000000;
+    border: 2px solid black;
+    
     border-bottom: 0;
     color: #303441;
     font-weight: 700;

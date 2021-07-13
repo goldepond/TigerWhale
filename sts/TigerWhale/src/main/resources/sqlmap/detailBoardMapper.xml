@@ -27,6 +27,18 @@
 	<select id="getY_M_board" resultType="Y_M_boardVO">
 		select * from Y_M_Board where bno = #{bno}
 	</select>
+	
+	<select id="getIMGBoard" resultType="IMGBoardVO">
+		select * from IMGBoard where bno = #{bno}
+	</select>
+	
+		<select id="getUserIMGBoard" resultType="UserIMGBoardVO">
+		select * from UserIMGBoard where bno = #{bno}
+	</select>
+	
+			<select id="getTextBoard" resultType="textBoardVO">
+		select * from textBoard where bno = #{bno}
+	</select>
 
 
 </mapper>

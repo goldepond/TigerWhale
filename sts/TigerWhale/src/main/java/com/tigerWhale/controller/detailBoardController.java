@@ -15,12 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.tigerWhale.command.D_T_boardVO;
+import com.tigerWhale.command.IMGBoardVO;
 import com.tigerWhale.command.MainBoardVO;
+import com.tigerWhale.command.UserIMGBoardVO;
 import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.command.Y_M_boardVO;
 import com.tigerWhale.command.catagoryBoardVO;
 import com.tigerWhale.command.detailBoardVO;
 import com.tigerWhale.command.repyBoardVO;
+import com.tigerWhale.command.textBoardVO;
 import com.tigerWhale.detailBoard.service.detailBoardService;
 
 @Controller
@@ -44,7 +47,12 @@ public class detailBoardController {
 		String user_ID = mainBoardVO.getUser_ID();
 		UsersVO usersVO = detailBoardService.getUserDetail(user_ID);
 		ArrayList<Y_M_boardVO> m_boardVO = detailBoardService.getY_M_board(bno);
-
+		ArrayList<IMGBoardVO> IMGBoardVO = detailBoardService.getIMGBoard(bno);
+		UserIMGBoardVO userIMGBoardVO = detailBoardService.getUserIMGBoard(bno);
+		textBoardVO textBoardVO  = detailBoardService.getTextBoard(bno);
+		System.out.println("//////////////////////////");
+		System.out.println( IMGBoardVO.get(0).getImg());
+		
 		model.addAttribute("d_T_boardVO", d_T_boardVO);
 		model.addAttribute("detiBoardVO", detiBoardVO);
 		model.addAttribute("mainBoardVO",mainBoardVO);
@@ -52,7 +60,9 @@ public class detailBoardController {
 		model.addAttribute("catagoryBoardVO", catagoryBoardVO);
 		model.addAttribute("usersVO", usersVO);
 		model.addAttribute("m_boardVO", m_boardVO);
-		
+		model.addAttribute("IMGBoardVO", IMGBoardVO);
+		model.addAttribute("textBoardVO", textBoardVO);
+		model.addAttribute("userIMGBoardVO", userIMGBoardVO);
 		return "detailBoard/detailPage";
 	}
 	

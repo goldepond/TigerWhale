@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tigerWhale.command.D_T_boardVO;
+import com.tigerWhale.command.IMGBoardVO;
 import com.tigerWhale.command.MainBoardVO;
+import com.tigerWhale.command.UserIMGBoardVO;
 import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.command.Y_M_boardVO;
 import com.tigerWhale.command.catagoryBoardVO;
 import com.tigerWhale.command.detailBoardVO;
 import com.tigerWhale.command.repyBoardVO;
+import com.tigerWhale.command.textBoardVO;
 import com.tigerWhale.detailBoard.mapper.detailBoardMapper;
 
 @Service("detailBoardService") // componentscan
@@ -57,6 +60,24 @@ public class detailBoardServiceImpl implements detailBoardService {
 	@Override
 	public ArrayList<Y_M_boardVO> getY_M_board(int bno) {
 		return detailBoardMapper.getY_M_board(bno);
+	}
+
+	@Override
+	public ArrayList<IMGBoardVO> getIMGBoard(int bno) {
+		System.out.println(detailBoardMapper.getIMGBoard(bno));
+		return detailBoardMapper.getIMGBoard(bno);
+	}
+
+	@Override
+	public UserIMGBoardVO getUserIMGBoard(int bno) {
+		// TODO Auto-generated method stub
+		return detailBoardMapper.getUserIMGBoard(bno);
+	}
+
+	@Override
+	public textBoardVO getTextBoard(int bno) {
+		// TODO Auto-generated method stub
+		return detailBoardMapper.getTextBoard(bno);
 	}
 
 }

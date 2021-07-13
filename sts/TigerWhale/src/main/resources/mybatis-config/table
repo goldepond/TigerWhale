@@ -106,3 +106,30 @@ CREATE TABLE Y_M_Board
 
 create SEQUENCE MainBoard_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
 create SEQUENCE DETAILBoard_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
+
+
+--/////////////////////////////////////////////////////////////////
+--이미지와 테이블을 연결
+create TABLE IMGBoard
+(
+	bno NUMBER(10) NOT NULL,
+	img VARCHAR2(60)
+);
+
+create TABLE UserIMGBoard
+(
+	bno NUMBER(10) unique NOT NULL,
+	img VARCHAR2(60)
+);
+
+--설명 1,2,3
+create TABLE textBoard
+(
+	bno NUMBER(10) NOT NULL,
+	text1 VARCHAR2(500) ,
+	text2 VARCHAR2(500) ,
+	text3 VARCHAR2(500) 
+);
+
+
+

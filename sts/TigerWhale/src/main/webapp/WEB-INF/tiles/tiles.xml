@@ -15,7 +15,7 @@
 	</definition>
 
 	<definition name="mypage/*" extends="templateMypage">
-		<put-attribute name="body" value="/WEB-INF/mypage/{1}.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/{1}.jsp" />
 	</definition>
 	<!--#################################-->
 	
@@ -28,7 +28,7 @@
 	</definition>
 	
 	<definition name="detailBoard/*" extends="templateDetailBoard">
-		<put-attribute name="body" value="/WEB-INF/detailBoard/{1}.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/detailBoard/{1}.jsp" />
 	</definition>
 	<!--#################################-->
 	
@@ -41,7 +41,7 @@
 	</definition>
 	
 	<definition name="faqBoard/*" extends="templateFaqBoard">
-		<put-attribute name="body" value="/WEB-INF/faqBoard/{1}.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/faqBoard/{1}.jsp" />
 	</definition>
 		<!--#################################-->
 	
@@ -54,7 +54,7 @@
 	</definition>
 	
 	<definition name="users/*" extends="templateUsers">
-		<put-attribute name="body" value="/WEB-INF/users/{1}.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/users/{1}.jsp" />
 	</definition>
 	
 	
@@ -68,15 +68,15 @@
 	</definition>
 	
 	<definition name="*" extends="templateBasic">
-		<put-attribute name="body" value="/WEB-INF/{1}.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
 	
 	<definition name="*/*" extends="templateBasic">
-		<put-attribute name="body" value="/WEB-INF/{1}/{2}.jsp" />	
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />	
 	</definition>
 	
 	<definition name="*/*/*" extends="templateBasic">
-		<put-attribute name="body" value="/WEB-INF/{1}/{2}/{3}.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
 	</definition> 
 </tiles-definitions>  
 

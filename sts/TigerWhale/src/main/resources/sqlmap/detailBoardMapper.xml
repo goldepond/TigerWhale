@@ -18,7 +18,7 @@
 		<select id="getMainDetail" resultType="MainBoardVO">
 		select * from mainboard where bno = #{bno}
 	</select>
-		<select id="getrepyBoard" resultType="repyBoardVO">
+		<select id="getrepyBoard" resultType="replyBoardVO">
 		select * from replyBoard where bno = #{bno}
 	</select>
 	<select id="getUserDetail" resultType="UsersVO">

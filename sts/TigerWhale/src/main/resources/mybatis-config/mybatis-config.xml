@@ -10,7 +10,7 @@
 		<typeAlias type="com.tigerWhale.command.D_T_boardVO" alias="D_T_boardVO" />
 		<typeAlias type="com.tigerWhale.command.detailBoardVO" alias="detailBoardVO" />
 		<typeAlias type="com.tigerWhale.command.MainBoardVO" alias="MainBoardVO" />
-		<typeAlias type="com.tigerWhale.command.repyBoardVO" alias="repyBoardVO" />
+		<typeAlias type="com.tigerWhale.command.replyBoardVO" alias="replyBoardVO" />
 		<typeAlias type="com.tigerWhale.command.UsersVO" alias="UsersVO" />
 		<typeAlias type="com.tigerWhale.command.Y_M_boardVO" alias="Y_M_boardVO" />
 		<typeAlias type="com.tigerWhale.command.IMGBoardVO" alias="IMGBoardVO" />

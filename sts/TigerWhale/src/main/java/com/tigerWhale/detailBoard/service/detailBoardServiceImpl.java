@@ -13,7 +13,7 @@ import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.command.Y_M_boardVO;
 import com.tigerWhale.command.catagoryBoardVO;
 import com.tigerWhale.command.detailBoardVO;
-import com.tigerWhale.command.repyBoardVO;
+import com.tigerWhale.command.replyBoardVO;
 import com.tigerWhale.command.textBoardVO;
 import com.tigerWhale.detailBoard.mapper.detailBoardMapper;
 
@@ -47,7 +47,7 @@ public class detailBoardServiceImpl implements detailBoardService {
 	}
 
 	@Override
-	public ArrayList<repyBoardVO> getrepyBoard(int bno) {
+	public ArrayList<replyBoardVO> getrepyBoard(int bno) {
 		return detailBoardMapper.getrepyBoard(bno);
 	}
 

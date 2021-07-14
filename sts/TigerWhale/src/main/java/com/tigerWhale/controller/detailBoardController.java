@@ -22,7 +22,7 @@ import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.command.Y_M_boardVO;
 import com.tigerWhale.command.catagoryBoardVO;
 import com.tigerWhale.command.detailBoardVO;
-import com.tigerWhale.command.repyBoardVO;
+import com.tigerWhale.command.replyBoardVO;
 import com.tigerWhale.command.textBoardVO;
 import com.tigerWhale.detailBoard.service.detailBoardService;
 
@@ -38,21 +38,20 @@ public class detailBoardController {
 	@RequestMapping("/detailPage")
 	public String detailPage(Model model) {
 		int bno = 1;
-
 		catagoryBoardVO catagoryBoardVO = detailBoardService.getcatagory(bno);
 		ArrayList<D_T_boardVO> d_T_boardVO = detailBoardService.getD_T_board(bno);
 		ArrayList<detailBoardVO> detiBoardVO = detailBoardService.getBoardDetail(bno);
 		MainBoardVO mainBoardVO = detailBoardService.getMainDetail(bno);
-		ArrayList<repyBoardVO> repyBoardVO = detailBoardService.getrepyBoard(bno);
+		ArrayList<replyBoardVO> repyBoardVO = detailBoardService.getrepyBoard(bno);
 		String user_ID = mainBoardVO.getUser_ID();
 		UsersVO usersVO = detailBoardService.getUserDetail(user_ID);
 		ArrayList<Y_M_boardVO> m_boardVO = detailBoardService.getY_M_board(bno);
 		ArrayList<IMGBoardVO> IMGBoardVO = detailBoardService.getIMGBoard(bno);
 		UserIMGBoardVO userIMGBoardVO = detailBoardService.getUserIMGBoard(bno);
 		textBoardVO textBoardVO  = detailBoardService.getTextBoard(bno);
-		System.out.println("//////////////////////////");
-		System.out.println( IMGBoardVO.get(0).getImg());
-		
+		System.out.println("###########################");
+		System.out.println(m_boardVO);
+		System.out.println("###########################");
 		model.addAttribute("d_T_boardVO", d_T_boardVO);
 		model.addAttribute("detiBoardVO", detiBoardVO);
 		model.addAttribute("mainBoardVO",mainBoardVO);

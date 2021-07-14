@@ -1,0 +1,137 @@
+--계정 project 생성, 권한부여
+create user project identified by project;
+grant connect, resource, dba to project;
+
+CREATE TABLE userBoard
+(
+    user_ID VARCHAR2(40) PRIMARY KEY,
+    user_PW VARCHAR2(40) NOT NULL,
+    userAdress VARCHAR2(100)NOT NULL,
+    userPhoneNumber VARCHAR2(60)NOT NULL,
+    userEmail1 VARCHAR2(50)NOT NULL,
+    userEmail2 VARCHAR2(50)NOT NULL,
+    userGender VARCHAR2(6)NOT NULL, --남,여로 성별입력 받음
+    buyScore_AVG NUMBER(3)
+);
+
+--회원(멘토) 테이블
+CREATE TABLE mentorBoard
+(
+    user_ID VARCHAR2(20) NOT NULL,
+    userBank VARCHAR2(30) NOt NULL,
+    accountNum VARCHAR2(20)UNIQUE NOT NULL,
+    sellScore_AVG number(3)--판매평점 평균 기본값0
+);
+
+--회원(멘토)의 경력 테이블
+CREATE TABLE careerBoard
+(
+    user_ID VARCHAR2(20) UNIQUE NOT NULL,
+    careerList VARCHAR2(100) UNIQUE NOT NULL
+);
+
+--회원(멘토,멘티)의 구매내역을 확인할수 있는테이블
+CREATE TABLE detailBoard
+(
+    orderNum NUMBER(10) PRIMARY KEY, --거래내역의 고유번호
+    sell_ID VARCHAR2(10) NOT NULL, --해당 bno에서 일어난 거래의 구매아이디
+    buy_ID VARCHAR2(20) NOT NULL, --해당 bno에서 일어난 거래의 판매아이디
+    bno NUMBER(10) UNIQUE NOT NULL,
+    price NUMBER(10) NOT NULL, --판매가
+    sellScore NUMBER(3), --구매자가 판매자에게 주는평점
+    buyScore NUMBER(3)-- 판매자가 구매자에게 주는평점
+);
+create SEQUENCE detailBoard_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
+
+--회원의 관심카테고리를 정리한 테이블
+CREATE TABLE interestBoard
+(
+    user_ID VARCHAR2(20) UNIQUE NOT NULL, 
+    C_key NUMBER(5) NOT NULL --카테고리의 키번호
+);
+
+--게시글 테이블
+CREATE TABLE mainBoard
+(
+    bno NUMBER(10) PRIMARY KEY,
+    user_ID VARCHAR2(20) UNIQUE NOT NULL,
+    C_code NUMBER(5) UNIQUE NOT NULL,
+    boardType VARCHAR(6) NOT NULL, --게시글의 종류를 확인함 입력값은'구매','판매'
+    title VARCHAR2(30) NOT NULL,
+    text VARCHAR2(500) NOT NULL,
+    price NUMBER(10) NOT NULL,
+    M_registDate DATE DEFAULT SYSDATE, --게시글등록 시간
+    M_updateDate DATE DEFAULT SYSDATE -- 게시글수정 시간
+);
+create SEQUENCE mainBoard_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
+
+--댓글 테이블
+CREATE TABLE replyBoard
+(
+    user_ID VARCHAR2(20) UNIQUE NOT NULL,
+    bno NUMBER(10) NOT NULL,
+    orderNum NUMBER(10) UNIQUE NOT NULL, --거래내역의 고유번호
+    reply VARCHAR(200) NOT NULL,
+    R_replyDate DATE DEFAULT SYSDATE, -- 답글생성 시간
+    R_updateDate DATE DEFAULT SYSDATE -- 답글수정 시간
+);
+ create SEQUENCE replyBoard_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
+
+--카테고리의 정보를 모아놓은 테이블
+CREATE TABLE categoryBoard
+(
+    C_code NUMBER(5) UNIQUE NOT NULL, --해당행의 코드번호(고유값)
+    middleCategory VARCHAR2(60) UNIQUE NOT NULL, --대분류명
+    smallCategory VARCHAR2(60) UNIQUE NOT NULL, -- 중분류명
+    bigCategory VARCHAR2(60) UNIQUE NOT NULL --소분류명
+);
+
+--게시글의 작성자가 허용한 날짜와 시간대를 저장하는 테이블
+CREATE TABLE D_T_Board
+(
+    bno NUMBER(10) NOT NULL,
+    M_day CHAR(3),
+    M_time1 NUMBER(2), -- 00:00 중 첫번째값 입력받음
+    M_time2 NUMBER(2) -- 00::00중 두번째값 입력받음
+);
+
+
+--게시글의 작성자가 허용한 날짜와 시간대를 저장하는 테이블
+CREATE TABLE Y_M_Board
+(
+    bno NUMBER(10) NOT NULL,
+    M_year1 NUMBER(20), -- 허용기간이 시작되는 년도를 입력받음
+    M_year2 NUMBER(20),-- 허용기간이 끝나는 년도를 입력받음
+    M_month1 NUMBER(20), -- 허용기간이 시작되는 달을 입력받음 
+    M_month2 NUMBER(20) -- 허용기간이 끝나는 달을 입력받음
+);
+
+create SEQUENCE MainBoard_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
+create SEQUENCE DETAILBoard_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
+
+
+--/////////////////////////////////////////////////////////////////
+--이미지와 테이블을 연결
+create TABLE IMGBoard
+(
+	bno NUMBER(10) NOT NULL,
+	img VARCHAR2(60)
+);
+
+create TABLE UserIMGBoard
+(
+	bno NUMBER(10) unique NOT NULL,
+	img VARCHAR2(60)
+);
+
+--설명 1,2,3
+create TABLE textBoard
+(
+	bno NUMBER(10) NOT NULL,
+	text1 VARCHAR2(500) ,
+	text2 VARCHAR2(500) ,
+	text3 VARCHAR2(500) 
+);
+
+
+

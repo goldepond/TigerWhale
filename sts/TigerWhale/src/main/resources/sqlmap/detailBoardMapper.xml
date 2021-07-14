@@ -40,5 +40,8 @@
 		select * from textBoard where bno = #{bno}
 	</select>
 
+	<select id="getY_M_boardFisrt" resultType="Y_M_boardVO">
+		select DISTINCT m_month1,  m_month2   from Y_M_BOARD where bno = #{bno}
+	</select>
 
 </mapper>

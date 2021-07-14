@@ -25,6 +25,8 @@ public interface detailBoardService {
 	public ArrayList<IMGBoardVO> getIMGBoard(int bno);
 	public UserIMGBoardVO getUserIMGBoard(int bno);
 	public textBoardVO getTextBoard(int bno);
+	
+	public ArrayList<Y_M_boardVO> getY_M_boardFisrt(int bno);
 
 }
 

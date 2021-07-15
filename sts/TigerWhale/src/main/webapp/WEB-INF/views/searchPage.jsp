@@ -5,17 +5,17 @@
             <div class="main-searchpage">
                 <nav class="side-title">
                     <div class="title-head">
-                        <h1 class="title-head-content">ëë¶ë¥íì´í</h1>
+                        <h1 class="title-head-content">대분류네임</h1>
                     </div>
                     <div class="title-content">
                         <div class="title-content1">
-                            <!-- íì í­ëª©ì´ ìë ê²½ì° -->
                             <div class="content-list">
-                                <a class="list-link" href="#">ê¸°í</a>
+                            	<!-- 하부카테고리 없을 경우 -->
+                                <a class="list-link" href="#">${searchPagePageVO.cri.c_code}</a>
                             </div>
-                            <!-- íì í­ëª©ì´ ìë ê²½ì° -->
                             <div class="content-list">
-                                <a href="#" class="list-link">ìëíë ì¤</a>
+                            	<!-- 하부카테고리 있을 경우 -->
+                                <a href="#" class="list-link">중분류2</a>
                                 <button class="side-list-btn">
                                     <span role="img" rotate="0" class="ebpz7lm2">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
@@ -27,59 +27,13 @@
                                     </span>
                                 </button>
                             </div>
+                            <!-- 중분류 목록 -->
                             <div class="css-1n9null ebpz7lm1">
-                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">ì ì²´</a>
-                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">ì¹ì¬ì´í¸ ì ì</a>
-                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">ì¹ì¬ì´í¸ ê°ì Â·ë²ê·¸ìì </a>
-                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">ì¤ì¹Â·ì¤ì </a>
-                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">ë³µì Â·ë§ì´ê·¸ë ì´ì</a>
-                            </div>
-                            <div class="content-list">
-                                <a href="#" class="list-link">ì¹ì¬ì´í¸ ê°ë°</a>
-                                <button class="side-list-btn">
-                                    <span role="img" rotate="0" class="ebpz7lm2">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
-                                            aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid meet"
-                                            class="css-7kp13n">
-                                            <path xmlns="http://www.w3.org/2000/svg"
-                                                d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path>
-                                        </svg>
-                                    </span>
-                                </button>
-                            </div>
-                            <div class="css-1n9null ebpz7lm1">
-                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">ì ì²´</a>
-                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">ì¹ì¬ì´í¸ ì ì</a>
-                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">ì¹ì¬ì´í¸ ì ì(CMS)</a>
-                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">ì¹ì¬ì´í¸ ê°ì ë²ê·¸ìì </a>
-                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">HTMLCSSí¼ë¸ë¦¬ì±</a>
-                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">ëë©íì´ì§</a>
-                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">ê²ììµì í</a>
-                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">ì ëë¦¬í±ì¤</a>
-                            </div>
-                            <div class="content-list">
-                                <a class="list-link" href="#">ì¼íëª°ì»¤ë¨¸ì¤</a>
-                            </div>
-                            <div class="content-list">
-                                <a class="list-link" href="#">ëª¨ë°ì¼ ì±</a>
-                            </div>
-                            <div class="content-list">
-                                <a class="list-link" href="#">íë¡ê·¸ë¨ ê°ë°</a>
-                            </div>
-                            <div class="content-list">
-                                <a class="list-link" href="#">ìë² ëëHWSW</a>
-                            </div>
-                            <div class="content-list">
-                                <a class="list-link" href="#">ê²ì</a>
-                            </div>
-                            <div class="content-list">
-                                <a class="list-link" href="#">ë°ì´í°ë² ì´ì¤</a>
-                            </div>
-                            <div class="content-list">
-                                <a class="list-link" href="#">ë¸ë¡ì²´ì¸</a>
-                            </div>
-                            <div class="content-list">
-                                <a class="list-link" href="#">ë³´ì</a>
+                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">소분류1</a>
+                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">소분류2</a>
+                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">소분류3</a>
+                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">소분류4</a>
+                                <a color="secondary" href="#" class="ebpz7lm0 css-1rtqxy7 e1lsgt8r0">소분류5</a>
                             </div>
                         </div>
                     </div>

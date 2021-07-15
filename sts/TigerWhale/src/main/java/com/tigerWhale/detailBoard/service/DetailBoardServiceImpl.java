@@ -17,7 +17,7 @@ import com.tigerWhale.command.ReplyBoardVO;
 import com.tigerWhale.command.TextBoardVO;
 import com.tigerWhale.detailBoard.mapper.DetailBoardMapper;
 
-@Service("xxx") // componentscan
+@Service("detailBoardService") // componentscan
 public class DetailBoardServiceImpl implements DetailBoardService {
 
 	@Autowired

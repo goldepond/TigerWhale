@@ -34,7 +34,7 @@ import com.tigerWhale.detailBoard.service.DetailBoardService;
 public class DetailBoardController {
 	
 	@Autowired
-	@Qualifier("xxx")
+	@Qualifier("detailBoardService")
 	private DetailBoardService detailBoardService;
 	
 	

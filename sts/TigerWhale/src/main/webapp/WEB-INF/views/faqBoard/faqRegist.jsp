@@ -13,7 +13,11 @@
 								<tr>
 									<td class="t-title">NAME</td>
 									<td>
-										<input class="form-control input-sm" name="writer" required="required" value="${sessionScope.userVO.userID}" readonly="readonly">
+									
+									
+									<!-- 세션완성되면 넣기 -->
+									<%-- 	<input class="form-control input-sm" name="writer" required="required" value="${sessionScope.userVO.userID}" readonly="readonly"> --%>
+										<input class="form-control input-sm" name="writer" required="required" value="" >
 									</td>
 								</tr>
 								<tr>
@@ -33,7 +37,7 @@
 	
 						<div class="titlefoot">
 							<button type="submit" class="btn">등록</button>
-							<button type="button" class="btn" onclick="location.href='freeList'">목록</button>
+							<button type="button" class="btn" onclick="location.href='faqList'">목록</button>
 						</div>
 					</form>
 				</div>

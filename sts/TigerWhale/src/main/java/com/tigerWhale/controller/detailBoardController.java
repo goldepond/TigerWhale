@@ -11,8 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.tigerWhale.command.D_T_boardVO;
 import com.tigerWhale.command.IMGBoardVO;
@@ -49,9 +52,15 @@ public class detailBoardController {
 		ArrayList<IMGBoardVO> IMGBoardVO = detailBoardService.getIMGBoard(bno);
 		UserIMGBoardVO userIMGBoardVO = detailBoardService.getUserIMGBoard(bno);
 		textBoardVO textBoardVO  = detailBoardService.getTextBoard(bno);
+		
+		ArrayList<Y_M_boardVO> m_boardVOFirst = detailBoardService.getY_M_boardFisrt(bno);
+		
 		System.out.println("###########################");
-		System.out.println(m_boardVO);
+		System.out.println(m_boardVOFirst.size());
 		System.out.println("###########################");
+		
+		model.addAttribute("m_boardVOFirst", m_boardVOFirst);
+		
 		model.addAttribute("d_T_boardVO", d_T_boardVO);
 		model.addAttribute("detiBoardVO", detiBoardVO);
 		model.addAttribute("mainBoardVO",mainBoardVO);
@@ -66,7 +75,9 @@ public class detailBoardController {
 	}
 	
 	@RequestMapping("/detailBuy")
-	public String detailBuy() {
+	public String detailBuy(@RequestBody Y_M_boardVO vo) {
+		System.out.println(vo.getBno());
+		System.out.println(vo.getRno());
 		return "detailBoard/detailBuy";
 	}
 	

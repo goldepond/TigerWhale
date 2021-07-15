@@ -64,7 +64,6 @@ public class detailBoardServiceImpl implements detailBoardService {
 
 	@Override
 	public ArrayList<IMGBoardVO> getIMGBoard(int bno) {
-		System.out.println(detailBoardMapper.getIMGBoard(bno));
 		return detailBoardMapper.getIMGBoard(bno);
 	}
 
@@ -78,6 +77,12 @@ public class detailBoardServiceImpl implements detailBoardService {
 	public textBoardVO getTextBoard(int bno) {
 		// TODO Auto-generated method stub
 		return detailBoardMapper.getTextBoard(bno);
+	}
+
+	@Override
+	public ArrayList<Y_M_boardVO> getY_M_boardFisrt(int bno) {
+		// TODO Auto-generated method stub
+		return detailBoardMapper.getY_M_boardFisrt(bno);
 	}
 
 }

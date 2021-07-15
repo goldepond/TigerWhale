@@ -119,7 +119,8 @@
 									<!-- //////////////////////////////////////////////////////// -->
 									<ul class="nav nav-tabs">
 										<li class="active"><a href="#home"> 공통 정보 </a></li>
-										<c:forEach var="vo" items="${m_boardVO}" varStatus="status">
+										<c:forEach var="vo" items="${m_boardVOFirst}"
+											varStatus="status">
 											<li><a href="#menu${status.count}"> ${status.count}
 													옵션 </a></li>
 										</c:forEach>
@@ -129,14 +130,16 @@
 									<div class="tab-content">
 
 										<div id="home" class="tab-pane fade in active">
-											<br/>
+											<br />
 											<div class="package-header">
-												<span class="package-price">${textBoardVO.text1} 공통 안내 정보</span> 
-												<span class="package-type">Standard</span>
+												<span class="package-price">${textBoardVO.text1} 공통
+													안내 정보</span> <span class="package-type">Standard</span>
 											</div>
 										</div>
 										<c:forEach var="vo" items="${m_boardVO}" varStatus="status">
-											<div id="menu${status.count}" class="tab-pane fade">
+									
+										<form action="detailBuy" id="detailBuyForm" method="post">
+																		<div id="menu${status.count}" class="tab-pane fade">
 
 												<div class="package-header">
 													<span class="package-price">50,000원</span> <span
@@ -150,12 +153,11 @@
 												<div class="package-body">
 													<div class="GigPackageOption">
 
-														<select name="pets" id="pet-select">
+														<select name="time" id="time-select">
 
-															<c:forEach var="bo" items="${d_T_boardVO}"
+															<c:forEach var="bo" items="${m_boardVO}"
 																varStatus="option">
-																<option value=""><h2>요일 : ${bo.m_day} /
-																		${bo.m_time1}시 ~ ${bo.m_time2}시 까지</h2>
+																<option value="${bo.rno}"><h2>요일 : ${bo.m_day} / ${bo.m_time1}시 ~ ${bo.m_time2}시 까지</h2>
 																</option>
 
 															</c:forEach>
@@ -173,14 +175,18 @@
 													</div>
 
 													<div class="package-direct-order">
-														<button type="button" class="btn">
-															<span>구매하기</span>
-														</button>
+														<button type="submit" class="btn"><span>구매하기</span></button>
 													</div>
 
 												</div>
 
 											</div>
+										
+										</form>
+				
+	
+				
+				
 
 										</c:forEach>
 									</div>
@@ -233,9 +239,7 @@
 								<input type="text" class="form-control" placeholder="이름"
 									name="replyID" id="replyID">
 							</div>
-
 							<button type="button" class="right btn btn-info" id="replyRegist">등록하기</button>
-
 						</div>
 
 					</div>
@@ -364,7 +368,37 @@
 	var map = new kakao.maps.Map(container, options);
 </script>
 
+<script>
+	//페이지처리 -
+	//모든 a버튼을 눌렀을 때 a가 가지고 있는 pageNum값을 가지고 form태그로 이동하도록 처리
+	//동적쿼리 이용해서 sql문 변경
+	//화면에 검색키워드가 미리 남겨지도록 처리.
+	var pagination = document.querySelector(".pagination");
+	pagination.onclick = function() {
+		event.preventDefault(); //고유이벤트 속성 중지
+		if (event.target.tagName != 'A')
+			return; //A가 아니라면 종료
 
+		//사용자가 클릭한 페이지 번호를 form에 넣고 서브밋을 보냅니다.
+		document.pageForm.pageNum.value = event.target.dataset.pagenum;
+		document.pageForm.submit(); //서브밋		
+	}
+
+	window.onload = function() {
+
+		if (history.state == '')
+			return; //메시지를 출력했다면 함수종료
+
+		var msg = '<c:out value="${msg }" />';
+		if (msg != '') {
+			alert(msg);
+			//기존 기록을 삭제하고 새로운 기록을 추가 (이렇게 변경된 값은 history.state로 데이터를 확인가능)
+			history.replaceState('', null, null); //브라우저 기록컨트롤 (추가할데이터, 제목, url주소)
+			console.log(history.state);
+		}
+
+	}
+</script>
 
 
 <script>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.tigerWhale.detailBoard.mapper.DetailBoardMapper">
+
+	<select id="getCategory" resultType="CategoryBoardVO">
+		select * from categoryBoard where c_code =  1
+	</select>
+		<select id="getD_T_board" resultType="D_T_boardVO">
+		select * from D_T_Board where bno = #{bno}
+	</select>
+		<select id="getBoardDetail" resultType="DetailBoardVO">
+		select * from detailBoard where bno = #{bno}
+	</select>
+		<select id="getMainDetail" resultType="MainBoardVO">
+		select * from mainboard where bno = #{bno}
+	</select>
+		<select id="getReplyBoard" resultType="ReplyBoardVO">
+		select * from replyBoard where bno = #{bno}
+	</select>
+	<select id="getUserDetail" resultType="UsersVO">
+		select * from userboard where user_id like #{user_ID}
+	</select>
+	<select id="getY_M_board" resultType="Y_M_boardVO">
+		select * from Y_M_Board where bno = #{bno}
+	</select>
+	
+	<select id="getIMGBoard" resultType="IMGBoardVO">
+		select * from IMGBoard where bno = #{bno}
+	</select>
+	
+		<select id="getUserIMGBoard" resultType="UserIMGBoardVO">
+		select * from UserIMGBoard where bno = #{bno}
+	</select>
+	
+			<select id="getTextBoard" resultType="TextBoardVO">
+		select * from textBoard where bno = #{bno}
+	</select>
+
+	<select id="getY_M_boardFisrt" resultType="Y_M_boardVO">
+		select DISTINCT m_month1,  m_month2   from Y_M_BOARD where bno = #{bno}
+	</select>
+
+</mapper>

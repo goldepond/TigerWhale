@@ -12,11 +12,11 @@
 
 							<div class="GigTitle">
 
-								<h1>박인욱선생님의 믿고듣는 HTML 과외 EZ반</h1>
+								<h1>${mainBoardVO.title}</h1>
 
 								<div class="gig-detail-price">
 									<h3>
-										"90,000원" <span>~</span>
+										"${mainBoardVO.price}" <span>~</span>
 									</h3>
 									<h5 class="margin-none1">(VAT 포함가)</h5>
 								</div>
@@ -27,7 +27,7 @@
 								<div class="gig-detail-pacakage-panel">
 									<!-- //////////////////////////////////////////////////////// -->
 									<ul class="nav nav-tabs">
-										<li class="active"><a href="#home"> 1 옵션 </a></li>
+										<li class="active"><a href="#home"> 선택한 옵션 </a></li>
 									</ul>
 
 									<div class="tab-content">
@@ -37,17 +37,8 @@
 											</div>
 											<div class="package-body">
 												<div class="GigPackageOption">
-													<table border="1px">
-														<tr>
-															<td class="A"><a href="##">월</a></td>
-															<td class="B"><a href="##">화</a></td>
-															<td class="C"><a href="##">수</a></td>
-															<td class="D"><a href="##">목</a></td>
-															<td class="E"><a href="##">금</a></td>
-															<td class="F"><a href="##">토</a></td>
-															<td class="G"><a href="##">일</a></td>
-														</tr>
-													</table>
+														<h3>${ymBoardVO.m_year1}년${ymBoardVO.m_month1}월~${ymBoardVO.m_year2}년${ymBoardVO.m_month2}월 </h3>
+														<h2>요일 : ${ymBoardVO.m_day} /${ymBoardVO.m_time1}시 ~ ${ymBoardVO.m_time2}시 까지 ${ymBoardVO.rno} 번 </h2>
 												</div>
 
 												<div class="map">

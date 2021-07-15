@@ -34,7 +34,7 @@ import com.tigerWhale.detailBoard.service.DetailBoardService;
 public class DetailBoardController {
 	
 	@Autowired
-	@Qualifier("xxx")
+	@Qualifier("detailBoardService")
 	private DetailBoardService detailBoardService;
 	
 	
@@ -52,15 +52,9 @@ public class DetailBoardController {
 		ArrayList<IMGBoardVO> IMGBoardVO = detailBoardService.getIMGBoard(bno);
 		UserIMGBoardVO userIMGBoardVO = detailBoardService.getUserIMGBoard(bno);
 		TextBoardVO textBoardVO  = detailBoardService.getTextBoard(bno);
-		
 		ArrayList<Y_M_boardVO> m_boardVOFirst = detailBoardService.getY_M_boardFisrt(bno);
 		
-		System.out.println("###########################");
-		System.out.println(m_boardVOFirst.size());
-		System.out.println("###########################");
-		
 		model.addAttribute("m_boardVOFirst", m_boardVOFirst);
-		
 		model.addAttribute("d_T_boardVO", d_T_boardVO);
 		model.addAttribute("detiBoardVO", detiBoardVO);
 		model.addAttribute("mainBoardVO",mainBoardVO);
@@ -74,15 +68,38 @@ public class DetailBoardController {
 		return "detailBoard/detailPage";
 	}
 	
-	@RequestMapping("/detailBuy")
-	public String detailBuy(@RequestBody Y_M_boardVO vo) {
-		System.out.println(vo.getBno());
-		System.out.println(vo.getRno());
+	@RequestMapping("/detailBuy" )
+	public String detailBuy( @RequestParam("rno") int rno,
+							 @RequestParam("bno") int bno, Model model) {
+		Y_M_boardVO ymBoardVO = detailBoardService.getY_M_One(rno);
+		MainBoardVO mainBoardVO = detailBoardService.getMainDetail(bno);
+		
+		
+		model.addAttribute("ymBoardVO", ymBoardVO);
+		model.addAttribute("mainBoardVO",mainBoardVO);
+		
+		
+		
 		return "detailBoard/detailBuy";
 	}
 	
 	@RequestMapping("/detailWrite")
-	public String detailWrite() {
+	public String detailWrite(
+			@RequestParam("Category1") String Category1,
+			@RequestParam("Category2") String Category2,
+			@RequestParam("Category3") String Category3,
+			@RequestParam("writer") String writer,
+			@RequestParam("title") String title,
+			@RequestParam("bno") int bno,
+			@RequestParam("money") int Category3,
+			@RequestParam("content1") int Category3,
+			@RequestParam("content2") int Category3,
+			@RequestParam("content3") int Category3,
+			@RequestParam("Category3") int Category3,
+			@RequestParam("Category3") int Category3,
+			@RequestParam("Category3") int Category3,
+			@RequestParam("Category3") int Category3,
+			@RequestParam("Category3") int Category3,) {
 		return "detailBoard/detailWrite";
 	}
 	

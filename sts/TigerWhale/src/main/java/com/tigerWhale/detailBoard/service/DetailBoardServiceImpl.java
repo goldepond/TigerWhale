@@ -17,7 +17,7 @@ import com.tigerWhale.command.ReplyBoardVO;
 import com.tigerWhale.command.TextBoardVO;
 import com.tigerWhale.detailBoard.mapper.DetailBoardMapper;
 
-@Service("xxx") // componentscan
+@Service("detailBoardService") // componentscan
 public class DetailBoardServiceImpl implements DetailBoardService {
 
 	@Autowired
@@ -83,6 +83,12 @@ public class DetailBoardServiceImpl implements DetailBoardService {
 	public ArrayList<Y_M_boardVO> getY_M_boardFisrt(int bno) {
 		// TODO Auto-generated method stub
 		return detailBoardMapper.getY_M_boardFisrt(bno);
+	}
+//===============================================================================
+	@Override
+	public Y_M_boardVO getY_M_One(int bno) {
+		
+		return detailBoardMapper.getY_M_One(bno);
 	}
 
 }

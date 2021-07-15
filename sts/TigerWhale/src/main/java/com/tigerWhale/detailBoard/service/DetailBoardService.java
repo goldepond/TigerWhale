@@ -25,8 +25,10 @@ public interface DetailBoardService {
 	public ArrayList<IMGBoardVO> getIMGBoard(int bno);
 	public UserIMGBoardVO getUserIMGBoard(int bno);
 	public TextBoardVO getTextBoard(int bno);
-	
 	public ArrayList<Y_M_boardVO> getY_M_boardFisrt(int bno);
+	
+//	==========================================================
+	public Y_M_boardVO getY_M_One(int bno);
 
 }
 

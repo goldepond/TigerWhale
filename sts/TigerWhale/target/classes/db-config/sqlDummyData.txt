@@ -240,3 +240,28 @@ insert into textBoard(
                     );
 end loop; 
 end;
+
+
+--///////////////////faq 생성  (수정중 작동이안되..)
+
+SELECT * FROM FAQBOARD;
+
+BEGIN
+FOR i IN 3 .. 50 LOOP
+INSERT INTO FAQBOARD(
+                        BNO,
+                        TITLE,
+                        WRITER,
+                        CONTENT
+                        
+                    )
+             VALUES (
+                        i,
+                        DBMS_RANDOM.STRING(P, 28),
+                        DBMS_RANDOM.STRING(P, 8),
+                        DBMS_RANDOM.STRING(P, 12)
+                    );
+END LOOP; 
+END;
+
+

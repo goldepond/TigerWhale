@@ -1,4 +1,12 @@
+<!-- 어드민 아닌 일반유저의 경우
+전체문의내역 탭 보여야할지? 안보여야할지? 정책필요 -->
+
+
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
   <section>
         <div class="container-fluid" style="padding: 0; margin: 0;">
@@ -21,7 +29,7 @@
                                 <!--lg에서 9그리드, xs에서 전체그리드-->
                                 <div class="col-lg-9 col-xs-12 board-table">
                                     <!--1.검색부분을 폼으로 넘기는데 컴트롤러에서 필요한 값을 hidden으로 처리해서 넘겨줍니다-->
-                                    <form action="freeList">
+                                    <form action="faqList">
                                         <div class="search-wrap">
                                             <button type="submit" class="btn btn-info search-btn">검색</button>
                                             <input type="text" class="form-control search-input" name="searchName"
@@ -69,8 +77,7 @@
                                                         <c:forEach var="vo" items="${list }">
                                                             <tr>
                                                                 <td>${vo.bno }</td>
-                                                                <td><a href="freeDetail?bno=${vo.bno }">${vo.title }</a>
-                                                                </td>
+                                                                <td><a href="faqDetail?bno=${vo.bno }">${vo.title }</a></td>
                                                                 <td>${vo.writer }</td>
                                                                 <td>
                                                                     <fmt:formatDate value="${vo.regdate }"
@@ -101,7 +108,7 @@
                                                         <c:forEach var="vo" items="${list }">
                                                             <tr>
                                                                 <td>${vo.bno }</td>
-                                                                <td><a href="freeDetail?bno=${vo.bno }">${vo.title }</a>
+                                                                <td><a href="faqDetail?bno=${vo.bno }">${vo.title }</a>
                                                                 </td>
                                                                 <td>${vo.writer }</td>
                                                                 <td>
@@ -133,7 +140,7 @@
                                                         <c:forEach var="vo" items="${list }">
                                                             <tr>
                                                                 <td>${vo.bno }</td>
-                                                                <td><a href="freeDetail?bno=${vo.bno }">${vo.title }</a>
+                                                                <td><a href="faqDetail?bno=${vo.bno }">${vo.title }</a>
                                                                 </td>
                                                                 <td>${vo.writer }</td>
                                                                 <td>
@@ -153,7 +160,7 @@
                                         </div>
                                     </div>
 
-                                    <form action="freeList" name="pageForm">
+                                    <form action="faqList" name="pageForm">
                                         <div class="text-center">
                                             <hr>
                                             <ul class="pagination pagination-sm">
@@ -162,16 +169,16 @@
                                                 <!-- 3. 다음버튼 활성황 여부 -->
                                                 <!-- 
                                                         <c:if test="${pageVO.prev }">
-                                                            <li><a href="freeList?pageNum=${pageVO.startPage-1} & amount=${pageVO.amount }">이전</a></li>
+                                                            <li><a href="faqList?pageNum=${pageVO.startPage-1} & amount=${pageVO.amount }">이전</a></li>
                                                         </c:if>
                                                             <c:forEach var="num" begin="${pageVO.startPage }" end="${pageVO.endPage }">
                                                             <li class="${pageVO.pageNum eq num ? 'active' : '' }">
-                                                               <a href="freeList?pageNum=${num } & amount=${pageVO.amount }">${num }</a
+                                                               <a href="faqList?pageNum=${num } & amount=${pageVO.amount }">${num }</a
                                                                ></li>
                                                             </c:forEach>
                                                             
                                                          <c:if test="${pageVO.next }">  
-                                                            <li><a href="freeList?pageNum=${pageVO.endPage + 1 } & amount=${pageVO.amount}">다음</a></li>
+                                                            <li><a href="faqList?pageNum=${pageVO.endPage + 1 } & amount=${pageVO.amount}">다음</a></li>
                                                          </c:if>
                                                          -->
                                                 <c:if test="${pageVO.prev }">
@@ -189,10 +196,21 @@
                                                 </c:if>
 
                                             </ul>
+                                            
+ <%-- 세션 완성   후 구현
                                             <c:if test="${sessionScope.userVO != null}">
                                                 <button type="button" class="btn btn-info"
-                                                    onclick="location.href ='freeRegist' ">글쓰기</button>
+                                                    onclick="location.href ='faqRegist' ">글쓰기</button>
                                             </c:if>
+                                            
+--%>
+                                                  <button type="button" class="btn btn-info"
+                                   					onclick="location.href ='faqRegist' ">글쓰기</button>               
+                               
+                                            
+                                            
+                                            
+                                            
                                         </div>
                                         <input type="hidden" name="pageNum" value="${pageVO.cri.pageNum }">
                                         <input type="hidden" name="amount" value="${pageVO.cri.amount }">
@@ -215,9 +233,37 @@
 
 
 <script>
+
+		//???
         $(document).ready(function () {
             $(".nav-tabs a").click(function () {
                 $(this).tab('show');
             });
         });
-    </script>
+        
+        
+        //날짜를 2019-02-11 이런거에서 당일치기글은 1분 1시간 전 이런식으로 바꾸기
+        (function (x) { console.log(x*x); })(2);
+
+        (function () { 
+        	console.log(  ${vo.regdate }  ); 
+        })();
+        
+        
+        
+        
+        /* 
+        if(insertRows < 3) {
+		addRow += "<tr class='insert-row'>";
+		addRow += "	<td class='food-No'>" + rowNum + "</td>";
+		addRow += "	<td><input type='text' class='checkRow' id='foodName' name='foodName' value=''></td>";
+         */
+        
+        
+        
+        
+        
+        
+        
+        
+</script>

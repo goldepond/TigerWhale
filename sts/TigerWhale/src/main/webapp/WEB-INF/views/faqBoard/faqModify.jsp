@@ -8,32 +8,32 @@
                             <p>수정하기</p>
                         </div>
                         
-                        <form action="freeUpdate">
+                        <form action="faqUpdate">
                             <div>
                                 <label>DATE</label>
-                            	 <fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd" />
+                            	 <fmt:formatDate value="${boardVO.regdate}" pattern="yyyy-MM-dd" />
                             </div>   
                             <div class="form-group">
                                 <label>번호</label>
-                                <input class="form-control" name='bno' value="${vo.bno }" readonly>
+                                <input class="form-control" name='bno' value="${boardVO.bno }" readonly>
                             </div>
                             <div class="form-group">
                                 <label>작성자</label>
-                                <input class="form-control" name='writer' value="${vo.writer }" readonly>
+                                <input class="form-control" name='writer' value="${boardVO.writer }" readonly>
                             </div>    
                             <div class="form-group">
                                 <label>제목</label>
-                                <input class="form-control" name='title' value="${vo.title }" required>
+                                <input class="form-control" name='title' value="${boardVO.title }" required>
                             </div>
 
                             <div class="form-group">
                                 <label>내용</label>
-                                <textarea class="form-control" rows="10" name='content' required>${vo.content }</textarea>
+                                <textarea class="form-control" rows="10" name='content' required>${boardVO.content }</textarea>
                             </div>
 
-                            <button type="button" class="btn btn-dark" onclick="location.href = 'freeList'">목록</button>    
+                            <button type="button" class="btn btn-dark" onclick="location.href = 'faqList'">목록</button>    
                             <button type="submit" class="btn btn-primary">변경</button>
-                            <button type="button" class="btn btn-info " onclick="location.href = 'freeDelete?bno=${vo.bno}&${vo.writer}'">삭제</button>
+                            <button type="button" class="btn btn-info " onclick="location.href = 'faqDelete?bno=${boardVO.bno}&${boardVO.writer}'">삭제</button>
                     </form>
                                     
                 </div>

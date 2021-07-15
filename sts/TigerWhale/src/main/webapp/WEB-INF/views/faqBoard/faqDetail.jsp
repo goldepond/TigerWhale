@@ -25,7 +25,6 @@
 					<div class="form-group">
 						<label>제목</label> <input class="form-control" name='title' value='${boardVO.title}' readonly>
 					</div>
-
 					<div class="form-group">
 						<label>내용</label>
 						<textarea class="form-control" rows="10" name='content' readonly>${boardVO.content}</textarea>

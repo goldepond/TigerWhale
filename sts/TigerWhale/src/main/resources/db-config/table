@@ -41,6 +41,7 @@ CREATE TABLE detailBoard
     sellScore NUMBER(3), --구매자가 판매자에게 주는평점
     buyScore NUMBER(3)-- 판매자가 구매자에게 주는평점
 );
+create SEQUENCE detailBoard_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
 
 --회원의 관심카테고리를 정리한 테이블
 CREATE TABLE interestBoard
@@ -62,6 +63,7 @@ CREATE TABLE mainBoard
     M_registDate DATE DEFAULT SYSDATE, --게시글등록 시간
     M_updateDate DATE DEFAULT SYSDATE -- 게시글수정 시간
 );
+create SEQUENCE mainBoard_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
 
 --댓글 테이블
 CREATE TABLE replyBoard
@@ -73,7 +75,7 @@ CREATE TABLE replyBoard
     R_replyDate DATE DEFAULT SYSDATE, -- 답글생성 시간
     R_updateDate DATE DEFAULT SYSDATE -- 답글수정 시간
 );
-
+ create SEQUENCE replyBoard_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
 
 --카테고리의 정보를 모아놓은 테이블
 CREATE TABLE categoryBoard
@@ -142,4 +144,20 @@ create table faqBOARD(
     updatedate date default sysdate
 );
 create SEQUENCE faqBOARD_SEQ INCREMENT BY 1 START WITH 1 nocache;
+
+
+--게시글의 작성자가 허용한 날짜와 시간대를 저장하는 테이블
+CREATE TABLE Y_M_Board
+(
+   	bno NUMBER(10) NOT NULL,
+    M_day CHAR(3),
+    M_time1 NUMBER(2), -- 00:00 중 첫번째값 입력받음
+    M_time2 NUMBER(2), -- 00::00중 두번째값 입력받음
+    
+    rno NUMBER(10) unique NOT NULL,
+    M_year1 NUMBER(20), -- 허용기간이 시작되는 년도를 입력받음
+    M_year2 NUMBER(20),-- 허용기간이 끝나는 년도를 입력받음
+    M_month1 NUMBER(20), -- 허용기간이 시작되는 달을 입력받음 
+    M_month2 NUMBER(20) -- 허용기간이 끝나는 달을 입력받음
+);
 

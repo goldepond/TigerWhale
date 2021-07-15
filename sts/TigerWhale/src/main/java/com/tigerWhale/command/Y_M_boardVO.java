@@ -13,4 +13,13 @@ public class Y_M_boardVO {
 	private int M_year2;
 	private int M_month1;
 	private int M_month2;
+	
+//	===============================
+	private int rno;
+	
+    private char M_day;
+    private int M_time1;
+    private int M_time2;
+    
+    
 }

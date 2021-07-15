@@ -4,21 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper
-	namespace="com.tigerWhale.detailBoard.mapper.detailBoardMapper">
+	namespace="com.tigerWhale.detailBoard.mapper.DetailBoardMapper">
 
-	<select id="getcatagory" resultType="catagoryBoardVO">
-		select * from categoryBoard where C_code =  1
+	<select id="getCategory" resultType="CategoryBoardVO">
+		select * from categoryBoard where c_code =  1
 	</select>
 		<select id="getD_T_board" resultType="D_T_boardVO">
 		select * from D_T_Board where bno = #{bno}
 	</select>
-		<select id="getBoardDetail" resultType="detailBoardVO">
+		<select id="getBoardDetail" resultType="DetailBoardVO">
 		select * from detailBoard where bno = #{bno}
 	</select>
 		<select id="getMainDetail" resultType="MainBoardVO">
 		select * from mainboard where bno = #{bno}
 	</select>
-		<select id="getrepyBoard" resultType="repyBoardVO">
+		<select id="getReplyBoard" resultType="ReplyBoardVO">
 		select * from replyBoard where bno = #{bno}
 	</select>
 	<select id="getUserDetail" resultType="UsersVO">
@@ -36,9 +36,12 @@
 		select * from UserIMGBoard where bno = #{bno}
 	</select>
 	
-			<select id="getTextBoard" resultType="textBoardVO">
+			<select id="getTextBoard" resultType="TextBoardVO">
 		select * from textBoard where bno = #{bno}
 	</select>
 
+	<select id="getY_M_boardFisrt" resultType="Y_M_boardVO">
+		select DISTINCT m_month1,  m_month2   from Y_M_BOARD where bno = #{bno}
+	</select>
 
 </mapper>

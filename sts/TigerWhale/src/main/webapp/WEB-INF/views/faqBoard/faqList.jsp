@@ -212,13 +212,10 @@
                                             
                                             
                                         </div>
-
                                         <input type="hidden" name="pageNum" value="${pageVO.cri.pageNum }">
                                         <input type="hidden" name="amount" value="${pageVO.cri.amount }">
                                         <input type="hidden" name="searchType" value="${pageVO.cri.searchType }">
                                         <input type="hidden" name="searchName" value="${pageVO.cri.searchName }">
-
-
                                     </form>
 
                                 </div>

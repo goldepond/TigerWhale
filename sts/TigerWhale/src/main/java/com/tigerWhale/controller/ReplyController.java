@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tigerWhale.command.replyBoardVO;
+import com.tigerWhale.command.ReplyBoardVO;
 
 import com.tigerWhale.reply.service.ReplyService;
-import com.tigerWhale.util.Criteria;
+import com.tigerWhale.util.ReplyCriteria;
 
 
 @RestController //비동기전용컨트롤러
@@ -29,7 +29,7 @@ public class ReplyController {
 	
 	
 	@PostMapping(value = "/replyRegist", produces = "application/json" ) //컨패스/reply/replyRegist
-	public int replyRegist(@RequestBody replyBoardVO vo) {
+	public int replyRegist(@RequestBody ReplyBoardVO vo) {
 		System.out.println(vo);
 		int result = replyService.regist(vo);
 		System.out.println("성공실패:" + result);
@@ -56,8 +56,8 @@ public class ReplyController {
 		//4. sql변경
 		//5. 전체 댓글 수를 화면에 전달.
 		
-		Criteria cri = new Criteria(pageNum, 20); //20개씩 데이터조회
-		ArrayList<replyBoardVO> list = replyService.getList(bno, cri);
+		ReplyCriteria cri = new ReplyCriteria(pageNum, 20); //20개씩 데이터조회
+		ArrayList<ReplyBoardVO> list = replyService.getList(bno, cri);
 		
 		int total = replyService.getTotal(bno);
 		System.out.println(list);
@@ -71,7 +71,7 @@ public class ReplyController {
 	
 	//수정요청
 	@PostMapping(value = "update", produces = "application/json")
-	public int update(@RequestBody replyBoardVO vo) {
+	public int update(@RequestBody ReplyBoardVO vo) {
 		
 		int count = replyService.pwCheck(vo);
 		
@@ -85,7 +85,7 @@ public class ReplyController {
 	
 	//삭제요청 delete
     @PostMapping(value = "delete", produces = "application/json")
-    public int delete(@RequestBody replyBoardVO vo) {
+    public int delete(@RequestBody ReplyBoardVO vo) {
 
         int count = replyService.pwCheck(vo);
         if(count == 1) {

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/mypage")
-public class mypageController {
+public class MypageController {
 	
 	@RequestMapping("/mypage")
 	public String myPage() {

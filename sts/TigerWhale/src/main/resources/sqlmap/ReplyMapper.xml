@@ -10,7 +10,7 @@
 		values (replyBoard_SEQ.nextval, #{bno}, #{user_ID}, #{reply})
   	</insert>
   	
-  	<select id="getList" resultType="replyBoardVO">
+  	<select id="getList" resultType="ReplyBoardVO">
   		<![CDATA[
 	select *
 		from (

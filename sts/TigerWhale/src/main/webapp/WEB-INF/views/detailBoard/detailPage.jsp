@@ -12,9 +12,9 @@
 					<div class="LeftModules">
 						<div class="GigBreadcrumb">
 							<!-- 카테고라ㅣ-->
-							<a href="###" class="vgig-site-map">${catagoryBoardVO.bigCategory}</a><span>></span>
-							<a href="###" class="vgig-site-map">${catagoryBoardVO.middleCategory}</a><span>></span>
-							<a href="###" class="vgig-site-map">${catagoryBoardVO.smallCategory}</a>
+							<a href="###" class="vgig-site-map">${categoryBoardVO.bigCategory}</a><span>></span>
+							<a href="###" class="vgig-site-map">${categoryBoardVO.middleCategory}</a><span>></span>
+							<a href="###" class="vgig-site-map">${categoryBoardVO.smallCategory}</a>
 						</div>
 
 						<div class="GigMainGallery">
@@ -32,7 +32,7 @@
 						<div class="GigRate">
 							****
 							<h3 class="rate">3.5</h3>
-							<h5 class="count">${repyBoardVO.size()}개의평가</h5>
+							<h5 class="count">${replyBoardVO.size()}개의평가</h5>
 						</div>
 
 						<div class="GigNavigator">
@@ -138,7 +138,7 @@
 										</div>
 										<c:forEach var="vo" items="${m_boardVO}" varStatus="status">
 									
-										<form action="detailBuy" id="detailBuyForm" method="post">
+										
 																		<div id="menu${status.count}" class="tab-pane fade">
 
 												<div class="package-header">
@@ -182,8 +182,6 @@
 
 											</div>
 										
-										</form>
-				
 	
 				
 				

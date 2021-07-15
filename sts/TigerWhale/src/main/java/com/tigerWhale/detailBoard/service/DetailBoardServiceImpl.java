@@ -84,5 +84,11 @@ public class DetailBoardServiceImpl implements DetailBoardService {
 		// TODO Auto-generated method stub
 		return detailBoardMapper.getY_M_boardFisrt(bno);
 	}
+//===============================================================================
+	@Override
+	public Y_M_boardVO getY_M_One(int bno) {
+		
+		return detailBoardMapper.getY_M_One(bno);
+	}
 
 }

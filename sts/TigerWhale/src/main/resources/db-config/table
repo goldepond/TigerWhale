@@ -259,5 +259,12 @@ CREATE TABLE Y_M_Board
     M_year1 NUMBER(20), -- 허용기간이 시작되는 년도를 입력받음
     M_year2 NUMBER(20),-- 허용기간이 끝나는 년도를 입력받음
     M_month1 NUMBER(20), -- 허용기간이 시작되는 달을 입력받음 
-    M_month2 NUMBER(20) -- 허용기간이 끝나는 달을 입력받음
+    M_month2 NUMBER(20), -- 허용기간이 끝나는 달을 입력받음
+    
+    Money NUMBER(20),-- 돈
+    
+    addrZipNum VARCHAR2(50),
+    addrBasic VARCHAR2(50),
+    addrDetail VARCHAR2(50)
+    
 );

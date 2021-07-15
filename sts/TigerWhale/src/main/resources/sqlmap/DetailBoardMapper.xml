@@ -44,4 +44,10 @@
 		select DISTINCT m_month1,  m_month2   from Y_M_BOARD where bno = #{bno}
 	</select>
 
+
+
+
+	<select id="getY_M_One" resultType="Y_M_boardVO">
+		select * from Y_M_Board where rno = #{rno}
+	</select>
 </mapper>

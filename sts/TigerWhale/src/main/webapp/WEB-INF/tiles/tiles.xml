@@ -76,11 +76,7 @@
 	</definition>
 	
 	<definition name="*/*/*" extends="templateBasic">
-<<<<<<< HEAD
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
-=======
-		<put-attribute name="body" value="/WEB-INF/views//{1}/{2}/{3}.jsp" />
->>>>>>> ddb4752653b57140e91347fa7d1db418bea73702
 	</definition> 
 </tiles-definitions>  
 

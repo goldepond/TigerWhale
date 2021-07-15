@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tigerWhale.command.replyBoardVO;
+import com.tigerWhale.command.ReplyBoardVO;
 import com.tigerWhale.reply.mapper.ReplyMapper;
-import com.tigerWhale.util.Criteria;
+import com.tigerWhale.util.ReplyCriteria;
 
 @Service("replyService") 
 public class ReplyServiceImpl implements ReplyService {
@@ -15,12 +15,12 @@ public class ReplyServiceImpl implements ReplyService {
 	@Autowired
 	private ReplyMapper replymapper;
 	@Override
-	public int regist(replyBoardVO vo) {
+	public int regist(ReplyBoardVO vo) {
 		return replymapper.regist(vo);
 	}
 
 	@Override
-	public ArrayList<replyBoardVO> getList(int bno, Criteria cri) {
+	public ArrayList<ReplyBoardVO> getList(int bno, ReplyCriteria cri) {
 		// TODO Auto-generated method stub
 		return replymapper.getList(bno, cri);
 	}
@@ -32,19 +32,19 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public int pwCheck(replyBoardVO vo) {
+	public int pwCheck(ReplyBoardVO vo) {
 		// TODO Auto-generated method stub
 		return replymapper.pwCheck(vo);
 	}
 
 	@Override
-	public int update(replyBoardVO vo) {
+	public int update(ReplyBoardVO vo) {
 		// TODO Auto-generated method stub
 		return replymapper.update(vo);
 	}
 
 	@Override
-	public int delete(replyBoardVO vo) {
+	public int delete(ReplyBoardVO vo) {
 		// TODO Auto-generated method stub
 		return replymapper.delete(vo);
 	}

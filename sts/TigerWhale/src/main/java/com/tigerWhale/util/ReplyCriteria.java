@@ -4,7 +4,7 @@ package com.tigerWhale.util;
 import lombok.Data;
 
 @Data
-public class Criteria {
+public class ReplyCriteria {
 
 	private int pageNum;
 	private int amount;
@@ -14,11 +14,11 @@ public class Criteria {
 	private String searchName;
 		
 	
-	public Criteria() {
+	public ReplyCriteria() {
 		this(1, 10);
 	}
 	
-	public Criteria(int pageNum, int amount) {
+	public ReplyCriteria(int pageNum, int amount) {
 		this.pageNum = pageNum;
 		this.amount = amount;
 	}

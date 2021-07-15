@@ -8,23 +8,23 @@ import com.tigerWhale.command.MainBoardVO;
 import com.tigerWhale.command.UserIMGBoardVO;
 import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.command.Y_M_boardVO;
-import com.tigerWhale.command.catagoryBoardVO;
-import com.tigerWhale.command.detailBoardVO;
-import com.tigerWhale.command.replyBoardVO;
-import com.tigerWhale.command.textBoardVO;
+import com.tigerWhale.command.CategoryBoardVO;
+import com.tigerWhale.command.DetailBoardVO;
+import com.tigerWhale.command.ReplyBoardVO;
+import com.tigerWhale.command.TextBoardVO;
 
 
-public interface detailBoardService {
-	public catagoryBoardVO getcatagory(int bno);
+public interface DetailBoardService {
+	public CategoryBoardVO getCategory(int bno);
 	public ArrayList<D_T_boardVO> getD_T_board(int bno);
-	public ArrayList<detailBoardVO> getBoardDetail(int bno);
+	public ArrayList<DetailBoardVO> getBoardDetail(int bno);
 	public MainBoardVO getMainDetail(int bno);
-	public ArrayList<replyBoardVO> getrepyBoard(int bno);
+	public ArrayList<ReplyBoardVO> getReplyBoard(int bno);
 	public UsersVO getUserDetail(String id);
 	public ArrayList<Y_M_boardVO> getY_M_board(int bno);
 	public ArrayList<IMGBoardVO> getIMGBoard(int bno);
 	public UserIMGBoardVO getUserIMGBoard(int bno);
-	public textBoardVO getTextBoard(int bno);
+	public TextBoardVO getTextBoard(int bno);
 	
 	public ArrayList<Y_M_boardVO> getY_M_boardFisrt(int bno);
 

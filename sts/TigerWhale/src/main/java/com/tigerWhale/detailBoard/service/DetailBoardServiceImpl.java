@@ -11,22 +11,22 @@ import com.tigerWhale.command.MainBoardVO;
 import com.tigerWhale.command.UserIMGBoardVO;
 import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.command.Y_M_boardVO;
-import com.tigerWhale.command.catagoryBoardVO;
-import com.tigerWhale.command.detailBoardVO;
-import com.tigerWhale.command.replyBoardVO;
-import com.tigerWhale.command.textBoardVO;
-import com.tigerWhale.detailBoard.mapper.detailBoardMapper;
+import com.tigerWhale.command.CategoryBoardVO;
+import com.tigerWhale.command.DetailBoardVO;
+import com.tigerWhale.command.ReplyBoardVO;
+import com.tigerWhale.command.TextBoardVO;
+import com.tigerWhale.detailBoard.mapper.DetailBoardMapper;
 
-@Service("detailBoardService") // componentscan
-public class detailBoardServiceImpl implements detailBoardService {
+@Service("xxx") // componentscan
+public class DetailBoardServiceImpl implements DetailBoardService {
 
 	@Autowired
-	private detailBoardMapper detailBoardMapper;
+	private DetailBoardMapper detailBoardMapper;
 
 	@Override
-	public catagoryBoardVO getcatagory(int bno) {
+	public CategoryBoardVO getCategory(int bno) {
 		// TODO Auto-generated method stub
-		return detailBoardMapper.getcatagory(bno);
+		return detailBoardMapper.getCategory(bno);
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class detailBoardServiceImpl implements detailBoardService {
 	}
 
 	@Override
-	public ArrayList<detailBoardVO> getBoardDetail(int bno) {
+	public ArrayList<DetailBoardVO> getBoardDetail(int bno) {
 		// TODO Auto-generated method stub
 		return detailBoardMapper.getBoardDetail(bno);
 	}
@@ -47,8 +47,8 @@ public class detailBoardServiceImpl implements detailBoardService {
 	}
 
 	@Override
-	public ArrayList<replyBoardVO> getrepyBoard(int bno) {
-		return detailBoardMapper.getrepyBoard(bno);
+	public ArrayList<ReplyBoardVO> getReplyBoard(int bno) {
+		return detailBoardMapper.getReplyBoard(bno);
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class detailBoardServiceImpl implements detailBoardService {
 	}
 
 	@Override
-	public textBoardVO getTextBoard(int bno) {
+	public TextBoardVO getTextBoard(int bno) {
 		// TODO Auto-generated method stub
 		return detailBoardMapper.getTextBoard(bno);
 	}

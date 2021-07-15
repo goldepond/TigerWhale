@@ -23,35 +23,35 @@ import com.tigerWhale.command.MainBoardVO;
 import com.tigerWhale.command.UserIMGBoardVO;
 import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.command.Y_M_boardVO;
-import com.tigerWhale.command.catagoryBoardVO;
-import com.tigerWhale.command.detailBoardVO;
-import com.tigerWhale.command.replyBoardVO;
-import com.tigerWhale.command.textBoardVO;
-import com.tigerWhale.detailBoard.service.detailBoardService;
+import com.tigerWhale.command.CategoryBoardVO;
+import com.tigerWhale.command.DetailBoardVO;
+import com.tigerWhale.command.ReplyBoardVO;
+import com.tigerWhale.command.TextBoardVO;
+import com.tigerWhale.detailBoard.service.DetailBoardService;
 
 @Controller
 @RequestMapping("/detailBoard")
-public class detailBoardController {
+public class DetailBoardController {
 	
 	@Autowired
-	@Qualifier("detailBoardService")
-	private detailBoardService detailBoardService;
+	@Qualifier("xxx")
+	private DetailBoardService detailBoardService;
 	
 	
 	@RequestMapping("/detailPage")
 	public String detailPage(Model model) {
 		int bno = 1;
-		catagoryBoardVO catagoryBoardVO = detailBoardService.getcatagory(bno);
+		CategoryBoardVO categoryBoardVO = detailBoardService.getCategory(bno);
 		ArrayList<D_T_boardVO> d_T_boardVO = detailBoardService.getD_T_board(bno);
-		ArrayList<detailBoardVO> detiBoardVO = detailBoardService.getBoardDetail(bno);
+		ArrayList<DetailBoardVO> detiBoardVO = detailBoardService.getBoardDetail(bno);
 		MainBoardVO mainBoardVO = detailBoardService.getMainDetail(bno);
-		ArrayList<replyBoardVO> repyBoardVO = detailBoardService.getrepyBoard(bno);
+		ArrayList<ReplyBoardVO> repyBoardVO = detailBoardService.getReplyBoard(bno);
 		String user_ID = mainBoardVO.getUser_ID();
 		UsersVO usersVO = detailBoardService.getUserDetail(user_ID);
 		ArrayList<Y_M_boardVO> m_boardVO = detailBoardService.getY_M_board(bno);
 		ArrayList<IMGBoardVO> IMGBoardVO = detailBoardService.getIMGBoard(bno);
 		UserIMGBoardVO userIMGBoardVO = detailBoardService.getUserIMGBoard(bno);
-		textBoardVO textBoardVO  = detailBoardService.getTextBoard(bno);
+		TextBoardVO textBoardVO  = detailBoardService.getTextBoard(bno);
 		
 		ArrayList<Y_M_boardVO> m_boardVOFirst = detailBoardService.getY_M_boardFisrt(bno);
 		
@@ -64,8 +64,8 @@ public class detailBoardController {
 		model.addAttribute("d_T_boardVO", d_T_boardVO);
 		model.addAttribute("detiBoardVO", detiBoardVO);
 		model.addAttribute("mainBoardVO",mainBoardVO);
-		model.addAttribute("repyBoardVO", repyBoardVO);
-		model.addAttribute("catagoryBoardVO", catagoryBoardVO);
+		model.addAttribute("replyBoardVO", repyBoardVO);
+		model.addAttribute("categoryBoardVO", categoryBoardVO);
 		model.addAttribute("usersVO", usersVO);
 		model.addAttribute("m_boardVO", m_boardVO);
 		model.addAttribute("IMGBoardVO", IMGBoardVO);

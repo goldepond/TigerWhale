@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 마이바티스 설정파일 type에 명시된 클래스를 함축이름으로 사용합니다. -->
+
+<mapper namespace="com.tigerWhale.mainBoard.mapper.MainBoardMapper">
+	<select id="getPopularPage" resultType="MainBoardVO">
+		select ma.*
+		from mainBoard ma
+		inner join mentorBoard me
+		on ma.user_id = me.user_id
+		order by me.sellscore_avg desc
+	</select>
+	
+	<select id="getBestBoard" resultType="MainBoardVO">
+		select ma.* 
+	    from V_R_Board vr
+	    inner join mainBoard ma
+	    on vr.bno = ma.bno
+	    order by viewNum desc ,recomendNum desc
+	</select>
+	
+	<select id="getRecentBoard" resultType="MainBoardVO">
+		select * from mainBoard
+	</select>
+</mapper>

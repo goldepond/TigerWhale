@@ -91,7 +91,7 @@ end;
 select * from interestboard;
 
 begin
-for i in 1 .. 50 loop			
+for i in 1 .. 50 loop         
 insert into interestboard(
                         USER_ID,
                         C_code
@@ -136,37 +136,26 @@ end;
 
 select * from d_t_board;
 
+
 begin
 for i in 1 .. 50 loop
-insert into d_t_board(
+insert into Y_M_board(
                         bno,
                         m_day,
                         m_time1,
-                        m_time2
-                    )
-             values (
-                        i,
-                        '월',
-                        ROUND(DBMS_RANDOM.VALUE(0,24)),
-                        ROUND(DBMS_RANDOM.VALUE(0,24))
-                    );
-end loop; 
-end;
-
-
-select * from Y_M_board;
-
-begin
-for i in 1 .. 50 loop
-insert into y_M_board(
-                        bno,
+                        m_time2,
+                        rno,
                         m_YEAR1,
                         m_YEAR2,
                         m_MONTH1,
                         M_MONTH2
                     )
              values (
-                        1,
+                        i,
+                        '월',
+                        ROUND(DBMS_RANDOM.VALUE(0,24)),
+                        ROUND(DBMS_RANDOM.VALUE(0,24)),
+                        i,
                         2021,
                         2021,
                         ROUND(DBMS_RANDOM.VALUE(1,6)),
@@ -174,9 +163,6 @@ insert into y_M_board(
                     );
 end loop; 
 end;
-
-
-select * from replyboard;
 
 begin
 for i in 1 .. 50 loop
@@ -264,4 +250,5 @@ INSERT INTO FAQBOARD(
 END LOOP; 
 END;
 
+commit; --필수
 

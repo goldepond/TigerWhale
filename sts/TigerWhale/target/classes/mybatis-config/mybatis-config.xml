@@ -17,5 +17,6 @@
 		<typeAlias type="com.tigerWhale.command.UserIMGBoardVO" alias="UserIMGBoardVO" />
 		<typeAlias type="com.tigerWhale.command.FaqVO" alias="FaqVO" />
 		<typeAlias type="com.tigerWhale.command.TextBoardVO" alias="TextBoardVO" />
+		<typeAlias type="com.tigerWhale.command.PopularBoardVO" alias="PopularBoardVO" />
 	</typeAliases>
 </configuration>

@@ -1,6 +1,7 @@
 package com.tigerWhale.command;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,8 +16,8 @@ public class FaqVO {
 	private String title;
 	private String writer;
 	private String content;
-	private Timestamp regdate;
-	private Timestamp updatedate;
-	private String newdate;
+	private Date regdate;
+	private Date updatedate;
+	private String timetotext;
 	
 }

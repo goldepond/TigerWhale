@@ -140,12 +140,13 @@
                                                         <c:forEach var="vo" items="${list }">
                                                             <tr>
                                                                 <td>${vo.bno }</td>
-                                                                <td><a href="faqDetail?bno=${vo.bno }">${vo.title }</a>
+                                                                <td><a href="faqDetail?bno=${vo.bno}">${vo.title }</a>
                                                                 </td>
                                                                 <td>${vo.writer }</td>
                                                                 <td>
-                                                                    <fmt:formatDate value="${vo.regdate }"
-                                                                        pattern="yyy-MM-dd HH:mm:ss" />
+                                                                    <%-- <fmt:formatDate value="${vo.regdate }"
+                                                                        pattern="yyy-MM-dd HH:mm:ss" /> --%>
+                                                                        ${vo.timetotext}
                                                                 </td>
                                                                 <td>
                                                                     <fmt:formatDate value="${vo.updatedate }"

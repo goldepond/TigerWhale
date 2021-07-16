@@ -6,16 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.tigerWhale.users.service.UsersService;
 import com.tigerWhale.command.UsersVO;
+import com.tigerWhale.users.service.UsersService;
 
 @Controller
 @RequestMapping("/users/*")
@@ -47,41 +43,21 @@ public class LoginController {
 			return "mypage/mypage";
 	}
 	
-	//중복처리메서드
-	@ResponseBody
-	@PostMapping(value = "/idCheck", produces = "application/json")
-	public int idCheck(@RequestBody UsersVO vo) {
-		
-		int result = usersService.idCheck(vo);
-		
-		return result;
-	}
-	
-	//가입요청
-	@RequestMapping(value = "/joinForm", method = RequestMethod.POST)
-	public String joinForm(UsersVO vo, RedirectAttributes RA) {
-		int result = usersService.join(vo);
-		if(result==1) {//성공
-			RA.addFlashAttribute("msg", "가입");
-			return "redirect:/users/userLogin";
-		} else { //실패
-			RA.addFlashAttribute("msg", "가입실패");
-			return "redirect:/users/userJoin";
-		}
-	}
-	
+	//로그인
 	@RequestMapping(value = "/loginForm", method = RequestMethod.POST)
 	public ModelAndView loginForm(UsersVO vo) {
-		
+		System.out.println("1");
 		UsersVO usersVO = usersService.login(vo);
-		
 		ModelAndView mv = new ModelAndView();
-		
+		System.out.println(usersVO);
 		if(usersVO != null) { //로그인 성공
 			mv.addObject("login", usersVO);
+			System.out.println("success");
 		} else { //로그인 실패
 			mv.addObject("msg", "아이디와 비밀번호를 확인하세요");
+			System.out.println("fail");
 		}
+		System.out.println("mv");
 		return mv; //디스패쳐 서블릿으로 반환
 	}
 	

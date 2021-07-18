@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tigerWhale.command.CategoryBoardVO;
 import com.tigerWhale.command.MainBoardVO;
 import com.tigerWhale.searchPage.mapper.SearchPageMapper;
 import com.tigerWhale.util.SearchPageCriteria;
@@ -14,6 +15,25 @@ public class SearchPageServiceImpl implements SearchPageService {
 
 	@Autowired
 	private SearchPageMapper searchPageMapper;
+	
+	@Override
+	public ArrayList<CategoryBoardVO> getCategory(String middleCategory) {
+		return searchPageMapper.getCategory(middleCategory);
+	}
+	@Override
+	public CategoryBoardVO getBig(int c_code) {
+		return searchPageMapper.getBig(c_code);
+	}
+	
+	@Override
+	public ArrayList<CategoryBoardVO> getMiddleList(String bigCategory) {
+		return searchPageMapper.getMiddleList(bigCategory);
+	}
+	
+	@Override
+	public ArrayList<CategoryBoardVO> getSmallList(String bigCategory) {
+		return searchPageMapper.getSmallList(bigCategory);
+	}
 	
 	@Override
 	public ArrayList<MainBoardVO> getList(SearchPageCriteria cri) {
@@ -26,6 +46,7 @@ public class SearchPageServiceImpl implements SearchPageService {
 	@Override
 	public int getTotal(SearchPageCriteria cri) {
 		return searchPageMapper.getTotal(cri);
+
 	}
 
 }

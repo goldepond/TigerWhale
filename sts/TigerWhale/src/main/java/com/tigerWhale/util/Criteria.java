@@ -3,7 +3,7 @@ import lombok.Data;
 
 @Data
 public class Criteria {
-
+//이새끼 VO니깐 Criteria{}는 데이터형이다
 	private int pageNum;
 	private int amount;
 	

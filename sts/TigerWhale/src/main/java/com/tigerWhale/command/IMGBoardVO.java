@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //기본생성자
 public class IMGBoardVO {
 	private int bno;
-	private String img; 
+	private String img;
 
 }

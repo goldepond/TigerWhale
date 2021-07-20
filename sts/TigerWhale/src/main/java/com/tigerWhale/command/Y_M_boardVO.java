@@ -16,10 +16,12 @@ public class Y_M_boardVO {
 	
 //	===============================
 	private int rno;
-	
-    private char M_day;
     private int M_time1;
     private int M_time2;
     
+    private String Money ;
     
+    private String addrZipNum;
+    private String addrBasic ;
+    private String addrDetail;
 }

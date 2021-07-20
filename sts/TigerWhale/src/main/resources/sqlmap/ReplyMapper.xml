@@ -41,19 +41,19 @@
   	
   	
   	
-  	<select id="pwCheck" resultType="int">
+  	<select id="dddpwCheck" resultType="int">
   		select count(*) as count 
   		from replyBoard where orderNum = #{orderNum} and user_ID = #{user_ID}
   	</select>
   	
-  	<update id="update">
+  	<update id="ddupdate">
   		update replyBoard
   		set reply = #{reply},
   			R_updateDate = sysdate
   		where orderNum = #{orderNum}
   	</update>
   	
-  	<delete id="delete">
+  	<delete id="ddddelete">
         delete
         from replyBoard
 	where orderNum = #{orderNum}

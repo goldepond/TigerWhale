@@ -113,13 +113,11 @@
 												<span class="package-price">${textBoardVO.text1} 공통 안내 정보</span> <span class="package-type">Standard</span>
 											</div>
 										</div>
+
 										<c:forEach var="vo" items="${m_boardVO}" varStatus="status">
-											<form action="detailBuy" method="post" class="tab-content">
+											<form action="detailBuy" method="post" class="tab-pane fade" id="menu${status.count}">
 												<input type="hidden" name="bno" value="${m_boardVO.get(0).bno}">
-
-
-												<div id="menu${status.count}" class="tab-pane fade">
-
+												<div>
 													<div class="package-header">
 														<span class="package-price">${vo.money}원</span> <span class="package-type">Standard</span>
 													</div>

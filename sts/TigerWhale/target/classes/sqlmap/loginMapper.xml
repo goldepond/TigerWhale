@@ -18,7 +18,7 @@
 		from USERBOARD where user_ID = #{user_ID} and user_PW = #{user_PW}
 	</select>
 	
-	<select id="getInfo" resultType="UserInfo">
+	<select id="getInfo" resultType="UsersVO">
 		select user_id,
 			user_ID,
     		user_PW,

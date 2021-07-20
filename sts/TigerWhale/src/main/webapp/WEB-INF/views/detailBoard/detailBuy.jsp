@@ -33,7 +33,7 @@
 									<div class="tab-content">
 										<div id="home" class="tab-pane fade in active">
 											<div class="package-header">
-												<span class="package-price">50,000원</span> <span class="package-type">Standard</span>
+												<span class="package-price">${ymBoardVO.money}원</span> <span class="package-type">Standard</span>
 											</div>
 											<div class="package-body">
 												<div class="GigPackageOption">
@@ -49,7 +49,8 @@
 													</div>
 													<div class="address">
 														<span> - 만남장소</span>
-														<p>경기도 성남시 분당구 중앙공원로 54</p>
+														<h1>${ymBoardVO.addrBasic}</h1>
+														<h1>${ymBoardVO.addrDetail}</h1>
 													</div>
 												</div>
 												<div class="user_info">
@@ -76,7 +77,8 @@
 																<input type="checkbox" id="all" class="all_check"> <label for="all">신청자 동의</label>
 															</div>
 															<div class="edit_check">
-																<input type="checkbox" id="chk11" class="all_check"> <label for="all">(필수) 개인정보 제3자 제공 동의</label> <a href="##">내용보기</a>
+																<input type="checkbox" id="chk11" class="all_check"> <label for="all">(필수) 개인정보 제3자 제공 동의</label>
+																 <a href="detailTerms" onClick="window.open(this.href, '', 'width=400, height=430'); return false;">내용보기</a>
 															</div>
 														</div>
 													</div>

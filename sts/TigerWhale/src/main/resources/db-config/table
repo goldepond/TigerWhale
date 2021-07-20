@@ -250,8 +250,7 @@ create TABLE textBoard
 --게시글의 작성자가 허용한 날짜와 시간대를 저장하는 테이블
 CREATE TABLE Y_M_Board
 (
-      bno NUMBER(10) NOT NULL,
-    M_day CHAR(3),
+     bno NUMBER(10) NOT NULL,
     M_time1 NUMBER(2), -- 00:00 중 첫번째값 입력받음
     M_time2 NUMBER(2), -- 00::00중 두번째값 입력받음
     

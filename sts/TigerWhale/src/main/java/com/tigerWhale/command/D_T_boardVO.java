@@ -10,7 +10,5 @@ import lombok.NoArgsConstructor;
 public class D_T_boardVO {
 	
     private int bno ;
-    private char M_day;
-    private int M_time1;
-    private int M_time2;
+    private String M_day;
 }

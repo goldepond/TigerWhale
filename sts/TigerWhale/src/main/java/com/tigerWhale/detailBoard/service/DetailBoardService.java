@@ -29,6 +29,29 @@ public interface DetailBoardService {
 	
 //	==========================================================
 	public Y_M_boardVO getY_M_One(int bno);
+	
+	public int insertMainBoardVO(int bno ,String user_ID, int C_code, String boardType, String title, String text, int price);
+	
+	
+	public int findBno();
+	
+	public int insertText (int bno, String text1 , String text2, String text3);
 
+	public int insertY_M_boardVO(
+			int bno, int M_year1, int M_year2, int M_month1, int M_month2, int M_time1, int M_time2,
+			String Money, String addrZipNum, String addrBasic ,String addrDetail);
+	
+	
+	public ArrayList<CategoryBoardVO> getCataGoryALL();
+	public ArrayList<CategoryBoardVO> getMiddleCataGory(CategoryBoardVO vo);
+	
+	public int insertIMGBoardVO(int bno, String img);
+	
+	public int insertD_T_boardVO(int bno, String M_day);
+	
+	
+	
+	
+	
 }
 

@@ -451,9 +451,6 @@ vertical-align: middle;
                 border-top: 1px solid #E1E1E1;
                 border-bottom: 1px solid #E1E1E1;
             }
-            .input-group .form-control {
-                z-index: -50;
-            }
             .t-control .t-title {
                 width: 100px;
                 min-width: 100px;

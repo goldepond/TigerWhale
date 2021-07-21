@@ -16,11 +16,54 @@
 
 						<div class="GigMainGallery">
 							<div class="LazyLoad">
-								<c:forEach var="vo" items="${IMGBoardVO}">
-									<tr>
-										<td><img src="APP_CONSTANT.UPLOAD_PATH + "\\"+${vo.img}.jpeg"></td>
-									</tr>
-								</c:forEach>
+
+								<div id="myCarousel" class="carousel slide" data-ride="carousel">
+									<!-- Indicators -->
+									<ol class="carousel-indicators">
+																	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+										<c:forEach var="vo" items="${IMGBoardVO}" begin="1" varStatus="status">
+
+										<li data-target="#myCarousel" data-slide-to="1" value="${status.count}"></li>
+										</c:forEach>
+									</ol>
+
+									<!-- Wrapper for slides -->
+									<div class="carousel-inner" role="listbox">
+
+										<div class="item active">
+											<img src="../resources/img/detailPageImg/${IMGBoardVO[0].img}" alt="Chania" width="460" height="345">
+										</div>
+										<c:forEach var="vo" items="${IMGBoardVO}" begin="1">
+											<div class="item">
+												<img src="../resources/img/detailPageImg/${vo.img}" alt="Chania" width="460" height="345">
+											</div>
+										</c:forEach>
+
+
+									</div>
+
+									<!-- Left and right controls -->
+									<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> 
+										<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 
+										<span class="sr-only">Previous</span>
+									</a> 
+									<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"> 
+										<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 
+										<span class="sr-only">Next</span>
+									</a>
+								</div>
+
+
+
+
+
+
+
+
+
+
+
+
 							</div>
 						</div>
 
@@ -361,227 +404,267 @@
 
 
 <script>
-	$(document).ready(function() {
-		//등록이벤트
-		$("#replyRegist").click(function() {
-			//var bno = "${boardVO.bno}";
-			var bno = "1"; //글 번호
-			var reply = $("#reply").val();
-			var replyId = $("#replyID").val();
+	$(document)
+			.ready(
+					function() {
+						//등록이벤트
+						$("#replyRegist")
+								.click(
+										function() {
+											//var bno = "${boardVO.bno}";
+											var bno = "1"; //글 번호
+											var reply = $("#reply").val();
+											var replyId = $("#replyID").val();
 
-			if (reply == '' || replyId == '') {
-				alert("이름, 비밀번호, 내용은 필수입니다");
-				return; //함수종료
-			}
-			console.log(bno);
-			console.log(reply);
-			console.log(replyId);
-			$.ajax({
-				type : "post",
-				url : "../reply/replyRegist",
-				dataType : "json",
-				contentType : "application/json; charset=UTF-8",
-				data : JSON.stringify({
-					"bno" : bno,
-					"reply" : reply,
-					"user_ID" : replyId
-				}),
-				success : function(data) {
-					if (data == 1) { //성공
-						$("#reply").val("");
-						$("#replyId").val("");
+											if (reply == '' || replyId == '') {
+												alert("이름, 비밀번호, 내용은 필수입니다");
+												return; //함수종료
+											}
+											console.log(bno);
+											console.log(reply);
+											console.log(replyId);
+											$
+													.ajax({
+														type : "post",
+														url : "../reply/replyRegist",
+														dataType : "json",
+														contentType : "application/json; charset=UTF-8",
+														data : JSON.stringify({
+															"bno" : bno,
+															"reply" : reply,
+															"user_ID" : replyId
+														}),
+														success : function(data) {
+															if (data == 1) { //성공
+																$("#reply")
+																		.val("");
+																$("#replyId")
+																		.val("");
+																getList(1, true); //데이터 조회 메서드 호출
+															} else { //실패
+																alert("등록에 실패했습니다. 다시 시도하세요");
+															}
+
+														},
+														error : function(
+																status, error) {
+															alert("등록 실패입니다. 잠시 후에 다시 시도하세요");
+														}
+													});
+										})
+
+						//페이지 기능
+						var page = 1; //페이지 번호
+						var strAdd = ""; //댓글 목록 누적 변수
+
+						$("#moreList").click(function() {
+							getList(++page, false); //목록 호출 (페이지 넘버가 리셋되어야 하는경우 true)
+						})
+
 						getList(1, true); //데이터 조회 메서드 호출
-					} else { //실패
-						alert("등록에 실패했습니다. 다시 시도하세요");
-					}
 
-				},
-				error : function(status, error) {
-					alert("등록 실패입니다. 잠시 후에 다시 시도하세요");
-				}
-			});
-		})
+						//데이터 조회
+						function getList(pageNum, reset) {
 
-		//페이지 기능
-		var page = 1; //페이지 번호
-		var strAdd = ""; //댓글 목록 누적 변수
+							//var bno = "${boardVO.bno}"; 
+							var bno = "1"; //게시글 번호
 
-		$("#moreList").click(function() {
-			getList(++page, false); //목록 호출 (페이지 넘버가 리셋되어야 하는경우 true)
-		})
+							$
+									.getJSON(
+											"../reply/getList/" + bno + "/"
+													+ pageNum,
+											function(data) {
+												console.log(data);
 
-		getList(1, true); //데이터 조회 메서드 호출
+												var total = data.total; //전체게시글 수
+												var data = data.list; //목록
 
-		//데이터 조회
-		function getList(pageNum, reset) {
+												//페이지에 조건처리
+												if (page * 20 >= total) {
+													$("#moreList").css(
+															"display", "none"); //더보기 버튼 처리
+												} else {
+													$("#moreList").css(
+															"display", "block");
+												}
 
-			//var bno = "${boardVO.bno}"; 
-			var bno = "1"; //게시글 번호
+												//reset이 true라면 strAdd를 공백으로 비우고 page = 1로 변경하고 다시 호출
+												if (reset == true) {
+													strAdd = "";
+													page = 1;
+												}
 
-			$.getJSON("../reply/getList/" + bno + "/" + pageNum, function(data) {
-				console.log(data);
+												//누적할 문자열을 만들고 innerHTML형식으로 replyList아래에 삽입
 
-				var total = data.total; //전체게시글 수
-				var data = data.list; //목록
+												for (var i = 0; i < data.length; i++) {
+													data[i].timegap
+													strAdd += "<div class='reply-wrap'>";
+													strAdd += "<div class='reply-image'>";
+													strAdd += "<img src='../resources/img/userIMG/" + data[i].user_ID + ".jpg'>";
+													strAdd += "</div>";
+													strAdd += "<div class='reply-content'>";
+													strAdd += "<div class='reply-group'>";
+													strAdd += "<strong class='left'>"
+															+ data[i].user_ID
+															+ "</strong>";
+													strAdd += "<small class='left'>"
+															+ data[i].timegap
+															+ "</small>";
+													strAdd += "<a href='" + data[i].orderNum + "' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>";
+													strAdd += "<a href='" + data[i].orderNum + "' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a>";
+													strAdd += "</div>";
+													strAdd += "<p class='clearfix'>"
+															+ data[i].reply
+															+ "</p>";
+													strAdd += "</div>";
+													strAdd += "</div>";
 
-				//페이지에 조건처리
-				if (page * 20 >= total) {
-					$("#moreList").css("display", "none"); //더보기 버튼 처리
-				} else {
-					$("#moreList").css("display", "block");
-				}
+												}
 
-				//reset이 true라면 strAdd를 공백으로 비우고 page = 1로 변경하고 다시 호출
-				if (reset == true) {
-					strAdd = "";
-					page = 1;
-				}
+												$("#replyList").html(strAdd); //추가
 
-				//누적할 문자열을 만들고 innerHTML형식으로 replyList아래에 삽입
+											})
 
-				for (var i = 0; i < data.length; i++) {
-					data[i].timegap
-					strAdd += "<div class='reply-wrap'>";
-					strAdd += "<div class='reply-image'>";
-					strAdd += "<img src='../resources/img/userIMG/" + data[i].user_ID + ".jpg'>";
-					strAdd += "</div>";
-					strAdd += "<div class='reply-content'>";
-					strAdd += "<div class='reply-group'>";
-					strAdd += "<strong class='left'>" + data[i].user_ID + "</strong>";
-					strAdd += "<small class='left'>" + data[i].timegap + "</small>";
-					strAdd += "<a href='" + data[i].orderNum + "' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>";
-					strAdd += "<a href='" + data[i].orderNum + "' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a>";
-					strAdd += "</div>";
-					strAdd += "<p class='clearfix'>" + data[i].reply + "</p>";
-					strAdd += "</div>";
-					strAdd += "</div>";
+						} //end getList
 
-				}
+						//수정삭제
+						/*
+						에이잭스 실해이 더 늦게 완료가 되므로, 실제 이벤트 등록이 먼저 일어나게 됩니다. (정상 동작x)
+						부모에 on함수를 이용해서 이벤트를 걸고 이벤트를 a태그에 전파시켜서 사용하는 방법. 
+						 */
 
-				$("#replyList").html(strAdd); //추가
+						$("#replyList").on("click", "a", function() {
+							event.preventDefault(); //고유이벤트 중지
 
-			})
+							//클릭한 대상의 번호를 모달창에 저장.
+							var rno = $(this).attr("href");
+							$("#modalRno").val(rno);
 
-		} //end getList
+							//replyModify라면 수정창, replyDelete라면 삭제창의 형태로 사용
+							if ($(this).hasClass("replyModify")) { //수정창
 
-		//수정삭제
-		/*
-		에이잭스 실해이 더 늦게 완료가 되므로, 실제 이벤트 등록이 먼저 일어나게 됩니다. (정상 동작x)
-		부모에 on함수를 이용해서 이벤트를 걸고 이벤트를 a태그에 전파시켜서 사용하는 방법. 
-		 */
+								$(".modal-title").html("댓글수정");
+								$("#modalModBtn").css("display", "inline"); //수정버튼보여지도록 처리
+								$("#modalDelBtn").css("display", "none"); //삭제버튼은 숨겨지도록 처리
+								$("#modalReply").css("display", "inline"); //수정창 보여지도록
 
-		$("#replyList").on("click", "a", function() {
-			event.preventDefault(); //고유이벤트 중지
+							} else { //삭제창
 
-			//클릭한 대상의 번호를 모달창에 저장.
-			var rno = $(this).attr("href");
-			$("#modalRno").val(rno);
+								$(".modal-title").html("댓글삭제");
+								$("#modalModBtn").css("display", "none");
+								$("#modalDelBtn").css("display", "inline");
+								$("#modalReply").css("display", "none");
+							}
 
-			//replyModify라면 수정창, replyDelete라면 삭제창의 형태로 사용
-			if ($(this).hasClass("replyModify")) { //수정창
+							$("#replyModal").modal("show"); //부트스트랩 모달 함수
 
-				$(".modal-title").html("댓글수정");
-				$("#modalModBtn").css("display", "inline"); //수정버튼보여지도록 처리
-				$("#modalDelBtn").css("display", "none"); //삭제버튼은 숨겨지도록 처리
-				$("#modalReply").css("display", "inline"); //수정창 보여지도록
+						});
 
-			} else { //삭제창
+						//수정 함수
+						$("#modalModBtn")
+								.click(
+										function() {
 
-				$(".modal-title").html("댓글삭제");
-				$("#modalModBtn").css("display", "none");
-				$("#modalDelBtn").css("display", "inline");
-				$("#modalReply").css("display", "none");
-			}
+											var orderNum = $("#modalRno").val();
+											var reply = $("#modalReply").val();
+											var replyPw = $("#modalPw").val();
 
-			$("#replyModal").modal("show"); //부트스트랩 모달 함수
+											if (orderNum == '' || reply == ''
+													|| replyPw == '') {
+												alert("내용, 비밀번호는 필수 입니다");
+												return;
+											}
+											$
+													.ajax({
+														type : "post",
+														url : "../reply/update",
+														contentType : "application/json; charset=UTF-8",
+														data : JSON
+																.stringify({
+																	"orderNum" : orderNum,
+																	"reply" : reply,
+																	"user_ID" : replyPw
+																}),
+														success : function(data) {
 
-		});
+															if (data == 1) { //업데이트 성공
+																$("#modalReply")
+																		.val(""); //내용비우기
+																$("#modalPw")
+																		.val("");
+																$("#modalRno")
+																		.val("");
 
-		//수정 함수
-		$("#modalModBtn").click(function() {
+																$("#replyModal")
+																		.modal(
+																				"hide"); //모달창 내리기
+																getList(1, true); //조회 메서드 호출
+															} else { //업데이트 실패
+																alert("비밀번호를 확인하세요");
+																$("#modalPw")
+																		.val("");
+															}
 
-			var orderNum = $("#modalRno").val();
-			var reply = $("#modalReply").val();
-			var replyPw = $("#modalPw").val();
+														},
+														error : function(data) {
+															alert("수정에 실패했습니다. 관리자에게 문의하세요");
+														}
+													});
 
-			if (orderNum == '' || reply == '' || replyPw == '') {
-				alert("내용, 비밀번호는 필수 입니다");
-				return;
-			}
-			$.ajax({
-				type : "post",
-				url : "../reply/update",
-				contentType : "application/json; charset=UTF-8",
-				data : JSON.stringify({
-					"orderNum" : orderNum,
-					"reply" : reply,
-					"user_ID" : replyPw
-				}),
-				success : function(data) {
+										})
 
-					if (data == 1) { //업데이트 성공
-						$("#modalReply").val(""); //내용비우기
-						$("#modalPw").val("");
-						$("#modalRno").val("");
+						//삭제함수
+						$("#modalDelBtn")
+								.click(
+										function() {
 
-						$("#replyModal").modal("hide"); //모달창 내리기
-						getList(1, true); //조회 메서드 호출
-					} else { //업데이트 실패
-						alert("비밀번호를 확인하세요");
-						$("#modalPw").val("");
-					}
+											/*
+											1. 모달창에서 rno값, replyPw값을 얻습니다
+											2. ajax함수를 이용해서 POST방식으로 "reply/delete"요청을 보냅니다
+												필요한 값은 REST API에서 JSON형식으로 받아서 처리
+											3. 서버에서 요청을 받아서 비밀번호를 확인하고, 일치하면 삭제 진행
+											4. 비밀번호가 틀린 경우에는 0을 반환하고 경고창을 띄워줍니다.
+											 */
+											var orderNum = $("#modalRno").val();
+											var replyPw = $("#modalPw").val();
 
-				},
-				error : function(data) {
-					alert("수정에 실패했습니다. 관리자에게 문의하세요");
-				}
-			});
+											if (orderNum == '' || replyPw == '') {
+												alert("비밀번호를 입력하세요");
+												return;
+											}
+											$
+													.ajax({
+														type : "post",
+														url : "../reply/delete",
+														contentType : "application/json; charset=UTF-8",
+														data : JSON
+																.stringify({
+																	"orderNum" : orderNum,
+																	"user_ID" : replyPw
+																}),
+														success : function(data) {
+															if (data == 1) {
+																alert("삭제성공");
+																$("#modalRno")
+																		.val("");
+																$("#modalPw")
+																		.val("");
+																$("#replyModal")
+																		.modal(
+																				"hide");
+																getList(1, true);
+															} else {
+																alert("비밀번호 오류");
+																$("#modalPw")
+																		.val("");
+															}
+														},
+														error : function(data) {
+															alert("삭제 실패 문의 요망");
+														}
+													});
 
-		})
+										}); //end ready
 
-		//삭제함수
-		$("#modalDelBtn").click(function() {
-
-			/*
-			1. 모달창에서 rno값, replyPw값을 얻습니다
-			2. ajax함수를 이용해서 POST방식으로 "reply/delete"요청을 보냅니다
-				필요한 값은 REST API에서 JSON형식으로 받아서 처리
-			3. 서버에서 요청을 받아서 비밀번호를 확인하고, 일치하면 삭제 진행
-			4. 비밀번호가 틀린 경우에는 0을 반환하고 경고창을 띄워줍니다.
-			 */
-			var orderNum = $("#modalRno").val();
-			var replyPw = $("#modalPw").val();
-
-			if (orderNum == '' || replyPw == '') {
-				alert("비밀번호를 입력하세요");
-				return;
-			}
-			$.ajax({
-				type : "post",
-				url : "../reply/delete",
-				contentType : "application/json; charset=UTF-8",
-				data : JSON.stringify({
-					"orderNum" : orderNum,
-					"user_ID" : replyPw
-				}),
-				success : function(data) {
-					if (data == 1) {
-						alert("삭제성공");
-						$("#modalRno").val("");
-						$("#modalPw").val("");
-						$("#replyModal").modal("hide");
-						getList(1, true);
-					} else {
-						alert("비밀번호 오류");
-						$("#modalPw").val("");
-					}
-				},
-				error : function(data) {
-					alert("삭제 실패 문의 요망");
-				}
-			});
-
-		}); //end ready
-
-	});
+					});
 </script>

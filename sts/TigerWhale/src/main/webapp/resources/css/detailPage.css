@@ -428,3 +428,73 @@ vertical-align: middle;
         width: 100%;
      }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .write-wrap .titlebox {
+                width: 250px;
+                text-align: center;
+                height: 40px;
+                line-height: 40px;
+                margin: 70px auto;
+                border-top: 1px solid #E1E1E1;
+                border-bottom: 1px solid #E1E1E1;
+            }
+            .t-control .t-title {
+                width: 100px;
+                min-width: 100px;
+                /*화면줄었을때 최소크기*/
+                vertical-align: middle;
+                /*테이블에서 세로 가운대정렬*/
+            }
+
+            /*input 요소의 넓이만 선택*/
+            .t-control input {
+                width: 200px;
+                display: inline;
+                /*인라인요소로 변경한다*/
+            }
+
+            /*개발자 도구에서 input-sm의 정렬을 푼다*/
+            .t-control .input-sm {
+                height: auto;
+                line-height: normal;
+            }
+
+            .input-group-addon {
+                background-color: white;
+                border: none;
+                vertical-align: middle;
+                padding-top: 0px;
+            }
+
+            /*td의 아래만 밑줄*/
+            .t-control td {
+                border-bottom: 1px solid #E1E1E1;
+            }
+
+            .titlefoot {
+                text-align: center;
+                margin: 30px auto;
+                /*박스의 가운데정렬*/
+                width: 50%;
+                /*크기 50%*/
+            }
+
+            .option,
+            .btn_option {
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid black;
+            }

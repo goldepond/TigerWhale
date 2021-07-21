@@ -5,6 +5,25 @@
 
 <mapper namespace="com.tigerWhale.searchPage.mapper.SearchPageMapper">
 
+	<!-- 카테고리바 타이틀 조회 -->
+	<select id="getCategory" resultType="CategoryBoardVO">
+		select * from CATEGORYBOARD where middleCategory = #{middleCategory}
+	</select>
+	<select id="getBig" resultType="CategoryBoardVO">
+		select * from CATEGORYBOARD where c_code = #{c_code}
+	</select>
+	
+	<!-- 타이틀에 속한 미들카테고리 리스트 조회 -->
+	<select id="getMiddleList" resultType="CategoryBoardVO">
+		select middlecategory from CATEGORYBOARD where bigCategory = #{bigCategory} group by middlecategory
+	</select>
+	
+	<!-- 미들카테고리에 속하는 스몰카테고리 리스트 조회 -->
+	<select id="getSmallList" resultType="CategoryBoardVO">
+		select * from CATEGORYBOARD where bigCategory = #{bigCategory}
+	</select>
+
+	<!-- 카테고리에 맞는 게시글 조회 -->
 	<select id="getList" resultType="MainBoardVO">
 		<![CDATA[
 		select * 
@@ -12,8 +31,14 @@
 					 a.* 
 			  from (select *
 			  		from (select *
-			  				from MAINBOARD
-			  				where c_code = #{C_code})
+			  				from MAINBOARD inner join categoryboard on mainboard.c_code = categoryboard.c_code
+			  				where
+		]]>
+					<if test="searchType == 'c_code'">mainboard.c_code = #{c_code}</if>
+					<if test="searchType == 'bigCategory' "> bigCategory = #{typeValue}</if>
+					<if test="searchType == 'middleCategory' "> middleCategory = #{typeValue}</if>
+		<![CDATA[
+			  				)
 			  		where
 		]]>
 					<if test="searchName == null or searchName == ''">1 = 1</if>
@@ -26,11 +51,19 @@
 	</select>
 	
 	<select id="getTotal" resultType="int">
+		<![CDATA[
 		select count(*) as total
 			from (select * 
-			  		from MAINBOARD
-			  		where c_code = #{C_code})
+			  		from MAINBOARD inner join categoryboard on mainboard.c_code = categoryboard.c_code
+			  		where
+		]]>
+					<if test="searchType == 'c_code'">mainboard.c_code = #{c_code}</if>
+					<if test="searchType == 'bigCategory' ">bigCategory = #{typeValue}</if>
+					<if test="searchType == 'middleCategory' ">middleCategory = #{typeValue}</if>
+		<![CDATA[
+			  		)
 			  where
+		]]>
 		<if test="searchName == null or searchName == ''">1 = 1</if>
 		<if test="searchName != null ">text like '%' || #{searchName} || '%' or title like '%'||#{searchName} or user_ID like '%'||#{searchName}||'%'</if>
 	</select>

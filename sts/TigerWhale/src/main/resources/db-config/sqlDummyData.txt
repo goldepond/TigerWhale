@@ -148,7 +148,8 @@ insert into Y_M_board(
                         m_YEAR1,
                         m_YEAR2,
                         m_MONTH1,
-                        M_MONTH2
+                        M_MONTH2,
+                        Money,
                     )
              values (
                         i,

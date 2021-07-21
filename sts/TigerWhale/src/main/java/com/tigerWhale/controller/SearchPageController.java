@@ -25,48 +25,6 @@ public class SearchPageController {
 	private SearchPageService searchPageService;
 	private SearchPageCriteria cri = new SearchPageCriteria();
 	
-//	@RequestMapping("/searchPage")
-//	public String searchPage(@RequestParam("c_code") int c_code,
-//								Model model) {
-//		
-//		System.out.println("서치페이지 컨트롤러 통과");
-//		System.out.println("==================");
-//		cri.setC_code(c_code);
-//		
-////		조회하는 페이지의 대분류명 가져오기
-//		CategoryBoardVO categoryName = searchPageService.getCategory(cri);
-//		System.out.println(categoryName.getBigCategory());
-//		System.out.println(categoryName.toString());
-//		System.out.println("==================");
-//		
-////		미들카테고리 가져오기
-//		ArrayList<CategoryBoardVO> middleList = searchPageService.getMiddleList(categoryName.getBigCategory());
-////		for(int i = 0; i < middleList.size(); i++) {
-////			System.out.println(middleList.get(i).toString());
-////		}
-//		System.out.println("==================");
-//		
-////		스몰카테고리 가져오기
-//		ArrayList<CategoryBoardVO> smallList = searchPageService.getSmallList(categoryName.getBigCategory());
-//		for(int i = 0; i < smallList.size(); i++) {
-//			System.out.println(smallList.get(i).toString());
-//		}
-//		System.out.println("==================");
-//		
-//		ArrayList<MainBoardVO> pageList = searchPageService.getList(cri);
-//		int total = searchPageService.getTotal(cri);
-//		SearchPagePageVO pageVO = new SearchPagePageVO(cri, total);
-//		
-//		model.addAttribute("categoryList", middleList); // 미들 리스트
-//		model.addAttribute("smallList", smallList); // 스몰 리스트
-//		model.addAttribute("searchPagePageVO", pageVO); // 페이지네이션
-//		model.addAttribute("searchPageList", pageList); // 검색된 게시물 리스트
-//		System.out.println("정상처리");
-//		
-//		
-//		return "searchPage";
-//	}
-	
 	@RequestMapping("/searchPage")
 	public String bigSearch(@RequestParam("searchType") String searchType, //카테고리 분류
 							@RequestParam("typeValue") String typeValue, // 카테고리 이름

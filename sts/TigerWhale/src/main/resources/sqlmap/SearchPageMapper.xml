@@ -24,7 +24,7 @@
 	</select>
 
 	<select id="getImg" resultType="IMGBoardVO">
-		select a.bno, a.img from imgboard a inner join mainboard b on a.bno = b.bno group by a.bno, a.img having a.bno = #{bno}
+		select distinct bno, img from imgboard where bno = #{bno} order by bno asc
 	</select>
 	
 	<select id="thumbnailList" resultType="ThumbnailBoardVO">
@@ -41,7 +41,7 @@
                             inner join categoryboard b on a.c_code = b.c_code
                             where
 		]]>
-					<if test="searchType == 'c_code'">mainboard.c_code = #{c_code}</if>
+					<if test="searchType == 'c_code'">a.c_code = #{c_code}</if>
 					<if test="searchType == 'bigCategory' "> bigCategory = #{typeValue}</if>
 					<if test="searchType == 'middleCategory' "> middleCategory = #{typeValue}</if>
 		<![CDATA[
@@ -68,7 +68,7 @@
 			  				from MAINBOARD inner join categoryboard on mainboard.c_code = categoryboard.c_code
 			  				where
 		]]>
-					<if test="searchType == 'c_code'">mainboard.c_code = #{c_code}</if>
+					<if test="searchType == 'c_code'">c_code = #{c_code}</if>
 					<if test="searchType == 'bigCategory' "> bigCategory = #{typeValue}</if>
 					<if test="searchType == 'middleCategory' "> middleCategory = #{typeValue}</if>
 		<![CDATA[
@@ -87,12 +87,9 @@
 	
 	<select id="getTotal" resultType="int">
 		<![CDATA[
-		select count(*) as total
-			from (select * from
-			  		(select * from MAINBOARD inner join categoryboard on mainboard.c_code = categoryboard.c_code)
-			  		where
+		select count(*) as total from (select * from mainboard a inner join categoryboard b on a.c_code = b.c_code where
 		]]>
-					<if test="searchType == 'c_code'">mainboard.c_code = #{c_code}</if>
+					<if test="searchType == 'c_code'">a.c_code = #{c_code}</if>
 					<if test="searchType == 'bigCategory' ">bigCategory = #{typeValue}</if>
 					<if test="searchType == 'middleCategory' ">middleCategory = #{typeValue}</if>
 		<![CDATA[

@@ -15,7 +15,7 @@
 	</select>
 	
 	<select id="getSmall" resultType="CategoryBoardVO">
-		select smallCategory from CATEGORYBOARD where middleCategory = #{middleCategory}
+		select c_code, smallCategory from CATEGORYBOARD where middleCategory = #{middleCategory}
 	</select>
 
 </mapper>

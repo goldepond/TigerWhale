@@ -54,11 +54,10 @@ public interface DetailBoardMapper {
 			@Param("M_time1") int M_time1,
 			@Param("M_time2") int M_time2,
 			@Param("Money") String Money,
-			@Param("addrZipNum") String addrZipNum, 
 			@Param("addrBasic") String addrBasic ,
 			@Param("addrDetail") String addrDetail);
 	public ArrayList<CategoryBoardVO> getCataGoryALL();
 	public ArrayList<CategoryBoardVO> getMiddleCataGory(CategoryBoardVO vo);
 	public int  insertIMGBoardVO(@Param("bno") int bno,@Param("img")  String img);
-	public int insertD_T_boardVO(@Param("bno") int bno, @Param("M_day")  String M_day);
+	public int insertD_T_boardVO(@Param("M_day")  String M_day);
 }

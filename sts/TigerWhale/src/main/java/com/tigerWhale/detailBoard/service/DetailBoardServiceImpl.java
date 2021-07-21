@@ -113,9 +113,9 @@ public class DetailBoardServiceImpl implements DetailBoardService {
 	}
 
 	@Override
-	public int insertY_M_boardVO(int bno, int M_year1, int M_year2, int M_month1, int M_month2, int M_time1, int M_time2, String Money, String addrZipNum, String addrBasic, String addrDetail) {
+	public int insertY_M_boardVO(int bno, int M_year1, int M_year2, int M_month1, int M_month2, int M_time1, int M_time2, String Money, String addrBasic, String addrDetail) {
 		
-		return detailBoardMapper.insertY_M_boardVO(bno, M_year1, M_year2, M_month1, M_month2, M_time1, M_time2, Money, addrZipNum, addrBasic, addrDetail);
+		return detailBoardMapper.insertY_M_boardVO(bno, M_year1, M_year2, M_month1, M_month2, M_time1, M_time2, Money, addrBasic, addrDetail);
 	}
 
 	@Override
@@ -125,9 +125,9 @@ public class DetailBoardServiceImpl implements DetailBoardService {
 	}
 
 	@Override
-	public int insertD_T_boardVO(int bno, String M_day) {
+	public int insertD_T_boardVO( String M_day) {
 		// TODO Auto-generated method stub
-		return detailBoardMapper.insertD_T_boardVO(bno, M_day);
+		return detailBoardMapper.insertD_T_boardVO( M_day);
 	}
 
 	

@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor //기본생성자
 public class D_T_boardVO {
 	
-    private int bno ;
+    private int rno ;
     private String M_day;
 }

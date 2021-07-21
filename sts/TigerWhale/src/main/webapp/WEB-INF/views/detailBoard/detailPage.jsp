@@ -18,9 +18,8 @@
 							<div class="LazyLoad">
 								<c:forEach var="vo" items="${IMGBoardVO}">
 									<tr>
-										<td><img src="APP_CONSTANT.UPLOAD_PATH + "\\"+${vo.img}.png"></td>
+										<td><img src="APP_CONSTANT.UPLOAD_PATH + "\\"+${vo.img}.jpeg"></td>
 									</tr>
-
 								</c:forEach>
 							</div>
 						</div>

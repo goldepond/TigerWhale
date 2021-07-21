@@ -53,11 +53,11 @@ CREATE TABLE interestBoard
 CREATE TABLE mainBoard
 (
     bno NUMBER(10) PRIMARY KEY,
-    user_ID VARCHAR2(20) UNIQUE NOT NULL,
+    user_ID VARCHAR2(4000) UNIQUE NOT NULL,
     C_code NUMBER(5) UNIQUE NOT NULL,
-    boardType VARCHAR(6) NOT NULL, --게시글의 종류를 확인함 입력값은'구매','판매'
-    title VARCHAR2(30) NOT NULL,
-    text VARCHAR2(500) NOT NULL,
+    boardType VARCHAR2(4000) NOT NULL, --게시글의 종류를 확인함 입력값은'구매','판매'
+    title VARCHAR2(4000) NOT NULL,
+    text VARCHAR2(4000) NOT NULL,
     price NUMBER(10) NOT NULL,
     M_registDate DATE DEFAULT SYSDATE, --게시글등록 시간
     M_updateDate DATE DEFAULT SYSDATE -- 게시글수정 시간
@@ -237,21 +237,20 @@ create TABLE UserIMGBoard
 --설명 1,2,3
 create TABLE textBoard
 (
-   bno NUMBER(10) NOT NULL,
-   text1 VARCHAR2(500) ,
-   text2 VARCHAR2(500) ,
-   text3 VARCHAR2(500) 
+   bno NUMBER(20) NOT NULL,
+   text1 VARCHAR2(4000) ,
+   text2 VARCHAR2(4000) ,
+   text3 VARCHAR2(4000) 
 );
-
 
 
 
 --게시글의 작성자가 허용한 날짜와 시간대를 저장하는 테이블
 CREATE TABLE Y_M_Board
 (
-    bno NUMBER(10) NOT NULL,
-    M_time1 NUMBER(2), -- 00:00 중 첫번째값 입력받음
-    M_time2 NUMBER(2), -- 00::00중 두번째값 입력받음
+    bno NUMBER(20) NOT NULL,
+    M_time1 NUMBER(20), -- 00:00 중 첫번째값 입력받음
+    M_time2 NUMBER(20), -- 00::00중 두번째값 입력받음
     
     rno NUMBER(10) unique NOT NULL,
     M_year1 NUMBER(20), -- 허용기간이 시작되는 년도를 입력받음
@@ -261,14 +260,13 @@ CREATE TABLE Y_M_Board
     
     Money NUMBER(20),-- 돈
     
-    addrZipNum VARCHAR2(50),
-    addrBasic VARCHAR2(50),
-    addrDetail VARCHAR2(50)
+    addrBasic VARCHAR2(4000),
+    addrDetail VARCHAR2(4000)
     
 );
 
-create D_T_board
+create TABLE D_T_board
 (
-   bno NUMBER(10) NOT NULL,
-   img VARCHAR2(60)
+   rno NUMBER(20) NOT NULL,
+   M_day VARCHAR2(4000)
 );

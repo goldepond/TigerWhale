@@ -6,7 +6,7 @@
 <mapper namespace="com.tigerWhale.detailBoard.mapper.DetailBoardMapper">
 
 	<select id="getCategory" resultType="CategoryBoardVO">
-		select * from categoryBoard where c_code = 1
+		select * from categoryBoard where c_code = #{bno}
 	</select>
 	<select id="getD_T_board" resultType="D_T_boardVO">
 		select * from D_T_Board where bno = #{bno}
@@ -82,7 +82,7 @@
 		M_year1, M_year2, M_month1, M_month2,M_time1,M_time2,
 		Money ,  addrBasic,addrDetail)
 		values(
-		#{bno},Y_M_board_SEQ.nextval ,
+		#{bno},#{rno} ,
 		#{M_year1}, #{M_year2}, #{M_month1}, #{M_month2},#{M_time1},#{M_time2},
 		#{Money} , #{addrBasic},#{addrDetail})
 	</insert>
@@ -114,7 +114,16 @@
 
 	<insert id="insertD_T_boardVO" parameterType="map">
 		insert into D_T_board ( rno , M_day)
-		values(Y_M_board_SEQ.CURRVAL,#{ M_day})
+		values(#{rno},#{ M_day})
 	</insert>
 	
+	
+		<select id="findRno" resultType="int">
+		SELECT Y_M_BOARD_SEQ.NEXTVAL FROM DUAL
+	</select>
+	
+	
+		<select id="findC_code" resultType="int">
+			select * from categoryBoard where smallCategory Like b#{smallCategory}
+	</select>
 </mapper>

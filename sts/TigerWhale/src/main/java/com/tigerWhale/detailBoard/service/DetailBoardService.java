@@ -34,11 +34,11 @@ public interface DetailBoardService {
 	
 	
 	public int findBno();
-	
+	public int findRno();
 	public int insertText (int bno, String text1 , String text2, String text3);
 
 	public int insertY_M_boardVO(
-			int bno, int M_year1, int M_year2, int M_month1, int M_month2, int M_time1, int M_time2,
+			int bno, int rno,int M_year1, int M_year2, int M_month1, int M_month2, int M_time1, int M_time2,
 			String Money, String addrBasic ,String addrDetail);
 	
 	
@@ -47,9 +47,9 @@ public interface DetailBoardService {
 	
 	public int insertIMGBoardVO(int bno, String img);
 	
-	public int insertD_T_boardVO(String M_day);
+	public int insertD_T_boardVO(int rno,String M_day);
 	
-	
+	public int findC_code(String smallCategory);
 	
 	
 	

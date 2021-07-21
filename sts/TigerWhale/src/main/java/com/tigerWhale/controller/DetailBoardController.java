@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -90,15 +91,13 @@ public class DetailBoardController {
 	
 	
 	@RequestMapping("/detailPage")
-	public String detailPage(Model model) {
-		int bno = 56;
+	public String detailPage(@RequestParam( "bno") int bno ,Model model) {
+		System.out.println(bno);
+		//
 		CategoryBoardVO categoryBoardVO = detailBoardService.getCategory(bno);
 		System.out.println("categoryBoardVO  " + categoryBoardVO);
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
-		ArrayList<D_T_boardVO> d_T_boardVO = detailBoardService.getD_T_board(bno);
-		System.out.println("d_T_boardVO  " + d_T_boardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		ArrayList<DetailBoardVO> detiBoardVO = detailBoardService.getBoardDetail(bno);
 		System.out.println("detiBoardVO  " + detiBoardVO);
@@ -144,7 +143,6 @@ public class DetailBoardController {
 
 		
 		model.addAttribute("m_boardVOFirst", m_boardVOFirst);
-		model.addAttribute("d_T_boardVO", d_T_boardVO);
 		model.addAttribute("detiBoardVO", detiBoardVO);
 		model.addAttribute("mainBoardVO",mainBoardVO);
 		model.addAttribute("replyBoardVO", repyBoardVO);
@@ -225,6 +223,7 @@ public class DetailBoardController {
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 	
 		ArrayList<Y_M_boardVO> list = vo.getList();
+		ArrayList<D_T_boardVO> dtList = dvo.getDTlist();
 		System.out.println(list);
 		try {
 			for(int i = 0; i< list.size(); i++)
@@ -256,8 +255,18 @@ public class DetailBoardController {
 				
 				int Y_M_Result = detailBoardService.insertY_M_boardVO(
 						bno, M_year1, M_year2, M_month1, M_month2, M_time1, M_time2, 
-						Money, addrZipNum, addrBasic, addrDetail);
+						Money, addrBasic, addrDetail);
 				System.out.println("Y_M_Result" + Y_M_Result);
+				
+				
+				String M_day = dtList.get(i).getM_day();
+				System.out.println(M_day);
+				if( M_day != null)
+				{
+					int dtResult = detailBoardService.insertD_T_boardVO(M_day);
+					System.out.println(dtResult);
+				}
+				
 			}
 		} catch (Exception e) {
 			System.out.println(e);
@@ -288,34 +297,13 @@ public class DetailBoardController {
 		}
 		
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		ArrayList<D_T_boardVO> dtList = dvo.getDTlist();
-		System.out.println(dvo);
-		System.out.println(dtList);
-		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		try {
-			for(int i =0;i<dtList.size();i++)
-			{
-				String M_day = dtList.get(i).getM_day();
-				System.out.println(M_day);
-				if( M_day != null)
-				{
-					int dtResult = detailBoardService.insertD_T_boardVO(bno, M_day);
-					System.out.println(dtResult);
-				}
-			}
-			
-			
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		
-		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");		
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 		
-		return "detailBoard/detailWrite";
+		RA.addFlashAttribute("bno", bno);
+		System.out.println("값넘기기");
+		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+		return "redirect:/detailBoard/detailPage";
 		
 	}
 	

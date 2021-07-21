@@ -80,11 +80,11 @@
 		insert into Y_M_board(
 		bno, rno,
 		M_year1, M_year2, M_month1, M_month2,M_time1,M_time2,
-		Money , addrZipNum, addrBasic,addrDetail)
+		Money ,  addrBasic,addrDetail)
 		values(
 		#{bno},Y_M_board_SEQ.nextval ,
 		#{M_year1}, #{M_year2}, #{M_month1}, #{M_month2},#{M_time1},#{M_time2},
-		#{Money} , #{addrZipNum},#{addrBasic},#{addrDetail})
+		#{Money} , #{addrBasic},#{addrDetail})
 	</insert>
 
 
@@ -113,16 +113,8 @@
 
 
 	<insert id="insertD_T_boardVO" parameterType="map">
-		insert into D_T_board ( bno , M_day)
-		values(#{bno},#{ M_day})
+		insert into D_T_board ( rno , M_day)
+		values(Y_M_board_SEQ.CURRVAL,#{ M_day})
 	</insert>
-
-
-
-
-
-
-
-
-
+	
 </mapper>

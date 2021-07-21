@@ -107,19 +107,19 @@
 	}
 
 	var fileBtn = document.getElementById("fileUploadBtn");
-	var fileAdd = "";
 	var f = 0;
 	fileBtn.onclick = function() {
+	var fileAdd = "";
 		fileAdd += '파일선택:<input type="file" name="imguploadList[' + f+ '].file"><br/>'
-		$("#fileUpload").html(fileAdd);
+		$("#fileUpload").append(fileAdd);
 		f++;
 
 	}
 
 	var btn = document.getElementById("replyRegis");
-	var strAdd = "";
 	var i = 0;
 	btn.onclick = function() {
+	var strAdd = "";
 		strAdd += '<div class="option">'
 
 		strAdd += '<div class="form-group">'
@@ -288,7 +288,6 @@
 		strAdd += '<div class="form-group underSize">'
 		strAdd += '	<label for="addr-num">주소</label>'
 		strAdd += '		<div class="input-group">'
-		strAdd += '		<input type="text" class="form-control" name="list[' + i + '].addrZipNum" id="addrZipNum" placeholder="우편번호" readonly>'
 		strAdd += '		<div class="input-group-addon">'
 		strAdd += '			<button type="button" class="btn btn-primary"'
 		strAdd += '			onclick="goPopup()">주소찾기</button>'
@@ -307,7 +306,7 @@
 		strAdd += '   </div>'
 
 		strAdd += '</div>'
-		$("#addoption").html(strAdd);
+		$("#addoption").append(strAdd);
 		i++;
 
 	}

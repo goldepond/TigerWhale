@@ -19,5 +19,8 @@ public class MainBoardVO {
     private int price ;
     private Timestamp M_registDate;
     private Timestamp M_updateDate;
+    private double distance;
+    private double LA;
+    private double MA;
 
 }

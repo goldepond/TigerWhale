@@ -25,4 +25,24 @@
 	<select id="getRecentBoard" resultType="MainBoardVO">
 		select * from mainBoard
 	</select>
+	
+	<select id="getNearBoard" resultType="MainBoardVO">
+		SELECT *
+		FROM (
+		SELECT ( 6371 
+		            * acos(
+		                        cos( radians(127.030713517605 ) ) --유저 la
+		                        * cos( radians(LA) ) --조회테이블 칼럼 ma
+		                        * cos( radians( 37.6099298570224 ) - radians(MA) ) --유저 ma  -조회테이블ma
+		                        +
+		                        sin( radians(127.030713517605) ) --유저la
+		                        * sin( radians(LA) ) -- 조회테이블 ma
+		                     ) 
+		        ) AS distance , lo.*
+		FROM locationBoard lo
+		) lob
+		INNER JOIN mainBoard ma
+		on ma.user_id = lob.user_id<![CDATA[
+		WHERE distance < 3 and distance != 0 	]]>	
+	</select>
 </mapper>

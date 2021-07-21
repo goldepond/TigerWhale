@@ -16,12 +16,14 @@ public class UserAuthHandler  extends HandlerInterceptorAdapter {
 		
 		//현재 세션을 얻는다
 		HttpSession session = request.getSession();
+		System.out.println("인터셉터1");
 		
 		//로그인될ㄸ ㅐ 생성
 		UsersVO userVO =  (UsersVO)session.getAttribute("usersVO");
 		if(userVO == null)
 		{
-			response.sendRedirect(request.getContextPath()+"/users/Login");
+			System.out.println("인터셉터2");
+			response.sendRedirect(request.getContextPath()+"/users/userLogin");
 			return false;
 		}
 		else {

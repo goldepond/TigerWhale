@@ -11,13 +11,18 @@
 
 
 	<bean id="loginSuccessHandler" class="com.tigerWhale.util.interceptor.LoginSuccessHandler"></bean>
+	<bean id="MypageSessionHandler" class="com.tigerWhale.util.interceptor.UserAuthHandler"></bean>
 	<mvc:interceptors>
 
 		<mvc:interceptor>
 			<mvc:mapping path="/users/loginForm" />
 			<ref bean="loginSuccessHandler" />
 		</mvc:interceptor>
-
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/mypage/mypage"/>
+			<ref bean="MypageSessionHandler"/>
+		</mvc:interceptor>
 
 	</mvc:interceptors>
 

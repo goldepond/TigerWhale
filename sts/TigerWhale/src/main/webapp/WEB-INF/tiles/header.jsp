@@ -17,7 +17,7 @@
                             </form>
                         </div>
                         <div class="icon-set header-div">
-                            <span><a href="#"><i class="far fa-user fa-3x"></i></a></span>
+                            <span><a href="${pageContext.request.contextPath}/mypage/mypage"><i class="far fa-user fa-3x"></i></a></span>
                             <span><a href="#"><i class="far fa-clone fa-3x"></i></a></span>
                             <span><a href="#"><i class="fas fa-shopping-basket fa-3x"></i></a></span>
                         </div>

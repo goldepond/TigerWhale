@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tigerWhale.command.MainBoardVO;
+import com.tigerWhale.command.ThumbnailBoardVO;
 import com.tigerWhale.command.CategoryBoardVO;
+import com.tigerWhale.command.IMGBoardVO;
 import com.tigerWhale.searchPage.service.SearchPageService;
 import com.tigerWhale.util.SearchPageCriteria;
 import com.tigerWhale.util.SearchPagePageVO;
@@ -81,6 +83,7 @@ public class SearchPageController {
 		//화면에 넘어갈 게시물
 		String criType = "";
 		ArrayList<MainBoardVO> pageList = new ArrayList<>();
+		ArrayList<ThumbnailBoardVO> thumbnailList = new ArrayList<>();
 		int total = 0;
 //		SearchPagePageVO pageVO = new SearchPagePageVO(cri, total);
 		
@@ -112,16 +115,17 @@ public class SearchPageController {
 		total = searchPageService.getTotal(cri);
 		middleList = searchPageService.getMiddleList(bigTitle);
 		smallList = searchPageService.getSmallList(bigTitle);
-		pageList = searchPageService.getList(cri);
+		thumbnailList = searchPageService.thumbnailList(cri);
 		
-		System.out.println("==============");
-		System.out.println(pageList.size());
+		System.out.println(thumbnailList.get(0).getImg());
+		System.out.println(thumbnailList.get(0).getRecnum());
+		System.out.println(thumbnailList.get(0).getViewnum());
 		
 		model.addAttribute("cri", cri);
 		model.addAttribute("bigTitle", bigTitle); //화면에 들어갈 bigCategory명
 		model.addAttribute("middleList", middleList);
 		model.addAttribute("smallList", smallList);
-		model.addAttribute("pageList", pageList);
+		model.addAttribute("thumbnailList", thumbnailList);
 		return "searchPage";
 		
 		

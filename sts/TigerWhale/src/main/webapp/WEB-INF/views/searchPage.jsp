@@ -87,7 +87,7 @@
                     <div class="css-1thgtsb elz42uf6">
                         <div class="css-vbfxgf elz42uf5">
 
-                            <c:forEach var = "pageList" items="${pageList}">
+                            <c:forEach var = "thumbnail" items="${thumbnailList}">
                                 <article class="css-1c4kgrp elz42uf4">
                                     <div data-testid="GigCard" class="css-1d3w5wq ezeyqpv18">
                                         <a href="/gig/79053" class="css-1mr8hr4 ezeyqpv17">
@@ -95,20 +95,20 @@
                                                 <div class="css-1tgcat7 exlplif3">
                                                     <div class="css-1lfj0cb exlplif2">
                                                         <div tabindex="0" data-testid="carousel-item-0" class="css-1ohlt9r exlplif0">
-                                                            <img title="${pageList.title}"
-                                                                alt="${pageList.title}"
-                                                                src="https://d2v80xjmx68n4w.cloudfront.net/gigs/42h7b1620320556.jpg" loading="lazy"
+                                                            <img title="${thumbnail.title}"
+                                                                alt="${thumbnail.title}"
+                                                                src="resources/img/userIMG/${thumbnail.img}.jpg" loading="lazy"
                                                                 class="css-d1mg3o ejobblq0">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="css-gxq4i8 ezeyqpv13">
-                                                <h3 data-testid="title" class="css-abfrks ezeyqpv9">${pageList.title}</h3>
+                                                <h3 data-testid="title" class="css-abfrks ezeyqpv9">${thumbnail.title}</h3>
                                                 <div class="css-1eoy87d ezeyqpv6">
                                                     <div class="css-s5xdrg ezeyqpv5">
                                                         <div data-testid="price" class="css-1848xfl ezeyqpv4">
-                                                            <span>${pageList.price}</span><strong>원~</strong></div>
+                                                            <span>${thumbnail.price}</span><strong>원~</strong></div>
                                                     </div>
                                                 </div>
                                                 <div class="css-mkpab3 ezeyqpv2"><span role="img" rotate="0" data-testid="rating-icon"
@@ -118,8 +118,8 @@
                                                             <path
                                                                 d="M14.43,10l-1.47-4.84c-0.29-0.95-1.63-0.95-1.91,0L9.57,10H5.12c-0.97,0-1.37,1.25-0.58,1.81l3.64,2.6l-1.43,4.61 c-0.29,0.93,0.79,1.68,1.56,1.09L12,17.31l3.69,2.81c0.77,0.59,1.85-0.16,1.56-1.09l-1.43-4.61l3.64-2.6 c0.79-0.57,0.39-1.81-0.58-1.81H14.43z">
                                                             </path>
-                                                        </svg></span>평점<span class="css-p9bq5v ezeyqpv0"></span>
-                                                    <div class="css-0 ezeyqpv1">평가개수(댓글개수)</div>
+                                                        </svg></span><span class="css-p9bq5v ezeyqpv0"></span>
+                                                    <div class="css-0 ezeyqpv1">${thumbnail.recnum}</div>
                                                 </div>
                                             </div>
                                         </a></div>

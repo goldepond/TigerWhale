@@ -65,10 +65,19 @@ public class HomeController {
 	@PostMapping(value = "/getBestBoard", consumes = "application/json")
 	public ArrayList<MainBoardVO> getRecentBoard(Model model)
 	{
-		System.out.println("컨트롤러탔음");
 		ArrayList<MainBoardVO> vo = mainBoardService.getRecentBoard();
 		model.addAttribute("RecentBoard", vo);
-		System.out.println("베스트컨트롤러");
+		return vo;
+	}
+	
+	@ResponseBody
+	@PostMapping(value = "/getNearBoard", produces = "application/json", consumes = "application/json")
+	public ArrayList<MainBoardVO> getNearBoard()
+	{
+		System.out.println("컨트롤러 처음에 받았뜨!!!!!!!!!");
+		ArrayList<MainBoardVO> vo = mainBoardService.getNearBoard();
+		System.out.println("컨트롤러 마지막에 도착했드!!!!!!!");
+		System.out.println(vo);
 		return vo;
 	}
 }

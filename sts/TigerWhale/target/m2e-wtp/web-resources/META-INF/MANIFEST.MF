@@ -1,5 +1,12 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: user
 Build-Jdk: 1.8.0_281
+=======
+
+Built-By: tmdgu
+
+Build-Jdk: 1.8.0_291
+>>>>>>> 907087c7c7e68e68d1428b4deb67fd2c11d049ae
 Created-By: Maven Integration for Eclipse
 

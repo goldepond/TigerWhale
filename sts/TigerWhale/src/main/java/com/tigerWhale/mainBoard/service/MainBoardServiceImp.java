@@ -34,4 +34,12 @@ public class MainBoardServiceImp implements MainBoardService {
 		return mainBoardMapper.getRecentBoard();
 	}
 
+	@Override
+	public ArrayList<MainBoardVO> getNearBoard() {
+		
+		System.out.println("여기가 겟보드야!!");
+		System.out.println(mainBoardMapper.getNearBoard());
+		return mainBoardMapper.getNearBoard();
+	}
+
 }

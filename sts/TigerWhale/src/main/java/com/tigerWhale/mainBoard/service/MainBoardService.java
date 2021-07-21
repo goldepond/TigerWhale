@@ -10,4 +10,5 @@ public interface MainBoardService
 	public ArrayList<MainBoardVO> getPopularPage();
 	public ArrayList<MainBoardVO> getRecentBoard();
 	public ArrayList<MainBoardVO> getBestBoard();
+	public ArrayList<MainBoardVO> getNearBoard();
 }

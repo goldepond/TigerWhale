@@ -88,6 +88,9 @@
 			<div class="flozt_left nearLocalAdd" style="float: left;">
 				<!-- 스크립트 -->
 			</div>
+			
+			<button class="nearBtn boardBtn">이전</button>
+			<button class="nearBtn boardBtn">다음</button>
 		</ul>
 
 	</div>
@@ -143,25 +146,32 @@
 
 <aside class="quick-area">
 	<ul class="quick-list">
-		<li><a href="@@@">
-				<h3>전화문의</h3>
-				<p>010-123-456</p>
-		</a></li>
-		<li><a href="@@@">
-				<h3>카카오톡</h3>
-				<p>1:1상담</p>
-		</a></li>
-		<li><a href="@@@">
-				<h3>오시는길</h3>
-		</a></li>
+		<li>
+			<a href="faqBoard/faqList">
+				<h3>FAQ등록</h3>
+			</a></li>
+		<li class="kakaoCounselling">
+		</li>
 	</ul>
 </aside>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c9c2c80f44b7412a52bfb0036f525c9"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+
+        Kakao.init('9cdd93761c8771defa3902f488e93711');
+        
+        Kakao.Channel.createAddChannelButton({
+            container: document.querySelector(".kakaoCounselling"),
+            channelPublicId: '_xixkkis' // 카카오톡 채널 홈 URL에 명시된 id로 설정합니다.
+        });
+        
+    </script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9cdd93761c8771defa3902f488e93711"></script>
 <script>
             var container = document.getElementById('map');
             var options = {
-                center: new kakao.maps.LatLng(33.450701, 126.570667),
+                center: new kakao.maps.LatLng(37.6099298570224, 127.030713517605),
                 level: 3
             };
 
@@ -183,6 +193,7 @@
 				$(".recentDiv").css("display","none");
 			}
 			
+			var nearIndex = 8;
 			var popluarIndex = 8;
 			var recentIndex = 8;
 			var bestIndex = 2;
@@ -190,6 +201,7 @@
 			sessionStorage.setItem("popluarIndex",popluarIndex);
 			sessionStorage.setItem("recentIndex",recentIndex);
 			sessionStorage.setItem("bestIndex",bestIndex);
+			sessionStorage.setItem("nearIndex",nearIndex);
 			
 			
 			var boardBtn = document.querySelectorAll(".boardBtn");
@@ -233,7 +245,7 @@
 					{
 						if(e.target.innerHTML == "다음"){
 							bestIndex += 2;
-							if( bestIndex > sessionStorage.getItem("besttData")) bestIndex = (sessionStorage.getItem("bestData")-7);
+							if( bestIndex > sessionStorage.getItem("bestData")) bestIndex = (sessionStorage.getItem("bestData")-7);
 							sessionStorage.setItem("bestIndex",bestIndex);
 							getBestBoard();
 						}
@@ -244,30 +256,119 @@
 							getBestBoard();
 						}
 					}
+					else if(e.target.classList.contains("nearBtn") )
+					{
+						if(e.target.innerHTML == "다음"){
+							bestIndex += 8;
+							if( bestIndex > sessionStorage.getItem("nearData")) bestIndex = (sessionStorage.getItem("nearData")-7);
+							sessionStorage.setItem("nearIndex",nearIndex);
+							getBestBoard();
+						}
+						else if (bestIndex != 8){
+							bestIndex -= 8;
+							if(bestIndex < 8) bestIndex = 8;
+							sessionStorage.setItem("nearIndex",nearIndex);
+							getBestBoard();
+						}
+					}
 				 }
 			}
 			 
 			
 			
 			/* 내지리 주변 강의*/
-        	
-            var nearLocalAdd ="";
-            for(var i = 0; i < 8; i++) 
-            {
-                nearLocalAdd += '<li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">'
-				nearLocalAdd += '<div class="recommand-lecture">'
-				nearLocalAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/javascript.png" alt="es6">'
-				nearLocalAdd += '<div class="lecture-content">'
-				nearLocalAdd += '<p>자바스크립트 기본</p>'
-				nearLocalAdd += '</div>'
-				nearLocalAdd += '<div class="lecture-hover">'
-				nearLocalAdd += '<a href="#"></a>'
-				nearLocalAdd += '</div>'
-				nearLocalAdd += '</div>'
-			    nearLocalAdd += '</li>'
-            }
+        	function getNearBoard()
+			{
+				$.ajax({
+					type: "post",
+					url : "getNearBoard",
+					dataType: "json",
+					contentType : "application/json; charset=UTF-8",
+					success : function(data)
+					{
+						
+						var nearIndex = sessionStorage.getItem("nearIndex");
+						sessionStorage.setItem("nearData" , data.length);	
+						
+						if(data.length < 8)
+						{
+				            var nearLocalAdd ="";
+				            for(var i = 0; i < data.length; i++) 
+				            {
+				                nearLocalAdd += '<li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">'
+								nearLocalAdd += '<div class="recommand-lecture">'
+								nearLocalAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/javascript.png" alt="es6">'
+								nearLocalAdd += '<div class="lecture-content">'
+								nearLocalAdd += '<p>'+data[i].title+'</p>'
+								nearLocalAdd += '</div>'
+								nearLocalAdd += '<div class="lecture-hover">'
+								nearLocalAdd += '<a href="#"></a>'
+								nearLocalAdd += '</div>'
+								nearLocalAdd += '</div>'
+							    nearLocalAdd += '</li>'
+							    
+							    var markerPosition  = new kakao.maps.LatLng(parseFloat(data[i].ma), parseFloat(data[i].la)); 
+				                var marker = new kakao.maps.Marker({
+				                    position: markerPosition
+				                });
+				                
+				                var iwContent = '<div style="padding:5px;"> 게시글명 : '+data[i].title+' <br> <a href="https://map.kakao.com/link/to/Hello World!,'+parseFloat(data[i].ma)+','+parseFloat(data[i].la)+'" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+				                iwPosition = new kakao.maps.LatLng(parseFloat(data[i].ma), parseFloat(data[i].la)); //인포윈도우 표시 위치입니다
+	
+					            var infowindow = new kakao.maps.InfoWindow({
+					                position: iwPosition,
+					                content: iwContent
+					            });
+				                
+				                marker.setMap(map);
+				                infowindow.open(map, marker); 
+							}
+			            }else
+			            {
+			            	var nearLocalAdd ="";
+				            for(var i = nearIndex-8; i < nearIndex; i++) 
+				            {
+				                nearLocalAdd += '<li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">'
+								nearLocalAdd += '<div class="recommand-lecture">'
+								nearLocalAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/javascript.png" alt="es6">'
+								nearLocalAdd += '<div class="lecture-content">'
+								nearLocalAdd += '<p>'+data[i].title+'</p>'
+								nearLocalAdd += '</div>'
+								nearLocalAdd += '<div class="lecture-hover">'
+								nearLocalAdd += '<a href="#"></a>'
+								nearLocalAdd += '</div>'
+								nearLocalAdd += '</div>'
+							    nearLocalAdd += '</li>'
+							    
+							    var markerPosition  = new kakao.maps.LatLng(parseFloat(data[i].ma), parseFloat(data[i].la)); 
+				                var marker = new kakao.maps.Marker({
+				                    position: markerPosition
+				                });
+				                
+				                var iwContent = '<div style="padding:5px;"> 게시글명 : '+data[i].title+' <br> <a href="https://map.kakao.com/link/to/Hello World!,'+parseFloat(data[i].ma)+','+parseFloat(data[i].la)+'" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+				                iwPosition = new kakao.maps.LatLng(parseFloat(data[i].ma), parseFloat(data[i].la)); //인포윈도우 표시 위치입니다
 
-            $(".nearLocalAdd").html(nearLocalAdd);
+					            var infowindow = new kakao.maps.InfoWindow({
+					                position: iwPosition,
+					                content: iwContent
+					            });
+				                
+				                marker.setMap(map);
+				                infowindow.open(map, marker);
+			            	}
+			            }
+			            $(".nearLocalAdd").html(nearLocalAdd);
+					},
+					error : function(status,error)
+					{
+						alert("니어컨트롤러 실패");
+					}
+				});
+			}
+			
+			
+			
+			
 			
 			
 			
@@ -282,10 +383,6 @@
 					contentType : "application/json; charset=UTF-8",
 					success: function(data){
 						
-						console.log("---pop");
-	        			console.log(data);
-	        			console.log("---pop");
-					
 						var popluarIndex = sessionStorage.getItem("popluarIndex");
 						sessionStorage.setItem("popluarData" , data.length);	
 											
@@ -326,31 +423,50 @@
 					data : JSON.stringify({"bno":"1"}),
 					success: function(data){
 						
-						console.log("---rece");
-	        			console.log(data);
-	        			console.log("---rec");
 						
 						var recentIndex = sessionStorage.getItem("recentIndex");
 						sessionStorage.setItem("recentData" , data.length);	
 						
 						
 						/* 최신 게시글*/
-						var newAdd ="";
-		                for(var i = recentIndex-8; i < recentIndex; i++) 
-		                {
-		                	newAdd += '<li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">'
-		                	newAdd += '<div class="recommand-lecture">'
-		                	newAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/spring.jpg" alt="spring">'
-		                	newAdd += '<div class="lecture-content">'
-		                	newAdd += '<p>'+data[i].title+'</p>'
-		                	newAdd += '</div>'
-		                	newAdd += '<div class="lecture-hover">'
-		                	newAdd += '<a href="#"></a>'
-		                	newAdd += '</div>'
-		                	newAdd += '</div>'
-		                	newAdd += '</li>'
-		                }
-		                $(".newAdd").html(newAdd)
+						
+						if(data.length < 8)
+						{
+							var newAdd ="";
+			                for(var i = 0; i < 8; i++) 
+			                {
+			                	newAdd += '<li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">'
+			                	newAdd += '<div class="recommand-lecture">'
+			                	newAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/spring.jpg" alt="spring">'
+			                	newAdd += '<div class="lecture-content">'
+			                	newAdd += '<p>'+data[i].title+'</p>'
+			                	newAdd += '</div>'
+			                	newAdd += '<div class="lecture-hover">'
+			                	newAdd += '<a href="#"></a>'
+			                	newAdd += '</div>'
+			                	newAdd += '</div>'
+			                	newAdd += '</li>'
+			                }
+			                $(".newAdd").html(newAdd)
+						}else
+						{
+							var newAdd ="";
+			                for(var i = recentIndex-8; i < recentIndex; i++) 
+			                {
+			                	newAdd += '<li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">'
+			                	newAdd += '<div class="recommand-lecture">'
+			                	newAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/spring.jpg" alt="spring">'
+			                	newAdd += '<div class="lecture-content">'
+			                	newAdd += '<p>'+data[i].title+'</p>'
+			                	newAdd += '</div>'
+			                	newAdd += '<div class="lecture-hover">'
+			                	newAdd += '<a href="#"></a>'
+			                	newAdd += '</div>'
+			                	newAdd += '</div>'
+			                	newAdd += '</li>'
+			                }
+			                $(".newAdd").html(newAdd)
+						}
 		                
 					},
 					error : function(status,error){
@@ -372,64 +488,113 @@
 	        		contentType: "application/json; charset=UTF-8",
 	        		success: function(data){
 	        			
-	        			console.log("---beset");
-	        			console.log(data);
-	        			console.log("---beset");
-	        			
 	        			
 	        			var bestIndex = sessionStorage.getItem("bestIndex");
 						sessionStorage.setItem("bestData" , data.length);	
 	        			
 	        			/* Best 게시글 */
-						var bestAdd ="";
-			            for(var i = bestIndex-2; i < bestIndex; i++) 
-			            {
-			                bestAdd += '<div class="board-recent">'
-						    bestAdd += '<div class="content-recent">'
-							bestAdd += '<a href="#" class="profile-board">'
-							bestAdd += '<div class="profile-img">'
-							bestAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/icon_profile.png">'
-							bestAdd += '</div>'
-							bestAdd += '<div class="profile-info">'
-							bestAdd += '<span class="profile-name">'+data[i].user_ID+'</span> <span class="regist-time">1만년 전</span>'
-							bestAdd += '</div>'
-							bestAdd += '</a>'
-							bestAdd += '<div class="content-detail">'
-							bestAdd += '<a href="#" class="content-title"> <strong class="title-font">'+data[i].title+'</strong>'
-							bestAdd += '</a> <a href="#" class="content-text">'+data[i].text+'</a>'
-							bestAdd += '</div>'
-							bestAdd += '<div class="content-comment">'
-							bestAdd += '<span class="select-count"> 조회수 <em>10,000,000</em>'
-							bestAdd += '</span> <span class="review-count"> 리뷰수 <em>6,000,000</em>'
-							bestAdd += '</span>'
-							bestAdd += '</div>'
-						    bestAdd += '</div>'
-						    bestAdd += '<div class="thumbnail-recent">'
-							bestAdd += '<div class="thumbnail-recent">'
-							bestAdd += '<div class="thumbnail-area">'
-							bestAdd += '<a href="#" class="thumbnail-inner"> <img class="img-post" alt="postthumbnail" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content1.jpg" width="167" height="167">'
-							bestAdd += '</a> <a href="#" class="button-more-img"> <i class="sp_common icon_more"><span class="blind">글 썸네일 펼치기</span></i>'
-							bestAdd += '</a>'
-							bestAdd += '<div class="plus-thumbnail-list">'
-							bestAdd += '<a href="#" class="list-inner">'
-							bestAdd += '<div class="plus-list">'
-							bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content2.jpg">'
-							bestAdd += '</div>'
-							bestAdd += '<div class="plus-list">'
-							bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content3.jpg">'
-							bestAdd += '</div>'
-							bestAdd += '<div class="plus-list">'
-							bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content4.jfif">'
-							bestAdd += '</div>'
-							bestAdd += '</a>'
-							bestAdd += '</div>'
-							bestAdd += '</div>'
-							bestAdd += '</div>'
-						    bestAdd += '</div>'
-					        bestAdd += '</div>'
-			            }
-			
-			            $(".bestAdd").html(bestAdd);
+	        			if(data.length < 2)
+	        			{
+							var bestAdd ="";
+				            for(var i = 0; i < 2; i++) 
+				            {
+				                bestAdd += '<div class="board-recent">'
+							    bestAdd += '<div class="content-recent">'
+								bestAdd += '<a href="#" class="profile-board">'
+								bestAdd += '<div class="profile-img">'
+								bestAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/icon_profile.png">'
+								bestAdd += '</div>'
+								bestAdd += '<div class="profile-info">'
+								bestAdd += '<span class="profile-name">'+data[i].user_ID+'</span> <span class="regist-time">1만년 전</span>'
+								bestAdd += '</div>'
+								bestAdd += '</a>'
+								bestAdd += '<div class="content-detail">'
+								bestAdd += '<a href="#" class="content-title"> <strong class="title-font">'+data[i].title+'</strong>'
+								bestAdd += '</a> <a href="#" class="content-text">'+data[i].text+'</a>'
+								bestAdd += '</div>'
+								bestAdd += '<div class="content-comment">'
+								bestAdd += '<span class="select-count"> 조회수 <em>10,000,000</em>'
+								bestAdd += '</span> <span class="review-count"> 리뷰수 <em>6,000,000</em>'
+								bestAdd += '</span>'
+								bestAdd += '</div>'
+							    bestAdd += '</div>'
+							    bestAdd += '<div class="thumbnail-recent">'
+								bestAdd += '<div class="thumbnail-recent">'
+								bestAdd += '<div class="thumbnail-area">'
+								bestAdd += '<a href="#" class="thumbnail-inner"> <img class="img-post" alt="postthumbnail" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content1.jpg" width="167" height="167">'
+								bestAdd += '</a> <a href="#" class="button-more-img"> <i class="sp_common icon_more"><span class="blind">글 썸네일 펼치기</span></i>'
+								bestAdd += '</a>'
+								bestAdd += '<div class="plus-thumbnail-list">'
+								bestAdd += '<a href="#" class="list-inner">'
+								bestAdd += '<div class="plus-list">'
+								bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content2.jpg">'
+								bestAdd += '</div>'
+								bestAdd += '<div class="plus-list">'
+								bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content3.jpg">'
+								bestAdd += '</div>'
+								bestAdd += '<div class="plus-list">'
+								bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content4.jfif">'
+								bestAdd += '</div>'
+								bestAdd += '</a>'
+								bestAdd += '</div>'
+								bestAdd += '</div>'
+								bestAdd += '</div>'
+							    bestAdd += '</div>'
+						        bestAdd += '</div>'
+				            }
+				            $(".bestAdd").html(bestAdd);
+	        			}else
+	        			{
+	        				var bestAdd ="";
+				            for(var i = bestIndex-2; i < bestIndex; i++) 
+				            {
+				                bestAdd += '<div class="board-recent">'
+							    bestAdd += '<div class="content-recent">'
+								bestAdd += '<a href="#" class="profile-board">'
+								bestAdd += '<div class="profile-img">'
+								bestAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/icon_profile.png">'
+								bestAdd += '</div>'
+								bestAdd += '<div class="profile-info">'
+								bestAdd += '<span class="profile-name">'+data[i].user_ID+'</span> <span class="regist-time">1만년 전</span>'
+								bestAdd += '</div>'
+								bestAdd += '</a>'
+								bestAdd += '<div class="content-detail">'
+								bestAdd += '<a href="#" class="content-title"> <strong class="title-font">'+data[i].title+'</strong>'
+								bestAdd += '</a> <a href="#" class="content-text">'+data[i].text+'</a>'
+								bestAdd += '</div>'
+								bestAdd += '<div class="content-comment">'
+								bestAdd += '<span class="select-count"> 조회수 <em>10,000,000</em>'
+								bestAdd += '</span> <span class="review-count"> 리뷰수 <em>6,000,000</em>'
+								bestAdd += '</span>'
+								bestAdd += '</div>'
+							    bestAdd += '</div>'
+							    bestAdd += '<div class="thumbnail-recent">'
+								bestAdd += '<div class="thumbnail-recent">'
+								bestAdd += '<div class="thumbnail-area">'
+								bestAdd += '<a href="#" class="thumbnail-inner"> <img class="img-post" alt="postthumbnail" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content1.jpg" width="167" height="167">'
+								bestAdd += '</a> <a href="#" class="button-more-img"> <i class="sp_common icon_more"><span class="blind">글 썸네일 펼치기</span></i>'
+								bestAdd += '</a>'
+								bestAdd += '<div class="plus-thumbnail-list">'
+								bestAdd += '<a href="#" class="list-inner">'
+								bestAdd += '<div class="plus-list">'
+								bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content2.jpg">'
+								bestAdd += '</div>'
+								bestAdd += '<div class="plus-list">'
+								bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content3.jpg">'
+								bestAdd += '</div>'
+								bestAdd += '<div class="plus-list">'
+								bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content4.jfif">'
+								bestAdd += '</div>'
+								bestAdd += '</a>'
+								bestAdd += '</div>'
+								bestAdd += '</div>'
+								bestAdd += '</div>'
+							    bestAdd += '</div>'
+						        bestAdd += '</div>'
+				            }
+				
+				            $(".bestAdd").html(bestAdd);
+	        			}
 	        		},
 	        		error : function(status,error){
 						alert("베스트글 컨트롤러 실패");
@@ -442,7 +607,7 @@
             getBestBoard();
             getRecentBoard();
             getPopularPage();
-            
+            getNearBoard();
 		})
 	
 	

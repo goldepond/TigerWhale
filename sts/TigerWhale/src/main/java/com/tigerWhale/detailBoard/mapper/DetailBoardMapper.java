@@ -47,6 +47,7 @@ public interface DetailBoardMapper {
 	
 	public int insertY_M_boardVO(
 			@Param("bno") int bno,
+			@Param("rno")int rno,
 			@Param("M_year1") int M_year1, 
 			@Param("M_year2") int M_year2,
 			@Param("M_month1") int M_month1,
@@ -59,5 +60,7 @@ public interface DetailBoardMapper {
 	public ArrayList<CategoryBoardVO> getCataGoryALL();
 	public ArrayList<CategoryBoardVO> getMiddleCataGory(CategoryBoardVO vo);
 	public int  insertIMGBoardVO(@Param("bno") int bno,@Param("img")  String img);
-	public int insertD_T_boardVO(@Param("M_day")  String M_day);
+	public int insertD_T_boardVO(@Param("rno")int rno, @Param("M_day")  String M_day);
+	public int findRno();
+	public int findC_code(String smallCategory);
 }

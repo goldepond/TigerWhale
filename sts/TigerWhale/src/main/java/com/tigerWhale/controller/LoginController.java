@@ -28,20 +28,10 @@ public class LoginController {
 	//로그인화면
 	@RequestMapping("/userLogin")
 	public String userLogin() {
+		System.out.println("로그인컨트롤러");
 		return "users/login";
 	}
-	
-	//마이페이지화면
-	@RequestMapping("/userMypage")
-	public String userMypage(HttpSession session, Model model) {
-		
-		UsersVO vo = (UsersVO) session.getAttribute("usersVO");
-		String user_ID = vo.getUser_ID();
-		
-		UsersVO userInfo = usersService.getInfo(user_ID);
-		model.addAttribute("userInfo", userInfo);
-			return "mypage/mypage";
-	}
+
 	
 	//로그인
 	@RequestMapping(value = "/loginForm", method = RequestMethod.POST)

@@ -18,7 +18,7 @@ import com.tigerWhale.command.CategoryBoardVO;
 import com.tigerWhale.header.service.HeaderService;
 
 @Controller
-@RequestMapping("/header")
+@RequestMapping({"/header", "/detailBoard/header", "/users/header"})
 public class HeadController {
 
 	@Autowired

@@ -143,7 +143,7 @@
                     var liStr = '';
                     for (var i = 0; i < data.length; i++) {
                         liStr += "<li class='list-item'>";
-                        liStr += "<a href='searchPage?searchType=bigCategory&typeValue=" + data[i].bigCategory +"' class='link-1th-item'>" + data[i].bigCategory;
+                        liStr += "<a href='${pageContext.request.contextPath}/searchPage?searchType=bigCategory&typeValue=" + data[i].bigCategory +"' class='link-1th-item'>" + data[i].bigCategory;
                         liStr += "<span class='glyphicon glyphicon-menu-right mid-open''></span>";
                         liStr += "</a>";
                         liStr += "<div class='box-2th-item' style='display:block' id='middle-con" + i + "'>";
@@ -162,7 +162,7 @@
                     console.log(bigCategory);
                     var midStr = '';
                     for (var i = 0; i < data.length; i++) {
-                        midStr += "<a href='searchPage?searchType=middleCategory&typeValue=" + data[i].middleCategory +"' class='link-2th-item'>";
+                        midStr += "<a href='${pageContext.request.contextPath}/searchPage?searchType=middleCategory&typeValue=" + data[i].middleCategory +"' class='link-2th-item'>";
                         midStr += data[i].middleCategory;
                         midStr += "<span class='glyphicon glyphicon-menu-right sm-open'></span>";
                         midStr += "</a>";
@@ -178,10 +178,10 @@
             }
             function getSmall(middleCategory) {
                 $.getJSON("header/getHead/sm/" + middleCategory, function (data) {
-                    console.log(middleCategory);
+                    console.log(data);
                     var smStr = '';
                     for (var i = 0; i < data.length; i++) {
-                        smStr += "<a href='searchPage?searchType=bigCategory&typeValue=" + data[i].smallCategory +"' class='link-3rd-item'>";
+                        smStr += "<a href='${pageContext.request.contextPath}/searchPage?searchType=c_code&typeValue=" + data[i].c_code +"' class='link-3rd-item'>";
                         smStr += data[i].smallCategory;
                         smStr += "</a>";
                     }
@@ -192,6 +192,7 @@
 
                 });
             }
+           
 
 
 

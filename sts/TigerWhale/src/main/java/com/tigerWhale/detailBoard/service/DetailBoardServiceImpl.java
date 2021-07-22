@@ -113,9 +113,9 @@ public class DetailBoardServiceImpl implements DetailBoardService {
 	}
 
 	@Override
-	public int insertY_M_boardVO(int bno, int rno,int M_year1, int M_year2, int M_month1, int M_month2, int M_time1, int M_time2, String Money, String addrBasic, String addrDetail) {
+	public int insertY_M_boardVO(int bno, int rno,String day1,String day2,String exText, int M_time1, int M_time2, String Money, String addrBasic, String addrDetail) {
 		
-		return detailBoardMapper.insertY_M_boardVO(bno,rno, M_year1, M_year2, M_month1, M_month2, M_time1, M_time2, Money, addrBasic, addrDetail);
+		return detailBoardMapper.insertY_M_boardVO(bno, rno, day1, day2, exText, M_time1, M_time2, Money, addrBasic, addrDetail);
 	}
 
 	@Override

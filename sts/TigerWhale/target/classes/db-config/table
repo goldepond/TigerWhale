@@ -53,11 +53,11 @@ CREATE TABLE interestBoard
 CREATE TABLE mainBoard
 (
     bno NUMBER(10) PRIMARY KEY,
-    user_ID VARCHAR2(20) UNIQUE NOT NULL,
+    user_ID VARCHAR2(4000) UNIQUE NOT NULL,
     C_code NUMBER(5) UNIQUE NOT NULL,
-    boardType VARCHAR(6) NOT NULL, --게시글의 종류를 확인함 입력값은'구매','판매'
-    title VARCHAR2(30) NOT NULL,
-    text VARCHAR2(500) NOT NULL,
+    boardType VARCHAR2(4000) NOT NULL, --게시글의 종류를 확인함 입력값은'구매','판매'
+    title VARCHAR2(4000) NOT NULL,
+    text VARCHAR2(4000) NOT NULL,
     price NUMBER(10) NOT NULL,
     M_registDate DATE DEFAULT SYSDATE, --게시글등록 시간
     M_updateDate DATE DEFAULT SYSDATE -- 게시글수정 시간
@@ -153,20 +153,6 @@ create table faqBOARD(
 create SEQUENCE faqBOARD_SEQ INCREMENT BY 1 START WITH 1 nocache;
 
 
---게시글의 작성자가 허용한 날짜와 시간대를 저장하는 테이블
-CREATE TABLE Y_M_Board
-(
-      bno NUMBER(10) NOT NULL,
-    M_day CHAR(3),
-    M_time1 NUMBER(2), -- 00:00 중 첫번째값 입력받음
-    M_time2 NUMBER(2), -- 00::00중 두번째값 입력받음
-    
-    rno NUMBER(10) unique NOT NULL,
-    M_year1 NUMBER(20), -- 허용기간이 시작되는 년도를 입력받음
-    M_year2 NUMBER(20),-- 허용기간이 끝나는 년도를 입력받음
-    M_month1 NUMBER(20), -- 허용기간이 시작되는 달을 입력받음 
-    M_month2 NUMBER(20) -- 허용기간이 끝나는 달을 입력받음
-);
 
 
 ======= mainBoard에 적용시키는 trigger코드 ===========
@@ -220,43 +206,3 @@ commit;
 end trigger_delete_mainBoard;
 
 =======================================
-
---이미지와 테이블을 연결
-create TABLE IMGBoard
-(
-   bno NUMBER(10) NOT NULL,
-   img VARCHAR2(60)
-);
-
-create TABLE UserIMGBoard
-(
-   bno NUMBER(10) unique NOT NULL,
-   img VARCHAR2(60)
-);
-
---설명 1,2,3
-create TABLE textBoard
-(
-   bno NUMBER(10) NOT NULL,
-   text1 VARCHAR2(500) ,
-   text2 VARCHAR2(500) ,
-   text3 VARCHAR2(500) 
-);
-
-
-
-
---게시글의 작성자가 허용한 날짜와 시간대를 저장하는 테이블
-CREATE TABLE Y_M_Board
-(
-      bno NUMBER(10) NOT NULL,
-    M_day CHAR(3),
-    M_time1 NUMBER(2), -- 00:00 중 첫번째값 입력받음
-    M_time2 NUMBER(2), -- 00::00중 두번째값 입력받음
-    
-    rno NUMBER(10) unique NOT NULL,
-    M_year1 NUMBER(20), -- 허용기간이 시작되는 년도를 입력받음
-    M_year2 NUMBER(20),-- 허용기간이 끝나는 년도를 입력받음
-    M_month1 NUMBER(20), -- 허용기간이 시작되는 달을 입력받음 
-    M_month2 NUMBER(20) -- 허용기간이 끝나는 달을 입력받음
-);

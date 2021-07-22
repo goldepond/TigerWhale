@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <section>
@@ -12,20 +11,59 @@
 					<div class="LeftModules">
 						<div class="GigBreadcrumb">
 							<!-- 카테고라ㅣ-->
-							<a href="###" class="vgig-site-map">${categoryBoardVO.bigCategory}</a><span>></span>
-							<a href="###" class="vgig-site-map">${categoryBoardVO.middleCategory}</a><span>></span>
-							<a href="###" class="vgig-site-map">${categoryBoardVO.smallCategory}</a>
+							<a href="###" class="vgig-site-map">${categoryBoardVO.bigCategory}</a><span>></span> <a href="###" class="vgig-site-map">${categoryBoardVO.middleCategory}</a><span>></span> <a href="###" class="vgig-site-map">${categoryBoardVO.smallCategory}</a>
 						</div>
 
 						<div class="GigMainGallery">
 							<div class="LazyLoad">
-								<c:forEach var="vo" items="${IMGBoardVO}">
-									<tr>
-										<td><img
-											src="../resources/img/detailPageImg/${vo.img}.jpg"></td>
-									</tr>
 
-								</c:forEach>
+								<div id="myCarousel" class="carousel slide" data-ride="carousel">
+									<!-- Indicators -->
+									<ol class="carousel-indicators">
+																	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+										<c:forEach var="vo" items="${IMGBoardVO}" begin="1" varStatus="status">
+
+										<li data-target="#myCarousel" data-slide-to="1" value="${status.count}"></li>
+										</c:forEach>
+									</ol>
+
+									<!-- Wrapper for slides -->
+									<div class="carousel-inner" role="listbox">
+
+										<div class="item active">
+											<img src="../resources/img/detailPageImg/${mainBoardVO.bno}//${IMGBoardVO[0].img}" alt="Chania" width="460" height="345">
+										</div>
+										<c:forEach var="vo" items="${IMGBoardVO}" begin="1">
+											<div class="item">
+												<img src="../resources/img/detailPageImg/${mainBoardVO.bno}/${vo.img}" alt="Chania" width="460" height="345">
+											</div>
+										</c:forEach>
+
+
+									</div>
+
+									<!-- Left and right controls -->
+									<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> 
+										<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 
+										<span class="sr-only">Previous</span>
+									</a> 
+									<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"> 
+										<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 
+										<span class="sr-only">Next</span>
+									</a>
+								</div>
+
+
+
+
+
+
+
+
+
+
+
+
 							</div>
 						</div>
 
@@ -36,25 +74,16 @@
 						</div>
 
 						<div class="GigNavigator">
-							<ul class="gig-navigation-box">
-								<li class="gig-navigation active">
-									<div class="gig-navigation-title A">
-										설명1
-										</divc>
-								</li>
+							<div class="gig-navigation-box menuBtn">
+								<button class="share-btn btn-xss btn dropdown-toggle gig-navigation active sidenav" id="gig-navigation-title_A">설명1</button>
 
-								<li class="gig-navigation active">
-									<div class="gig-navigation-title B">
-										설명2
-										</divc>
-								</li>
+								<button class="share-btn  btn dropdown-toggle gig-navigation active" id="gig-navigation-title_B">설명12</button>
 
-								<li class="gig-navigation active">
-									<div class="gig-navigation-title C">
-										설명3
-										</divc>
-								</li>
-							</ul>
+								<!--  -->
+								<button class="share-btn btn-xss btn dropdown-toggle gig-navigation active" id="gig-navigation-title_C">설명13</button>
+
+
+							</div>
 						</div>
 						<div class="GigDescription">
 							<div class="description-box">
@@ -64,9 +93,7 @@
 									<div class="GigLeftTitle A">
 										<h3>설명1</h3>
 									</div>
-
 									${textBoardVO.text1}
-
 								</div>
 								<br /> <br />
 								<div class="intro2">
@@ -102,7 +129,6 @@
 
 							</div>
 							<!------------------------------------->
-
 							<div class="GigTitle">
 								<h1>${mainBoardVO.title}</h1>
 								<div class="gig-detail-price">
@@ -112,81 +138,77 @@
 									<h5 class="margin-none1">(VAT 포함가)</h5>
 								</div>
 							</div>
-
 							<!------------------------------------->
 							<div class="GigPackages">
 								<div class="gig-detail-pacakage-panel">
 									<!-- //////////////////////////////////////////////////////// -->
 									<ul class="nav nav-tabs">
 										<li class="active"><a href="#home"> 공통 정보 </a></li>
-										<c:forEach var="vo" items="${m_boardVOFirst}"
-											varStatus="status">
-											<li><a href="#menu${status.count}"> ${status.count}
-													옵션 </a></li>
+										<c:forEach var="vo" items="${m_boardVOFirst}" varStatus="status">
+											<li><a href="#menu${status.count}"> ${status.count} 옵션 </a></li>
 										</c:forEach>
-
 									</ul>
-
 									<div class="tab-content">
-
 										<div id="home" class="tab-pane fade in active">
 											<br />
 											<div class="package-header">
-												<span class="package-price">${textBoardVO.text1} 공통
-													안내 정보</span> <span class="package-type">Standard</span>
+												<span class="package-price">${textBoardVO.text1} 공통 안내 정보</span> <span class="package-type">Standard</span>
 											</div>
 										</div>
+
 										<c:forEach var="vo" items="${m_boardVO}" varStatus="status">
-									
-										
-																		<div id="menu${status.count}" class="tab-pane fade">
+											<form action="detailBuy" method="post" class="tab-pane fade" id="menu${status.count}">
+												<input type="hidden" name="bno" value="${m_boardVO.get(0).bno}">
+												<div>
+													<div class="package-header">
+														<span class="package-price">${vo.money}원</span> <span class="package-type">Standard</span>
+													</div>
 
-												<div class="package-header">
-													<span class="package-price">50,000원</span> <span
-														class="package-type">Standard</span>
-												</div>
-
-												<div class="package-header">
-													<h3>${vo.m_year1}년${vo.m_month1}월~${vo.m_year2}년
-														${vo.m_month2}월</h3>
-												</div>
-												<div class="package-body">
-													<div class="GigPackageOption">
-
-														<select name="time" id="time-select">
-
-															<c:forEach var="bo" items="${m_boardVO}"
-																varStatus="option">
-																<option value="${bo.rno}"><h2>요일 : ${bo.m_day} / ${bo.m_time1}시 ~ ${bo.m_time2}시 까지</h2>
+													<div class="package-header">
+														<h3>${vo.day1}  ~  ${vo.day2}</h3>
+													</div>
+																										<div class="package-header">
+														<h3>${vo.exText}</h3>
+													</div>
+													<div class="package-body">
+														<div class="GigPackageOption">
+															<select id="time-select" name="rno">
+																<option value="${bo.rno}">
+																	<h2>요일 : ${bo.m_time1}시 ~ ${bo.m_time2}시 까지 ${bo.rno} 번</h2>
 																</option>
 
-															</c:forEach>
-														</select>
+																<c:forEach var="bo" items="${m_boardVO}" varStatus="option">
+																	<option value="${bo.rno}">
+																		<h2>요일 : ${bo.m_time1}시 ~ ${bo.m_time2}시 까지 ${bo.rno} 번</h2>
+																	</option>
 
-													</div>
+																</c:forEach>
+															</select>
 
-													<div class="map">
-														<div class="address">
-															<span> - 만남장소</span>
-															<p>경기도 성남시 분당구 중앙공원로 54</p>
 														</div>
-														<div id="map" class="mapinmap"></div>
 
-													</div>
+														<div class="map">
+															<div class="address">
+																<span> - 만남장소</span>
+																<p>${vo.addrBasic}</p>
+															</div>
+															<div id="map" class="mapinmap"></div>
 
-													<div class="package-direct-order">
-														<button type="submit" class="btn"><span>구매하기</span></button>
+														</div>
+
+														<div class="package-direct-order">
+															<button type="submit" class="btn">
+																<span>구매하기</span>
+															</button>
+														</div>
+
 													</div>
 
 												</div>
 
-											</div>
-										
-	
-				
-				
-
+											</form>
 										</c:forEach>
+
 									</div>
 									<!-- //////////////////////////////////////////////////////// -->
 
@@ -194,7 +216,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="RightButtomModules">
 						<ul class="hostInfo">
 							<li class="host_name">
@@ -203,19 +224,15 @@
 								</div>
 								<div class="host_name_wrap">${usersVO.user_ID}</div>
 							</li>
-							<li class="host_mail"><span class="host_info_title">이메일</span>
-								<span> : </span> <span class="host_info_txt">${usersVO.userEmail1}@n${usersVO.userEmail2}</span></li>
+							<li class="host_mail"><span class="host_info_title">이메일</span> <span> : </span> <span class="host_info_txt">${usersVO.userEmail1} @ ${usersVO.userEmail2}</span></li>
 
-							<li class="host_phone"><span class="host_info_title">전화번호</span>
-								<span> : </span> <span class="host_info_txt">${usersVO.userPhoneNumber}</span></li>
+							<li class="host_phone"><span class="host_info_title">전화번호</span> <span> : </span> <span class="host_info_txt">${usersVO.userPhoneNumber}</span></li>
 							<li class="host_intro">
 								<p class="host_intro_2">
 									${mainBoardVO.text}<br />
 								</p>
 							</li>
-
 						</ul>
-
 					</div>
 				</div>
 			</div>
@@ -234,8 +251,7 @@
 						<textarea class="form-control" rows="3" name="reply" id="reply"></textarea>
 						<div class="reply-group">
 							<div class="reply-input">
-								<input type="text" class="form-control" placeholder="이름"
-									name="replyID" id="replyID">
+								<input type="text" class="form-control" placeholder="이름" name="replyID" id="replyID">
 							</div>
 							<button type="button" class="right btn btn-info" id="replyRegist">등록하기</button>
 						</div>
@@ -250,10 +266,7 @@
 						</div>
 						<div class='reply-content'>
 							<div class='reply-group'>
-								<strong class='left'>honggildong</strong> <small class='left'>2019/12/10</small>
-								<a href='#' class='right'><span
-									class='glyphicon glyphicon-pencil'></span>수정</a> <a href='#'
-									class='right'><span class='glyphicon glyphicon-remove'></span>삭제</a>
+								<strong class='left'>honggildong</strong> <small class='left'>2019/12/10</small> <a href='#' class='right'><span class='glyphicon glyphicon-pencil'></span>수정</a> <a href='#' class='right'><span class='glyphicon glyphicon-remove'></span>삭제</a>
 							</div>
 							<p class='clearfix'>여기는 댓글영역</p>
 						</div>
@@ -262,8 +275,7 @@
 
 
 				<div id="comment_people"></div>
-				<button type="button" class="btn btn-default btn-block"
-					id="moreList" style="background-color: red">더보기</button>
+				<button type="button" class="btn btn-default btn-block" id="moreList" style="background-color: red">더보기</button>
 			</div>
 		</div>
 	</div>
@@ -277,20 +289,16 @@
 	<div class="modal-dialog modal-md">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="btn btn-default pull-right"
-					data-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-default pull-right" data-dismiss="modal">닫기</button>
 				<h4 class="modal-title">댓글수정</h4>
 			</div>
 			<div class="modal-body">
 				<!-- 수정폼 id값을 확인하세요-->
 				<div class="reply-content">
-					<textarea class="form-control" rows="4" id="modalReply"
-						placeholder="내용입력"></textarea>
+					<textarea class="form-control" rows="4" id="modalReply" placeholder="내용입력"></textarea>
 					<div class="reply-group">
 						<div class="reply-input">
-							<input type="hidden" id="modalRno"> <input
-								type="password" class="form-control" placeholder="비밀번호"
-								id="modalPw">
+							<input type="hidden" id="modalRno"> <input type="password" class="form-control" placeholder="비밀번호" id="modalPw">
 						</div>
 						<button class="right btn btn-info" id="modalModBtn">수정하기</button>
 						<button class="right btn btn-info" id="modalDelBtn">삭제하기</button>
@@ -354,8 +362,7 @@
 	});
 </script>
 
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c9c2c80f44b7412a52bfb0036f525c9"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c9c2c80f44b7412a52bfb0036f525c9"></script>
 <script>
 	var container = document.getElementById('map');
 	var options = {
@@ -408,7 +415,7 @@
 								.click(
 										function() {
 											//var bno = "${boardVO.bno}";
-											var bno = "1"; //글 번호
+											var bno = "${mainBoardVO.bno}"; //글 번호
 											var reply = $("#reply").val();
 											var replyId = $("#replyID").val();
 
@@ -463,7 +470,7 @@
 						function getList(pageNum, reset) {
 
 							//var bno = "${boardVO.bno}"; 
-							var bno = "1"; //게시글 번호
+							var bno = "${mainBoardVO.bno}"; //게시글 번호
 
 							$
 									.getJSON(
@@ -493,18 +500,10 @@
 												//누적할 문자열을 만들고 innerHTML형식으로 replyList아래에 삽입
 
 												for (var i = 0; i < data.length; i++) {
-													console.log(data[i]);
-													console
-															.log(data[i].replyId);
-													console
-															.log(data[i].orderNum);
-													console.log(data[i].reply);
-													console
-															.log(data[i].timegap);
 													data[i].timegap
 													strAdd += "<div class='reply-wrap'>";
 													strAdd += "<div class='reply-image'>";
-													strAdd += "<img src='../resources/img/userIMG/"+data[i].user_ID+".jpg'>";
+													strAdd += "<img src='../resources/img/userIMG/" + data[i].user_ID + ".jpg'>";
 													strAdd += "</div>";
 													strAdd += "<div class='reply-content'>";
 													strAdd += "<div class='reply-group'>";
@@ -514,8 +513,8 @@
 													strAdd += "<small class='left'>"
 															+ data[i].timegap
 															+ "</small>";
-													strAdd += "<a href='"+ data[i].orderNum +"' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>";
-													strAdd += "<a href='"+ data[i].orderNum +"' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a>";
+													strAdd += "<a href='" + data[i].orderNum + "' class='right replyModify'><span class='glyphicon glyphicon-pencil'></span>수정</a>";
+													strAdd += "<a href='" + data[i].orderNum + "' class='right replyDelete'><span class='glyphicon glyphicon-remove'></span>삭제</a>";
 													strAdd += "</div>";
 													strAdd += "<p class='clearfix'>"
 															+ data[i].reply
@@ -672,6 +671,3 @@
 
 					});
 </script>
-
-
-

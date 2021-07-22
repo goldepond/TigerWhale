@@ -374,6 +374,7 @@
 					},
 					error : function(status,error)
 					{
+						//alert("니어컨트롤러 실패");
 					}
 				});
 			}

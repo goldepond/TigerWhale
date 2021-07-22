@@ -13,7 +13,7 @@
 					</form>
 				</section>
 				<div class="button-group">
-					<a href="../마이페이지 수정.html" class="btn btn-cancel btn-active btn-outline-secondary">취소</a> <a href="" class="btn btn-primary">수정완료</a>
+					<a href="${pageContext.request.contextPath}/mypage/mypageModify" class="btn btn-cancel btn-active btn-outline-secondary">취소</a> <a href="" class="btn btn-primary">수정완료</a>
 
 				</div>
 			</div>

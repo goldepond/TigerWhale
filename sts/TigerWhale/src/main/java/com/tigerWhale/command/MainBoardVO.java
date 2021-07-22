@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class MainBoardVO {
     private int bno;
     private String user_ID ;
-    private int C_code;
+    private int c_code;
     private String boardType ;
     private String title ;
     private String text;

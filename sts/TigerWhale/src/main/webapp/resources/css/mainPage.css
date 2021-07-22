@@ -401,3 +401,29 @@ body .all-category, .main-fluid {
     opacity: 1;
 }
 
+/*yurim*/
+.btnGroup{
+	margin-top: 1rem;
+	text-align : center;
+}
+
+.nearDiv{
+	display:block !important;
+	clear: left;
+    text-align: center;
+}
+
+.boardBtn {
+    border: none;
+    background: transparent;
+    color: #888;
+    margin: 0 1rem 0 1rem;
+}
+.boardBtn:hover {
+    font-weight: bold;
+    color: #337ab7;
+}
+.recentBtn{
+	celar:left;
+	text-align : center;
+}

@@ -23,7 +23,7 @@
 	</select>
 	
 	<select id="getRecentBoard" resultType="MainBoardVO">
-		select * from mainBoard
+		select * from mainBoard order by M_registDate desc
 	</select>
 	
 	<select id="getNearBoard" resultType="MainBoardVO">

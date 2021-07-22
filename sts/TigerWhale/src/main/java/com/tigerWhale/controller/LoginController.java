@@ -72,6 +72,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "/loginForm", method = RequestMethod.POST)
 	public ModelAndView loginForm(UsersVO vo) {
+		System.out.println("로그인컨트롤러 탐");
 		
 		UsersVO usersVO = usersService.login(vo);
 		

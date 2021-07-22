@@ -80,7 +80,7 @@
 			<li class="col-xs-6 col-sm-4 col-md-3 col-lg-5 lecture-ad">
 				<div class="map">
 					<div class="recommand-lecture">
-						<div id="map" style="height: 200px;"></div>
+						<div id="map" style="height: 400px; width: 700px;"></div>
 
 					</div>
 				</div>
@@ -88,9 +88,8 @@
 			<div class="flozt_left nearLocalAdd" style="float: left;">
 				<!-- 스크립트 -->
 			</div>
-			
-			<button class="nearBtn boardBtn">이전</button>
-			<button class="nearBtn boardBtn">다음</button>
+			<div class="nearDiv" style="display: flex">
+			</div>
 		</ul>
 
 	</div>
@@ -105,8 +104,10 @@
 				</div>
 			</div>
 			
-		<button class="bestBtn boardBtn">이전</button>
-		<button class="bestBtn boardBtn">다음</button>
+		<div class="btnGroup">
+			<button class="bestBtn boardBtn">이전</button>
+			<button class="bestBtn boardBtn">다음</button>
+		</div>
 		</ul>
 	</div>
 	
@@ -118,11 +119,13 @@
 			<div class="newAdd">
 				<!-- 스크립트 -->
 			</div>
-
-		<button class="recentBtn boardBtn">이전</button>
-		<button class="recentBtn boardBtn">다음</button>
+			<div class = "recentBtn">
+				<button class="recentBtn boardBtn">이전</button>
+				<button class="recentBtn boardBtn">다음</button>
+			</div>
 		</ul>
 	</div>
+	
 	
 	
 	<div class="container main2">
@@ -135,8 +138,10 @@
 			<!-- 스크립트 -->
 		</ul>
 		
-		<button class="popularBtn boardBtn">이전</button>
-		<button class="popularBtn boardBtn">다음</button>
+		<div class="btnGroup">
+			<button class="popularBtn boardBtn">이전</button>
+			<button class="popularBtn boardBtn">다음</button>
+		</div>
 	</div>
 		
 			
@@ -180,14 +185,17 @@
 
 
 	<script>
-		
+		/*
+		<button class="recentBtn boardBtn">&#60;&#60; prev</button>
+		<button class="recentBtn boardBtn">next &#62;&#62;</button>
+		*/
 		$(document).ready(function() {
 			
 			
 			
 			
 			var loginCheck = sessionStorage.getItem('usersVO');
-			if(loginCheck !== null)
+			if(loginCheck == null)
 			{
 				$(".subscribeDiv").css("display","none");
 				$(".recentDiv").css("display","none");
@@ -292,6 +300,7 @@
 						
 						if(data.length < 8)
 						{
+							var nearDiv ="";
 				            var nearLocalAdd ="";
 				            for(var i = 0; i < data.length; i++) 
 				            {
@@ -325,6 +334,7 @@
 							}
 			            }else
 			            {
+			            	var nearDiv ="";
 			            	var nearLocalAdd ="";
 				            for(var i = nearIndex-8; i < nearIndex; i++) 
 				            {
@@ -358,15 +368,22 @@
 			            	}
 			            }
 			            $(".nearLocalAdd").html(nearLocalAdd);
+						nearDiv += '<button class="nearBtn boardBtn">다음</button>'
+						nearDiv += '<button class="nearBtn boardBtn">이전</button>'
+						$(".nearDiv").html(nearDiv);
 					},
 					error : function(status,error)
 					{
-						alert("니어컨트롤러 실패");
 					}
 				});
 			}
 			
-			
+		/*
+        	<div class = "recentDiv">
+			<button class="recentBtn boardBtn">&#60;&#60; prev</button>
+			<button class="recentBtn boardBtn">next &#62;&#62;</button>
+		</div>
+		*/
 			
 			
 			

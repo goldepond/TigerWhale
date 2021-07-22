@@ -18,7 +18,7 @@ import com.tigerWhale.command.CategoryBoardVO;
 import com.tigerWhale.header.service.HeaderService;
 
 @Controller
-@RequestMapping({"/header", "/detailBoard/header", "/users/header"})
+@RequestMapping("*")
 public class HeadController {
 
 	@Autowired
@@ -28,7 +28,7 @@ public class HeadController {
 
 	//조회메서드 getCate
 	@ResponseBody
-	@GetMapping(value = "/getHead/big", produces = "application/json; charset=utf8")
+	@GetMapping(value = "**/getHead/big", produces = "application/json; charset=utf8")
 	public ArrayList<CategoryBoardVO> getBig() {
 		
 		System.out.println("bigCate 출력");
@@ -38,7 +38,7 @@ public class HeadController {
 	}
 	
 	@ResponseBody
-	@GetMapping(value = "/getHead/mid/{bigCategory}", produces = "application/json; charset=utf8")
+	@GetMapping(value = "**/getHead/mid/{bigCategory}", produces = "application/json; charset=utf8")
 	public ArrayList<CategoryBoardVO> getMid(@PathVariable("bigCategory") String bigCategory) {
 		
 		System.out.println("midopen");
@@ -50,7 +50,7 @@ public class HeadController {
 	}
 
 	@ResponseBody
-	@GetMapping(value = "/getHead/mid/{bigCategory}/{big2}", produces = "application/json; charset=utf8")
+	@GetMapping(value = "**/getHead/mid/{bigCategory}/{big2}", produces = "application/json; charset=utf8")
 	public ArrayList<CategoryBoardVO> getMid(@PathVariable("bigCategory") String bigCategory,
 												@PathVariable("big2") String big2) {
 		
@@ -64,7 +64,7 @@ public class HeadController {
 	}
 	
 	@ResponseBody
-	@GetMapping(value = "/getHead/sm/{middleCategory}", produces = "application/json; charset=utf8")
+	@GetMapping(value = "**/getHead/sm/{middleCategory}", produces = "application/json; charset=utf8")
 	public ArrayList<CategoryBoardVO> getSmall(@PathVariable("middleCategory") String middleCategory) {
 		System.out.println("smopen");
 		System.out.println(middleCategory);
@@ -75,7 +75,7 @@ public class HeadController {
 	}
 	
 	@ResponseBody
-	@GetMapping(value = "/getHead/sm/{middleCategory}/{mid2}", produces = "application/json; charset=utf8")
+	@GetMapping(value = "**/getHead/sm/{middleCategory}/{mid2}", produces = "application/json; charset=utf8")
 	public ArrayList<CategoryBoardVO> getSmall(@PathVariable("middleCategory") String middleCategory,
 												@PathVariable("mid2") String mid2) {
 		System.out.println("smopen");

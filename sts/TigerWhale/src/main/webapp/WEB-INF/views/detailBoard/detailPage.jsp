@@ -31,11 +31,11 @@
 									<div class="carousel-inner" role="listbox">
 
 										<div class="item active">
-											<img src="../resources/img/detailPageImg/${IMGBoardVO[0].img}" alt="Chania" width="460" height="345">
+											<img src="../resources/img/detailPageImg/${mainBoardVO.bno}//${IMGBoardVO[0].img}" alt="Chania" width="460" height="345">
 										</div>
 										<c:forEach var="vo" items="${IMGBoardVO}" begin="1">
 											<div class="item">
-												<img src="../resources/img/detailPageImg/${vo.img}" alt="Chania" width="460" height="345">
+												<img src="../resources/img/detailPageImg/${mainBoardVO.bno}/${vo.img}" alt="Chania" width="460" height="345">
 											</div>
 										</c:forEach>
 
@@ -165,7 +165,10 @@
 													</div>
 
 													<div class="package-header">
-														<h3>${vo.m_year1}월${vo.m_month1}일~${vo.m_year2}월${vo.m_month2}일</h3>
+														<h3>${vo.day1}  ~  ${vo.day2}</h3>
+													</div>
+																										<div class="package-header">
+														<h3>${vo.exText}</h3>
 													</div>
 													<div class="package-body">
 														<div class="GigPackageOption">
@@ -412,7 +415,7 @@
 								.click(
 										function() {
 											//var bno = "${boardVO.bno}";
-											var bno = "1"; //글 번호
+											var bno = "${mainBoardVO.bno}"; //글 번호
 											var reply = $("#reply").val();
 											var replyId = $("#replyID").val();
 
@@ -467,7 +470,7 @@
 						function getList(pageNum, reset) {
 
 							//var bno = "${boardVO.bno}"; 
-							var bno = "1"; //게시글 번호
+							var bno = "${mainBoardVO.bno}"; //게시글 번호
 
 							$
 									.getJSON(

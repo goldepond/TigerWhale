@@ -41,7 +41,7 @@
 
 	<select id="getY_M_boardFisrt" resultType="Y_M_boardVO">
 		select DISTINCT
-		m_month1, m_month2 from Y_M_BOARD where bno = #{bno}
+		day1, day2 from Y_M_BOARD where bno = #{bno}
 	</select>
 
 
@@ -78,13 +78,11 @@
 
 	<insert id="insertY_M_boardVO" parameterType="map">
 		insert into Y_M_board(
-		bno, rno,
-		M_year1, M_year2, M_month1, M_month2,M_time1,M_time2,
+		bno, rno, day1 , day2 , exText, M_time1,M_time2,
 		Money ,  addrBasic,addrDetail)
 		values(
-		#{bno},#{rno} ,
-		#{M_year1}, #{M_year2}, #{M_month1}, #{M_month2},#{M_time1},#{M_time2},
-		#{Money} , #{addrBasic},#{addrDetail})
+		#{bno} , #{rno} , #{day1} , #{day2} , #{exText} , #{M_time1} , #{M_time2} ,
+		#{Money} , #{addrBasic} , #{addrDetail})
 	</insert>
 
 

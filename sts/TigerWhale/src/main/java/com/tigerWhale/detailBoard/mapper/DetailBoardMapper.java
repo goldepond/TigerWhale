@@ -48,10 +48,9 @@ public interface DetailBoardMapper {
 	public int insertY_M_boardVO(
 			@Param("bno") int bno,
 			@Param("rno")int rno,
-			@Param("M_year1") int M_year1, 
-			@Param("M_year2") int M_year2,
-			@Param("M_month1") int M_month1,
-			@Param("M_month2") int M_month2,
+			@Param("day1") String day1, 
+			@Param("day2") String day2,
+			@Param("exText") String exText,
 			@Param("M_time1") int M_time1,
 			@Param("M_time2") int M_time2,
 			@Param("Money") String Money,

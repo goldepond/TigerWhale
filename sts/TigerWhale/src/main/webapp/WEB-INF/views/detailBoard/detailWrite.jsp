@@ -9,7 +9,7 @@
 				<div class="titlebox">
 					<p>글쓰기</p>
 				</div>
-
+				<a href="freeDetail?bno=${vo.bno }">${vo.title }</a>
 				<form action="detailInsert" method="post" enctype="multipart/form-data">
 
 					<hr />
@@ -89,7 +89,7 @@
 					<hr />
 				</form>
 			</div>
-		</div>		
+		</div>
 </section>
 
 <script>
@@ -109,7 +109,7 @@
 	var fileBtn = document.getElementById("fileUploadBtn");
 	var f = 0;
 	fileBtn.onclick = function() {
-	var fileAdd = "";
+		var fileAdd = "";
 		fileAdd += '파일선택:<input type="file" name="imguploadList[' + f+ '].file"><br/>'
 		$("#fileUpload").append(fileAdd);
 		f++;
@@ -119,111 +119,29 @@
 	var btn = document.getElementById("replyRegis");
 	var i = 0;
 	btn.onclick = function() {
-	var strAdd = "";
+		var strAdd = "";
 		strAdd += '<div class="option">'
-
 		strAdd += '<div class="form-group">'
 		strAdd += '		<label>세부 금액</label>'
 		strAdd += '		<input class="form-control" name="list[' + i + '].Money" value="123">'
 		strAdd += '</div>'
+		strAdd += '<br/>'
+		strAdd += '<div class="form-group">'
+		strAdd += '<label>옵션 간단 설명</label>'
+		strAdd += '<input type="text" class="form-control" name="list[' + i + '].exText"  placeholder="간단 설명">'
+		strAdd += '</div>'
+
+		strAdd += '<hr/>'
+		strAdd += ' <div style="margin-right: 50px; display: inline-block">'
+		strAdd += '    <input type="date"  name="list[' + i + '].day1" >'
+
+		strAdd += '  </div>'
+		strAdd += '    ~'
+		strAdd += '    <div style="margin-left: 50px;  display: inline-block">'
+		strAdd += '       <input type="date"  name="list[' + i + '].day2">'
+		strAdd += '   </div>'
 
 		strAdd += '	<div class="form-group">'
-		strAdd += '    <select name="list[' + i + '].M_year1">'
-		strAdd += '       <option value="1">1월</option>'
-		strAdd += '       <option value="2">2월</option>'
-		strAdd += '       <option value="3">3월</option>'
-		strAdd += '       <option value="4">4월</option>'
-		strAdd += '       <option value="5">5월</option>'
-		strAdd += '       <option value="6">6월</option>'
-		strAdd += '       <option value="7">7월</option>'
-		strAdd += '       <option value="8">8월</option>'
-		strAdd += '       <option value="9">9월</option>'
-		strAdd += '       <option value="10">10월</option>'
-		strAdd += '       <option value="11">11월</option>'
-		strAdd += '       <option value="12">12월</option>'
-		strAdd += '    </select>'
-
-		strAdd += '    <select name="list[' + i + '].M_month1">'
-		strAdd += '       <option value="1">1일</option>'
-		strAdd += '       <option value="2">2일</option>'
-		strAdd += '       <option value="3">3일</option>'
-		strAdd += '       <option value="4">4일</option>'
-		strAdd += '       <option value="5">5일</option>'
-		strAdd += '       <option value="6">6일</option>'
-		strAdd += '       <option value="7">7일</option>'
-		strAdd += '       <option value="8">8일</option>'
-		strAdd += '       <option value="9">9일</option>'
-		strAdd += '       <option value="10">10일</option>'
-		strAdd += '       <option value="11">11월</option>'
-		strAdd += '       <option value="12">12월</option>'
-		strAdd += '       <option value="13">13일</option>'
-		strAdd += '       <option value="14">14일</option>'
-		strAdd += '       <option value="15">15일</option>'
-		strAdd += '       <option value="16">16일</option>'
-		strAdd += '       <option value="17">17일</option>'
-		strAdd += '       <option value="18">18일</option>'
-		strAdd += '       <option value="19">19일</option>'
-		strAdd += '       <option value="20">20일</option>'
-		strAdd += '       <option value="21">1일</option>'
-		strAdd += '       <option value="22">22일</option>'
-		strAdd += '       <option value="23">23일</option>'
-		strAdd += '       <option value="24">24일</option>'
-		strAdd += '       <option value="25">25일</option>'
-		strAdd += '       <option value="26">26일</option>'
-		strAdd += '       <option value="27">27일</option>'
-		strAdd += '       <option value="28">28일</option>'
-		strAdd += '       <option value="29">29일</option>'
-		strAdd += '       <option value="30">30일</option>'
-		strAdd += '    </select>'
-		strAdd += '    ~'
-
-		strAdd += '    <select name="list[' + i + '].M_year2">'
-		strAdd += '       <option value="1">1월</option>'
-		strAdd += '       <option value="2">2월</option>'
-		strAdd += '       <option value="3">3월</option>'
-		strAdd += '       <option value="4">4월</option>'
-		strAdd += '       <option value="5">5월</option>'
-		strAdd += '       <option value="6">6월</option>'
-		strAdd += '       <option value="7">7월</option>'
-		strAdd += '       <option value="8">8월</option>'
-		strAdd += '       <option value="9">9월</option>'
-		strAdd += '       <option value="10">10월</option>'
-		strAdd += '       <option value="11">11월</option>'
-		strAdd += '       <option value="12">12월</option>'
-		strAdd += '    </select>'
-
-		strAdd += '    <select name="list[' + i + '].M_month2">'
-		strAdd += '       <option value="1">1일</option>'
-			strAdd += '       <option value="2">2일</option>'
-			strAdd += '       <option value="3">3일</option>'
-			strAdd += '       <option value="4">4일</option>'
-			strAdd += '       <option value="5">5일</option>'
-			strAdd += '       <option value="6">6일</option>'
-			strAdd += '       <option value="7">7일</option>'
-			strAdd += '       <option value="8">8일</option>'
-			strAdd += '       <option value="9">9일</option>'
-			strAdd += '       <option value="10">10일</option>'
-			strAdd += '       <option value="11">11월</option>'
-			strAdd += '       <option value="12">12월</option>'
-			strAdd += '       <option value="13">13일</option>'
-			strAdd += '       <option value="14">14일</option>'
-			strAdd += '       <option value="15">15일</option>'
-			strAdd += '       <option value="16">16일</option>'
-			strAdd += '       <option value="17">17일</option>'
-			strAdd += '       <option value="18">18일</option>'
-			strAdd += '       <option value="19">19일</option>'
-			strAdd += '       <option value="20">20일</option>'
-			strAdd += '       <option value="21">1일</option>'
-			strAdd += '       <option value="22">22일</option>'
-			strAdd += '       <option value="23">23일</option>'
-			strAdd += '       <option value="24">24일</option>'
-			strAdd += '       <option value="25">25일</option>'
-			strAdd += '       <option value="26">26일</option>'
-			strAdd += '       <option value="27">27일</option>'
-			strAdd += '       <option value="28">28일</option>'
-			strAdd += '       <option value="29">29일</option>'
-			strAdd += '       <option value="30">30일</option>'
-		strAdd += '    </select>'
 
 		strAdd += '<div class="form-group">'
 		strAdd += '<hr/>'

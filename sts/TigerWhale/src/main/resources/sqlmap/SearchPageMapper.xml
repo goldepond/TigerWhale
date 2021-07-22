@@ -5,6 +5,7 @@
 
 <mapper namespace="com.tigerWhale.searchPage.mapper.SearchPageMapper">
 
+<!-- 카테고리 조회용 -->
 	<!-- 카테고리바 타이틀 조회 -->
 	<select id="getCategory" resultType="CategoryBoardVO">
 		select * from CATEGORYBOARD where middleCategory = #{middleCategory}
@@ -24,8 +25,44 @@
 	</select>
 
 	<select id="getImg" resultType="IMGBoardVO">
-		select distinct bno, img from imgboard where bno = #{bno} order by bno asc
+		SELECT bno, img FROM imgboard WHERE 1 = 1 AND ROWID IN (SELECT MAX(ROWID) FROM imgboard GROUP BY bno) order by bno asc
 	</select>
+	
+<!-- 헤더에서 검색 -->
+	<select id="keywordSearch" resultType="ThumbnailBoardVO">
+		<![CDATA[
+		select d.*, v.recnum, v.viewnum from (
+		
+			select * 
+			from (select rownum rn,
+					 	c.* 
+			  			from ( select * from( select * from (
+                            				select b.*, a.img 
+                            				from (imgboard a right outer join mainboard b on a.bno = b.bno) group by b.bno, b.user_id, b.c_code, b.boardtype, b.title, b.text, b.price, b.m_registdate, b.m_updatedate, a.bno, a.img
+                            				) a 
+                            inner join categoryboard b on a.c_code = b.c_code
+                            where 1 = 1
+					  				)
+			  		where
+		]]>
+					<if test="searchName == null or searchName == ''">1 = 1</if>
+					<if test="searchName != null ">text like '%' || #{searchName} || '%' or title like '%'||#{searchName}|| '%' or user_ID like '%'||#{searchName}||'%'</if>
+		<![CDATA[
+			  		order by bno desc) c )
+		where rn > (#{pageNum} - 1) * #{amount} and rn <= #{pageNum} * #{amount}) d
+		inner join v_r_board v on d.bno = v.bno order by d.bno desc
+		]]>
+	</select>
+	
+	<select id="searchTotal" resultType="int">
+		<![CDATA[
+		select count(*) as total from mainboard a inner join categoryboard b on a.c_code = b.c_code where
+		]]>
+		<if test="searchName == null or searchName == ''">1 = 1</if>
+		<if test="searchName != null ">text like '%'||#{searchName}||'%' or title like '%'||#{searchName}||'%' or user_ID like '%'||#{searchName}||'%'</if>
+	</select>
+	
+<!-- 게시판에서 검색 -->
 	
 	<select id="thumbnailList" resultType="ThumbnailBoardVO">
 		<![CDATA[
@@ -49,41 +86,13 @@
 			  		where
 		]]>
 					<if test="searchName == null or searchName == ''">1 = 1</if>
-					<if test="searchName != null ">text like '%' || #{searchName} || '%' or title like '%'||#{searchName} or user_ID like '%'||#{searchName}||'%'</if>
+					<if test="searchName != null ">text like '%' || #{searchName} || '%' or title like '%'||#{searchName}||'%' or user_ID like '%'||#{searchName}||'%'</if>
 		<![CDATA[
 			  		order by bno desc) c )
 		where rn > (#{pageNum} - 1) * #{amount} and rn <= #{pageNum} * #{amount}) d
 		inner join v_r_board v on d.bno = v.bno order by d.bno desc
 		]]>
 	</select>
-
-	<!-- 카테고리에 맞는 게시글 조회 -->
-	<select id="getList" resultType="MainBoardVO">
-		<![CDATA[
-		select * 
-		from (select rownum rn,
-					 a.* 
-			  from (select *
-			  		from (select *
-			  				from MAINBOARD inner join categoryboard on mainboard.c_code = categoryboard.c_code
-			  				where
-		]]>
-					<if test="searchType == 'c_code'">c_code = #{c_code}</if>
-					<if test="searchType == 'bigCategory' "> bigCategory = #{typeValue}</if>
-					<if test="searchType == 'middleCategory' "> middleCategory = #{typeValue}</if>
-		<![CDATA[
-			  				)
-			  		where
-		]]>
-					<if test="searchName == null or searchName == ''">1 = 1</if>
-					<if test="searchName != null ">text like '%' || #{searchName} || '%' or title like '%'||#{searchName} or user_ID like '%'||#{searchName}||'%'</if>
-		<![CDATA[
-			  		order by bno desc) a
-			 )
-		where rn > (#{pageNum} - 1) * #{amount} and rn <= #{pageNum} * #{amount}
-		]]>
-	</select>
-	
 	
 	<select id="getTotal" resultType="int">
 		<![CDATA[
@@ -97,7 +106,7 @@
 			  where
 		]]>
 		<if test="searchName == null or searchName == ''">1 = 1</if>
-		<if test="searchName != null ">text like '%' || #{searchName} || '%' or title like '%'||#{searchName} or user_ID like '%'||#{searchName}||'%'</if>
+		<if test="searchName != null ">text like '%' || #{searchName} || '%' or title like '%'||#{searchName}||'%' or user_ID like '%'||#{searchName}||'%'</if>
 	</select>
 
 

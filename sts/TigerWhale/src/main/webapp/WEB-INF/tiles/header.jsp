@@ -12,8 +12,8 @@
                             </a>
                         </div>
                         <div class="search-tag header-div">
-                            <form>
-                                <input type="text"><a href="#"><i class="fas fa-search fa-2x"></i></a>
+                            <form action = "${pageContext.request.contextPath}/searchPage/keyword" method="get">
+                                <input type="text" name="keyword"><button type="submit" class=""><i class="fas fa-search fa-2x"></i></button>
                             </form>
                         </div>
                         <div class="icon-set header-div">
@@ -137,7 +137,7 @@
             });
             function getBig() {
 
-                $.getJSON("header/getHead/big", function (data) {
+                $.getJSON("${pageContext.request.contextPath}/header/getHead/big", function (data) {
 
 
                     var liStr = '';

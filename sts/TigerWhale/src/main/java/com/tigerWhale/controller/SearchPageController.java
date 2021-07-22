@@ -25,6 +25,21 @@ public class SearchPageController {
 	private SearchPageService searchPageService;
 	private SearchPageCriteria cri = new SearchPageCriteria();
 	
+	@RequestMapping("/searchPage/keyword")
+	public String Keyword(@RequestParam("keyword") String searchName,
+						   Model model) {
+		cri.setSearchName(searchName);
+		int total = searchPageService.searchTotal(cri);
+		ArrayList<ThumbnailBoardVO> thumbnailList = new ArrayList<>();
+		if(total == 0) {
+			thumbnailList = null;
+		} else {
+			thumbnailList = searchPageService.keywordSearch(cri);			
+		}
+		model.addAttribute("thumbnailList", thumbnailList);
+		return "searchPage";
+	}
+	
 	@RequestMapping("/searchPage")
 	public String bigSearch(@RequestParam("searchType") String searchType, //카테고리 분류
 							@RequestParam("typeValue") String typeValue, // 카테고리 이름
@@ -73,11 +88,12 @@ public class SearchPageController {
 		total = searchPageService.getTotal(cri);
 		middleList = searchPageService.getMiddleList(bigTitle);
 		smallList = searchPageService.getSmallList(bigTitle);
-		thumbnailList = searchPageService.thumbnailList(cri);
+		if(total == 0) {
+			thumbnailList = null;
+		} else {
+			thumbnailList = searchPageService.thumbnailList(cri);			
+		}
 		
-		System.out.println(thumbnailList.get(0).getImg());
-		System.out.println(thumbnailList.get(0).getRecnum());
-		System.out.println(thumbnailList.get(0).getViewnum());
 		
 		model.addAttribute("cri", cri);
 		model.addAttribute("bigTitle", bigTitle); //화면에 들어갈 bigCategory명

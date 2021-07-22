@@ -44,6 +44,15 @@ public class SearchPageServiceImpl implements SearchPageService {
 
 		return searchPageMapper.getList(cri);
 	}
+	@Override
+	public int searchTotal(SearchPageCriteria cri) {
+		return searchPageMapper.searchTotal(cri);
+	}
+	@Override
+	public ArrayList<ThumbnailBoardVO> keywordSearch(SearchPageCriteria cri) {
+		System.out.println("헤더에서 검색");
+		return searchPageMapper.keywordSearch(cri);
+	}
 	
 	@Override
 	public ArrayList<ThumbnailBoardVO> thumbnailList(SearchPageCriteria cri) {

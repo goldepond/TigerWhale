@@ -15,6 +15,8 @@ public interface SearchPageService {
 	public ArrayList<CategoryBoardVO> getMiddleList(String bigCategory);
 	public ArrayList<CategoryBoardVO> getSmallList(String bigCategory);
 	public ArrayList<MainBoardVO> getList(SearchPageCriteria cri);
+	public int searchTotal(SearchPageCriteria cri);
+	public ArrayList<ThumbnailBoardVO> keywordSearch(SearchPageCriteria cri);
 	public ArrayList<ThumbnailBoardVO> thumbnailList(SearchPageCriteria cri);
 	public int getTotal(SearchPageCriteria cri);
 	

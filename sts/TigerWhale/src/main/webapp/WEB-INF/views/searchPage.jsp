@@ -85,46 +85,54 @@
                     </div>
                     <!-- 검색조건에 맞는 게시물 목록 -->
                     <div class="css-1thgtsb elz42uf6">
-                        <div class="css-vbfxgf elz42uf5">
-
-                            <c:forEach var = "thumbnail" items="${thumbnailList}">
-                                <article class="css-1c4kgrp elz42uf4">
-                                    <div data-testid="GigCard" class="css-1d3w5wq ezeyqpv18">
-                                        <a href="/gig/79053" class="css-1mr8hr4 ezeyqpv17">
-                                            <div class="css-7ie1j7 ezeyqpv16">
-                                                <div class="css-1tgcat7 exlplif3">
-                                                    <div class="css-1lfj0cb exlplif2">
-                                                        <div tabindex="0" data-testid="carousel-item-0" class="css-1ohlt9r exlplif0">
-                                                            <img title="${thumbnail.title}"
-                                                                alt="${thumbnail.title}"
-                                                                src="resources/img/userIMG/${thumbnail.img}.jpg" loading="lazy"
-                                                                class="css-d1mg3o ejobblq0">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="css-gxq4i8 ezeyqpv13">
-                                                <h3 data-testid="title" class="css-abfrks ezeyqpv9">${thumbnail.title}</h3>
-                                                <div class="css-1eoy87d ezeyqpv6">
-                                                    <div class="css-s5xdrg ezeyqpv5">
-                                                        <div data-testid="price" class="css-1848xfl ezeyqpv4">
-                                                            <span>${thumbnail.price}</span><strong>원~</strong></div>
-                                                    </div>
-                                                </div>
-                                                <div class="css-mkpab3 ezeyqpv2"><span role="img" rotate="0" data-testid="rating-icon"
-                                                        class="ezeyqpv3 css-1mrr0sj e181xm9y1"><svg width="18" height="18" viewBox="0 0 24 24"
-                                                            fill="currentColor" aria-hidden="true" focusable="false"
-                                                            preserveAspectRatio="xMidYMid meet" class="css-7kp13n e181xm9y0">
-                                                            <path
-                                                                d="M14.43,10l-1.47-4.84c-0.29-0.95-1.63-0.95-1.91,0L9.57,10H5.12c-0.97,0-1.37,1.25-0.58,1.81l3.64,2.6l-1.43,4.61 c-0.29,0.93,0.79,1.68,1.56,1.09L12,17.31l3.69,2.81c0.77,0.59,1.85-0.16,1.56-1.09l-1.43-4.61l3.64-2.6 c0.79-0.57,0.39-1.81-0.58-1.81H14.43z">
-                                                            </path>
-                                                        </svg></span><span class="css-p9bq5v ezeyqpv0"></span>
-                                                    <div class="css-0 ezeyqpv1">${thumbnail.recnum}</div>
-                                                </div>
-                                            </div>
-                                        </a></div>
-                                </article>
-                            </c:forEach>
+                        <div class="container">
+							<div class="row">
+								<c:if test = "${thumbnailList eq null }">
+									<div class="col-lg-8 nullp">
+										<p>아직 게시글이 없습니다.</p>
+									</div>
+								</c:if>
+								<c:if test = "${thumbnailList ne null}">
+	                            <c:forEach var = "thumbnail" items="${thumbnailList}">
+	                                <article class="col-lg-3 css-1c4kgrp elz42uf4">
+	                                    <div data-testid="GigCard" class="css-1d3w5wq ezeyqpv18">
+	                                        <a href="/gig/79053" class="css-1mr8hr4 ezeyqpv17">
+	                                            <div class="css-7ie1j7 ezeyqpv16">
+	                                                <div class="css-1tgcat7 exlplif3">
+	                                                    <div class="css-1lfj0cb exlplif2">
+	                                                        <div tabindex="0" data-testid="carousel-item-0" class="css-1ohlt9r exlplif0">
+	                                                            <img title="${thumbnail.title}"
+	                                                                alt="${thumbnail.title}"
+	                                                                src="resources/img/userIMG/${thumbnail.img}.jpg" loading="lazy"
+	                                                                class="css-d1mg3o ejobblq0">
+	                                                        </div>
+	                                                    </div>
+	                                                </div>
+	                                            </div>
+	                                            <div class="css-gxq4i8 ezeyqpv13">
+	                                                <h3 data-testid="title" class="css-abfrks ezeyqpv9">${thumbnail.title}</h3>
+	                                                <div class="css-1eoy87d ezeyqpv6">
+	                                                    <div class="css-s5xdrg ezeyqpv5">
+	                                                        <div data-testid="price" class="css-1848xfl ezeyqpv4">
+	                                                            <span>${thumbnail.price}</span><strong>원~</strong></div>
+	                                                    </div>
+	                                                </div>
+	                                                <div class="css-mkpab3 ezeyqpv2"><span role="img" rotate="0" data-testid="rating-icon"
+	                                                        class="ezeyqpv3 css-1mrr0sj e181xm9y1"><svg width="18" height="18" viewBox="0 0 24 24"
+	                                                            fill="currentColor" aria-hidden="true" focusable="false"
+	                                                            preserveAspectRatio="xMidYMid meet" class="css-7kp13n e181xm9y0">
+	                                                            <path
+	                                                                d="M14.43,10l-1.47-4.84c-0.29-0.95-1.63-0.95-1.91,0L9.57,10H5.12c-0.97,0-1.37,1.25-0.58,1.81l3.64,2.6l-1.43,4.61 c-0.29,0.93,0.79,1.68,1.56,1.09L12,17.31l3.69,2.81c0.77,0.59,1.85-0.16,1.56-1.09l-1.43-4.61l3.64-2.6 c0.79-0.57,0.39-1.81-0.58-1.81H14.43z">
+	                                                            </path>
+	                                                        </svg></span><span class="css-p9bq5v ezeyqpv0"></span>
+	                                                    <div class="css-0 ezeyqpv1">${thumbnail.recnum}</div>
+	                                                </div>
+	                                            </div>
+	                                        </a></div>
+	                                </article>
+	                            </c:forEach>
+                            	</c:if>
+                            </div>
                         </div>
 
                         <!-- íì´ì§ë¤ì´ì -->

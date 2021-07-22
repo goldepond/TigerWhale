@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,12 +50,6 @@ public class DetailBoardController {
 	
 	
 	
-	
-	
-
-	
-	
-	
 	@RequestMapping("/detailWrite")
 	public String detailWrite(Model model) {
 		ArrayList<CategoryBoardVO> categoryBoardVO = detailBoardService.getCataGoryALL();
@@ -91,12 +86,10 @@ public class DetailBoardController {
 	
 	
 	@RequestMapping("/detailPage")
-	public String detailPage(Model model) {
-		//@RequestParam( "bno") int bno ,
-		int bno = 62;
+	public String detailPage( Model model) {
+		//@RequestParam("bno") int bno ,
+		int bno = 76;
 		System.out.println(bno);
-
-		
 		
 		ArrayList<DetailBoardVO> detiBoardVO = detailBoardService.getBoardDetail(bno);
 		System.out.println("detiBoardVO  " + detiBoardVO);
@@ -116,7 +109,7 @@ public class DetailBoardController {
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		String user_ID = mainBoardVO.getUser_ID();
-		System.out.println( " mainBoardVO  " + mainBoardVO);
+		System.out.println( "mainBoardVO" + mainBoardVO);
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		UsersVO usersVO = detailBoardService.getUserDetail(user_ID);
@@ -197,7 +190,7 @@ public class DetailBoardController {
 			@RequestParam("text2") String text2,
 			@RequestParam("text3") String text3,
 			
-			RedirectAttributes RA) {
+			 Model model) {
 		System.out.println("===================");
 		System.out.println("bigCategory" + bigCategory);
 		System.out.println("middleCategory" + middleCategory);
@@ -234,14 +227,15 @@ public class DetailBoardController {
 			for(int i = 0; i< list.size(); i++)
 			{
 				System.out.println("===================");
-				int M_year1 = list.get(i).getM_year1();
-				System.out.println("M_year1" + M_year1);
-				int M_year2 = list.get(i).getM_year2();
-				System.out.println("M_year2" + M_year2);
-				int M_month1 = list.get(i).getM_month1();
-				System.out.println("M_month1" + M_month1);
-				int M_month2 = list.get(i).getM_month2();
-				System.out.println("M_month2" + M_month2);
+				System.out.println("===================");
+				String day1 = list.get(i).getDay1();
+				System.out.println(day1);
+				System.out.println("===================");
+				String day2 = list.get(i).getDay2();
+				System.out.println(day2);
+				String exText = list.get(i).getExText();
+				System.out.println(exText);
+				
 				
 				int M_time1 = list.get(i).getM_time1();
 				System.out.println("M_time1" + M_time1);
@@ -257,9 +251,7 @@ public class DetailBoardController {
 				String addrDetail = list.get(i).getAddrDetail();
 				System.out.println("addrDetail" + addrDetail);
 				
-				int Y_M_Result = detailBoardService.insertY_M_boardVO(
-						bno, rno ,M_year1, M_year2, M_month1, M_month2, M_time1, M_time2, 
-						Money, addrBasic, addrDetail);
+				int Y_M_Result = detailBoardService.insertY_M_boardVO(bno, rno, day1, day2, exText, M_time1, M_time2, Money, addrBasic, addrDetail);
 				System.out.println("Y_M_Result" + Y_M_Result);
 				
 				
@@ -283,16 +275,37 @@ public class DetailBoardController {
 		System.out.println(imgList);
 		try {
 			for(int i = 0; i <imgList.size();i++){
+				
+				
 				String fileRealName = imgList.get(i).getFile().getOriginalFilename();
 				System.out.println("fileRealName "+fileRealName);
-				Long size = imgList.get(i).getFile().getSize();
-				System.out.println("size " +size);
+				
+				
+				File folder = new File(APP_CONSTANT.UPLOAD_PATH  + "\\detailPageImg"+"\\" + bno); //폴더를 만들위치
+				
+				if(!folder.exists()) {
+					folder.mkdir(); //폴더생성
+				}
+				
+				
+				UUID uuid = UUID.randomUUID();
+				String uuids = uuid.toString().replaceAll("-", ""); //가짜파일명
+				//업로드파일명
+				
 				String fileExtention = fileRealName.substring( fileRealName.lastIndexOf(".") , fileRealName.length() );
 				System.out.println("fileExtention " + fileExtention);
+				String fileName = uuids + fileExtention;
 				
-				File saveFile = new File(APP_CONSTANT.UPLOAD_PATH + "\\" + fileRealName); //업로드 경로
+				
+				//저장된 전체경로
+				String uploadPath = folder.getPath(); //폴더명을 포함한 경로
+				System.out.println(uploadPath);
+				File saveFile = new File(uploadPath  + "\\"+ fileName); //업로드 경로
 				System.out.println("saveFile "+saveFile);
-				int imgresult = detailBoardService.insertIMGBoardVO(bno, fileRealName);
+				
+				
+				
+				int imgresult = detailBoardService.insertIMGBoardVO(bno, fileName);
 				
 				imgList.get(i).getFile().transferTo(saveFile); //실제 파일을 로컬환경으로 저장
 			}
@@ -303,11 +316,10 @@ public class DetailBoardController {
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");		
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		
-		RA.addFlashAttribute("bno", bno);
-		System.out.println("값넘기기");
+		model.addAttribute("bno", bno);
+		System.out.println("값넘기기" + bno);
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		return "redirect:/detailBoard/detailPage";
+		return "detailBoard/detailPage";
 		
 	}
 	

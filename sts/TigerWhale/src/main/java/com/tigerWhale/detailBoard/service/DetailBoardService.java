@@ -38,7 +38,7 @@ public interface DetailBoardService {
 	public int insertText (int bno, String text1 , String text2, String text3);
 
 	public int insertY_M_boardVO(
-			int bno, int rno,int M_year1, int M_year2, int M_month1, int M_month2, int M_time1, int M_time2,
+			int bno, int rno,String day1,String day2,String exText, int M_time1, int M_time2,
 			String Money, String addrBasic ,String addrDetail);
 	
 	

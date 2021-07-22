@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.users.service.UsersService;
@@ -49,6 +50,23 @@ public class LoginController {
 		}
 		System.out.println("mv");
 		return mv; //디스패쳐 서블릿으로 반환
+	}
+	
+	//회원삭제
+	@RequestMapping(value="/usersDelete", method = RequestMethod.POST)
+	public String usersDelete(UsersVO vo, HttpSession session, RedirectAttributes rttr) {
+		
+		UsersVO userinfo = (UsersVO) session.getAttribute("user");
+		String sessionPass = userinfo.getUser_PW();
+		String voPass = vo.getUser_PW();
+		
+		if(!(sessionPass.equals(voPass))) {
+			rttr.addFlashAttribute("msg", false);
+			return "redirect:";
+		}
+		usersService.usersDelete(vo);
+		session.invalidate();
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/userLogout")

@@ -20,7 +20,7 @@
                                             <span class="name">${usersVO.user_ID }</span>  고객님 
                                         </div>
                                         <div class="user-email">
-                                            <span class="glyphicon glyphicon-envelope"> ${usersVO.userEmail1}<!--이메일 호출--></span>
+                                            <span class="glyphicon glyphicon-envelope"> ${usersVO.userEmail1} ${usersVO.userEmail2}<!--이메일 호출--></span>
                                         </div>
                                     </div>
                                     <div class="arrow">
@@ -55,7 +55,7 @@
                                     <li class="item-container">
                                         <div class="item">
                                             <div class="item-title">거주 지역</div>
-                                            <div class="item-info">${usersVO.userAddr1 }</div>
+                                            <div class="item-info">${usersVO.userAdress }</div>
                                         </div>
                                         <div class="glyphicon glyphicon-chevron-right">
                                         </div>
@@ -79,9 +79,9 @@
                                     </li>
                                 </ul>
                                 <ul class="account-info">
-                                    <li class="item-container">
+                                    <li class="item-container" onclick="location.href='${pageContext.request.contextPath}/users/userLogout'">
                                         <div class="item">
-                                            <div class="item-title">환경설정</div>
+                                            <div class="item-title">로그아웃</div>
                                         </div>
                                         <div class="glyphicon glyphicon-chevron-right">
                                         </div>

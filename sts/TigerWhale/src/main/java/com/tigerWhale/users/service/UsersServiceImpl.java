@@ -8,9 +8,15 @@ import com.tigerWhale.users.mapper.UsersMapper;
 
 @Service("usersService")
 public class UsersServiceImpl implements UsersService {
-
 	@Autowired
 	private UsersMapper usersMapper;
+
+	@Override
+	public void usersDelete(UsersVO vo) {
+		usersMapper.usersDelete(vo);
+		
+	}
+
 
 	@Override
 	public int idCheck(UsersVO vo) {

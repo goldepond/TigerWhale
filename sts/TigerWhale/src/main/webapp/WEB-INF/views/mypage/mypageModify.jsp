@@ -8,43 +8,36 @@
 					<h1 class="main">계정 설정</h1>
 					<div class="profile-image">
 						<div class="user-profile-picture">
-							<img src="../image/default-profile.svg" class="user-picture" alt="기본이미지">
+							<img src="${pageContext.request.contextPath}/resources/img/image/default-profile.svg" class="user-picture" alt="기본이미지">
 						</div>
-						<img src="../image/camera.svg" class="camera-icon">
+						<img src="${pageContext.request.contextPath}/resources/img/image/camera.svg" class="camera-icon">
 					</div>
 					<ul class="account-info">
-						<li class="item-container" onclick="location.href = './mypage/mypage-name.html'">
-							<div class="item">
-								<div class="item-title">이름</div>
-								<div class="item-info">이성빈</div>
-							</div>
-							<div class="glyphicon glyphicon-chevron-right"></div>
-						</li>
-						<li class="item-container" onclick="location.href = './mypage/mypage-email.html'">
+						<li class="item-container" onclick="location.href = '${pageContext.request.contextPath}/mypage/mypage-email'">
 							<div class="item">
 								<div class="item-title">이메일</div>
-								<div class="item-info">xxxx33@naver.com</div>
+								<div class="item-info">${usersVO.userEmail1} ${usersVO.userEmail2 }</div>
 							</div>
 							<div class="glyphicon glyphicon-chevron-right"></div>
 						</li>
-						<li class="item-container" onclick="location.href = './mypage/mypage-password.html'">
+						<li class="item-container" onclick="location.href = '${pageContext.request.contextPath}/mypage/mypage-password'">
 							<div class="item">
 								<div class="item-title">비밀번호</div>
-								<div class="item-info">●●●●●●●●●</div>
+								<div class="item-info">비밀번호 수정</div>
 							</div>
 							<div class="glyphicon glyphicon-chevron-right"></div>
 						</li>
-						<li class="item-container" onclick="location.href = './mypage/mypage-phone.html'">
+						<li class="item-container" onclick="location.href = '${pageContext.request.contextPath}/mypage/mypage-phone'">
 							<div class="item">
 								<div class="item-title">휴대전화 번호</div>
-								<div class="item-info">010-xxxx-xxxx</div>
+								<div class="item-info">${usersVO.userPhoneNumber }</div>
 							</div>
 							<div class="glyphicon glyphicon-chevron-right"></div>
 						</li>
 
 					</ul>
 					<ul class="account-info">
-						<li class="item-container">
+						<li class="item-container" onclick="location.href = '${pageContext.request.contextPath}/mypage/mypageDelete'">
 							<div class="item">
 								<div class="item-title">계정 탈퇴</div>
 							</div>

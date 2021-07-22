@@ -32,6 +32,11 @@
     	where u.user_id = #{user_ID}
 	</select>
 	
+	<delete id="usersDelete">
+		delete from userBoard
+		where #{user_ID} and #{user_PW}
+	</delete>
+	
 	<resultMap type="UsersVO" id="usersInfo">
 		
 		<result property="user_ID" column="USER_ID" />

@@ -85,8 +85,11 @@
 					  				)
 			  		where
 		]]>
-					<if test="searchName == null or searchName == ''">1 = 1</if>
-					<if test="searchName != null ">text like '%' || #{searchName} || '%' or title like '%'||#{searchName}||'%' or user_ID like '%'||#{searchName}||'%'</if>
+					<if test="searchType2 == null or searchType2 == ''">1 = 1</if>
+					<if test="searchType2 == 'title_content' ">text like '%' || #{searchName} || '%' or title like '%'||#{searchName}||'%'</if>
+                    <if test="searchType2 == 'title' ">title like '%'||#{searchName}||'%'</if>
+                    <if test="searchType2 == 'content' ">text like '%'||#{searchName}||'%'</if>
+                    <if test="searchType2 == 'user_id' ">user_ID like '%'||#{searchName}||'%'</if>
 		<![CDATA[
 			  		order by bno desc) c )
 		where rn > (#{pageNum} - 1) * #{amount} and rn <= #{pageNum} * #{amount}) d
@@ -105,8 +108,11 @@
 			  		)
 			  where
 		]]>
-		<if test="searchName == null or searchName == ''">1 = 1</if>
-		<if test="searchName != null ">text like '%' || #{searchName} || '%' or title like '%'||#{searchName}||'%' or user_ID like '%'||#{searchName}||'%'</if>
+		<if test="searchType2 == null or searchType2 == ''">1 = 1</if>
+		<if test="searchType2 == 'title_content' ">text like '%' || #{searchName} || '%' or title like '%'||#{searchName}||'%'</if>
+        <if test="searchType2 == 'title' ">title like '%'||#{searchName}||'%'</if>
+        <if test="searchType2 == 'content' ">text like '%'||#{searchName}||'%'</if>
+        <if test="searchType2 == 'user_id' ">user_ID like '%'||#{searchName}||'%'</if>
 	</select>
 
 

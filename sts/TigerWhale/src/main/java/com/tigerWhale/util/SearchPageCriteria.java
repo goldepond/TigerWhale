@@ -11,6 +11,7 @@ public class SearchPageCriteria {
 	
 	//검색 타입
 	private String searchType;
+	private String searchType2;
 	private String typeValue;
 	//검색에 필요한 키워드
 	private String searchName;

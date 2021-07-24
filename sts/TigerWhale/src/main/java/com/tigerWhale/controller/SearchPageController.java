@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -43,7 +44,7 @@ public class SearchPageController {
 	@RequestMapping("/searchPage")
 	public String bigSearch(@RequestParam("searchType") String searchType, //카테고리 분류
 							@RequestParam("typeValue") String typeValue, // 카테고리 이름
-							Model model) {
+							Model model, SearchPageCriteria cri) {
 		
 		System.out.println(searchType.toString());
 		System.out.println(typeValue.toString());
@@ -58,7 +59,6 @@ public class SearchPageController {
 		ArrayList<MainBoardVO> pageList = new ArrayList<>();
 		ArrayList<ThumbnailBoardVO> thumbnailList = new ArrayList<>();
 		int total = 0;
-//		SearchPagePageVO pageVO = new SearchPagePageVO(cri, total);
 		
 		//검색분류
 		if(searchType.equals("bigCategory")) {
@@ -79,6 +79,7 @@ public class SearchPageController {
 			int c_code = Integer.parseInt(typeValue);
 			CategoryBoardVO getPath = searchPageService.getBig(c_code);
 			bigTitle = getPath.getBigCategory();
+			
 			cri.setC_code(c_code);
 			model.addAttribute("path", getPath);
 			
@@ -93,15 +94,16 @@ public class SearchPageController {
 		} else {
 			thumbnailList = searchPageService.thumbnailList(cri);			
 		}
-		
+		SearchPagePageVO pageVO = new SearchPagePageVO(cri, total);
 		
 		model.addAttribute("cri", cri);
 		model.addAttribute("bigTitle", bigTitle); //화면에 들어갈 bigCategory명
 		model.addAttribute("middleList", middleList);
 		model.addAttribute("smallList", smallList);
 		model.addAttribute("thumbnailList", thumbnailList);
+		model.addAttribute("pageVO", pageVO);
 		return "searchPage";
 		
-		
 	}
+	
 }

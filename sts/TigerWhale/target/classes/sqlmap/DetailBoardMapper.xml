@@ -79,10 +79,10 @@
 	<insert id="insertY_M_boardVO" parameterType="map">
 		insert into Y_M_board(
 		bno, rno, day1 , day2 , exText, M_time1,M_time2,
-		Money ,  addrBasic,addrDetail)
+		Money ,  addrBasic,addrDetail, entX , entY)
 		values(
 		#{bno} , #{rno} , #{day1} , #{day2} , #{exText} , #{M_time1} , #{M_time2} ,
-		#{Money} , #{addrBasic} , #{addrDetail})
+		#{Money} , #{addrBasic} , #{addrDetail} , #{entX} , #{entY} )
 	</insert>
 
 
@@ -111,8 +111,8 @@
 
 
 	<insert id="insertD_T_boardVO" parameterType="map">
-		insert into D_T_board ( rno , M_day)
-		values(#{rno},#{ M_day})
+		insert into D_T_board (bno, rno , M_day)
+		values(#{bno},#{rno},#{ M_day})
 	</insert>
 	
 	

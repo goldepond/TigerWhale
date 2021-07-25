@@ -10,7 +10,7 @@
 					<p>글쓰기</p>
 				</div>
 				<a href="freeDetail?bno=${vo.bno }">${vo.title }</a>
-				<form action="detailInsert" method="post" enctype="multipart/form-data">
+				<form action="detailInsert" method="post" enctype="multipart/form-data" onsubmit="_submit(this);">
 
 					<hr />
 					<div class="form-group">
@@ -41,10 +41,8 @@
 
 					<hr />
 					<div class="form-group">
-						<label>멘토/멘티 구분</label> <select name="boardType" id="boardType">
-							<option value="멘토">멘토입니다</option>
-							<option value="멘티">멘티입니다</option>
-						</select>
+						<label>멘토/멘티 구분</label>
+						<input class="form-control"  id="boardType"  value="멘토입니다" readonly="readonly">
 					</div>
 
 
@@ -92,18 +90,60 @@
 		</div>
 </section>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4.js"></script>
+<script>
+
+
+
+
+	
+
+</script>
+
 <script>
 	//주소팝업
-	function goPopup() {
+	var addCount= 0;
+	
+	function goPopup(i) {
+		addCount = i;
 		// var pop = window.open("${pageContext.request.contextPath}/resources/pop/jusoPopup.jsp", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
-		var pop = window.open("/publishing/TestWeb/resources/js/pop/jusoPopup.jsp", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+		var pop = window.open("${pageContext.request.contextPath}/resources/pop/jsp_xy/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes");
 	}
 
-	function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail, roadAddrPart2, engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn, detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo) {
+	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo,entX,entY){
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-		document.getElementById("addrBasic").value = roadAddrPart1;
-		document.getElementById("addrDetail").value = addrDetail;
-		document.getElementById("addrZipNum").value = zipNo;
+
+
+		proj4.defs["EPSG:5179"] = "+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000 +ellps=GRS80 +units= m +no_defs";//제공되는 좌표 
+		var grs80 = proj4.Proj(proj4.defs["EPSG:5179"]);
+		var wgs84 = proj4.Proj(proj4.defs["EPSG:4326"]); //경위도 +
+		
+		document.querySelectorAll("#addrBasic")[addCount].value = roadAddrPart1;
+		document.querySelectorAll("#addrDetail")[addCount].value = addrDetail;
+		console.log(entX);
+		console.log(entY);
+		console.log("########################");
+		console.log(typeof entX);
+		console.log(typeof entY);
+		console.log("########################");
+		entX = Number(entX);
+		entY = Number(entY);
+		console.log(typeof entX);
+		console.log(typeof entY);
+		console.log("########################");
+		var p = proj4.Point(  entX, entY);//한국지역정보개발원 좌표 
+		console.log("########################");
+		console.log(p);
+		console.log("########################");
+		p = proj4.transform( grs80, wgs84, p); 
+		console.log(p);
+		console.log("########################");
+		document.querySelectorAll("#entX")[addCount].value = p.x;
+		document.querySelectorAll("#entY")[addCount].value = p.y;
+		console.log(p.x);
+		console.log(p.y);
+
+
 	}
 
 	var fileBtn = document.getElementById("fileUploadBtn");
@@ -193,13 +233,13 @@
 		strAdd += '</div>'
 
 		strAdd += '   <div class="day">'
-		strAdd += '       <input type="checkbox"  name="DTlist[0].M_day" value="Monday">월'
-		strAdd += '       <input type="checkbox"  name="DTlist[1].M_day" value="Tuesday">화'
-		strAdd += '       <input type="checkbox"  name="DTlist[2].M_day"  value="Wedensday">수'
-		strAdd += '       <input type="checkbox"  name="DTlist[3].M_day" value="Thursday">목'
-		strAdd += '       <input type="checkbox"  name="DTlist[4].M_day"  value="Friday">금'
-		strAdd += '       <input type="checkbox"  name="DTlist[5].M_day" value="Saturday">토'
-		strAdd += '       <input type="checkbox"  name="DTlist[6].M_day" value="Sunday">일'
+		strAdd += '       <input type="checkbox"  name="list[' + i + '].DTlist[0]" value="월"> 월'
+		strAdd += '       <input type="checkbox"  name="list[' + i + '].DTlist[1]" value="화"> 화'
+		strAdd += '       <input type="checkbox"  name="list[' + i + '].DTlist[2]" value="수"> 수'
+		strAdd += '       <input type="checkbox"  name="list[' + i + '].DTlist[3]" value="목"> 목'
+		strAdd += '       <input type="checkbox"  name="list[' + i + '].DTlist[4]" value="금"> 금'
+		strAdd += '       <input type="checkbox"  name="list[' + i + '].DTlist[5]" value="토"> 토'
+		strAdd += '       <input type="checkbox"  name="list[' + i + '].DTlist[6]" value="일"> 일'
 		strAdd += '   </div>'
 		strAdd += '  </div>'
 
@@ -208,7 +248,7 @@
 		strAdd += '		<div class="input-group">'
 		strAdd += '		<div class="input-group-addon">'
 		strAdd += '			<button type="button" class="btn btn-primary"'
-		strAdd += '			onclick="goPopup()">주소찾기</button>'
+		strAdd += '			onclick="goPopup('+ i +')">주소찾기</button>'
 		strAdd += '		</div>'
 		strAdd += '	</div>'
 		strAdd += '</div>'
@@ -219,6 +259,11 @@
 
 		strAdd += '<div class="form-group">'
 		strAdd += '<input type="text" class="form-control" name="list[' + i + '].addrDetail" id="addrDetail" placeholder="상세주소">'
+		strAdd += '</div>'
+
+		strAdd += '<div class="form-group">'
+		strAdd += '<input type="hidden" class="form-control" name="list[' + i + '].entX" id="entX" placeholder="x좌표">'
+		strAdd += '<input type="hidden" class="form-control" name="list[' + i + '].entY" id="entY" placeholder="y좌표">'
 		strAdd += '</div>'
 
 		strAdd += '   </div>'
@@ -255,7 +300,6 @@
 
 	});
 </script>
-
 <script>
 	$("#middleCategory").change(function() {
 		var middleCategory = $("#middleCategory").val();

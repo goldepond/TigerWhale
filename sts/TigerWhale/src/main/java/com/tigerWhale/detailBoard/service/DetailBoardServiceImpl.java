@@ -94,6 +94,7 @@ public class DetailBoardServiceImpl implements DetailBoardService {
 
 	@Override
 	public int findBno() {
+		
 		return detailBoardMapper.findBno();
 	}
 

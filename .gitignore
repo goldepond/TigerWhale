@@ -4,3 +4,11 @@
 
 # JDT-specific (Eclipse Java Development Tools)     
 .classpath
+
+pop.properties
+
+.settings
+
+/target
+
+APP_CONSTANT.java

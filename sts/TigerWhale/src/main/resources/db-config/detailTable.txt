@@ -27,19 +27,19 @@ create TABLE textBoard
 CREATE TABLE Y_M_Board
 (
     bno NUMBER(20) NOT NULL,
+    rno NUMBER(20) unique NOT NULL,
     M_time1 NUMBER(20), -- 00:00 중 첫번째값 입력받음
     M_time2 NUMBER(20), -- 00::00중 두번째값 입력받음
     
-    rno NUMBER(10) unique NOT NULL,
-    M_year1 NUMBER(20), -- 허용기간이 시작되는 년도를 입력받음
-    M_year2 NUMBER(20),-- 허용기간이 끝나는 년도를 입력받음
-    M_month1 NUMBER(20), -- 허용기간이 시작되는 달을 입력받음 
-    M_month2 NUMBER(20), -- 허용기간이 끝나는 달을 입력받음
-    
     Money NUMBER(20),-- 돈
-    
     addrBasic VARCHAR2(4000),
-    addrDetail VARCHAR2(4000)
+    addrDetail VARCHAR2(4000),
+    day1 NUMBER(20), -- 허용기간이 시작되는 년도를 입력받음
+    day2 NUMBER(20),
+    
+    exText VARCHAR2(4000),
+     entX VARCHAR2(4000),
+    entY VARCHAR2(4000)
     
 );
 

@@ -20,10 +20,10 @@
 								<div id="myCarousel" class="carousel slide" data-ride="carousel">
 									<!-- Indicators -->
 									<ol class="carousel-indicators">
-																	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+										<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 										<c:forEach var="vo" items="${IMGBoardVO}" begin="1" varStatus="status">
 
-										<li data-target="#myCarousel" data-slide-to="1" value="${status.count}"></li>
+											<li data-target="#myCarousel" data-slide-to="1" value="${status.count}"></li>
 										</c:forEach>
 									</ol>
 
@@ -31,7 +31,7 @@
 									<div class="carousel-inner" role="listbox">
 
 										<div class="item active">
-											<img src="../resources/img/detailPageImg/${mainBoardVO.bno}//${IMGBoardVO[0].img}" alt="Chania" width="460" height="345">
+											<img src="../resources/img/detailPageImg/${mainBoardVO.bno}/${IMGBoardVO[0].img}" alt="Chania" width="460" height="345">
 										</div>
 										<c:forEach var="vo" items="${IMGBoardVO}" begin="1">
 											<div class="item">
@@ -43,13 +43,8 @@
 									</div>
 
 									<!-- Left and right controls -->
-									<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> 
-										<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 
-										<span class="sr-only">Previous</span>
-									</a> 
-									<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"> 
-										<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 
-										<span class="sr-only">Next</span>
+									<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+									</a> <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span>
 									</a>
 								</div>
 
@@ -94,6 +89,7 @@
 										<h3>설명1</h3>
 									</div>
 									${textBoardVO.text1}
+
 								</div>
 								<br /> <br />
 								<div class="intro2">
@@ -142,49 +138,45 @@
 							<div class="GigPackages">
 								<div class="gig-detail-pacakage-panel">
 									<!-- //////////////////////////////////////////////////////// -->
-									<ul class="nav nav-tabs">
+									<ul class="nav nav-tabs" id="tabs">
 										<li class="active"><a href="#home"> 공통 정보 </a></li>
-										<c:forEach var="vo" items="${m_boardVOFirst}" varStatus="status">
-											<li><a href="#menu${status.count}"> ${status.count} 옵션 </a></li>
+
+										<c:forEach var="vo" items="${m_boardVO}" varStatus="status">
+											<li><a href="#menu${status.count}" id="menu" onclick="getMapsXY(${vo.entX},${vo.entY})"> ${status.count} 옵션 </a></li>
 										</c:forEach>
 									</ul>
 									<div class="tab-content">
 										<div id="home" class="tab-pane fade in active">
 											<br />
 											<div class="package-header">
-												<span class="package-price">${textBoardVO.text1} 공통 안내 정보</span> <span class="package-type">Standard</span>
+												<span class="package-price">${mainBoardVO.text} 공통 안내 정보</span>
 											</div>
 										</div>
 
 										<c:forEach var="vo" items="${m_boardVO}" varStatus="status">
 											<form action="detailBuy" method="post" class="tab-pane fade" id="menu${status.count}">
 												<input type="hidden" name="bno" value="${m_boardVO.get(0).bno}">
+												<input type="hidden" name="rno" value="${vo.rno}">
 												<div>
 													<div class="package-header">
 														<span class="package-price">${vo.money}원</span> <span class="package-type">Standard</span>
 													</div>
-
 													<div class="package-header">
-														<h3>${vo.day1}  ~  ${vo.day2}</h3>
+														<h3>${vo.day1}~${vo.day2}</h3>
 													</div>
-																										<div class="package-header">
+													<div class="package-header">
 														<h3>${vo.exText}</h3>
 													</div>
 													<div class="package-body">
 														<div class="GigPackageOption">
-															<select id="time-select" name="rno">
-																<option value="${bo.rno}">
-																	<h2>요일 : ${bo.m_time1}시 ~ ${bo.m_time2}시 까지 ${bo.rno} 번</h2>
-																</option>
+															<h2>시간 : ${vo.m_time1}시 ~ ${vo.m_time2}시 까지</h2>
+															요일 :
+															<c:forEach var="bo" items="${d_T_boardVO}" varStatus="option">
 
-																<c:forEach var="bo" items="${m_boardVO}" varStatus="option">
-																	<option value="${bo.rno}">
-																		<h2>요일 : ${bo.m_time1}시 ~ ${bo.m_time2}시 까지 ${bo.rno} 번</h2>
-																	</option>
-
-																</c:forEach>
-															</select>
-
+																<c:if test="${vo.rno == bo.rno}">
+																	${bo.m_day} /
+																</c:if>
+															</c:forEach>
 														</div>
 
 														<div class="map">
@@ -192,10 +184,7 @@
 																<span> - 만남장소</span>
 																<p>${vo.addrBasic}</p>
 															</div>
-															<div id="map" class="mapinmap"></div>
-
 														</div>
-
 														<div class="package-direct-order">
 															<button type="submit" class="btn">
 																<span>구매하기</span>
@@ -315,7 +304,17 @@
 
 
 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c9c2c80f44b7412a52bfb0036f525c9"></script>
+<script>
+var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
+staticMapOption = { 
+    center: new kakao.maps.LatLng(33.450701, 126.570667), // 이미지 지도의 중심좌표
+    level: 3 // 이미지 지도의 확대 레벨
+};
 
+//이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
+var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+	</script>
 
 
 
@@ -362,16 +361,7 @@
 	});
 </script>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c9c2c80f44b7412a52bfb0036f525c9"></script>
-<script>
-	var container = document.getElementById('map');
-	var options = {
-		center : new kakao.maps.LatLng(33.450701, 126.570667),
-		level : 3
-	};
 
-	var map = new kakao.maps.Map(container, options);
-</script>
 
 <script>
 	//페이지처리 -

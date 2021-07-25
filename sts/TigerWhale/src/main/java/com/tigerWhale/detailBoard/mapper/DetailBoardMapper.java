@@ -55,11 +55,13 @@ public interface DetailBoardMapper {
 			@Param("M_time2") int M_time2,
 			@Param("Money") String Money,
 			@Param("addrBasic") String addrBasic ,
-			@Param("addrDetail") String addrDetail);
+			@Param("addrDetail") String addrDetail,
+			@Param("entX") String entX ,
+			@Param("entY") String entY);
 	public ArrayList<CategoryBoardVO> getCataGoryALL();
 	public ArrayList<CategoryBoardVO> getMiddleCataGory(CategoryBoardVO vo);
 	public int  insertIMGBoardVO(@Param("bno") int bno,@Param("img")  String img);
-	public int insertD_T_boardVO(@Param("rno")int rno, @Param("M_day")  String M_day);
+	public int insertD_T_boardVO(@Param("bno") int bno, @Param("rno")int rno, @Param("M_day")  String M_day);
 	public int findRno();
 	public int findC_code(String smallCategory);
 }

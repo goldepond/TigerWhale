@@ -1,6 +1,7 @@
 package com.tigerWhale.command;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,7 +22,6 @@ public class Y_M_boardVO {
     
     private String Money ;
     
-    private String addrZipNum;
     private String addrBasic ;
     private String addrDetail;
     
@@ -29,5 +29,10 @@ public class Y_M_boardVO {
     private String day2;
     
     private String exText;
+    
+    private String entX;
+    private String entY;
+    
+    private String[] DTlist = new String[7];
 }
 

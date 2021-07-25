@@ -5,10 +5,12 @@
 # JDT-specific (Eclipse Java Development Tools)     
 .classpath
 
-pop.properties
+pom.properties
 
 .settings
 
-/target
+/target/
 
 APP_CONSTANT.java
+
+*.class

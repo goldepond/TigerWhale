@@ -42,7 +42,7 @@
 					<hr />
 					<div class="form-group">
 						<label>멘토/멘티 구분</label>
-						<input class="form-control"  id="boardType"  value="멘토입니다" readonly="readonly">
+						<input class="form-control"  name="boardType"  value="멘토입니다" readonly="readonly">
 					</div>
 
 

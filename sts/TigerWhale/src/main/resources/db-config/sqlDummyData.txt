@@ -229,27 +229,56 @@ end loop;
 end;
 
 
---///////////////////faq 생성  (수정중 작동이안되..)
+--///////////////////faq 생성  (0725완료)
 
-SELECT * FROM FAQBOARD;
+begin
+for i in 1 .. 500 LOOP
 
-BEGIN
-FOR i IN 3 .. 50 LOOP
-INSERT INTO FAQBOARD(
+INSERT into FAQBOARD(
                         BNO,
                         TITLE,
                         WRITER,
-                        CONTENT
-                        
+                        CONTENT,
+                  REGDATE,
+                  UPDATEDATE
                     )
-             VALUES (
+             values (
                         i,
-                        DBMS_RANDOM.STRING(P, 28),
-                        DBMS_RANDOM.STRING(P, 8),
-                        DBMS_RANDOM.STRING(P, 12)
+                        DBMS_RANDOM.STRING('p', 28),
+                        DBMS_RANDOM.STRING('p', 8),
+                        DBMS_RANDOM.STRING('p', 120),
+                        TO_DATE (
+                            ROUND (DBMS_RANDOM.VALUE (18, 20))
+                         || '-'
+                         || ROUND (DBMS_RANDOM.VALUE (7, 7))
+                         || '-'
+                         || ROUND (DBMS_RANDOM.VALUE (2021, 2021))
+                         || ' '
+                         || ROUND (DBMS_RANDOM.VALUE (0, 23))
+                         || '-'
+                         || ROUND (DBMS_RANDOM.VALUE (0, 59))
+                         || '-'
+                         || ROUND (DBMS_RANDOM.VALUE (0, 59)
+                               ),
+                         'DD-MM-YYYY hh24:mi:ss'
+                         ),
+                         TO_DATE (
+                            ROUND (DBMS_RANDOM.VALUE (18, 20))
+                         || '-'
+                         || ROUND (DBMS_RANDOM.VALUE (7, 7))
+                         || '-'
+                         || ROUND (DBMS_RANDOM.VALUE (2021, 2021))
+                         || ' '
+                         || ROUND (DBMS_RANDOM.VALUE (0, 23))
+                         || '-'
+                         || ROUND (DBMS_RANDOM.VALUE (0, 59))
+                         || '-'
+                         || ROUND (DBMS_RANDOM.VALUE (0, 59)
+                               ),
+                         'DD-MM-YYYY hh24:mi:ss'
+                         )                      
                     );
-END LOOP; 
-END;
-
-commit; --필수
+end loop; 
+end; 
+COMMIT;
 

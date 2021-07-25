@@ -3,6 +3,7 @@ package com.tigerWhale.join.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.join.mapper.JoinMapper;
 
@@ -36,7 +37,5 @@ public class JoinServiceImpl implements JoinService {
 		
 		return joinMapper.getinfo1(user_ID);
 	}
-
-
 	
 }

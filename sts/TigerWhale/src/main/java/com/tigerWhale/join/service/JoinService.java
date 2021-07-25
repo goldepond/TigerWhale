@@ -13,4 +13,5 @@ public interface JoinService
     public UsersVO login(UsersVO vo);
 
     public UsersVO getinfo1(String user_ID);
+    
 }

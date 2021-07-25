@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <section>
 	<section>
 		<div class="container-fluid AllBox">
@@ -17,29 +18,29 @@
 					<div class="carousel-inner">
 
 						<div class="item active">
-							<img src="../../resources/img/mainPageImg/html5.png" alt="CSS"
+							<img src=" ${pageContext.request.contextPath }/resources/img/mainPageImg/main1.jpg" alt="CSS"
 								style="height: 450px;">
 							<div class="carousel-caption">
-								<h3>1</h3>
-								<p>죽겠다!</p>
+								<h3></h3>
+								<p></p>
 							</div>
 						</div>
 
 						<div class="item">
-							<img src="../../resources/img/mainPageImg/html5.png" alt="HTML"
+							<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/main2.jpg" alt="HTML"
 								style="height: 450px;">
 							<div class="carousel-caption">
-								<h3>2</h3>
-								<p>죽겠다데스!</p>
+								<h3></h3>
+								<p></p>
 							</div>
 						</div>
 
 						<div class="item">
-							<img src="../../resources/img/mainPageImg/jquery.png"
+							<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/main3.jpg"
 								alt="jquery" style="height: 450px;">
 							<div class="carousel-caption">
-								<h3>3</h3>
-								<p>We love Apple!</p>
+								<h3></h3>
+								<p></p>
 							</div>
 						</div>
 						<!-- Left and right controls -->
@@ -63,19 +64,23 @@
 		</div>
 	</section>
 
-
+	
+	
 	<div class="container main2 recentDiv">
 
+		
 		<div class="main2-title">
 			<hr />
-			<span class="title-para">내 지리 주변 강의</span>
+			<span class="title-para userId">${usersId }</span>
+			<span class="title-para">님의 주변 강의</span>
+			<button class="writeBtn">글쓰기</button>
 			<hr />
 		</div>
 
 		<ul class="row recommand-list">
 			<div class="address">
-				<span> - 만남장소</span>
-				<p>경기도 성남시 분당구 중앙공원로 54</p>
+				<span></span>
+				<p></p>
 			</div>
 			<li class="col-xs-6 col-sm-4 col-md-3 col-lg-5 lecture-ad">
 				<div class="map">
@@ -95,11 +100,11 @@
 	</div>
 	
 	<div class="container main3">
+				<hr />
+					<span class="main2-title">Best 게시글</span>
+				<hr />
 				<div class="recentClass bestAdd">
 
-					<hr />
-					<span class="main2-title">Best 게시글</span>
-					<hr />
 					<!-- 스크립트 -->
 				</div>
 			</div>
@@ -153,12 +158,15 @@
 	<ul class="quick-list">
 		<li>
 			<a href="faqBoard/faqList">
-				<h3>FAQ등록</h3>
+				<h3>FAQ</h3>
 			</a></li>
 		<li class="kakaoCounselling">
 		</li>
 	</ul>
 </aside>
+
+<div class="hiddenLa">${usersLa }</div>
+<div class="hiddenMa">${usersMa }</div>
 
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
@@ -174,28 +182,33 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9cdd93761c8771defa3902f488e93711"></script>
 <script>
-            var container = document.getElementById('map');
-            var options = {
-                center: new kakao.maps.LatLng(37.6099298570224, 127.030713517605),
-                level: 3
-            };
+			var la = parseFloat(document.querySelector(".hiddenLa").innerHTML);
+			var ma = parseFloat(document.querySelector(".hiddenMa").innerHTML);
+			console.log(typeof(la));
+			console.log(la);
+			console.log(ma);
 
-            var map = new kakao.maps.Map(container, options);
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = { 
+		        center: new kakao.maps.LatLng(ma, la), // 지도의 중심좌표
+		        level: 3 // 지도의 확대 레벨
+		    };
+
+		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+		var map = new kakao.maps.Map(mapContainer, mapOption);
 </script>
 
 
 	<script>
-		/*
-		<button class="recentBtn boardBtn">&#60;&#60; prev</button>
-		<button class="recentBtn boardBtn">next &#62;&#62;</button>
-		*/
+		console.log(document.querySelector(".writeBtn"));
+		document.querySelector(".writeBtn").onclick = function(){
+			location.href = "detailBoard/detailWrite";
+		}
 		$(document).ready(function() {
 			
 			
-			
-			
-			var loginCheck = sessionStorage.getItem('usersVO');
-			if(loginCheck == null)
+			var loginCheck =document.querySelector(".userId").innerHTML;
+			if(loginCheck == "")
 			{
 				$(".subscribeDiv").css("display","none");
 				$(".recentDiv").css("display","none");
@@ -282,18 +295,23 @@
 				 }
 			}
 			 
-			
-			
-			/* 내지리 주변 강의*/
+			/* 내지리 주변 강의 */
         	function getNearBoard()
 			{
+				console.log("asdd");
+				console.log(la);
 				$.ajax({
 					type: "post",
 					url : "getNearBoard",
 					dataType: "json",
 					contentType : "application/json; charset=UTF-8",
+					data : JSON.stringify({"la":la , "ma":ma}),
 					success : function(data)
 					{
+						
+						console.log("쏴리질러");
+						console.log(data);
+						console.log("쏴리질러");
 						
 						var nearIndex = sessionStorage.getItem("nearIndex");
 						sessionStorage.setItem("nearData" , data.length);	
@@ -305,8 +323,8 @@
 				            for(var i = 0; i < data.length; i++) 
 				            {
 				                nearLocalAdd += '<li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">'
-								nearLocalAdd += '<div class="recommand-lecture">'
-								nearLocalAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/javascript.png" alt="es6">'
+								nearLocalAdd += '<div class="recommand-lecture" >'
+								nearLocalAdd += '<img src="${pageContext.request.contextPath }/resources/img/detailPageImg/'+data[i].bno+'/'+data[i].imgBoardList[0].img+'" alt="es6" style= width="167; height=167;" >'
 								nearLocalAdd += '<div class="lecture-content">'
 								nearLocalAdd += '<p>'+data[i].title+'</p>'
 								nearLocalAdd += '</div>'
@@ -340,7 +358,7 @@
 				            {
 				                nearLocalAdd += '<li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">'
 								nearLocalAdd += '<div class="recommand-lecture">'
-								nearLocalAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/javascript.png" alt="es6">'
+								nearLocalAdd += '<img src="${pageContext.request.contextPath }/resources/img/detailPageImg/'+data[i].bno+'/'+data[i].imgBoardList[0].img+'" alt="es6" style= width="167; height=167;>'
 								nearLocalAdd += '<div class="lecture-content">'
 								nearLocalAdd += '<p>'+data[i].title+'</p>'
 								nearLocalAdd += '</div>'
@@ -375,19 +393,12 @@
 					error : function(status,error)
 					{
 						//alert("니어컨트롤러 실패");
+						console.log("니어실패");
 					}
 				});
 			}
 			
-		/*
-        	<div class = "recentDiv">
-			<button class="recentBtn boardBtn">&#60;&#60; prev</button>
-			<button class="recentBtn boardBtn">next &#62;&#62;</button>
-		</div>
-		*/
-			
-			
-			
+		
 			
 			
 			
@@ -400,6 +411,8 @@
 					dataType: "json",
 					contentType : "application/json; charset=UTF-8",
 					success: function(data){
+						
+						console.log(data);
 						
 						var popluarIndex = sessionStorage.getItem("popluarIndex");
 						sessionStorage.setItem("popluarData" , data.length);	
@@ -441,6 +454,7 @@
 					data : JSON.stringify({"bno":"1"}),
 					success: function(data){
 						
+						console.log(data);
 						
 						var recentIndex = sessionStorage.getItem("recentIndex");
 						sessionStorage.setItem("recentData" , data.length);	
@@ -451,11 +465,11 @@
 						if(data.length < 8)
 						{
 							var newAdd ="";
-			                for(var i = 0; i < 8; i++) 
+			                for(var i = 0; i < data.length; i++) 
 			                {
 			                	newAdd += '<li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">'
 			                	newAdd += '<div class="recommand-lecture">'
-			                	newAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/spring.jpg" alt="spring">'
+			                	newAdd += '<img src="${pageContext.request.contextPath }/resources/img/detailPageImg/'+data[i].bno+'/'+data[i].imgBoardList[0].img+'" alt="spring" style= width="167; height=167;>'
 			                	newAdd += '<div class="lecture-content">'
 			                	newAdd += '<p>'+data[i].title+'</p>'
 			                	newAdd += '</div>'
@@ -473,7 +487,7 @@
 			                {
 			                	newAdd += '<li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 lecture-ad">'
 			                	newAdd += '<div class="recommand-lecture">'
-			                	newAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/spring.jpg" alt="spring">'
+			                	newAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/spring.jpg" alt="spring" style= width="167; height=167;>'
 			                	newAdd += '<div class="lecture-content">'
 			                	newAdd += '<p>'+data[i].title+'</p>'
 			                	newAdd += '</div>'
@@ -506,6 +520,9 @@
 	        		contentType: "application/json; charset=UTF-8",
 	        		success: function(data){
 	        			
+	        			console.log("!!!!!!!!!!!!!!");
+	        			console.log(data);
+	        			console.log("!!!!!!!!!!!!!!");
 	        			
 	        			var bestIndex = sessionStorage.getItem("bestIndex");
 						sessionStorage.setItem("bestData" , data.length);	
@@ -514,7 +531,7 @@
 	        			if(data.length < 2)
 	        			{
 							var bestAdd ="";
-				            for(var i = 0; i < 2; i++) 
+				            for(var i = 0; i < data.length; i++) 
 				            {
 				                bestAdd += '<div class="board-recent">'
 							    bestAdd += '<div class="content-recent">'
@@ -523,7 +540,7 @@
 								bestAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/icon_profile.png">'
 								bestAdd += '</div>'
 								bestAdd += '<div class="profile-info">'
-								bestAdd += '<span class="profile-name">'+data[i].user_ID+'</span> <span class="regist-time">1만년 전</span>'
+								bestAdd += '<span class="profile-name">'+data[i].user_ID+'</span> <span class="regist-time"></span>'
 								bestAdd += '</div>'
 								bestAdd += '</a>'
 								bestAdd += '<div class="content-detail">'
@@ -539,20 +556,23 @@
 							    bestAdd += '<div class="thumbnail-recent">'
 								bestAdd += '<div class="thumbnail-recent">'
 								bestAdd += '<div class="thumbnail-area">'
-								bestAdd += '<a href="#" class="thumbnail-inner"> <img class="img-post" alt="postthumbnail" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content1.jpg" width="167" height="167">'
+								bestAdd += '<a href="#" class="thumbnail-inner"> <img class="img-post" alt="postthumbnail" src="${pageContext.request.contextPath }/resources/img/detailPageImg/'+data[i].bno+'/'+data[i].imgBoardList[0].img+'" style= width="167; height=167;">'
 								bestAdd += '</a> <a href="#" class="button-more-img"> <i class="sp_common icon_more"><span class="blind">글 썸네일 펼치기</span></i>'
 								bestAdd += '</a>'
 								bestAdd += '<div class="plus-thumbnail-list">'
 								bestAdd += '<a href="#" class="list-inner">'
-								bestAdd += '<div class="plus-list">'
-								bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content2.jpg">'
-								bestAdd += '</div>'
-								bestAdd += '<div class="plus-list">'
-								bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content3.jpg">'
-								bestAdd += '</div>'
-								bestAdd += '<div class="plus-list">'
-								bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content4.jfif">'
-								bestAdd += '</div>'
+								
+								if(data[i].imgBoardList.length > 1)
+								{
+									for(var j=1; j<4; j++ )
+									{
+										bestAdd += '<div class="plus-list">'
+										bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/detailPageImg/'+data[i].bno+'/'+data[i].imgBoardList[j].img+'">'
+										bestAdd += '</div>'
+										if(data[i].imgBoardList.length-1 == j) break;
+									}
+								}
+								
 								bestAdd += '</a>'
 								bestAdd += '</div>'
 								bestAdd += '</div>'
@@ -566,49 +586,52 @@
 	        				var bestAdd ="";
 				            for(var i = bestIndex-2; i < bestIndex; i++) 
 				            {
-				                bestAdd += '<div class="board-recent">'
-							    bestAdd += '<div class="content-recent">'
-								bestAdd += '<a href="#" class="profile-board">'
-								bestAdd += '<div class="profile-img">'
-								bestAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/icon_profile.png">'
-								bestAdd += '</div>'
-								bestAdd += '<div class="profile-info">'
-								bestAdd += '<span class="profile-name">'+data[i].user_ID+'</span> <span class="regist-time">1만년 전</span>'
-								bestAdd += '</div>'
-								bestAdd += '</a>'
-								bestAdd += '<div class="content-detail">'
-								bestAdd += '<a href="#" class="content-title"> <strong class="title-font">'+data[i].title+'</strong>'
-								bestAdd += '</a> <a href="#" class="content-text">'+data[i].text+'</a>'
-								bestAdd += '</div>'
-								bestAdd += '<div class="content-comment">'
-								bestAdd += '<span class="select-count"> 조회수 <em>10,000,000</em>'
-								bestAdd += '</span> <span class="review-count"> 리뷰수 <em>6,000,000</em>'
-								bestAdd += '</span>'
-								bestAdd += '</div>'
-							    bestAdd += '</div>'
-							    bestAdd += '<div class="thumbnail-recent">'
-								bestAdd += '<div class="thumbnail-recent">'
-								bestAdd += '<div class="thumbnail-area">'
-								bestAdd += '<a href="#" class="thumbnail-inner"> <img class="img-post" alt="postthumbnail" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content1.jpg" width="167" height="167">'
-								bestAdd += '</a> <a href="#" class="button-more-img"> <i class="sp_common icon_more"><span class="blind">글 썸네일 펼치기</span></i>'
-								bestAdd += '</a>'
-								bestAdd += '<div class="plus-thumbnail-list">'
-								bestAdd += '<a href="#" class="list-inner">'
-								bestAdd += '<div class="plus-list">'
-								bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content2.jpg">'
-								bestAdd += '</div>'
-								bestAdd += '<div class="plus-list">'
-								bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content3.jpg">'
-								bestAdd += '</div>'
-								bestAdd += '<div class="plus-list">'
-								bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/mainPageImg/content4.jfif">'
-								bestAdd += '</div>'
-								bestAdd += '</a>'
-								bestAdd += '</div>'
-								bestAdd += '</div>'
-								bestAdd += '</div>'
-							    bestAdd += '</div>'
-						        bestAdd += '</div>'
+				            	bestAdd += '<div class="board-recent">'
+								    bestAdd += '<div class="content-recent">'
+									bestAdd += '<a href="#" class="profile-board">'
+									bestAdd += '<div class="profile-img">'
+									bestAdd += '<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/icon_profile.png">'
+									bestAdd += '</div>'
+									bestAdd += '<div class="profile-info">'
+									bestAdd += '<span class="profile-name">'+data[i].user_ID+'</span> <span class="regist-time"></span>'
+									bestAdd += '</div>'
+									bestAdd += '</a>'
+									bestAdd += '<div class="content-detail">'
+									bestAdd += '<a href="#" class="content-title"> <strong class="title-font">'+data[i].title+'</strong>'
+									bestAdd += '</a> <a href="#" class="content-text">'+data[i].text+'</a>'
+									bestAdd += '</div>'
+									bestAdd += '<div class="content-comment">'
+									bestAdd += '<span class="select-count"> 조회수 <em>10,000,000</em>'
+									bestAdd += '</span> <span class="review-count"> 리뷰수 <em>6,000,000</em>'
+									bestAdd += '</span>'
+									bestAdd += '</div>'
+								    bestAdd += '</div>'
+								    bestAdd += '<div class="thumbnail-recent">'
+									bestAdd += '<div class="thumbnail-recent">'
+									bestAdd += '<div class="thumbnail-area">'
+									bestAdd += '<a href="#" class="thumbnail-inner"> <img class="img-post" alt="postthumbnail" src="${pageContext.request.contextPath }/resources/img/detailPageImg/'+data[i].bno+'/'+data[i].imgBoardList[0].img+'" width="167" height="167">'
+									bestAdd += '</a> <a href="#" class="button-more-img"> <i class="sp_common icon_more"><span class="blind">글 썸네일 펼치기</span></i>'
+									bestAdd += '</a>'
+									bestAdd += '<div class="plus-thumbnail-list">'
+									bestAdd += '<a href="#" class="list-inner">'
+									
+									if(data[i].imgBoardList.length > 1)
+									{
+										for(var j=1; j<4; j++ )
+										{
+											bestAdd += '<div class="plus-list">'
+											bestAdd += '<img class="plus-img" alt="추가이미지" width="167" height="167" src="${pageContext.request.contextPath }/resources/img/detailPageImg/'+data[i].bno+'/'+data[i].imgBoardList[j].img+'">'
+											bestAdd += '</div>'
+											if(data[i].imgBoardList.length-1 == j) break;
+										}
+									}
+									
+									bestAdd += '</a>'
+									bestAdd += '</div>'
+									bestAdd += '</div>'
+									bestAdd += '</div>'
+								    bestAdd += '</div>'
+							        bestAdd += '</div>'
 				            }
 				
 				            $(".bestAdd").html(bestAdd);
@@ -627,6 +650,8 @@
             getPopularPage();
             getNearBoard();
 		})
-	
+		
+		 
+
 	
 	</script>

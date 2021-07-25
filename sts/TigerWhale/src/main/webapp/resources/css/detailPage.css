@@ -192,9 +192,7 @@ img {
     margin: 20px;
 }
 .GigPackages .package-body .map .mapinmap{
-    height: 200px;
-    width: 100%;
-    text-align: center;
+
 }
 
 .GigPackages .package-direct-order {
@@ -218,19 +216,7 @@ img {
    
 }
 
-/* ############################################################ */
-.GigPackages .tab-content .package-body table tr  .A1,
-.GigPackages .tab-content .package-body table tr  .C1,
-.GigPackages .tab-content .package-body table tr  .D1{
-    background-color: #000000;
-}
 
-.GigPackages .tab-content .package-body table tr  .B1 ,
-.GigPackages .tab-content .package-body table tr  .E1 ,
-.GigPackages .tab-content .package-body table tr  .F1 ,
-.GigPackages .tab-content .package-body table tr  .G1 {
-    color: #ffffff;
-}
 
 /* ############################################################ */
 .GigNavigator {

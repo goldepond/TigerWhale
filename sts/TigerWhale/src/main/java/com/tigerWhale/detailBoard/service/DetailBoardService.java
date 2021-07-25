@@ -39,7 +39,7 @@ public interface DetailBoardService {
 
 	public int insertY_M_boardVO(
 			int bno, int rno,String day1,String day2,String exText, int M_time1, int M_time2,
-			String Money, String addrBasic ,String addrDetail);
+			String Money, String addrBasic ,String addrDetail , String entX , String entY);
 	
 	
 	public ArrayList<CategoryBoardVO> getCataGoryALL();
@@ -47,7 +47,7 @@ public interface DetailBoardService {
 	
 	public int insertIMGBoardVO(int bno, String img);
 	
-	public int insertD_T_boardVO(int rno,String M_day);
+	public int insertD_T_boardVO(int bno, int rno,String M_day);
 	
 	public int findC_code(String smallCategory);
 	

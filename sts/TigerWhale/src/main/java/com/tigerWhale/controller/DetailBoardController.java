@@ -40,6 +40,9 @@ import com.tigerWhale.command.TextBoardVO;
 import com.tigerWhale.command.UploadIMGVO;
 import com.tigerWhale.detailBoard.service.DetailBoardService;
 
+import kr.hyosang.coordinate.CoordPoint;
+import kr.hyosang.coordinate.TransCoord;
+
 @Controller
 @RequestMapping("/detailBoard")
 public class DetailBoardController {
@@ -72,7 +75,26 @@ public class DetailBoardController {
 	}
 	
 	
+	@RequestMapping("/detailselectWrite")
+	public String detailselectbuy() {
+		return "detailBoard/detailselectWrite";
+		
+		
+	}
 	
+	
+	
+	@RequestMapping("/detailWriteMentee")
+	public String detailWriteMentee(Model model) {
+		ArrayList<CategoryBoardVO> categoryBoardVO = detailBoardService.getCataGoryALL();
+
+		//전체 카테고리를 가져옴
+		
+		model.addAttribute("categoryBoardVO", categoryBoardVO);
+		return "detailBoard/detailWriteMentee";
+		
+		
+	}
 	
 	
 	
@@ -88,11 +110,12 @@ public class DetailBoardController {
 	@RequestMapping("/detailPage")
 	public String detailPage( Model model) {
 		//@RequestParam("bno") int bno ,
-		int bno = 76;
+		int bno = 88;
 		System.out.println(bno);
 		
-		ArrayList<DetailBoardVO> detiBoardVO = detailBoardService.getBoardDetail(bno);
-		System.out.println("detiBoardVO  " + detiBoardVO);
+		
+		ArrayList<DetailBoardVO> detaiBoardVO = detailBoardService.getBoardDetail(bno);
+		System.out.println("detiBoardVO  " + detaiBoardVO);
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		MainBoardVO mainBoardVO = detailBoardService.getMainDetail(bno);
@@ -120,6 +143,10 @@ public class DetailBoardController {
 		System.out.println("m_boardVO  " + m_boardVO);
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
+		ArrayList<D_T_boardVO> d_T_boardVO = detailBoardService.getD_T_board(bno);
+		System.out.println("d_T_boardVO  " + d_T_boardVO);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
+		
 		ArrayList<IMGBoardVO> IMGBoardVO = detailBoardService.getIMGBoard(bno);
 		System.out.println("IMGBoardVO  " + IMGBoardVO);
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
@@ -140,8 +167,13 @@ public class DetailBoardController {
 		File folder = new File(APP_CONSTANT.UPLOAD_PATH +"\\detailPageImg");
 		String uploadPath = folder.getPath();
 		
+		
+		
+		
+		
 		model.addAttribute("m_boardVOFirst", m_boardVOFirst);
-		model.addAttribute("detiBoardVO", detiBoardVO);
+		model.addAttribute("detaiBoardVO", detaiBoardVO);
+		model.addAttribute("d_T_boardVO", d_T_boardVO);
 		model.addAttribute("mainBoardVO",mainBoardVO);
 		model.addAttribute("replyBoardVO", repyBoardVO);
 		model.addAttribute("categoryBoardVO", categoryBoardVO);
@@ -156,12 +188,15 @@ public class DetailBoardController {
 	@RequestMapping("/detailBuy")
 	public String detailBuy(@RequestParam("bno") int bno,
 			@RequestParam("rno") int rno , Model model) {
-		System.out.println( rno);
 		System.out.println( bno);
 		
 		Y_M_boardVO ymBoardVO = detailBoardService.getY_M_One(rno);
 		System.out.println(ymBoardVO);
+		MainBoardVO mainBoardVO = detailBoardService.getMainDetail(bno);
+		System.out.println("mainBoardVO  " + mainBoardVO);
+		
 		model.addAttribute("ymBoardVO", ymBoardVO);
+		model.addAttribute("mainBoardVO",  mainBoardVO);
 		return "detailBoard/detailBuy";
 	}
 	
@@ -211,7 +246,7 @@ public class DetailBoardController {
 		System.out.println("===================");
 		
 		System.out.println("===================");
-		int C_code = 3;
+		int C_code = detailBoardService.findC_code(smallCategory);
 		int bno = detailBoardService.findBno();
 		System.out.println("bno"+bno );
 		int result = detailBoardService.insertMainBoardVO(bno, user_ID, C_code, boardType, title, text, price);
@@ -221,11 +256,11 @@ public class DetailBoardController {
 	
 		ArrayList<Y_M_boardVO> list = vo.getList();
 		ArrayList<D_T_boardVO> dtList = dvo.getDTlist();
-		int rno = detailBoardService.findRno();
 		System.out.println(list);
 		try {
 			for(int i = 0; i< list.size(); i++)
 			{
+				int rno = detailBoardService.findRno();
 				System.out.println("===================");
 				System.out.println("===================");
 				String day1 = list.get(i).getDay1();
@@ -244,23 +279,34 @@ public class DetailBoardController {
 				String Money = list.get(i).getMoney();
 				System.out.println("Money" +Money);
 				
-				String addrZipNum = list.get(i).getAddrZipNum();
-				System.out.println("addrZipNum" + addrZipNum);
 				String addrBasic = list.get(i).getAddrBasic();
 				System.out.println("addrBasic" +addrBasic);
 				String addrDetail = list.get(i).getAddrDetail();
 				System.out.println("addrDetail" + addrDetail);
 				
-				int Y_M_Result = detailBoardService.insertY_M_boardVO(bno, rno, day1, day2, exText, M_time1, M_time2, Money, addrBasic, addrDetail);
+				String entX = list.get(i).getEntX();
+				System.out.println("entX " + entX);
+				
+				String entY = list.get(i).getEntY();
+				System.out.println("entY " + entY);
+				
+				int Y_M_Result = detailBoardService.insertY_M_boardVO(bno, rno, day1, day2, exText, M_time1, M_time2, Money, addrBasic, addrDetail, entX, entY);
 				System.out.println("Y_M_Result" + Y_M_Result);
+				System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+				String[] dt_list = list.get(i).getDTlist();
+				System.out.println(dt_list);
 				
+				System.out.println();
 				
-				String M_day = dtList.get(i).getM_day();
-				System.out.println(M_day);
-				if( M_day != null)
+				System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+				for( int k=0;k<dt_list.length;k++)
 				{
-					int dtResult = detailBoardService.insertD_T_boardVO(rno , M_day);
-					System.out.println(dtResult);
+				System.out.println(dt_list[k]);
+				if(dt_list[k] != null)
+				{
+					int D_T_Result = detailBoardService.insertD_T_boardVO(bno , rno, dt_list[k]);
+					
+				}
 				}
 				
 			}

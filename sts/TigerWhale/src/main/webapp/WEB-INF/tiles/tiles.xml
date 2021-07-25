@@ -59,7 +59,6 @@
 	
 	
 	
-	
 	 <!--  공통화면에 대한 정의 맵핑(메인 페이지 맵핑)-->
 	<definition name="templateBasic" template="/WEB-INF/tiles/templateBasic.jsp">
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />

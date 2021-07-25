@@ -77,18 +77,19 @@ public class DetailBoardServiceImpl implements DetailBoardService {
 	public ArrayList<Y_M_boardVO> getY_M_boardFisrt(int bno) {
 		return detailBoardMapper.getY_M_boardFisrt(bno);
 	}
+
 //===============================================================================
 	@Override
 	public Y_M_boardVO getY_M_One(int bno) {
-		
+
 		return detailBoardMapper.getY_M_One(bno);
 	}
 
 	@Override
-	public int insertMainBoardVO(int bno , String user_ID, int C_code, String boardType, String title, String text, int price) {
+	public int insertMainBoardVO(int bno, String user_ID, int C_code, String boardType, String title, String text, int price) {
 		System.out.println(user_ID);
 		System.out.println("여 기까지 성공");
-		return detailBoardMapper.insertMainBoardVO(bno ,user_ID, C_code, boardType, title, text, price);
+		return detailBoardMapper.insertMainBoardVO(bno, user_ID, C_code, boardType, title, text, price);
 	}
 
 	@Override
@@ -102,7 +103,6 @@ public class DetailBoardServiceImpl implements DetailBoardService {
 		return detailBoardMapper.insertText(bno, text1, text2, text3);
 	}
 
-
 	@Override
 	public ArrayList<CategoryBoardVO> getCataGoryALL() {
 		return detailBoardMapper.getCataGoryALL();
@@ -114,21 +114,21 @@ public class DetailBoardServiceImpl implements DetailBoardService {
 	}
 
 	@Override
-	public int insertY_M_boardVO(int bno, int rno,String day1,String day2,String exText, int M_time1, int M_time2, String Money, String addrBasic, String addrDetail) {
-		
-		return detailBoardMapper.insertY_M_boardVO(bno, rno, day1, day2, exText, M_time1, M_time2, Money, addrBasic, addrDetail);
+	public int insertY_M_boardVO(int bno, int rno, String day1, String day2, String exText, int M_time1, int M_time2, String Money, String addrBasic, String addrDetail, String entX, String entY) {
+
+		return detailBoardMapper.insertY_M_boardVO(bno, rno, day1, day2, exText, M_time1, M_time2, Money, addrBasic, addrDetail, entX, entY);
 	}
 
 	@Override
 	public int insertIMGBoardVO(int bno, String img) {
-		
+
 		return detailBoardMapper.insertIMGBoardVO(bno, img);
 	}
 
 	@Override
-	public int insertD_T_boardVO( int rno, String M_day) {
+	public int insertD_T_boardVO(int bno, int rno, String M_day) {
 		// TODO Auto-generated method stub
-		return detailBoardMapper.insertD_T_boardVO(rno, M_day);
+		return detailBoardMapper.insertD_T_boardVO(bno , rno, M_day);
 	}
 
 	@Override
@@ -141,12 +141,5 @@ public class DetailBoardServiceImpl implements DetailBoardService {
 		// TODO Auto-generated method stub
 		return detailBoardMapper.findC_code(smallCategory);
 	}
-
-	
-	
-	
-	
-	
-	
 
 }

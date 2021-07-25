@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/publishing/TestWeb/resources/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="/publishing/TestWeb/resources/bootstrap/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="/publishing/TestWeb/resources/bootstrap/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/publishing/TestWeb/resources/css/detailPage.CSS">
+        <script src="/publishing/TestWeb/webView/detailBoard/detailPage.js"></script>
+        
+        <link rel="stylesheet" href="/publishing/TestWeb/resources/css/detailPage.CSS">
+        <style>
+       .titlebox {
+                width: 250px;
+                text-align: center;
+                height: 40px;
+                line-height: 40px;
+                margin: 70px auto;
+                border-top: 1px solid #E1E1E1;
+                border-bottom: 1px solid #E1E1E1;
+            }
+
+            .t-control .t-title {
+                width: 100px;
+                min-width: 100px;
+                /*화면줄었을때 최소크기*/
+                vertical-align: middle;
+                /*테이블에서 세로 가운대정렬*/
+            }
+
+            /*input 요소의 넓이만 선택*/
+            .t-control input {
+                width: 200px;
+                display: inline;
+                /*인라인요소로 변경한다*/
+            }
+
+            /*개발자 도구에서 input-sm의 정렬을 푼다*/
+            .t-control .input-sm {
+                height: auto;
+                line-height: normal;
+            }
+            .input-group-addon{
+                background-color: white;
+                border: none;
+                vertical-align: middle;
+                padding-top: 0px;
+            }
+            /*td의 아래만 밑줄*/
+            .t-control td {
+                border-bottom: 1px solid #E1E1E1;
+            }
+
+            .titlefoot {
+                text-align: center;
+                margin: 30px auto;
+                /*박스의 가운데정렬*/
+                width: 50%;
+                /*크기 50%*/
+            }
+
+            .option,
+            .btn_option {
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+
+    <body>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 write-wrap">
+        
+                        <div class="titlebox">
+                            <p>글쓰기</p>
+                        </div>
+                        <a href="freeDetail?bno=${vo.bno }">${vo.title }</a>
+                        <form action="detailInsert" method="post" enctype="multipart/form-data" onsubmit="_submit(this);">
+        
+                            <hr />
+                            <div class="form-group">
+                                <label>카테고리1</label> <select name="bigCategory" id="bigCategory">
+                                    <c:forEach var="co" items="${categoryBoardVO}" varStatus="option">
+                                        <option value="${co.bigCategory}">${co.bigCategory}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+        
+        
+                            <div class="form-group">
+                                <label>카테고리2</label> <select name="middleCategory" id="middleCategory">
+                                    <!-- 여기 -->
+                                </select>
+                            </div>
+        
+        
+                            <div class="form-group">
+                                <label>카테고리3</label> <select name="smallCategory" id="smallCategory">
+                                </select>
+                            </div>
+        
+                            <hr />
+                            <div id="fileUpload"></div>
+                            <button type="button" class="right btn btn-default btn_option" id="fileUploadBtn">파일 추가하기</button>
+        
+        
+                            <hr />
+                            <div class="form-group">
+                                <label>멘토/멘티 구분</label> <select name="boardType" id="boardType">
+                                    <option value="멘토">멘토입니다</option>
+                                    <option value="멘티">멘티입니다</option>
+                                </select>
+                            </div>
+        
+        
+                            <hr />
+        
+                            <div class="form-group">
+                                <label>작성자</label> <input class="form-control" name='user_ID' value="작성자">
+                            </div>
+        
+                            <div class="form-group">
+                                <label>제목</label> <input class="form-control" name='title' value="제목" required>
+                            </div>
+                            <div class="form-group">
+                                <label>간략 소개</label> <input class="form-control" name='text' value="">
+                            </div>
+                            <div class="form-group">
+                                <label>대표 금액</label> <input class="form-control" name='money' value="123" required>
+                            </div>
+        
+                            <hr />
+                            <div id="addoption">
+                                strAdd +=
+                                <div class="option">
+        
+                                    <div class="form-group">
+                                        <label>세부 금액</label>' <input class="form-control" name="list[' + i + '].Money" value="123">
+                                    </div>
+                                    <br />
+                                    <div class="form-group">
+                                        <label>옵션 간단 설명</label>' <input type="text" class="form-control" name="list[' + i + '].exText" placeholder="간단 설명">
+                                    </div>
+        
+                                    <hr />
+        
+                                    <div style="margin-right: 50px; display: inline-block">
+                                        <input type="date" name="list[' + i + '].day1">
+                                    </div>
+                                    ~
+                                    <div style="margin-left: 50px; display: inline-block">
+                                        <input type="date" name="list[' + i + '].day2">'
+                                    </div>
+        
+                                    <div class="form-group">
+        
+                                        <div class="form-group">
+        
+                                            <hr />
+                                            <label>시간</label>' <label for="from">From</label> <select name="list[' + i + '].M_time1">
+                                                <option value="09">오전 09시</option>
+                                                <option value="10">오전 10시</option>
+                                                <option value="11">오전 11시</option>
+                                                <option value="12">오후 12시</option>
+                                                <option value="13">오후 1시</option>
+                                                <option value="14">오후 2시</option>
+                                                <option value="15">오후 3시</option>
+                                                <option value="16">오후 4시</option>
+                                                <option value="17">오후 5시</option>
+                                                <option value="18">오후 6시</option>
+                                                <option value="19">오후 7시</option>
+                                                <option value="20">오후 8시</option>
+                                                <option value="21">오후 9시</option>
+                                                <option value="22">오후 10시</option>
+                                                <option value="23">오후 11시</option>
+                                                <option value="24">오후 12시</option>
+                                                <option value="01">오전 01시</option>
+                                                <option value="02">오전 02시</option>
+                                            </select>' <label for="to">to</label> <select name="list[' + i + '].M_time2">
+                                                <option value="09">오전 09시</option>
+                                                <option value="10">오전 10시</option>
+                                                <option value="11">오전 11시</option>
+                                                <option value="12">오후 12시</option>
+                                                <option value="13">오후 1시</option>
+                                                <option value="14">오후 2시</option>
+                                                <option value="15">오후 3시</option>
+                                                <option value="16">오후 4시</option>
+                                                <option value="17">오후 5시</option>
+                                                <option value="18">오후 6시</option>
+                                                <option value="19">오후 7시</option>
+                                                <option value="20">오후 8시</option>
+                                                <option value="21">오후 9시</option>
+                                                <option value="22">오후 10시</option>
+                                                <option value="23">오후 11시</option>
+                                                <option value="24">오후 12시</option>
+                                                <option value="01">오전 01시</option>
+                                                <option value="02">오전 02시</option>
+                                            </select>
+                                            <hr />
+        
+                                        </div>
+        
+                                        <div class="day">
+                                            <input type="checkbox" name="list[' + i + '].DTlist[0]" value="월"> 월' <input type="checkbox" name="list[' + i + '].DTlist[1]" value="화"> 화' <input type="checkbox" name="list[' + i + '].DTlist[2]" value="수"> 수' <input type="checkbox" name="list[' + i + '].DTlist[3]" value="목"> 목' <input type="checkbox" name="list[' + i + '].DTlist[4]" value="금"> 금' <input type="checkbox" name="list[' + i + '].DTlist[5]" value="토"> 토' <input type="checkbox" name="list[' + i + '].DTlist[6]" value="일"> 일'
+                                        </div>
+        
+                                    </div>
+        
+                                    <div class="form-group underSize">
+                                        '<label for="addr-num">주소</label>'
+                                        <div class="input-group">
+        
+                                            <div class="input-group-addon">
+        
+                                                <button type="button" class="btn btn-primary" onclick="goPopup('+ i +')">주소찾기</button>
+        
+                                            </div>
+        
+                                        </div>
+        
+                                    </div>
+        
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="list[' + i + '].addrBasic" id="addrBasic" placeholder="기본주소">'
+                                    </div>
+        
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="list[' + i + '].addrDetail" id="addrDetail" placeholder="상세주소">'
+                                    </div>
+        
+        
+                                    <div class="form-group">
+                                        <input type="hidden" class="form-control" name="list[' + i + '].entX" id="entX" placeholder="x좌표">' <input type="hidden" class="form-control" name="list[' + i + '].entY" id="entY" placeholder="y좌표">
+                                    </div>
+        
+                                </div>
+        
+        
+                            </div>
+                    </div>
+                    <button type="button" class="right btn btn-default btn_option" id="replyRegis">옵션 추가하기</button>
+                    <hr />
+                    <div class="form-group">
+                        <label>설명1</label>
+                        <textarea class="form-control" rows="10" name='text1' required>설명1</textarea>
+                    </div>
+        
+        
+                    <div class="form-group">
+                        <label>설명2</label>
+                        <textarea class="form-control" rows="10" name='text2' required>설명2</textarea>
+                    </div>
+        
+                    <div class="form-group">
+                        <label>설명3</label>
+                        <textarea class="form-control" rows="10" name='text3' required>설명3</textarea>
+                    </div>
+                    <br />
+                    <button type="button" class="btn btn-dark" onclick="location.href = 'freeList'">목록</button>
+                    <button type="submit" class="btn btn-primary">저장</button>
+                    <hr />
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4.js"></script>
+        <script>
+
+    </body>
+
+</html>

@@ -21,12 +21,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
 <!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/category.css"> -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/faqALL.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/faq.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
 <title>Document</title>
 </head>
 <body>
 	<tiles:insertAttribute name="header" />
+	
+		<div class="container-fluid" style="padding: 0; margin: 0;">
+		<dic class="row">
+		<div class="col-xs-12" style="padding: 0; margin: 0;">
+			<div id="faqlist-top">
+				<section>
+					<div class="faqlist-bg"></div>
+					<h1>고객문의</h1>
+				</section>
+			</div>
+		</div>
+		</dic>
+	</div>
+	
+	
 	<tiles:insertAttribute name="body" />
 	<tiles:insertAttribute name="footer" />
 

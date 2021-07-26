@@ -240,7 +240,7 @@
 						<textarea class="form-control" rows="3" name="reply" id="reply"></textarea>
 						<div class="reply-group">
 							<div class="reply-input">
-								<input type="text" class="form-control" value=${userId} name="replyID" id="replyID" readonly="readonly">
+								<input type="text" class="form-control" value="${userId}" name="replyID" id="replyID" readonly="readonly">
 							</div>
 							<button type="button" class="right btn btn-info" id="replyRegist">등록하기</button>
 						</div>

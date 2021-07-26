@@ -47,7 +47,7 @@
 					<hr />
 
 					<div class="form-group">
-						<label>작성자</label> <input class="form-control" name='user_ID' value=${userId}>
+						<label>작성자</label> <input class="form-control" name='user_ID' value="${userId}" readonly="readonly">
 					</div>
 
 					<div class="form-group">

@@ -214,7 +214,7 @@ public class DetailBoardController {
 			@RequestParam("middleCategory") String middleCategory,
 			@RequestParam("smallCategory") String smallCategory,
 			
-			@RequestParam("boardType") String  boardType,
+			@RequestParam("boardType") String boardType,
 			
 			@RequestParam("user_ID") String user_ID,
 			@RequestParam("title") String title,
@@ -246,7 +246,7 @@ public class DetailBoardController {
 		System.out.println("===================");
 		
 		System.out.println("===================");
-		int C_code = detailBoardService.findC_code(smallCategory);
+		int C_code = detailBoardService.findC_code(smallCategory, middleCategory, bigCategory);
 		int bno = detailBoardService.findBno();
 		System.out.println("bno"+bno );
 		int result = detailBoardService.insertMainBoardVO(bno, user_ID, C_code, boardType, title, text, price);

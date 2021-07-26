@@ -215,37 +215,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
     strAdd += '    <br/><br/>'
     strAdd += '    <br/>이메일 : warboss@orctown-store.com'
     strAdd += '    <br/><br/>'
-    strAdd += ' 	<br/>개인정보관리책임자 성명 : 김이택        <section>
-        <div class="container">
-    <!--container => 중앙위치 /      container-fluid -->
-    <div class="row">
-        <div class="col-sm-12" style="float: none; margin:0 auto;">
-            <div style="margin-top: 100px; text-align: center;">
-
-                <p style="font-size: xx-large;">당신은 멘토입니까 멘티입니까</p>
-
-                <div >
-                    <div style="float: left; ; width: 500px; height: 500px; margin:0 auto;"  >
-                        <img src="360_F_444490787_4iFztLJ3pJrsfCCxsjsRpH4RhRbQEjA4.jpg" style="width: 100%; height:90%;">
-                        <button type="button" class="btn btn-dark" onclick="location.href = 'freeList'"  style="float: none; font-size: xx-large; margin: 30px;">멘토입니다.</button>
-                    </div>
-                </div>
-                
-
-                <div >
-                    <div style="float: right; width: 500px; height: 500px;  margin:0 auto;"  >
-                        <img src="240_F_442220525_dxkaRpMdrXpycqGFRJMYeD11xM0nxfio.jpg" style="width:100%; height:80%; margin-top: 10%;" >
-                        <button type="button" class="btn btn-dark" onclick="location.href = 'freeList'" style="float: none; font-size: xx-large; margin: 30px;">멘티입니다.</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
-</section>'
+    strAdd += ' 	<br/>개인정보관리책임자 성명 : 김이택      '
     strAdd += '    <br/>전화번호 : 02-6402-5946'
     strAdd += '    <br/>이메일 : warboss@orctown-store.com'
     strAdd += '    <br/><br/>'

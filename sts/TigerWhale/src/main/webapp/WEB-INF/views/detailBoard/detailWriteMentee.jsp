@@ -10,7 +10,7 @@
 					<p>글쓰기</p>
 				</div>
 				<a href="freeDetail?bno=${vo.bno }">${vo.title }</a>
-				<form action="detailInsert" method="post" enctype="multipart/form-data" onsubmit="_submit(this);">
+				<form action="detailInsert" method="post" enctype="multipart/form-data">
 
 					<hr />
 					<div class="form-group">
@@ -20,15 +20,11 @@
 							</c:forEach>
 						</select>
 					</div>
-
-
 					<div class="form-group">
 						<label>카테고리2</label> <select name="middleCategory" id="middleCategory">
 							<!-- 여기 -->
 						</select>
 					</div>
-
-
 					<div class="form-group">
 						<label>카테고리3</label> <select name="smallCategory" id="smallCategory">
 						</select>
@@ -37,9 +33,11 @@
 					<hr />
 					<hr />
 					<div class="form-group">
-						<label>멘토/멘티 구분</label> 
-						<input class="form-control"  name="boardType"  value="멘티입니다" readonly="readonly">
+						<label>멘토/멘티 구분</label> <input class="form-control" name="boardType" value="멘티" readonly="readonly">
 					</div>
+					<div id="fileUpload"></div>
+					<button type="button" class="right btn btn-default btn_option" id="fileUploadBtn">파일 추가하기</button>
+
 
 
 					<hr />
@@ -52,12 +50,12 @@
 						<label>제목</label> <input class="form-control" name='title' value="제목" required>
 					</div>
 					<div class="form-group">
-						<label>간략 소개</label> <input class="form-control" name='text' value="">
+						<label>간략 소개</label> <input class="form-control" name='text' value="123">
 					</div>
-
+					 <input  type="hidden"  class="form-control" name='money' value="0">
 					<hr />
 					<div id="addoption">
-						<div class="option">
+						<div class="option" id="option">
 							<br />
 
 							<div class="form-group">
@@ -109,18 +107,11 @@
 								</div>
 
 								<div class="day">
-									<input type="checkbox" name="list[0].DTlist[0]" value="월"> 월 
-									<input type="checkbox" name="list[0].DTlist[1]" value="화"> 화 
-									<input type="checkbox" name="list[0].DTlist[2]" value="수"> 수 
-									<input type="checkbox" name="list[0].DTlist[3]" value="목"> 목
-								    <input type="checkbox" name="list[0].DTlist[4]" value="금"> 금
-								    <input type="checkbox" name="list[0].DTlist[5]" value="토"> 토
-								    <input type="checkbox" name="list[0].DTlist[6]" value="일"> 일
+									<input type="checkbox" name="list[0].DTlist[0]" value="월"> 월 <input type="checkbox" name="list[0].DTlist[1]" value="화"> 화 <input type="checkbox" name="list[0].DTlist[2]" value="수"> 수 <input type="checkbox" name="list[0].DTlist[3]" value="목"> 목 <input type="checkbox" name="list[0].DTlist[4]" value="금"> 금 <input type="checkbox" name="list[0].DTlist[5]" value="토"> 토 <input type="checkbox" name="list[0].DTlist[6]" value="일"> 일
 								</div>
 							</div>
 						</div>
 					</div>
-			</div>
 			<hr />
 			<div class="form-group">
 				<label>설명1</label>
@@ -138,13 +129,73 @@
 				<textarea class="form-control" rows="10" name='text3' required>설명3</textarea>
 			</div>
 			<br />
-			<button type="button" class="btn btn-dark" onclick="location.href = 'freeList'">목록</button>
-			<button type="submit" class="btn btn-primary">저장</button>
+					<button type="button" class="btn btn-dark" onclick="location.href = 'freeList'">목록</button>
+					 	<div id="submitHere">
+					    <button type="button" class="btn btn-dark" id="okBtn">확인</button>
+					 	</div>
 			<hr />
 			</form>
+			</div>
 		</div>
 	</div>
 </section>
+
+<script>
+
+//폼검증
+$("#okBtn").click(function() {
+console.log("123");
+console.log( ($("#fileinsert").val()));
+	if( $("#smallCategoryON").length < 1  ) { //중복검사를 하지 않은 경우
+		alert("관심 카테고리 선택은 필수 입니다.");
+		$("#smallCategory").focus();
+		return; //함수종료
+	} else if( $("#title").val() == '') {
+		alert("제목 작성은 필수입니다.");
+		$("#title").focus();
+		return;
+	}  else if( $("#fileinsert").length < 1 || $("#fileinsert").val() == '') {
+		alert("파일 입력은 필수입니다.");
+		$("#fileinsert").focus();
+		return;
+	}  else if( $("#option").length < 1 ) {
+		alert("하나의 옵션입력은 필수입니다.");
+		$("#addoption").focus();
+		return;
+	}else {
+		console.log($("#smallCategory").length);
+		$("#okBtn").submit(); //전송
+			var submitAdd = "";
+		submitAdd = '<button type="submit" class="btn btn-primary" >저장</button>'
+		$("#okBtn").remove();
+		$("#submitHere").append(submitAdd);
+		f++;
+	}
+	
+})
+
+//엔터값 처리 (form태그에 keyup이벤트, 엔터값이 아니라면 처리x)
+$("#detailInsert").keyup(function(event) {
+	if(event.keyCode != 13) { //엔터의 키값
+		return; //함수 종료
+	}
+	
+	$("#okBtn").click(); //폼검증 함수 호출
+});
+</script>
+
+<script>
+var fileBtn = document.getElementById("fileUploadBtn");
+var f = 0;
+fileBtn.onclick = function() {
+	var fileAdd = "";
+	fileAdd += '파일선택:<input type="file" id="fileinsert" name="imguploadList[' + f+ '].file"><br/>'
+	
+	$("#fileUpload").append(fileAdd);
+	f++;
+
+}
+</script>
 
 <script>
 	$("#bigCategory").change(function() {
@@ -185,7 +236,7 @@
 			}),
 			success : function(data) {
 				for (var i = 0; i < data.length; i++) {
-					smallAdd += '<option value="${' + data[i].smallCategory + '}">' + data[i].smallCategory + '</option>'
+					smallAdd += '<option id="smallCategoryON" value="' + data[i].smallCategory + '">' + data[i].smallCategory + '</option>'
 				}
 				$("#smallCategory").html(smallAdd); //추가
 			},

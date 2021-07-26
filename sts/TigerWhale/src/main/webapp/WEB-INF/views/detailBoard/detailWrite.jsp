@@ -9,8 +9,7 @@
 				<div class="titlebox">
 					<p>글쓰기</p>
 				</div>
-				<a href="freeDetail?bno=${vo.bno }">${vo.title }</a>
-				<form action="detailInsert" method="post" enctype="multipart/form-data" onsubmit="_submit(this);">
+				<form action="detailInsert"  id="detailInsert" method="post" enctype="multipart/form-data">
 
 					<hr />
 					<div class="form-group">
@@ -41,8 +40,7 @@
 
 					<hr />
 					<div class="form-group">
-						<label>멘토/멘티 구분</label>
-						<input class="form-control"  id="boardType"  value="멘토입니다" readonly="readonly">
+						<label>멘토/멘티 구분</label> <input class="form-control"  name="boardType"  value="멘토" readonly="readonly">
 					</div>
 
 
@@ -53,13 +51,13 @@
 					</div>
 
 					<div class="form-group">
-						<label>제목</label> <input class="form-control" name='title' value="제목" required>
+						<label>제목</label> <input class="form-control" id="title" name='title' value="제목" required>
 					</div>
 					<div class="form-group">
-						<label>간략 소개</label> <input class="form-control" name='text' value="">
+						<label>간략 소개</label> <input class="form-control" name='text' value="간략 소개" required>
 					</div>
 					<div class="form-group">
-						<label>대표 금액</label> <input class="form-control" name='money' value="123" required>
+						<label>대표 금액</label> <input class="form-control" id='money' name='money' value="1000" required>
 					</div>
 
 					<hr />
@@ -83,7 +81,9 @@
 					</div>
 					<br />
 					<button type="button" class="btn btn-dark" onclick="location.href = 'freeList'">목록</button>
-					<button type="submit" class="btn btn-primary">저장</button>
+					 	<div id="submitHere">
+					    <button type="button" class="btn btn-dark" id="okBtn">확인</button>
+					 	</div>
 					<hr />
 				</form>
 			</div>
@@ -93,11 +93,46 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4.js"></script>
 <script>
 
-
-
-
+//폼검증
+$("#okBtn").click(function() {
+console.log("123");
+console.log( ($("#fileinsert").val()));
+	if( $("#smallCategoryON").length < 1  ) { //중복검사를 하지 않은 경우
+		alert("관심 카테고리 선택은 필수 입니다.");
+		$("#smallCategory").focus();
+		return; //함수종료
+	} else if( $("#title").val() == '') {
+		alert("제목 작성은 필수입니다.");
+		$("#title").focus();
+		return;
+	}  else if( $("#fileinsert").length < 1 || $("#fileinsert").val() == '') {
+		alert("파일 입력은 필수입니다.");
+		$("#fileinsert").focus();
+		return;
+	}  else if( $("#option").length < 1 ) {
+		alert("하나의 옵션입력은 필수입니다.");
+		$("#addoption").focus();
+		return;
+	}else {
+		console.log($("#smallCategory").length);
+		$("#okBtn").submit(); //전송
+			var submitAdd = "";
+		submitAdd = '<button type="submit" class="btn btn-primary"  id="okBtn">저장</button>'
+		$("#okBtn").remove();
+		$("#submitHere").append(submitAdd);
+		f++;
+	}
 	
+})
 
+//엔터값 처리 (form태그에 keyup이벤트, 엔터값이 아니라면 처리x)
+$("#detailInsert").keyup(function(event) {
+	if(event.keyCode != 13) { //엔터의 키값
+		return; //함수 종료
+	}
+	
+	$("#okBtn").click(); //폼검증 함수 호출
+});
 </script>
 
 <script>
@@ -150,7 +185,8 @@
 	var f = 0;
 	fileBtn.onclick = function() {
 		var fileAdd = "";
-		fileAdd += '파일선택:<input type="file" name="imguploadList[' + f+ '].file"><br/>'
+		fileAdd += '파일선택:<input type="file" id="fileinsert" name="imguploadList[' + f+ '].file"><br/>'
+		
 		$("#fileUpload").append(fileAdd);
 		f++;
 
@@ -160,7 +196,7 @@
 	var i = 0;
 	btn.onclick = function() {
 		var strAdd = "";
-		strAdd += '<div class="option">'
+		strAdd += '<div class="option" id="option">'
 		strAdd += '<div class="form-group">'
 		strAdd += '		<label>세부 금액</label>'
 		strAdd += '		<input class="form-control" name="list[' + i + '].Money" value="123">'
@@ -314,7 +350,7 @@
 			}),
 			success : function(data) {
 				for (var i = 0; i < data.length; i++) {
-					smallAdd += '<option value="${' + data[i].smallCategory + '}">' + data[i].smallCategory + '</option>'
+					smallAdd += '<option id="smallCategoryON" value="' + data[i].smallCategory + '">' + data[i].smallCategory + '</option>'
 				}
 				$("#smallCategory").html(smallAdd); //추가
 			},

@@ -136,9 +136,9 @@ public class DetailBoardServiceImpl implements DetailBoardService {
 	}
 
 	@Override
-	public int findC_code(String smallCategory) {
+	public int findC_code(String smallCategory , String middleCategory , String bigCategory) {
 		// TODO Auto-generated method stub
-		return detailBoardMapper.findC_code(smallCategory);
+		return detailBoardMapper.findC_code(smallCategory, middleCategory, bigCategory);
 	}
 
 }

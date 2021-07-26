@@ -38,6 +38,7 @@ public class SearchPageController {
 			thumbnailList = searchPageService.keywordSearch(cri);			
 		}
 		model.addAttribute("thumbnailList", thumbnailList);
+		System.out.println("검색");
 		return "searchPage";
 	}
 	

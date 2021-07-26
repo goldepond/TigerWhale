@@ -44,11 +44,11 @@
                     </c:if>
                     <c:if test="${sessionScope.userVO == null}">
                         <div class="login-btn">
-                            <button type="button" class="btn btn-default btn1">
-                                <a href="${pageContext.request.contextPath }/users/userLogin" class="loginbtn">로그인</a>
+                            <button type="button" class="btn btn-default btn1" onclick="location.href='${pageContext.request.contextPath }/users/userLogin'">
+                                로그인
                             </button>
-                            <button type="button" class="btn btn-primary btn2">
-                                <a href="${pageContext.request.contextPath}/users/join" class="joinbtn">회원가입</a>
+                            <button type="button" class="btn btn-primary btn2" onclick="location.href='${pageContext.request.contextPath}/users/join'">
+                                회원가입
                             </button>
                         </div>
                     </c:if>

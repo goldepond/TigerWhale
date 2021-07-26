@@ -240,7 +240,7 @@
 						<textarea class="form-control" rows="3" name="reply" id="reply"></textarea>
 						<div class="reply-group">
 							<div class="reply-input">
-								<input type="text" class="form-control" placeholder="이름" name="replyID" id="replyID">
+								<input type="text" class="form-control" value="${userId}" name="replyID" id="replyID" readonly="readonly">
 							</div>
 							<button type="button" class="right btn btn-info" id="replyRegist">등록하기</button>
 						</div>
@@ -287,7 +287,8 @@
 					<textarea class="form-control" rows="4" id="modalReply" placeholder="내용입력"></textarea>
 					<div class="reply-group">
 						<div class="reply-input">
-							<input type="hidden" id="modalRno"> <input type="password" class="form-control" placeholder="비밀번호" id="modalPw">
+							<input type="hidden" id="modalRno"> 
+							<input type="password" class="form-control" value=${userId} id="modalPw" readonly="readonly">
 						</div>
 						<button class="right btn btn-info" id="modalModBtn">수정하기</button>
 						<button class="right btn btn-info" id="modalDelBtn">삭제하기</button>

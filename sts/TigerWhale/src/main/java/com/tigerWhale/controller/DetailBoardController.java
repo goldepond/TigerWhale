@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +60,13 @@ public class DetailBoardController {
 		ArrayList<CategoryBoardVO> categoryBoardVO = detailBoardService.getCataGoryALL();
 
 		//전체 카테고리를 가져옴
-		
+		//===============================================
+		//HttpSession session,
+		//
+		//UsersVO vo = (UsersVO)session.getAttribute("userVO");
+		//String userId = vo.getUser_ID();
+		//model.addAttribute("userId", userId);
+		//===============================================
 		model.addAttribute("categoryBoardVO", categoryBoardVO);
 		return "detailBoard/detailWrite";
 		
@@ -85,18 +93,20 @@ public class DetailBoardController {
 	
 	
 	@RequestMapping("/detailWriteMentee")
-	public String detailWriteMentee(Model model) {
+	public String detailWriteMentee( Model model) {
 		ArrayList<CategoryBoardVO> categoryBoardVO = detailBoardService.getCataGoryALL();
 
 		//전체 카테고리를 가져옴
-		
+		//===============================================
+		//HttpSession session,
+		//
+		//UsersVO vo = (UsersVO)session.getAttribute("userVO");
+		//String userId = vo.getUser_ID();
+		//model.addAttribute("userId", userId);
+		//===============================================
 		model.addAttribute("categoryBoardVO", categoryBoardVO);
-		return "detailBoard/detailWriteMentee";
-		
-		
+		return "detailBoard/detailWriteMentee";	
 	}
-	
-	
 	
 	@RequestMapping("/detailTerms")
 	public String detailTerms() {
@@ -109,11 +119,15 @@ public class DetailBoardController {
 	
 	@RequestMapping("/detailPage")
 	public String detailPage( Model model) {
-		//@RequestParam("bno") int bno ,
 		int bno = 88;
 		System.out.println(bno);
-		
-		
+		//===============================================
+		//HttpSession session,
+		//
+		//UsersVO vo = (UsersVO)session.getAttribute("userVO");
+		//String userId = vo.getUser_ID();
+		//model.addAttribute("userId", userId);
+		//===============================================
 		ArrayList<DetailBoardVO> detaiBoardVO = detailBoardService.getBoardDetail(bno);
 		System.out.println("detiBoardVO  " + detaiBoardVO);
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
@@ -169,6 +183,7 @@ public class DetailBoardController {
 		
 		
 		
+
 		
 		
 		model.addAttribute("m_boardVOFirst", m_boardVOFirst);
@@ -189,6 +204,13 @@ public class DetailBoardController {
 	public String detailBuy(@RequestParam("bno") int bno,
 			@RequestParam("rno") int rno , Model model) {
 		System.out.println( bno);
+		//===============================================
+		//HttpSession session,
+		//
+		//UsersVO vo = (UsersVO)session.getAttribute("userVO");
+		//String userId = vo.getUser_ID();
+		//model.addAttribute("userId", userId);
+		//===============================================
 		
 		Y_M_boardVO ymBoardVO = detailBoardService.getY_M_One(rno);
 		System.out.println(ymBoardVO);

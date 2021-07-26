@@ -1,0 +1,50 @@
+
+--이미지와 테이블을 연결
+create TABLE IMGBoard
+(
+   bno NUMBER(10) NOT NULL,
+   img VARCHAR2(60)
+);
+
+create TABLE UserIMGBoard
+(
+   bno NUMBER(10) unique NOT NULL,
+   img VARCHAR2(60)
+);
+
+--설명 1,2,3
+create TABLE textBoard
+(
+   bno NUMBER(20) NOT NULL,
+   text1 VARCHAR2(4000) ,
+   text2 VARCHAR2(4000) ,
+   text3 VARCHAR2(4000) 
+);
+
+
+
+--게시글의 작성자가 허용한 날짜와 시간대를 저장하는 테이블
+CREATE TABLE Y_M_Board
+(
+    bno NUMBER(20) NOT NULL,
+    rno NUMBER(20) unique NOT NULL,
+    M_time1 NUMBER(20), -- 00:00 중 첫번째값 입력받음
+    M_time2 NUMBER(20), -- 00::00중 두번째값 입력받음
+    
+    Money NUMBER(20),-- 돈
+    addrBasic VARCHAR2(4000),
+    addrDetail VARCHAR2(4000),
+    day1 NUMBER(20), -- 허용기간이 시작되는 년도를 입력받음
+    day2 NUMBER(20),
+    
+    exText VARCHAR2(4000),
+     entX VARCHAR2(4000),
+    entY VARCHAR2(4000)
+    
+);
+
+create TABLE D_T_board
+(
+   rno NUMBER(20) NOT NULL,
+   M_day VARCHAR2(4000)
+);

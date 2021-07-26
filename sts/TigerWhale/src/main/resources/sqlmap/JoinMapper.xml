@@ -18,9 +18,7 @@
 	        USEREMAIL1,
 	        USEREMAIL2,
 	        USERGENDER,
-	        BUYSCORE_AVG,
-	        la,
-	        ma
+	        BUYSCORE_AVG
 	    ) VALUES (
 	        #{user_ID},
 	        #{user_PW},
@@ -29,9 +27,7 @@
 	        #{userEmail1},
 	        #{userEmail2},
 	        #{userGender},
-	        0,
-	        #{la},
-	        #{ma}
+	        '000'
 	    )
 	</insert>
 
@@ -39,5 +35,5 @@
 		select * from users where user_ID=
 		#{user_ID} and user_PW= #{user_PW}
 	</select>
-	
+
   </mapper>

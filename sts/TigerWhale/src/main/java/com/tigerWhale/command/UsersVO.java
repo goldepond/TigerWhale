@@ -19,7 +19,4 @@ public class UsersVO {
     
     private String userGender ;
     private String buyScore_AVG;
-    
-    private float la;
-    private float ma;
 }

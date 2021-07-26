@@ -64,4 +64,6 @@ public interface DetailBoardMapper {
 	public int insertD_T_boardVO(@Param("bno") int bno, @Param("rno")int rno, @Param("M_day")  String M_day);
 	public int findRno();
 	public int findC_code(@Param("smallCategory") String smallCategory ,@Param("middleCategory") String middleCategory ,@Param("bigCategory")  String bigCategory);
+
+
 }

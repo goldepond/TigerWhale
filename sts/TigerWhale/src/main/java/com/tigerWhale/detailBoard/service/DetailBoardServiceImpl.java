@@ -94,7 +94,6 @@ public class DetailBoardServiceImpl implements DetailBoardService {
 
 	@Override
 	public int findBno() {
-		
 		return detailBoardMapper.findBno();
 	}
 
@@ -141,5 +140,6 @@ public class DetailBoardServiceImpl implements DetailBoardService {
 		// TODO Auto-generated method stub
 		return detailBoardMapper.findC_code(smallCategory, middleCategory, bigCategory);
 	}
+
 
 }

@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,11 +56,13 @@ public class DetailBoardController {
 	
 	
 	@RequestMapping("/detailWrite")
-	public String detailWrite(Model model) {
+	public String detailWrite(HttpSession session ,Model model) {
 		ArrayList<CategoryBoardVO> categoryBoardVO = detailBoardService.getCataGoryALL();
 
 		//전체 카테고리를 가져옴
-		
+		UsersVO vo = (UsersVO)session.getAttribute("userVO");
+		String userId = vo.getUser_ID();
+		model.addAttribute("userId", userId);
 		model.addAttribute("categoryBoardVO", categoryBoardVO);
 		return "detailBoard/detailWrite";
 		
@@ -85,18 +89,16 @@ public class DetailBoardController {
 	
 	
 	@RequestMapping("/detailWriteMentee")
-	public String detailWriteMentee(Model model) {
+	public String detailWriteMentee(HttpSession session, Model model) {
 		ArrayList<CategoryBoardVO> categoryBoardVO = detailBoardService.getCataGoryALL();
 
 		//전체 카테고리를 가져옴
-		
+		UsersVO vo = (UsersVO)session.getAttribute("userVO");
+		String userId = vo.getUser_ID();
+		model.addAttribute("userId", userId);
 		model.addAttribute("categoryBoardVO", categoryBoardVO);
-		return "detailBoard/detailWriteMentee";
-		
-		
+		return "detailBoard/detailWriteMentee";	
 	}
-	
-	
 	
 	@RequestMapping("/detailTerms")
 	public String detailTerms() {
@@ -108,8 +110,7 @@ public class DetailBoardController {
 	
 	
 	@RequestMapping("/detailPage")
-	public String detailPage( Model model) {
-		//@RequestParam("bno") int bno ,
+	public String detailPage(HttpSession session, Model model) {
 		int bno = 88;
 		System.out.println(bno);
 		
@@ -169,7 +170,9 @@ public class DetailBoardController {
 		
 		
 		
-		
+		UsersVO vo = (UsersVO)session.getAttribute("userVO");
+		String userId = vo.getUser_ID();
+		model.addAttribute("userId", userId);
 		
 		model.addAttribute("m_boardVOFirst", m_boardVOFirst);
 		model.addAttribute("detaiBoardVO", detaiBoardVO);

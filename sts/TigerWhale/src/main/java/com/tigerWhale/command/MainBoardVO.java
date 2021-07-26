@@ -1,7 +1,6 @@
 package com.tigerWhale.command;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,8 +19,8 @@ public class MainBoardVO {
     private int price ;
     private Timestamp M_registDate;
     private Timestamp M_updateDate;
-    private ArrayList<IMGBoardVO> imgBoardList;
-    private float la;
-    private float ma;
+    private double distance;
+    private double LA;
+    private double MA;
 
 }

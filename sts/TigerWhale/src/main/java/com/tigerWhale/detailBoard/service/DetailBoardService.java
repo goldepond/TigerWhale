@@ -49,7 +49,7 @@ public interface DetailBoardService {
 	
 	public int insertD_T_boardVO(int bno, int rno,String M_day);
 	
-	public int findC_code(String smallCategory);
+	public int findC_code(String smallCategory , String middleCategory , String bigCategory);
 	
 	
 	

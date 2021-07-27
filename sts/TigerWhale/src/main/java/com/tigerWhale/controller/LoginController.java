@@ -52,22 +52,6 @@ public class LoginController {
 		return mv; //디스패쳐 서블릿으로 반환
 	}
 	
-	//회원삭제
-	@RequestMapping(value="/usersDelete", method = RequestMethod.POST)
-	public String usersDelete(UsersVO vo, HttpSession session, RedirectAttributes rttr) {
-		
-		UsersVO userinfo = (UsersVO) session.getAttribute("user");
-		String sessionPass = userinfo.getUser_PW();
-		String voPass = vo.getUser_PW();
-		
-		if(!(sessionPass.equals(voPass))) {
-			rttr.addFlashAttribute("msg", false);
-			return "redirect:";
-		}
-		usersService.usersDelete(vo);
-		session.invalidate();
-		return "redirect:/";
-	}
 	
 	@RequestMapping("/userLogout")
 	public String userLogout(HttpSession session) {

@@ -21,8 +21,15 @@
 		
 		<mvc:interceptor>
 			<mvc:mapping path="/mypage/mypage"/>
+			<mvc:mapping path="/mypage/mypageModify"/>
+			<mvc:mapping path="/mypage/mypage-email"/>
+			<mvc:mapping path="/mypage/mypageDelete"/>
+			<mvc:mapping path="/mypage/mypage-password"/>
+			<mvc:mapping path="/mypage/mypage-phone"/>
 			<ref bean="MypageSessionHandler"/>
 		</mvc:interceptor>
+		
+		
 
 	</mvc:interceptors>
 

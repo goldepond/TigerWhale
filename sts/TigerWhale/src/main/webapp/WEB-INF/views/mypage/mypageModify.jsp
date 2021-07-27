@@ -16,14 +16,13 @@
 						<li class="item-container" onclick="location.href = '${pageContext.request.contextPath}/mypage/mypage-email'">
 							<div class="item">
 								<div class="item-title">이메일</div>
-								<div class="item-info">${usersVO.userEmail1} ${usersVO.userEmail2 }</div>
+								<div class="item-info">${usersVO.userEmail1 }</div>
 							</div>
 							<div class="glyphicon glyphicon-chevron-right"></div>
 						</li>
 						<li class="item-container" onclick="location.href = '${pageContext.request.contextPath}/mypage/mypage-password'">
 							<div class="item">
 								<div class="item-title">비밀번호</div>
-								<div class="item-info">비밀번호 수정</div>
 							</div>
 							<div class="glyphicon glyphicon-chevron-right"></div>
 						</li>

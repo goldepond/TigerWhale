@@ -42,9 +42,6 @@ import com.tigerWhale.command.TextBoardVO;
 import com.tigerWhale.command.UploadIMGVO;
 import com.tigerWhale.detailBoard.service.DetailBoardService;
 
-import kr.hyosang.coordinate.CoordPoint;
-import kr.hyosang.coordinate.TransCoord;
-
 @Controller
 @RequestMapping("/detailBoard")
 public class DetailBoardController {

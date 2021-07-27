@@ -8,15 +8,9 @@ import com.tigerWhale.users.mapper.UsersMapper;
 
 @Service("usersService")
 public class UsersServiceImpl implements UsersService {
+
 	@Autowired
 	private UsersMapper usersMapper;
-
-	@Override
-	public void usersDelete(UsersVO vo) {
-		usersMapper.usersDelete(vo);
-		
-	}
-
 
 	@Override
 	public int idCheck(UsersVO vo) {
@@ -43,4 +37,29 @@ public class UsersServiceImpl implements UsersService {
 		return usersMapper.getInfo(user_ID);
 	}
 
+	@Override
+	public void updateEmail(UsersVO vo) {
+		usersMapper.emailUpdate(vo);
+		
+	}
+
+	@Override
+	public void updatePhone(UsersVO vo) {
+		usersMapper.phoneUpdate(vo);
+		
+	}
+
+	@Override
+	public void updatePW(UsersVO vo) {
+		usersMapper.passwordUpdate(vo);
+		
+	}
+
+	@Override
+	public void deleteUsers(UsersVO vo) {
+		System.out.println("유저삭제");
+		usersMapper.usersDelete(vo);
+		
+	}
+	
 }

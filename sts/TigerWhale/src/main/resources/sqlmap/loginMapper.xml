@@ -33,9 +33,28 @@
 	</select>
 	
 	<delete id="usersDelete">
-		delete from userBoard
-		where #{user_ID} and #{user_PW}
+		delete from USERBOARD
+		where user_PW =  #{user_PW}
 	</delete>
+	
+	<update id="emailUpdate">
+		update USERBOARD set
+		userEmail1=#{userEmail1},
+		userEmail2=#{userEmail2}
+		where user_ID = #{user_ID}
+	</update>
+	
+	<update id="passwordUpdate">
+		update USERBOARD set
+		user_PW=#{user_PW}
+		where user_PW = #{user_PW}
+	</update>
+	
+	<update id="phoneUpdate">
+		update USERBOARD set
+		userPhoneNumber=#{userPhoneNumber}
+		where user_ID = #{user_ID}
+	</update>
 	
 	<resultMap type="UsersVO" id="usersInfo">
 		

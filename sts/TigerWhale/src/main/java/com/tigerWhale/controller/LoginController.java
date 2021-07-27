@@ -40,7 +40,9 @@ public class LoginController {
 		System.out.println("1");
 		UsersVO usersVO = usersService.login(vo);
 		ModelAndView mv = new ModelAndView();
+		System.out.println("################################");
 		System.out.println(usersVO);
+		System.out.println("################################");
 		if(usersVO != null) { //로그인 성공
 			mv.addObject("login", usersVO);
 			System.out.println("success");

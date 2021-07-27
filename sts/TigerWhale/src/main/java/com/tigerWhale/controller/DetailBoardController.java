@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -42,8 +43,6 @@ import com.tigerWhale.command.TextBoardVO;
 import com.tigerWhale.command.UploadIMGVO;
 import com.tigerWhale.detailBoard.service.DetailBoardService;
 
-import kr.hyosang.coordinate.CoordPoint;
-import kr.hyosang.coordinate.TransCoord;
 
 @Controller
 @RequestMapping("/detailBoard")
@@ -56,17 +55,18 @@ public class DetailBoardController {
 	
 	
 	@RequestMapping("/detailWrite")
-	public String detailWrite(Model model) {
+	public String detailWrite( HttpServletRequest request , Model model) throws Exception {
 		ArrayList<CategoryBoardVO> categoryBoardVO = detailBoardService.getCataGoryALL();
 
-		//전체 카테고리를 가져옴
-		//===============================================
-		//HttpSession session,
-		//
-		//UsersVO vo = (UsersVO)session.getAttribute("userVO");
-		//String userId = vo.getUser_ID();
-		//model.addAttribute("userId", userId);
-		//===============================================
+
+		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("usersVO"));
+		
+		if(session.getAttribute("usersVO") != null)
+		{
+			model.addAttribute("usersVO", session.getAttribute("usersVO"));
+		}
+			
 		model.addAttribute("categoryBoardVO", categoryBoardVO);
 		return "detailBoard/detailWrite";
 		
@@ -93,17 +93,16 @@ public class DetailBoardController {
 	
 	
 	@RequestMapping("/detailWriteMentee")
-	public String detailWriteMentee( Model model) {
+	public String detailWriteMentee(HttpServletRequest request , Model model) throws Exception{
 		ArrayList<CategoryBoardVO> categoryBoardVO = detailBoardService.getCataGoryALL();
 
-		//전체 카테고리를 가져옴
-		//===============================================
-		//HttpSession session,
-		//
-		//UsersVO vo = (UsersVO)session.getAttribute("userVO");
-		//String userId = vo.getUser_ID();
-		//model.addAttribute("userId", userId);
-		//===============================================
+		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("usersVO"));
+		
+		if(session.getAttribute("usersVO") != null)
+		{
+			model.addAttribute("usersVO", session.getAttribute("usersVO"));
+		}
 		model.addAttribute("categoryBoardVO", categoryBoardVO);
 		return "detailBoard/detailWriteMentee";	
 	}
@@ -118,15 +117,16 @@ public class DetailBoardController {
 	
 	
 	@RequestMapping("/detailPage")
-	public String detailPage( Model model) {
+	public String detailPage(HttpServletRequest request, Model model) {
 		int bno = 88;
 		System.out.println(bno);
 		//===============================================
-		//HttpSession session,
+		
 		//
-		//UsersVO vo = (UsersVO)session.getAttribute("userVO");
-		//String userId = vo.getUser_ID();
-		//model.addAttribute("userId", userId);
+		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+		HttpSession session = request.getSession();
+		UsersVO userVO =  (UsersVO)session.getAttribute("usersVO");
+		model.addAttribute("userVO", userVO);
 		//===============================================
 		ArrayList<DetailBoardVO> detaiBoardVO = detailBoardService.getBoardDetail(bno);
 		System.out.println("detiBoardVO  " + detaiBoardVO);
@@ -202,15 +202,15 @@ public class DetailBoardController {
 	
 	@RequestMapping("/detailBuy")
 	public String detailBuy(@RequestParam("bno") int bno,
-			@RequestParam("rno") int rno , Model model) {
+			@RequestParam("rno") int rno ,  HttpServletRequest request ,Model model) throws Exception{
 		System.out.println( bno);
-		//===============================================
-		//HttpSession session,
-		//
-		//UsersVO vo = (UsersVO)session.getAttribute("userVO");
-		//String userId = vo.getUser_ID();
-		//model.addAttribute("userId", userId);
-		//===============================================
+		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("usersVO"));
+		
+		if(session.getAttribute("usersVO") != null)
+		{
+			model.addAttribute("usersVO", session.getAttribute("usersVO"));
+		}
 		
 		Y_M_boardVO ymBoardVO = detailBoardService.getY_M_One(rno);
 		System.out.println(ymBoardVO);

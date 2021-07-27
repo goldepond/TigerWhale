@@ -20,11 +20,14 @@ public class LoginSuccessHandler extends HandlerInterceptorAdapter {
 		ModelMap mv = modelAndView.getModelMap();
 		
 		UsersVO usersVO = (UsersVO) mv.get("login");
-		
+		System.out.println(usersVO);
 		if(usersVO != null) { //로그인성공
 			//세션에 저장
 			HttpSession session = request.getSession();
 			session.setAttribute("usersVO", usersVO);
+			System.out.println("#############################");
+			System.out.println(session.getAttribute("usersVO"));
+			System.out.println("#############################");
 			System.out.println("home");
 			
 			response.sendRedirect(request.getContextPath()); //홈화면으로

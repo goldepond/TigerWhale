@@ -5,6 +5,19 @@
   
   <mapper namespace="com.tigerWhale.faq.mapper.FaqMapper">
   		
+  		
+  		
+  		
+   <update id="replyForm">
+   		UPDATE FAQBOARD 
+   		   SET
+   				 REPLY = #{reply},
+   				 REPLYDATE = SYSDATE
+   		 WHERE BNO = #{bno}
+   </update>
+   
+  		
+  		
   	<insert id="regist">
   		insert into FAQBOARD(bno, title, writer, content) 
   		values(FAQBOARD_SEQ.nextval , #{title}, #{writer}, #{content} ) 

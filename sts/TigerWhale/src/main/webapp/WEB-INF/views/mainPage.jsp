@@ -19,7 +19,7 @@
 
 						<div class="item active">
 							<img src=" ${pageContext.request.contextPath }/resources/img/mainPageImg/main1.jpg" alt="CSS"
-								style="height: 450px;">
+								style="min-width: 360px;">
 							<div class="carousel-caption">
 								<h3></h3>
 								<p></p>
@@ -28,7 +28,7 @@
 
 						<div class="item">
 							<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/main2.jpg" alt="HTML"
-								style="height: 450px;">
+								style="min-width: 360px">
 							<div class="carousel-caption">
 								<h3></h3>
 								<p></p>
@@ -36,8 +36,8 @@
 						</div>
 
 						<div class="item">
-							<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/main3.jpg"
-								alt="jquery" style="height: 450px;">
+							<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/main3.jpg" alt="jquery"
+								style="min-width: 360px">
 							<div class="carousel-caption">
 								<h3></h3>
 								<p></p>

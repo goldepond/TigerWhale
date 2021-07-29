@@ -8,11 +8,6 @@ html { overflow-y:scroll; }
     list-style: none;
 }
 
-/* 임시 */
-.header {
-    height: 170px;
-}
-
 body {
     overflow: hidden;
     position: relative;

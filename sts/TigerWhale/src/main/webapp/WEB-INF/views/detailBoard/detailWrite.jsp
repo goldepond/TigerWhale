@@ -49,7 +49,7 @@
 					<div class="form-group">
 						<label>작성자</label>
 						<c:choose>
-
+							
 							<c:when test="${usersVO == null}">
 								<input class="form-control" name='user_ID' value="사용자" readonly="readonly">
 
@@ -105,35 +105,48 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4.js"></script>
 <script>
 	//폼검증
-	$("#okBtn").click(function() {
-		console.log("123");
-		console.log(($("#fileinsert").val()));
-		if ($("#smallCategoryON").length < 1) { //중복검사를 하지 않은 경우
-			alert("관심 카테고리 선택은 필수 입니다.");
-			$("#smallCategory").focus();
-			return; //함수종료
-		} else if ($("#title").val() == '') {
-			alert("제목 작성은 필수입니다.");
-			$("#title").focus();
-			return;
-		} else if ($("#fileinsert").length < 1 || $("#fileinsert").val() == '') {
-			alert("파일 입력은 필수입니다.");
-			$("#fileinsert").focus();
-			return;
-		} else if ($("#option").length < 1) {
-			alert("하나의 옵션입력은 필수입니다.");
-			$("#addoption").focus();
-			return;
-		} else {
-			console.log($("#smallCategory").length);
-			var submitAdd = "";
-			submitAdd = '<button type="submit" class="btn btn-primary"  id="okBtn">저장</button>'
-			$("#okBtn").remove();
-			$("#submitHere").append(submitAdd);
-			f++;
+	$("#okBtn")
+			.click(
+					function() {
+						console.log("123");
+						console.log(($("#fileinsert").val()));
+						if ($("#smallCategoryON").length < 1) { //중복검사를 하지 않은 경우
+							alert("관심 카테고리 선택은 필수 입니다.");
+							$("#smallCategory").focus();
+							return; //함수종료
+						} else if ($("#title").val() == '') {
+							alert("제목 작성은 필수입니다.");
+							$("#title").focus();
+							return;
+						} else if ($("#fileinsert").length < 1
+								|| $("#fileinsert").val() == '') {
+							alert("파일 입력은 필수입니다.");
+							$("#fileinsert").focus();
+							return;
+						} else if ($("#option").length < 1) {
+							alert("하나의 옵션입력은 필수입니다.");
+							$("#addoption").focus();
+							return;
+						} else {
+							console.log($("#smallCategory").length);
+							$("#okBtn").submit(); //전송
+							var submitAdd = "";
+							submitAdd = '<button type="submit" class="btn btn-primary"  id="okBtn">저장</button>'
+							$("#okBtn").remove();
+							$("#submitHere").append(submitAdd);
+							f++;
+						}
+
+					})
+
+	//엔터값 처리 (form태그에 keyup이벤트, 엔터값이 아니라면 처리x)
+	$("#detailInsert").keyup(function(event) {
+		if (event.keyCode != 13) { //엔터의 키값
+			return; //함수 종료
 		}
 
-	})
+		$("#okBtn").click(); //폼검증 함수 호출
+	});
 </script>
 
 <script>
@@ -143,10 +156,17 @@
 	function goPopup(i) {
 		addCount = i;
 		// var pop = window.open("${pageContext.request.contextPath}/resources/pop/jusoPopup.jsp", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
-		var pop = window.open("${pageContext.request.contextPath}/resources/pop/jsp_xy/jusoPopup.jsp", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+		var pop = window
+				.open(
+						"${pageContext.request.contextPath}/resources/pop/jsp_xy/jusoPopup.jsp",
+						"pop",
+						"width=570,height=420, scrollbars=yes, resizable=yes");
 	}
 
-	function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail, roadAddrPart2, engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn, detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo, entX, entY) {
+	function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail,
+			roadAddrPart2, engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,
+			detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn,
+			buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo, entX, entY) {
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 
 		proj4.defs["EPSG:5179"] = "+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000 +ellps=GRS80 +units= m +no_defs";//제공되는 좌표 
@@ -205,8 +225,7 @@
 		strAdd += '<label>옵션 간단 설명</label>'
 		strAdd += '<input type="text" class="form-control" name="list[' + i + '].exText"  placeholder="간단 설명">'
 		strAdd += '</div>'
-		strAdd += '<hr/>'
-		strAdd += '	<h1>자세한 일정은 상호합의하에 변경하여도 무관합니다.</h1>'
+
 		strAdd += '<hr/>'
 		strAdd += ' <div style="margin-right: 50px; display: inline-block">'
 		strAdd += '    <input type="date"  name="list[' + i + '].day1" >'
@@ -218,6 +237,7 @@
 		strAdd += '   </div>'
 
 		strAdd += '	<div class="form-group">'
+
 		strAdd += '<div class="form-group">'
 		strAdd += '<hr/>'
 		strAdd += '	<label>시간</label>'
@@ -311,53 +331,63 @@
 </script>
 
 <script>
-	$("#bigCategory").change(function() {
-		var bigCategory = $("#bigCategory").val();
-		console.log(bigCategory);
-		middleAdd = "";
-		$.ajax({
-			type : "post",
-			url : "../detailBoard/detailWriteUpdate",
-			contentType : "application/json; charset=UTF-8",
-			data : JSON.stringify({
-				"bigCategory" : bigCategory
-			}),
-			success : function(data) {
-				for (var i = 0; i < data.length; i++) {
-					middleAdd += '<option value="' + data[i].middleCategory + '">' + data[i].middleCategory + '</option>'
-				}
-				$("#middleCategory").html(middleAdd); //추가
-			},
-			error : function(status, error) {
-				console.log(error);
-			}
-		})
+	$("#bigCategory")
+			.change(
+					function() {
+						var bigCategory = $("#bigCategory").val();
+						console.log(bigCategory);
+						middleAdd = "";
+						$
+								.ajax({
+									type : "post",
+									url : "../detailBoard/detailWriteUpdate",
+									contentType : "application/json; charset=UTF-8",
+									data : JSON.stringify({
+										"bigCategory" : bigCategory
+									}),
+									success : function(data) {
+										for (var i = 0; i < data.length; i++) {
+											middleAdd += '<option value="' + data[i].middleCategory + '">'
+													+ data[i].middleCategory
+													+ '</option>'
+										}
+										$("#middleCategory").html(middleAdd); //추가
+									},
+									error : function(status, error) {
+										console.log(error);
+									}
+								})
 
-	});
+					});
 </script>
 <script>
-	$("#middleCategory").change(function() {
-		var middleCategory = $("#middleCategory").val();
-		console.log(middleCategory);
-		smallAdd = "";
-		$.ajax({
-			type : "post",
-			url : "../detailBoard/detailWriteUpdate",
-			contentType : "application/json; charset=UTF-8",
-			data : JSON.stringify({
-				"middleCategory" : middleCategory
-			}),
-			success : function(data) {
-				for (var i = 0; i < data.length; i++) {
-					smallAdd += '<option id="smallCategoryON" value="' + data[i].smallCategory + '">' + data[i].smallCategory + '</option>'
-				}
-				$("#smallCategory").html(smallAdd); //추가
-			},
-			error : function(status, error) {
-				console.log(error);
-				alert("수정에 실패했습니다. 관리자에게 문의하세요");
-			}
-		})
+	$("#middleCategory")
+			.change(
+					function() {
+						var middleCategory = $("#middleCategory").val();
+						console.log(middleCategory);
+						smallAdd = "";
+						$
+								.ajax({
+									type : "post",
+									url : "../detailBoard/detailWriteUpdate",
+									contentType : "application/json; charset=UTF-8",
+									data : JSON.stringify({
+										"middleCategory" : middleCategory
+									}),
+									success : function(data) {
+										for (var i = 0; i < data.length; i++) {
+											smallAdd += '<option id="smallCategoryON" value="' + data[i].smallCategory + '">'
+													+ data[i].smallCategory
+													+ '</option>'
+										}
+										$("#smallCategory").html(smallAdd); //추가
+									},
+									error : function(status, error) {
+										console.log(error);
+										alert("수정에 실패했습니다. 관리자에게 문의하세요");
+									}
+								})
 
-	});
+					});
 </script>

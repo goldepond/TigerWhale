@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tigerWhale.command.CategoryBoardVO;
-import com.tigerWhale.command.IMGBoardVO;
 import com.tigerWhale.command.MainBoardVO;
 import com.tigerWhale.command.ThumbnailBoardVO;
 import com.tigerWhale.searchPage.mapper.SearchPageMapper;
 import com.tigerWhale.util.SearchPageCriteria;
+
 
 @Service("searchPageService")
 public class SearchPageServiceImpl implements SearchPageService {

@@ -23,7 +23,7 @@ grant connect, resource, dba to project; -- project라는 user에게 자원생�
 -- 13. USERIMGBOARD -- CONFIRM
 -- 14. TEXTBOARD -- CONFIRM
 -- 15. FAQBOARD -- CONFIRM
-
+-
  
 
 -------------1. USERBOARD----------------------------------

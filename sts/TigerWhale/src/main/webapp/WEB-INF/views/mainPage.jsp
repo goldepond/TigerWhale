@@ -17,8 +17,10 @@
 					<div class="carousel-inner">
 
 						<div class="item active">
-							<img src="../../resources/img/mainPageImg/html5.png" alt="CSS"
-								style="height: 450px;">
+
+							<img src=" ${pageContext.request.contextPath }/resources/img/mainPageImg/main1.jpg" alt="CSS"
+								style="min-width: 360px;">
+
 							<div class="carousel-caption">
 								<h3>1</h3>
 								<p>죽겠다!</p>
@@ -26,8 +28,8 @@
 						</div>
 
 						<div class="item">
-							<img src="../../resources/img/mainPageImg/html5.png" alt="HTML"
-								style="height: 450px;">
+							<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/main2.jpg" alt="HTML"
+								style="min-width: 360px">
 							<div class="carousel-caption">
 								<h3>2</h3>
 								<p>죽겠다데스!</p>
@@ -35,8 +37,8 @@
 						</div>
 
 						<div class="item">
-							<img src="../../resources/img/mainPageImg/jquery.png"
-								alt="jquery" style="height: 450px;">
+							<img src="${pageContext.request.contextPath }/resources/img/mainPageImg/main3.jpg" alt="jquery"
+								style="min-width: 360px">
 							<div class="carousel-caption">
 								<h3>3</h3>
 								<p>We love Apple!</p>

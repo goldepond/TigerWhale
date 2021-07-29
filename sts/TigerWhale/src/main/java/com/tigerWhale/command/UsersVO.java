@@ -19,4 +19,8 @@ public class UsersVO {
     
     private String userGender ;
     private String buyScore_AVG;
+    
+    private float la;
+    private float ma;
+    private int c_code; // mianPage에서 사용하려고 개인적으로 추가했습니다.
 }

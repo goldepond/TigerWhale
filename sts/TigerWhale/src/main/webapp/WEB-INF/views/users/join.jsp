@@ -82,7 +82,8 @@
                                 </div>
                             </div>
                         </div>-->
-			
+					<input type="hidden" class="ma" name="ma" id="id" value="숨길 내용">
+					<input type="hidden" class="la" name="la" id="id" value="숨길 내용">
 					<!--button탭에 들어가서 버튼종류를 확인한다-->
 					<div class="form-group">
 						<button type="button" class="btn btn-lg btn-success btn-block" id="joinBtn">회원가입</button>
@@ -97,8 +98,10 @@
 		</div>
 	</div>
 </section>
-
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9cdd93761c8771defa3902f488e93711&libraries=services"></script><!-- 추가구문 -->
 	<script>
+		
+	
 		//아이디 중복체크
 		$("#idCheck1").click(function(){
 			
@@ -140,7 +143,10 @@
 	
 		//폼검증
 		$("#joinBtn").click(function(){
-
+			
+			var x;
+			var y;
+			
 			console.log( $("#user_ID").attr("readonly") );
 			
 			//주소값 가공. 별도의 유효성은 추가하면서 잘 녹이실 것.
@@ -148,30 +154,44 @@
 			mainAddr = $('#addrBasic').val();
 			subAddr = $('#addrDetail').val();
 			
-			$('#userAdress').val(mainAddr + ' ' + subAddr);
+			$('#userAdress').val(mainAddr);
 			
-
-			//중복검사를 하지 않은 경우
-			if($("#user_ID").attr("readonly") != 'readonly') {
-				alert("아이디 중복검사는 필수 입니다.");
-				$("#user_ID").focus();
-				return; //함수종료
-				
-			} else if($("#user_PW").val() =='' || $("#user_PW").val()  != $("#pwConfirm").val()){
-		        console.log($("#user_PW").val());
-		        console.log("///////////////////////////////");
-		        console.log($("#pwConfirm").val());
-				$("#pwConfirm").focus(); alert("비밀번호를 확인하세요");
-				
-			} else if ($("#userName").val() == ''){
-				$("#userName").focus();
-				alert("이름은 필수 입니다");
-				
-			//유효성 체크후 submit -> 서버호출
-			} else {
-				$("#joinPage").submit();
-			}
-		
+			 var geocoder = new kakao.maps.services.Geocoder();
+	            geocoder.addressSearch(mainAddr, function (result, status) {
+	                if (status === kakao.maps.services.Status.OK) {
+	                	y = result[0].y;
+	                	x = result[0].x;
+	                }
+	            });
+			
+	            
+	        
+	        setTimeout(function(){
+				//중복검사를 하지 않은 경우
+				if($("#user_ID").attr("readonly") != 'readonly') {
+					alert("아이디 중복검사는 필수 입니다.");
+					$("#user_ID").focus();
+					return; //함수종료
+					
+				} else if($("#user_PW").val() =='' || $("#user_PW").val()  != $("#pwConfirm").val()){
+			        console.log($("#user_PW").val());
+			        console.log("///////////////////////////////");
+			        console.log($("#pwConfirm").val());
+					$("#pwConfirm").focus(); alert("비밀번호를 확인하세요");
+					
+				} else if ($("#userName").val() == ''){
+					$("#userName").focus();
+					alert("이름은 필수 입니다");
+					
+				//유효성 체크후 submit -> 서버호출
+				} else {
+					
+					$('.ma').val(y);
+			        $('.la').val(x);	
+					console.log($('.ma').val());
+					console.log($('.ma').val() != '숨길 내용');
+					$("#joinPage").submit();
+				}
 			//엔터값 처리 (form태그에 keyup이벤트, 엔터값이 아니라면 처리x)
 			$("#joinPage").keyup(function(event) {
 				if(event.keyCode != 13) {//엔터의 키값
@@ -180,6 +200,7 @@
 				}
 				$("#joinBtn").click(); //폼검증 함수 호출
 			});
+	        },500);
 		})
 	
 	</script>

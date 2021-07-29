@@ -3,10 +3,10 @@ package com.tigerWhale.searchPage.service;
 import java.util.ArrayList;
 
 import com.tigerWhale.command.CategoryBoardVO;
-import com.tigerWhale.command.IMGBoardVO;
 import com.tigerWhale.command.MainBoardVO;
 import com.tigerWhale.command.ThumbnailBoardVO;
 import com.tigerWhale.util.SearchPageCriteria;
+
 
 public interface SearchPageService {
 

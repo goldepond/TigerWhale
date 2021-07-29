@@ -8,8 +8,6 @@ html { overflow-y:scroll; }
     list-style: none;
 }
 
-
-
 body {
     overflow: hidden;
     position: relative;
@@ -327,6 +325,7 @@ body .all-category, .main-fluid {
 }
 .plus-list img {
     width: 100%;
+    height: 100%;
 }
 .thumbnail-area:hover .plus-thumbnail-list {
     display: block;
@@ -349,12 +348,15 @@ body .all-category, .main-fluid {
 .quick-area a {
     display: block;
     padding: 15px 0;
-    border-top: 1px solid #4d4d4d;
+    border-top: 0px solid #4d4d4d;
     color: #fff;
     font-size: 12px;
     line-height: 1.3;
     letter-spacing: -1px;
     padding-bottom: 10px;
+    background : transparent;
+    text-decoration-line: none;
+    
 }
 
 .quick-area {
@@ -368,13 +370,15 @@ body .all-category, .main-fluid {
     text-align: center;
     background: #282828;
     font-size: 15px;
+    color: black;
+    background : transparent;
 }
 
 .quick-area a {
     display: block;
     padding: 15px 0;
-    border-top: 1px solid #4d4d4d;
-    color: #fff;
+    border-top: 0px solid #4d4d4d;
+    color: black;
     font-size: 12px;
     line-height: 1.3;
     letter-spacing: -1px;
@@ -400,3 +404,87 @@ body .all-category, .main-fluid {
     opacity: 1;
 }
 
+/*yurim*/
+.btnGroup{
+	margin-top: 1rem;
+	text-align : center;
+}
+
+.nearDiv{
+	display:block !important;
+	clear: left;
+    text-align: center;
+}
+
+.boardBtn {
+    border: none;
+    background: transparent;
+    color: #888;
+    margin: 0 1rem 0 1rem;
+}
+.boardBtn:hover {
+    font-weight: bold;
+    color: #337ab7;
+}
+.recentBtn{
+	celar:left;
+	text-align : center;
+}
+
+.writeBtn{
+	
+	
+	float:right;
+	margin-right : 15px;
+	background:#1AAB8A;
+	color:#fff;
+	border:none;
+	position:relative;
+	height:60px;
+	font-size:0.6em;
+	padding:0 2em;
+	cursor:pointer;
+	transition:800ms ease all;
+	outline:none;
+	width : 120px;
+	height : 30px;
+}
+
+.writeBtn:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+
+.writeBtn:before,.writeBtn:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+
+.writeBtn:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+
+.writeBtn:hover:before,.writeBtn:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+.hiddenLa, .hiddenMa
+{
+	display: none;
+}
+
+.categoryBtnText
+{
+	color: red;
+	padding-left: 50px;
+}

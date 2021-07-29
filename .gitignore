@@ -9,8 +9,6 @@ pom.properties
 
 .settings
 
-/target/
+/target
 
 APP_CONSTANT.java
-
-*.class

@@ -1,14 +1,127 @@
 /* ############################################################### */
-/* faqModify */
-.titlebox {
-	width: 250px;
-	text-align: center;
-	height: 40px;
-	line-height: 40px;
-	margin: 70px auto;
-	border-top: 1px solid #E1E1E1;
-	border-bottom: 1px solid #E1E1E1;
+
+
+#editor {
+    min-height: 180px;
+    
 }
+
+
+
+
+
+
+
+.article-content{
+	border: 1px;
+	padding: 0 20px;
+}
+
+.article-header{
+	
+	font-size: large;
+	font-weight: 600;
+	margin: 10px auto;
+}
+
+/* faqModify */
+.article-wrapper{
+	 align: left;
+	 margin: 40px auto;
+	 font-weight: 900;
+	 font-size: xxx-large;
+}
+
+.title-toolbar{
+	margin-bottom: 20px;
+	border-top: 2px solid rgb(43 130 245);
+	background-color:#464646;
+/* 	background-color:rgb(85,115,154); */ 
+	padding: 2px 8px;
+	height: 30px;
+}
+
+.title-toolbar-left{
+	color: #FFF;
+	margin-right: 15px;
+	font-size: 15px;
+	font-weight: 300;
+	float: left;
+}
+
+.title-toolbar-right{
+	color: #FFF;
+	font-size: 15px;
+	font-weight: 300;
+	float: right; 
+	display: inline-block;
+	height: auto;
+	
+}
+
+
+
+
+
+
+
+
+
+/* FAQ버튼 관련 */
+.faq-buttons {
+	text-align: center;
+}
+
+.faq-buttons > button{
+	background-color: #464646;
+	color: #FFF;
+	border-radius: 1px;
+}
+
+.faq-buttons > button:hover{
+	background-color: #000000;
+	color: #FFF;
+	border-radius: 1px;
+}
+
+
+
+
+
+
+
+
+
+
+/* FAQ리스트 중앙그림부분 */
+#faqlist-top > .faqlist-bg{ 
+	background-color:rgba(0, 0, 0, 0.5); 	/*살짝 투명한 검정으로 배경색*/ 
+	width:100%; 
+	height:550px; 
+	position: absolute; /*다른 요소들 위로 겹쳐질 수 있게함*/ 
+	top:60px;
+}
+#faqlist-top > section{ 
+	background-image: linear-gradient(to right,#11070f ,transparent 100%), url("../../resources/img/image/weekly-online.png");
+	background-size:cover;
+	display:block; 
+	width:100%; 
+	height:200px; 
+	color:#ffffff; 
+	text-align: center; 
+	padding-top:60px; 
+} 
+#faqlist-top > section h1{ 
+	font-size: 2.5em;
+	position: relative; 
+	z-index:1000; /*맨 앞으로 나오도록 함*/ 
+	margin-left: 555px;
+} 
+
+
+
+
+
 
 .t-control .t-title {
 	width: 100px;

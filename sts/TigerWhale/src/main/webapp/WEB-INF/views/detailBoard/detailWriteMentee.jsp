@@ -43,7 +43,18 @@
 					<hr />
 
 					<div class="form-group">
-						<label>작성자</label> <input class="form-control" name='user_ID' value="작성자">
+						<c:choose>
+
+							<c:when test="${usersVO == null}">
+								<input class="form-control" name='user_ID' value="사용자" readonly="readonly">
+
+							</c:when>
+
+							<c:otherwise>
+								<input class="form-control" name='user_ID' value="${usersVO.user_ID}" readonly="readonly">
+							</c:otherwise>
+
+						</c:choose>
 					</div>
 
 					<div class="form-group">
@@ -52,7 +63,7 @@
 					<div class="form-group">
 						<label>간략 소개</label> <input class="form-control" name='text' value="123">
 					</div>
-					 <input  type="hidden"  class="form-control" name='money' value="0">
+					<input type="hidden" class="form-control" name='money' value="0">
 					<hr />
 					<div id="addoption">
 						<div class="option" id="option">
@@ -112,139 +123,152 @@
 							</div>
 						</div>
 					</div>
-			<hr />
-			<div class="form-group">
-				<label>설명1</label>
-				<textarea class="form-control" rows="10" name='text1' required>설명1</textarea>
-			</div>
+					<hr />
+					<div class="form-group">
+						<label>설명1</label>
+						<textarea class="form-control" rows="10" name='text1' required>설명1</textarea>
+					</div>
 
 
-			<div class="form-group">
-				<label>설명2</label>
-				<textarea class="form-control" rows="10" name='text2' required>설명2</textarea>
-			</div>
+					<div class="form-group">
+						<label>설명2</label>
+						<textarea class="form-control" rows="10" name='text2' required>설명2</textarea>
+					</div>
 
-			<div class="form-group">
-				<label>설명3</label>
-				<textarea class="form-control" rows="10" name='text3' required>설명3</textarea>
-			</div>
-			<br />
+					<div class="form-group">
+						<label>설명3</label>
+						<textarea class="form-control" rows="10" name='text3' required>설명3</textarea>
+					</div>
+					<br />
 					<button type="button" class="btn btn-dark" onclick="location.href = 'freeList'">목록</button>
-					 	<div id="submitHere">
-					    <button type="button" class="btn btn-dark" id="okBtn">확인</button>
-					 	</div>
-			<hr />
-			</form>
+					<div id="submitHere">
+						<button type="button" class="btn btn-dark" id="okBtn">확인</button>
+					</div>
+					<hr />
+				</form>
 			</div>
 		</div>
 	</div>
 </section>
 
 <script>
+	var loginUser = sessionStorage.getItem('usersVO');
+	//폼검증
+	$("#okBtn")
+			.click(
+					function() {
+						console.log("123");
+						console.log(($("#fileinsert").val()));
+						if ($("#smallCategoryON").length < 1) { //중복검사를 하지 않은 경우
+							alert("관심 카테고리 선택은 필수 입니다.");
+							$("#smallCategory").focus();
+							return; //함수종료
+						} else if ($("#title").val() == '') {
+							alert("제목 작성은 필수입니다.");
+							$("#title").focus();
+							return;
+						} else if ($("#fileinsert").length < 1
+								|| $("#fileinsert").val() == '') {
+							alert("파일 입력은 필수입니다.");
+							$("#fileinsert").focus();
+							return;
+						} else if ($("#option").length < 1) {
+							alert("하나의 옵션입력은 필수입니다.");
+							$("#addoption").focus();
+							return;
+						} else {
+							console.log($("#smallCategory").length);
+							$("#okBtn").submit(); //전송
+							var submitAdd = "";
+							submitAdd = '<button type="submit" class="btn btn-primary" >저장</button>'
+							$("#okBtn").remove();
+							$("#submitHere").append(submitAdd);
+							f++;
+						}
 
-//폼검증
-$("#okBtn").click(function() {
-console.log("123");
-console.log( ($("#fileinsert").val()));
-	if( $("#smallCategoryON").length < 1  ) { //중복검사를 하지 않은 경우
-		alert("관심 카테고리 선택은 필수 입니다.");
-		$("#smallCategory").focus();
-		return; //함수종료
-	} else if( $("#title").val() == '') {
-		alert("제목 작성은 필수입니다.");
-		$("#title").focus();
-		return;
-	}  else if( $("#fileinsert").length < 1 || $("#fileinsert").val() == '') {
-		alert("파일 입력은 필수입니다.");
-		$("#fileinsert").focus();
-		return;
-	}  else if( $("#option").length < 1 ) {
-		alert("하나의 옵션입력은 필수입니다.");
-		$("#addoption").focus();
-		return;
-	}else {
-		console.log($("#smallCategory").length);
-		$("#okBtn").submit(); //전송
-			var submitAdd = "";
-		submitAdd = '<button type="submit" class="btn btn-primary" >저장</button>'
-		$("#okBtn").remove();
-		$("#submitHere").append(submitAdd);
+					})
+
+	//엔터값 처리 (form태그에 keyup이벤트, 엔터값이 아니라면 처리x)
+	$("#detailInsert").keyup(function(event) {
+		if (event.keyCode != 13) { //엔터의 키값
+			return; //함수 종료
+		}
+
+		$("#okBtn").click(); //폼검증 함수 호출
+	});
+</script>
+
+<script>
+	var fileBtn = document.getElementById("fileUploadBtn");
+	var f = 0;
+	fileBtn.onclick = function() {
+		var fileAdd = "";
+		fileAdd += '파일선택:<input type="file" id="fileinsert" name="imguploadList[' + f+ '].file"><br/>'
+
+		$("#fileUpload").append(fileAdd);
 		f++;
+
 	}
-	
-})
-
-//엔터값 처리 (form태그에 keyup이벤트, 엔터값이 아니라면 처리x)
-$("#detailInsert").keyup(function(event) {
-	if(event.keyCode != 13) { //엔터의 키값
-		return; //함수 종료
-	}
-	
-	$("#okBtn").click(); //폼검증 함수 호출
-});
 </script>
 
 <script>
-var fileBtn = document.getElementById("fileUploadBtn");
-var f = 0;
-fileBtn.onclick = function() {
-	var fileAdd = "";
-	fileAdd += '파일선택:<input type="file" id="fileinsert" name="imguploadList[' + f+ '].file"><br/>'
-	
-	$("#fileUpload").append(fileAdd);
-	f++;
+	$("#bigCategory")
+			.change(
+					function() {
+						var bigCategory = $("#bigCategory").val();
+						console.log(bigCategory);
+						middleAdd = "";
+						$
+								.ajax({
+									type : "post",
+									url : "../detailBoard/detailWriteUpdate",
+									contentType : "application/json; charset=UTF-8",
+									data : JSON.stringify({
+										"bigCategory" : bigCategory
+									}),
+									success : function(data) {
+										for (var i = 0; i < data.length; i++) {
+											middleAdd += '<option value="' + data[i].middleCategory + '">'
+													+ data[i].middleCategory
+													+ '</option>'
+										}
+										$("#middleCategory").html(middleAdd); //추가
+									},
+									error : function(status, error) {
+										console.log(error);
+									}
+								})
 
-}
-</script>
-
-<script>
-	$("#bigCategory").change(function() {
-		var bigCategory = $("#bigCategory").val();
-		console.log(bigCategory);
-		middleAdd = "";
-		$.ajax({
-			type : "post",
-			url : "../detailBoard/detailWriteUpdate",
-			contentType : "application/json; charset=UTF-8",
-			data : JSON.stringify({
-				"bigCategory" : bigCategory
-			}),
-			success : function(data) {
-				for (var i = 0; i < data.length; i++) {
-					middleAdd += '<option value="' + data[i].middleCategory + '">' + data[i].middleCategory + '</option>'
-				}
-				$("#middleCategory").html(middleAdd); //추가
-			},
-			error : function(status, error) {
-				console.log(error);
-			}
-		})
-
-	});
+					});
 </script>
 <script>
-	$("#middleCategory").change(function() {
-		var middleCategory = $("#middleCategory").val();
-		console.log(middleCategory);
-		smallAdd = "";
-		$.ajax({
-			type : "post",
-			url : "../detailBoard/detailWriteUpdate",
-			contentType : "application/json; charset=UTF-8",
-			data : JSON.stringify({
-				"middleCategory" : middleCategory
-			}),
-			success : function(data) {
-				for (var i = 0; i < data.length; i++) {
-					smallAdd += '<option id="smallCategoryON" value="' + data[i].smallCategory + '">' + data[i].smallCategory + '</option>'
-				}
-				$("#smallCategory").html(smallAdd); //추가
-			},
-			error : function(status, error) {
-				console.log(error);
-				alert("수정에 실패했습니다. 관리자에게 문의하세요");
-			}
-		})
+	$("#middleCategory")
+			.change(
+					function() {
+						var middleCategory = $("#middleCategory").val();
+						console.log(middleCategory);
+						smallAdd = "";
+						$
+								.ajax({
+									type : "post",
+									url : "../detailBoard/detailWriteUpdate",
+									contentType : "application/json; charset=UTF-8",
+									data : JSON.stringify({
+										"middleCategory" : middleCategory
+									}),
+									success : function(data) {
+										for (var i = 0; i < data.length; i++) {
+											smallAdd += '<option id="smallCategoryON" value="' + data[i].smallCategory + '">'
+													+ data[i].smallCategory
+													+ '</option>'
+										}
+										$("#smallCategory").html(smallAdd); //추가
+									},
+									error : function(status, error) {
+										console.log(error);
+										alert("수정에 실패했습니다. 관리자에게 문의하세요");
+									}
+								})
 
-	});
+					});
 </script>

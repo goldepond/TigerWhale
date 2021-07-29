@@ -13,8 +13,8 @@ public interface FaqMapper {
 	public int getTotal(Criteria cri); //전체게시글 수
 	
 	public ArrayList<FaqVO> getList(Criteria cri);
-	
 	public FaqVO getDetail(int bno); //상세
 	public int update(FaqVO vo); //수정
 	public int delete(int bno); //삭제
+	public int replyForm(FaqVO faqVo);
 }

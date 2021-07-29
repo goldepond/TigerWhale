@@ -38,8 +38,6 @@
 												<img src="../resources/img/detailPageImg/${mainBoardVO.bno}/${vo.img}" alt="Chania" width="460" height="345">
 											</div>
 										</c:forEach>
-
-
 									</div>
 
 									<!-- Left and right controls -->
@@ -48,17 +46,6 @@
 									</a>
 								</div>
 
-
-
-
-
-
-
-
-
-
-
-
 							</div>
 						</div>
 
@@ -66,6 +53,9 @@
 							****
 							<h3 class="rate">3.5</h3>
 							<h5 class="count">${replyBoardVO.size()}개의평가</h5>
+							<select>
+								<option>
+							</select>
 						</div>
 
 						<div class="GigNavigator">
@@ -142,7 +132,7 @@
 										<li class="active"><a href="#home"> 공통 정보 </a></li>
 
 										<c:forEach var="vo" items="${m_boardVO}" varStatus="status">
-											<li><a href="#menu${status.count}" id="menu" onclick="getMapsXY(${vo.entX},${vo.entY})"> ${status.count} 옵션 </a></li>
+											<li><a href="#menu${status.count}" id="menu" onclick="getMapsXY(${vo.entX},${vo.entY})"> ${status.count}옵션 </a></li>
 										</c:forEach>
 									</ul>
 									<div class="tab-content">
@@ -155,8 +145,7 @@
 
 										<c:forEach var="vo" items="${m_boardVO}" varStatus="status">
 											<form action="detailBuy" method="post" class="tab-pane fade" id="menu${status.count}">
-												<input type="hidden" name="bno" value="${m_boardVO.get(0).bno}">
-												<input type="hidden" name="rno" value="${vo.rno}">
+												<input type="hidden" name="bno" value="${m_boardVO.get(0).bno}"> <input type="hidden" name="rno" value="${vo.rno}">
 												<div>
 													<div class="package-header">
 														<span class="package-price">${vo.money}원</span> <span class="package-type">Standard</span>
@@ -186,18 +175,24 @@
 															</div>
 														</div>
 														<div class="package-direct-order">
-															<button type="submit" class="btn">
-																<span>구매하기</span>
-															</button>
+															<c:choose>
+
+																<c:when test="${usersVO == null}">
+																	<button type="button" class="btn"><span>로그인 후 이용해주세요</span></button>
+
+																</c:when>
+
+																<c:otherwise>
+																	<button type="submit" class="btn"><span>구매하기</span></button>
+																</c:otherwise>
+
+															</c:choose>
+															
 														</div>
-
 													</div>
-
 												</div>
-
 											</form>
 										</c:forEach>
-
 									</div>
 									<!-- //////////////////////////////////////////////////////// -->
 
@@ -240,7 +235,19 @@
 						<textarea class="form-control" rows="3" name="reply" id="reply"></textarea>
 						<div class="reply-group">
 							<div class="reply-input">
-								<input type="text" class="form-control" placeholder="이름" name="replyID" id="replyID">
+
+								<c:choose>
+
+									<c:when test="${usersVO == null}">
+										<input type="text" class="form-control" value="사용자" name="replyID" id="replyID" readonly="readonly">
+
+									</c:when>
+
+									<c:otherwise>
+										<input type="text" class="form-control" value="${usersVO.user_ID}" name="replyID" id="replyID" readonly="readonly">
+									</c:otherwise>
+
+								</c:choose>
 							</div>
 							<button type="button" class="right btn btn-info" id="replyRegist">등록하기</button>
 						</div>
@@ -261,10 +268,9 @@
 						</div>
 					</div>
 				</div>
-
-
-				<div id="comment_people"></div>
-				<button type="button" class="btn btn-default btn-block" id="moreList" style="background-color: red">더보기</button>
+				<div id="comment_people">
+					<button type="button" class="btn btn-default btn-block" id="moreList" style="background-color: red">더보기</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -287,7 +293,7 @@
 					<textarea class="form-control" rows="4" id="modalReply" placeholder="내용입력"></textarea>
 					<div class="reply-group">
 						<div class="reply-input">
-							<input type="hidden" id="modalRno"> <input type="password" class="form-control" placeholder="비밀번호" id="modalPw">
+							<input type="hidden" id="modalRno"> <input type="password" class="form-control" value=${userId } id="modalPw" readonly="readonly">
 						</div>
 						<button class="right btn btn-info" id="modalModBtn">수정하기</button>
 						<button class="right btn btn-info" id="modalDelBtn">삭제하기</button>

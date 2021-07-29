@@ -9,7 +9,7 @@
 				<div class="titlebox">
 					<p>글쓰기</p>
 				</div>
-				<form action="detailInsert"  id="detailInsert" method="post" enctype="multipart/form-data">
+				<form action="detailInsert" id="detailInsert" method="post" enctype="multipart/form-data">
 
 					<hr />
 					<div class="form-group">
@@ -40,15 +40,26 @@
 
 					<hr />
 					<div class="form-group">
-						<label>멘토/멘티 구분</label> 
-						<input class="form-control"  name="boardType"  value="멘토" readonly="readonly">
+						<label>멘토/멘티 구분</label> <input class="form-control" name="boardType" value="멘토" readonly="readonly">
 					</div>
 
 
 					<hr />
 
 					<div class="form-group">
-						<label>작성자</label> <input class="form-control" name='user_ID' value="작성자">
+						<label>작성자</label>
+						<c:choose>
+
+							<c:when test="${usersVO == null}">
+								<input class="form-control" name='user_ID' value="사용자" readonly="readonly">
+
+							</c:when>
+
+							<c:otherwise>
+								<input class="form-control" name='user_ID' value="${usersVO.user_ID}" readonly="readonly">
+							</c:otherwise>
+
+						</c:choose>
 					</div>
 
 					<div class="form-group">
@@ -82,9 +93,9 @@
 					</div>
 					<br />
 					<button type="button" class="btn btn-dark" onclick="location.href = 'freeList'">목록</button>
-					 	<div id="submitHere">
-					    <button type="button" class="btn btn-dark" id="okBtn">확인</button>
-					 	</div>
+					<div id="submitHere">
+						<button type="button" class="btn btn-dark" id="okBtn">확인</button>
+					</div>
 					<hr />
 				</form>
 			</div>
@@ -93,67 +104,55 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4.js"></script>
 <script>
-
-//폼검증
-$("#okBtn").click(function() {
-console.log("123");
-console.log( ($("#fileinsert").val()));
-	if( $("#smallCategoryON").length < 1  ) { //중복검사를 하지 않은 경우
-		alert("관심 카테고리 선택은 필수 입니다.");
-		$("#smallCategory").focus();
-		return; //함수종료
-	} else if( $("#title").val() == '') {
-		alert("제목 작성은 필수입니다.");
-		$("#title").focus();
-		return;
-	}  else if( $("#fileinsert").length < 1 || $("#fileinsert").val() == '') {
-		alert("파일 입력은 필수입니다.");
-		$("#fileinsert").focus();
-		return;
-	}  else if( $("#option").length < 1 ) {
-		alert("하나의 옵션입력은 필수입니다.");
-		$("#addoption").focus();
-		return;
-	}else {
-		console.log($("#smallCategory").length);
-		$("#okBtn").submit(); //전송
+	//폼검증
+	$("#okBtn").click(function() {
+		console.log("123");
+		console.log(($("#fileinsert").val()));
+		if ($("#smallCategoryON").length < 1) { //중복검사를 하지 않은 경우
+			alert("관심 카테고리 선택은 필수 입니다.");
+			$("#smallCategory").focus();
+			return; //함수종료
+		} else if ($("#title").val() == '') {
+			alert("제목 작성은 필수입니다.");
+			$("#title").focus();
+			return;
+		} else if ($("#fileinsert").length < 1 || $("#fileinsert").val() == '') {
+			alert("파일 입력은 필수입니다.");
+			$("#fileinsert").focus();
+			return;
+		} else if ($("#option").length < 1) {
+			alert("하나의 옵션입력은 필수입니다.");
+			$("#addoption").focus();
+			return;
+		} else {
+			console.log($("#smallCategory").length);
 			var submitAdd = "";
-		submitAdd = '<button type="submit" class="btn btn-primary"  id="okBtn">저장</button>'
-		$("#okBtn").remove();
-		$("#submitHere").append(submitAdd);
-		f++;
-	}
-	
-})
+			submitAdd = '<button type="submit" class="btn btn-primary"  id="okBtn">저장</button>'
+			$("#okBtn").remove();
+			$("#submitHere").append(submitAdd);
+			f++;
+		}
 
-//엔터값 처리 (form태그에 keyup이벤트, 엔터값이 아니라면 처리x)
-$("#detailInsert").keyup(function(event) {
-	if(event.keyCode != 13) { //엔터의 키값
-		return; //함수 종료
-	}
-	
-	$("#okBtn").click(); //폼검증 함수 호출
-});
+	})
 </script>
 
 <script>
 	//주소팝업
-	var addCount= 0;
-	
+	var addCount = 0;
+
 	function goPopup(i) {
 		addCount = i;
 		// var pop = window.open("${pageContext.request.contextPath}/resources/pop/jusoPopup.jsp", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
-		var pop = window.open("${pageContext.request.contextPath}/resources/pop/jsp_xy/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes");
+		var pop = window.open("${pageContext.request.contextPath}/resources/pop/jsp_xy/jusoPopup.jsp", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
 	}
 
-	function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo,entX,entY){
+	function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail, roadAddrPart2, engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn, detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo, entX, entY) {
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-
 
 		proj4.defs["EPSG:5179"] = "+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000 +ellps=GRS80 +units= m +no_defs";//제공되는 좌표 
 		var grs80 = proj4.Proj(proj4.defs["EPSG:5179"]);
 		var wgs84 = proj4.Proj(proj4.defs["EPSG:4326"]); //경위도 +
-		
+
 		document.querySelectorAll("#addrBasic")[addCount].value = roadAddrPart1;
 		document.querySelectorAll("#addrDetail")[addCount].value = addrDetail;
 		console.log(entX);
@@ -167,18 +166,17 @@ $("#detailInsert").keyup(function(event) {
 		console.log(typeof entX);
 		console.log(typeof entY);
 		console.log("########################");
-		var p = proj4.Point(  entX, entY);//한국지역정보개발원 좌표 
+		var p = proj4.Point(entX, entY);//한국지역정보개발원 좌표 
 		console.log("########################");
 		console.log(p);
 		console.log("########################");
-		p = proj4.transform( grs80, wgs84, p); 
+		p = proj4.transform(grs80, wgs84, p);
 		console.log(p);
 		console.log("########################");
 		document.querySelectorAll("#entX")[addCount].value = p.x;
 		document.querySelectorAll("#entY")[addCount].value = p.y;
 		console.log(p.x);
 		console.log(p.y);
-
 
 	}
 
@@ -187,7 +185,7 @@ $("#detailInsert").keyup(function(event) {
 	fileBtn.onclick = function() {
 		var fileAdd = "";
 		fileAdd += '파일선택:<input type="file" id="fileinsert" name="imguploadList[' + f+ '].file"><br/>'
-		
+
 		$("#fileUpload").append(fileAdd);
 		f++;
 
@@ -207,7 +205,8 @@ $("#detailInsert").keyup(function(event) {
 		strAdd += '<label>옵션 간단 설명</label>'
 		strAdd += '<input type="text" class="form-control" name="list[' + i + '].exText"  placeholder="간단 설명">'
 		strAdd += '</div>'
-
+		strAdd += '<hr/>'
+		strAdd += '	<h1>자세한 일정은 상호합의하에 변경하여도 무관합니다.</h1>'
 		strAdd += '<hr/>'
 		strAdd += ' <div style="margin-right: 50px; display: inline-block">'
 		strAdd += '    <input type="date"  name="list[' + i + '].day1" >'
@@ -219,7 +218,6 @@ $("#detailInsert").keyup(function(event) {
 		strAdd += '   </div>'
 
 		strAdd += '	<div class="form-group">'
-
 		strAdd += '<div class="form-group">'
 		strAdd += '<hr/>'
 		strAdd += '	<label>시간</label>'
@@ -285,7 +283,7 @@ $("#detailInsert").keyup(function(event) {
 		strAdd += '		<div class="input-group">'
 		strAdd += '		<div class="input-group-addon">'
 		strAdd += '			<button type="button" class="btn btn-primary"'
-		strAdd += '			onclick="goPopup('+ i +')">주소찾기</button>'
+		strAdd += '			onclick="goPopup(' + i + ')">주소찾기</button>'
 		strAdd += '		</div>'
 		strAdd += '	</div>'
 		strAdd += '</div>'

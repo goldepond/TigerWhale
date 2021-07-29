@@ -20,7 +20,7 @@
                                             <span class="name">${usersVO.user_ID }</span>  고객님 
                                         </div>
                                         <div class="user-email">
-                                            <span class="glyphicon glyphicon-envelope"> ${usersVO.userEmail1} ${usersVO.userEmail2}<!--이메일 호출--></span>
+                                            <span class="glyphicon glyphicon-envelope"> ${usersVO.userEmail1}@${usersVO.userEmail2}<!--이메일 호출--></span>
                                         </div>
                                     </div>
                                     <div class="arrow">
@@ -31,9 +31,8 @@
                                 <ul class="account-info">
                                     <li class="item-container">
                                         <div class="item">
-                                            <div class="item-title">유저 평점</div>
-                                            <div class="item-info">수강생 평점</div>
-                                            <div class="item-info">강사 평점</div>
+                                            <div class="item-title">성별</div>
+                                            <div class="item-info">${usersVO.userGender }</div>                                          
                                         </div>
                                     </li>
                                     <li class="item-container">
@@ -46,19 +45,15 @@
                                     </li>
                                     <li class="item-container">
                                         <div class="item">
-                                            <div class="item-title">판매자 카테고리</div>
-                                            <div class="item-info">스포츠</div>
-                                        </div>
-                                        <div class="glyphicon glyphicon-chevron-right">
-                                        </div>
+                                            <div class="item-title">구매자 평점</div>
+                                            <div class="item-info">${usersVO.buyScore_AVG }</div>
+                                        </div>                                    
                                     </li>
                                     <li class="item-container">
                                         <div class="item">
                                             <div class="item-title">거주 지역</div>
                                             <div class="item-info">${usersVO.userAdress }</div>
-                                        </div>
-                                        <div class="glyphicon glyphicon-chevron-right">
-                                        </div>
+                                        </div>                                     
                                     </li>
                 
                                 </ul>
@@ -79,7 +74,7 @@
                                     </li>
                                 </ul>
                                 <ul class="account-info">
-                                    <li class="item-container" onclick="location.href='${pageContext.request.contextPath}/users/userLogout'">
+                                    <li class="item-container" onclick="location.href = '${pageContext.request.contextPath}/users/userLogout'">
                                         <div class="item">
                                             <div class="item-title">로그아웃</div>
                                         </div>

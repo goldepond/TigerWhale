@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -50,7 +49,7 @@ public class JoinController {
     }
 	
 	@RequestMapping(value = "/joinPage", method = RequestMethod.POST)
-    public String joinPage(UsersVO vo,
+    public String joinPage(UsersVO vo, 
     						RedirectAttributes RA)
     {
         System.out.println(vo.getUser_ID());
@@ -61,12 +60,9 @@ public class JoinController {
         System.out.println(vo.getUserPhoneNumber());
         System.out.println(vo.getUserGender());
         
-        //float ma = Float.parseFloat(ma2);
-        //float la = Float.parseFloat(la2);
         int result = joinService.join(vo);
         if(result == 1) {
             RA.addFlashAttribute("msg", "가입을 축하합니다");
-            
         } else {
             RA.addFlashAttribute("msg", "가입 실패했습니다. 다시 시도해 주세요.");
         }

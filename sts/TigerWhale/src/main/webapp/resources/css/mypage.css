@@ -1,5 +1,8 @@
-/* ############################################################ */
-/* Mypage */
+* {
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
 .profile-container {
     
     font-size: 0;

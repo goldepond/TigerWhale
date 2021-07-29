@@ -117,8 +117,7 @@ public class DetailBoardController {
 	
 	
 	@RequestMapping("/detailPage")
-	public String detailPage(HttpServletRequest request, Model model) {
-		int bno = 88;
+	public String detailPage(@RequestParam(value="bno") int bno, HttpServletRequest request, Model model) {
 		System.out.println(bno);
 		//===============================================
 		
@@ -247,7 +246,7 @@ public class DetailBoardController {
 			@RequestParam("text2") String text2,
 			@RequestParam("text3") String text3,
 			
-			 Model model) {
+			RedirectAttributes RA) {
 		System.out.println("===================");
 		System.out.println("bigCategory" + bigCategory);
 		System.out.println("middleCategory" + middleCategory);
@@ -384,10 +383,10 @@ public class DetailBoardController {
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");		
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		model.addAttribute("bno", bno);
+		RA.addAttribute("bno", bno);
 		System.out.println("값넘기기" + bno);
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		return "detailBoard/detailPage";
+		return "redirect:/detailBoard/detailPage";
 		
 	}
 	

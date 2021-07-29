@@ -38,8 +38,6 @@
 												<img src="../resources/img/detailPageImg/${mainBoardVO.bno}/${vo.img}" alt="Chania" width="460" height="345">
 											</div>
 										</c:forEach>
-
-
 									</div>
 
 									<!-- Left and right controls -->

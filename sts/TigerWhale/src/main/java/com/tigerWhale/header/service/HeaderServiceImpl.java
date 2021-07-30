@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.tigerWhale.command.CategoryBoardVO;
 import com.tigerWhale.header.mapper.HeaderMapper;
-import com.tigerWhale.searchPage.mapper.SearchPageMapper;
+
 
 @Service("headerService")
 public class HeaderServiceImpl implements HeaderService {

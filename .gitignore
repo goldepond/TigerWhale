@@ -5,7 +5,7 @@
 # JDT-specific (Eclipse Java Development Tools)     
 .classpath
 
-pop.properties
+pom.properties
 
 .settings
 

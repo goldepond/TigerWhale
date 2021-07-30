@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.users.service.UsersService;
@@ -21,98 +22,84 @@ public class MypageController {
 	private UsersService usersService;
 
 	@RequestMapping("/mypage")
-	public String userMypage(HttpSession session, Model model) {
+	public String userMypage() {
 
-		UsersVO vo = (UsersVO) session.getAttribute("usersVO");
-		String user_ID = vo.getUser_ID();
-
-		UsersVO userInfo = usersService.getInfo(user_ID);
-		model.addAttribute("userInfo", userInfo);
 		return "mypage/mypage";
 	}
 
 	@RequestMapping("/mypage-email")
-	public String userMypageEmail(HttpSession session, Model model) {
+	public String userMypageEmail() {
 
-		UsersVO vo = (UsersVO) session.getAttribute("usersVO");
-		String userEmail1 = vo.getUserEmail1();
-
-		UsersVO userInfo = usersService.getInfo(userEmail1);
-		model.addAttribute("userInfo", userInfo);
 		return "mypage/mypage-email";
 	}
 
-	@RequestMapping(value = "/emailForm", method = RequestMethod.POST)
-	public String emailUsers(HttpSession session, UsersVO vo) {
-		usersService.updateEmail(vo);
+	@RequestMapping(value = "/emailForm")
+	public String emailUsers(UsersVO vo) {
+		System.out.println(vo.toString());
+		usersService.emailUpdate(vo);
 
 		return "redirect:/";
 	}
 
 	@RequestMapping("/mypage-password")
-	public String userMypagePW(HttpSession session, Model model) {
+	public String userMypagePW() {
 
-		UsersVO vo = (UsersVO) session.getAttribute("usersVO");
-		String user_PW = vo.getUser_PW();
-
-		UsersVO userInfo = usersService.getInfo(user_PW);
-		model.addAttribute("userInfo", userInfo);
 		return "mypage/mypage-password";
 	}
 
-	@RequestMapping(value = "/passwordForm", method = RequestMethod.POST)
-	public String pwUsers(HttpSession session, UsersVO vo) {
-		usersService.updatePW(vo);
-
-		return "redirect:/";
+	@RequestMapping(value = "/passwordForm")
+	public String pwUsers(UsersVO vo, HttpSession session, Model model, @RequestParam("user_PW") String newPW, @RequestParam("checkPW") String checkPW) {
+		
+		if(newPW.equals(checkPW)) {
+			usersService.passwordUpdate(vo);
+			session.invalidate();
+			System.out.println("비밀번호 컨트롤러 통과");
+			return "redirect:/";
+		} else {
+			model.addAttribute("msg", false);
+			return "mypage/mypage-password";
+		}
 	}
 
 	@RequestMapping("/mypage-phone")
-	public String userMypagePhoneNum(HttpSession session, Model model) {
-
-		UsersVO vo = (UsersVO) session.getAttribute("usersVO");
-		String userPhoneNumber = vo.getUserPhoneNumber();
-
-		UsersVO userInfo = usersService.getInfo(userPhoneNumber);
-		model.addAttribute("userInfo", userInfo);
+	public String userMypagePhoneNum() {
+		
 		return "mypage/mypage-phone";
 	}
 
-	@RequestMapping(value = "/phoneForm", method = RequestMethod.POST)
-	public String phoneUsers(HttpSession session, UsersVO vo) {
-		usersService.updatePhone(vo);
-
+	@RequestMapping(value = "/phoneForm")
+	public String phoneUsers(UsersVO vo) {
+		usersService.phoneUpdate(vo);
 		return "redirect:/";
 	}
 
 	@RequestMapping("/mypageModify")
-	public String userMypageModify(HttpSession session, Model model) {
+	public String userMypageModify() {
 
-		UsersVO vo = (UsersVO) session.getAttribute("usersVO");
-		String userPhoneNumber = vo.getUserPhoneNumber();
-
-		UsersVO userInfo = usersService.getInfo(userPhoneNumber);
-		model.addAttribute("userInfo", userInfo);
 		return "mypage/mypageModify";
 	}
 
 	@RequestMapping("/mypageDelete")
-	public String userMypageDelete(HttpSession session, Model model) {
+	public String userMypageDelete() {
 
-		UsersVO vo = (UsersVO) session.getAttribute("usersVO");
-		String userPhoneNumber = vo.getUserPhoneNumber();
-
-		UsersVO userInfo = usersService.getInfo(userPhoneNumber);
-		model.addAttribute("userInfo", userInfo);
 		return "mypage/mypageDelete";
 	}
 
-	@RequestMapping(value = "/deleteForm", method = RequestMethod.POST)
-	public String deleteUsers(HttpSession session, UsersVO vo) {
-		usersService.deleteUsers(vo);
-		session.invalidate();
-
-		return "redirect:/";
+	@RequestMapping(value = "/deleteForm")
+	public String deleteUsers(UsersVO vo, HttpSession session, Model model) {
+		UsersVO users = (UsersVO)session.getAttribute("usersVO");
+		String oldPW = users.getUser_PW();
+		String newPW = vo.getUser_PW();
+		if(oldPW.equals(newPW)) {
+			usersService.usersDelete(vo);
+			session.invalidate();
+			return "redirect:/";
+		} else {
+			model.addAttribute("msg", false);
+			return "mypage/mypageDelete";
+			
+			
+		}
 	}
 
 }

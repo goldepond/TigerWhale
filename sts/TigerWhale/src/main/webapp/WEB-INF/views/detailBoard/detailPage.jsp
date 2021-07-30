@@ -49,14 +49,6 @@
 							</div>
 						</div>
 
-						<div class="GigRate">
-							****
-							<h3 class="rate">3.5</h3>
-							<h5 class="count">${replyBoardVO.size()}개의평가</h5>
-							<select>
-								<option>
-							</select>
-						</div>
 
 						<div class="GigNavigator">
 							<div class="gig-navigation-box menuBtn">
@@ -321,19 +313,6 @@ staticMapOption = {
 //이미지 지도를 표시할 div와 옵션으로 이미지 지도를 생성합니다
 var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
 	</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
 	$(document).ready(function() {
 		$(".nav-tabs a").click(function() {
@@ -419,10 +398,6 @@ var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
 												alert("이름, 비밀번호, 내용은 필수입니다");
 												return; //함수종료
 											}
-											console.log(bno);
-											console.log(reply);
-											console.log(replyId);
-											$
 													.ajax({
 														type : "post",
 														url : "../reply/replyRegist",

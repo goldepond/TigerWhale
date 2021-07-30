@@ -103,26 +103,16 @@ public class ReplyController {
     
 //    =================================================================
     
+	//삭제요청 delete
+    @PostMapping(value = "charge", produces = "application/json")
+    public int charge(@PathVariable("imp_uid") String imp_uid,
+    				  @PathVariable("merchant_uid") String merchant_uid) {
+
+    	return 1;
+
+    }
     
     
-    
-    
-    
-    
-    
-    
-	//결제 요청
-	@PostMapping(value = "update", produces = "application/json")
-	public int detailPayment(@RequestBody ReplyBoardVO vo) {
-		
-		int count = replyService.pwCheck(vo);
-		
-		if(count == 1) { //비밀번호가 일치
-			return replyService.update(vo);
-		} else { //비밀번호가 일치하지 않기 때문에 실패반환
-			return 0; //실패의 의미
-		}
-	}
 	
 	
 	

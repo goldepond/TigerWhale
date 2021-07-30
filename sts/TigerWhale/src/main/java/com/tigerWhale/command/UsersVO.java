@@ -22,7 +22,7 @@ public class UsersVO {
     
     private float la;
     private float ma;
-    private int c_code; // mianPage에서 사용하려고 개인적으로 추가했습니다.
+    private int c_code; // mainPage에서 사용하려고 개인적으로 추가했습니다.
     
     private String user_IMG;
 }

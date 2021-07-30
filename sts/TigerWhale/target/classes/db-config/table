@@ -233,6 +233,7 @@ create SEQUENCE Y_M_BOARD_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
 ------------------------ 9. D_T_BOARD -------------------------------------
 create TABLE D_T_board
 (
+   bno NUMBER(20) NOT NULL,
    rno NUMBER(20) NOT NULL,
    M_day VARCHAR2(4000)
 );
@@ -314,9 +315,7 @@ create table FAQBOARD(
     writer varchar2(200) not null,
     content varchar2(4000) not null,
     regdate date default sysdate,
-    updatedate date default sysdate,
-    reply varchar2(4000),
-    replydate date default sysdate
+    updatedate date default sysdate
 );
 create SEQUENCE FAQBOARD_SEQ INCREMENT BY 1 START WITH 1 nocache;
 

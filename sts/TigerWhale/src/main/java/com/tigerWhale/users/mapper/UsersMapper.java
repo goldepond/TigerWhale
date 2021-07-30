@@ -11,11 +11,11 @@ public interface UsersMapper {
 
 	public UsersVO getInfo(String user_ID);// 회원아이디로 정보를 가져오는 메서드
 
-	public void emailUpdate(UsersVO vo);
+	public int emailUpdate(UsersVO vo);
 
-	public void phoneUpdate(UsersVO vo);
+	public int phoneUpdate(UsersVO vo);
 
-	public void passwordUpdate(UsersVO vo);
+	public int passwordUpdate(UsersVO vo);
 
-	public void usersDelete(UsersVO vo);
+	public UsersVO usersDelete(UsersVO vo);
 }

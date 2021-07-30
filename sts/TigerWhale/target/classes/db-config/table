@@ -314,7 +314,9 @@ create table FAQBOARD(
     writer varchar2(200) not null,
     content varchar2(4000) not null,
     regdate date default sysdate,
-    updatedate date default sysdate
+    updatedate date default sysdate,
+    reply varchar2(4000),
+    replydate date default sysdate
 );
 create SEQUENCE FAQBOARD_SEQ INCREMENT BY 1 START WITH 1 nocache;
 

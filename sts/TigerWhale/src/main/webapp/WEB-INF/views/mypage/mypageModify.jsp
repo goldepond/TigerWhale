@@ -16,7 +16,7 @@
 						<li class="item-container" onclick="location.href = '${pageContext.request.contextPath}/mypage/mypage-email'">
 							<div class="item">
 								<div class="item-title">이메일</div>
-								<div class="item-info">${usersVO.userEmail1 }</div>
+								<div class="item-info">${usersVO.userEmail1}@${usersVO.userEmail2}</div>
 							</div>
 							<div class="glyphicon glyphicon-chevron-right"></div>
 						</li>

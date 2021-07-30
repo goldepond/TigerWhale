@@ -68,6 +68,7 @@ public class ReplyController {
 		return map;
 	}
 	
+
 	
 	//수정요청
 	@PostMapping(value = "update", produces = "application/json")
@@ -98,6 +99,30 @@ public class ReplyController {
     }
 	
 	
+    
+    
+//    =================================================================
+    
+    
+    
+    
+    
+    
+    
+    
+    
+	//결제 요청
+	@PostMapping(value = "update", produces = "application/json")
+	public int detailPayment(@RequestBody ReplyBoardVO vo) {
+		
+		int count = replyService.pwCheck(vo);
+		
+		if(count == 1) { //비밀번호가 일치
+			return replyService.update(vo);
+		} else { //비밀번호가 일치하지 않기 때문에 실패반환
+			return 0; //실패의 의미
+		}
+	}
 	
 	
 	

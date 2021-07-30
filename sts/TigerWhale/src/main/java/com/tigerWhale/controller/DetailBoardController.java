@@ -117,7 +117,9 @@ public class DetailBoardController {
 	
 	
 	@RequestMapping("/detailPage")
-	public String detailPage(@RequestParam(value="bno") int bno, HttpServletRequest request, Model model) {
+	public String detailPage( HttpServletRequest request, Model model) {
+		//@RequestParam(value="bno") int bno,
+		int bno = 111;
 		System.out.println(bno);
 		//===============================================
 		
@@ -220,8 +222,6 @@ public class DetailBoardController {
 		model.addAttribute("mainBoardVO",  mainBoardVO);
 		return "detailBoard/detailBuy";
 	}
-	
-	
 	
 	
 	

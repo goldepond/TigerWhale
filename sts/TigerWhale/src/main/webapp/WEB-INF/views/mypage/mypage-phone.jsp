@@ -10,7 +10,7 @@
 					<form action="phoneForm" method="post">
 						<legend class="col-form-label">전화번호</legend>
 
-						<input type="text" name="user-phone" placeholder="휴대전화 번호를 입력하세요"
+						<input type="text" name="userPhoneNumber" placeholder="휴대전화 번호를 입력하세요"
 							class="form-control">
 						<div class="button-group">
 							<a href="${pageContext.request.contextPath}/mypage/mypageModify"
@@ -18,6 +18,7 @@
 								type="submit" class="btn btn-primary" value="수정완료">
 
 						</div>
+						<input type="hidden" name="user_ID" value="${usersVO.user_ID }">
 					</form>
 				</section>
 			</div>

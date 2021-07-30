@@ -26,6 +26,8 @@
 								type="submit" class="btn btn-primary" value="수정완료">
 
 						</div>
+						
+						<input type="hidden" name="user_ID" value="${usersVO.user_ID }">
 					</form>
 				</section>
 			</div>

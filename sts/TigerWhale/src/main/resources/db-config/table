@@ -261,6 +261,13 @@ CREATE TABLE CATEGORYBOARD
     bigCategory VARCHAR2(60) NOT NULL -- 대분류명
 );
 
+CREATE SEQUENCE CATE_SEQ
+    INCREMENT BY 1 -- 증가값 1
+    START WITH 1 -- 시작값
+    MAXVALUE 1000 -- 최댓값
+    NOCACHE -- 캐시 사용X
+    NOCYCLE; 
+
 -----------------------------------------------------------------------------
 
 

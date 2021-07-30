@@ -23,6 +23,10 @@
 							</button>
 						</form>
 					</div>
+					<script>
+						console.log("세션확인");
+						console.log(${sessionScope.userVO});
+					</script>
                     <c:if test="${sessionScope.userVO != null}">
                         <div class="icon-set header-div">
                             <span>

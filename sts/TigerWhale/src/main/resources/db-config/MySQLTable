@@ -1,54 +1,57 @@
---계정 project 생성, 권한부여-----------------
+##데이터베이스, 계정 project 생성, 권한부여-----------------
 
-create user project identified by project; --아이디 project 비밀번호 project인 접속가능한 user를 생성한다
-grant connect, resource, dba to project; -- project라는 user에게 자원생성 
+create database project character set utf8;
 
------------------------------------------
+create user 'project' identified by 'project';
 
--- 테이블 목록
--- 추가된 테이블이 또는 상세내용이 적혀있지 않은 테이블에는 테이블 사용자가 직접 수정해주세요 = > 마지막에 erd관계도 수정과 , 테이블 생성문 가독성을 높이기위함
+grant all privileges on project.* to 'project';
 
--- 1. USERBOARD -- CONFIRM
--- 2. MENTORBOARD -- CONFIRM
--- 3. CAREERBOARD -- CONFIRM
--- 4. DETAILBOARD -- CONFIRM
--- 5. INTERESTBOARD -- CONFIRM
--- 6. MAINBOARD -- CONFIRM
--- 7. V_R_Board -- CONFIRM
--- 8. Y_M_BOARD -- CONFIRM
--- 9. D_T_BOARD -- CONFIRM
--- 10. REPLYBOARD -- CONFIRM
--- 11. CATEGORYBOARD -- CONFIRM
--- 12. IMGBOARD -- CONFIRM
--- 13. USERIMGBOARD -- CONFIRM
--- 14. TEXTBOARD -- CONFIRM
--- 15. FAQBOARD -- CONFIRM
--
+##-----------------------------------------
+
+## 테이블 목록
+## 추가된 테이블이 또는 상세내용이 적혀있지 않은 테이블에는 테이블 사용자가 직접 수정해주세요 = > 마지막에 erd관계도 수정과 , 테이블 생성문 가독성을 높이기위함
+
+## 1. USERBOARD -- CONFIRM
+## 2. MENTORBOARD -- CONFIRM
+## 3. CAREERBOARD -- CONFIRM
+## 4. DETAILBOARD -- CONFIRM
+## 5. INTERESTBOARD -- CONFIRM
+## 6. MAINBOARD -- CONFIRM
+## 7. V_R_Board -- CONFIRM
+## 8. Y_M_BOARD -- CONFIRM
+## 9. D_T_BOARD -- CONFIRM
+## 10. REPLYBOARD -- CONFIRM
+## 11. CATEGORYBOARD -- CONFIRM
+## 12. IMGBOARD -- CONFIRM
+## 13. USERIMGBOARD -- CONFIRM
+## 14. TEXTBOARD -- CONFIRM
+## 15. FAQBOARD -- CONFIRM
+
  
 
--------------1. USERBOARD----------------------------------
--- 회원가입시 데이터를 저장하게되는 테이블입니다
+##-------------1. USERBOARD----------------------------------
+## 회원가입시 데이터를 저장하게되는 테이블입니다
 
 CREATE TABLE USERBOARD
 (
-    user_ID VARCHAR2(40) PRIMARY KEY, --아이디
-    user_PW VARCHAR2(40) NOT NULL, -- 비밀번호
-    userAdress VARCHAR2(100)NOT NULL, -- 주소
-    userPhoneNumber VARCHAR2(60)NOT NULL, --핸드폰 번호
-    userEmail1 VARCHAR2(50)NOT NULL, -- 이메일 앞부분 ex)aaaaa@naver.com
-    userEmail2 VARCHAR2(50)NOT NULL, -- 이메일 뒷부분
-    userGender VARCHAR2(6)NOT NULL, -- 성별 
-    buyScore_AVG NUMBER(3), -- 회원이 구매를하면서 판매자에게 받게된 평점의 총합 ( 변수명이 total,sum같은것이 아닌이유는 추후수정으로 오류발생을 피하기위해서 입니다) ( 회원평점의 총합 / scoreCount) = > 회원의 평점을 가져오기 위함입니다 
+    user_ID VARCHAR(40) PRIMARY KEY, ##아이디
+    user_PW VARCHAR(40) NOT NULL, ## 비밀번호
+    userAdress VARCHAR(100)NOT NULL, ## 주소
+    userPhoneNumber VARCHAR(60)NOT NULL, ## 핸드폰 번호
+    userEmail1 VARCHAR(50)NOT NULL, ## 이메일 앞부분 ex)aaaaa@naver.com
+    userEmail2 VARCHAR(50)NOT NULL, ## 이메일 뒷부분
+    userGender VARCHAR(6)NOT NULL, ## 성별 
+    buyScore_AVG int(3), -- 회원이 구매를하면서 판매자에게 받게된 평점의 총합 ( 변수명이 total,sum같은것이 아닌이유는 추후수정으로 오류발생을 피하기위해서 입니다) ( 회원평점의 총합 / scoreCount) = > 회원의 평점을 가져오기 위함입니다 
     la NUMBER, -- 회원 주소의 위도값 ( 카카오맵에 사용하는 값입니다 )
     ma NUMBER, -- 회원 주소의  경도값 ( 카카오맵에 사용하는 값입니다 )
     scoreCount NUMBER default 0--  회원이 평가를 받은 전체 횟수입니다. ( 회원평점의 총합 / scoreCount) = > 회원의 평점을 가져오기 위함입니다
 );
 
--------------------------------------------------------------------
+##-------------------------------------------------------------------
 
 
---------------2. MENTORBOARD -------------------------------------
--- 회원이 판매자로서 활동하기 위해 데이터가 저장되는 테이블 입니다.
+##--------------2. MENTORBOARD -------------------------------------
+## 회원이 판매자로서 활동하기 위해 데이터가 저장되는 테이블 입니다.
 
 CREATE TABLE MENTORBOARD
 (
@@ -58,11 +61,11 @@ CREATE TABLE MENTORBOARD
     scoreCount NUMBER default 0 -- 회원이 평가를 받은 전체 횟수 입니다 ( 회원평점의 총합 / scoreCount) = > 회원의 평점을 가져오기 위함입니다 )
 );
 
--------------------------------------------------------------------
+##-------------------------------------------------------------------
 
 
------------3. CAREERBOARD -----------------------------------
--- 회원이 판매자로서 자신의 경력을 올리고싶을때 그경력을 저장하는 테이블입니다.
+##-----------3. CAREERBOARD -----------------------------------
+## 회원이 판매자로서 자신의 경력을 올리고싶을때 그경력을 저장하는 테이블입니다.
 
 CREATE TABLE CAREERBOARD
 (
@@ -70,12 +73,12 @@ CREATE TABLE CAREERBOARD
     careerList VARCHAR2(100) UNIQUE NOT NULL -- 회원의 경력사항입니다 .
 );
 
--------------------------------------------------------------------
+##-----------------------------------------------------------------
 
 
 
------------ 4 . DETAILBOARD -----------------
--- 회원의 결제내역 테이블입니다 / 구매내역 판매내역 모두 확인가능합니다.
+##----------- 4 . DETAILBOARD -----------------
+## 회원의 결제내역 테이블입니다 / 구매내역 판매내역 모두 확인가능합니다.
 
 CREATE TABLE DETAILBOARD
 (
@@ -88,14 +91,14 @@ CREATE TABLE DETAILBOARD
     buyScore NUMBER(3)-- 판매자가 구매자에게 주는평점
 );
 
--- orderNum에 적용되는 시퀀스 입니다
+## orderNum에 적용되는 시퀀스 입니다
 create SEQUENCE DETAILBOARD_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
---------------------------------------------------------------------
+##--------------------------------------------------------------------
 
  
 
------------------5. INTERESTBOARD -----------------------
--- 회원의 관심 카테고리를 저장한 테이블 입니다
+##-----------------5. INTERESTBOARD -----------------------
+## 회원의 관심 카테고리를 저장한 테이블 입니다
 
 CREATE TABLE INTERESTBOARD
 (
@@ -103,11 +106,11 @@ CREATE TABLE INTERESTBOARD
     c_code NUMBER(5) NOT NULL --카테고리의 키번호 -- 카테고리 번호 (해당카테고리 번호를통해 대분류 중분류 소분류 의 값이 무엇인지 알수 있습니다)
 );
 
---------------------------------------------------------------------
+##--------------------------------------------------------------------
 
 
------------------------ 6. MAINBOARD ------------------------------------
--- 게시글 입니다
+##----------------------- 6. MAINBOARD ------------------------------------
+## 게시글 입니다
 
 CREATE TABLE MAINBOARD
 (
@@ -122,22 +125,22 @@ CREATE TABLE MAINBOARD
     M_updateDate DATE DEFAULT SYSDATE -- 게시글수정 시간
 );
 
---bno에 사용되는 시퀀스 입니다
+##bno에 사용되는 시퀀스 입니다
 create SEQUENCE MainBoard_SEQ INCREMENT BY 1 START WITH 1 NOCACHE; -- 게시글번호 시퀀스
 
---RADIANS 함수
+##RADIANS 함수
 create or replace FUNCTION RADIANS(nDegrees IN NUMBER) RETURN NUMBER DETERMINISTIC IS
 BEGIN
-  -- radians = degrees / (180 / pi)
-  -- RETURN nDegrees / (180 / ACOS(-1));  -- but 180/pi is a constant, so...
+  ## radians = degrees / (180 / pi)
+  ## RETURN nDegrees / (180 / ACOS(-1));  -- but 180/pi is a constant, so...
   RETURN nDegrees / 57.29577951308232087679815481410517033235;
 END RADIANS;
--------------------------------------------------------------------------
+##-------------------------------------------------------------------------
 
 
--------------------------- 7. V_R_BOARD(추천,조회) ---------------------------------
---게시글의 추천수/조회수를 기록한 테이블입니다
---Trigger 생성 조건 때문에 불필요한 칼럼이 많은상태입니다. 추천수,조회수 mainBoard로 합치면 트리거랑함께 삭제 가능한 테이블 입니다 ( 처음에 오류날줄알고 mainBoard의 수정없이 테이블을 하나더만들었씁니다) 
+##-------------------------- 7. V_R_BOARD(추천,조회) ---------------------------------
+##게시글의 추천수/조회수를 기록한 테이블입니다
+##Trigger 생성 조건 때문에 불필요한 칼럼이 많은상태입니다. 추천수,조회수 mainBoard로 합치면 트리거랑함께 삭제 가능한 테이블 입니다 ( 처음에 오류날줄알고 mainBoard의 수정없이 테이블을 하나더만들었씁니다) 
 
 CREATE TABLE V_R_Board
 (
@@ -154,8 +157,8 @@ CREATE TABLE V_R_Board
     viewNum NUMBER(10) DEFAULT 0 -- 게시글 조회수
 );
 
-					--======= MAINBOARD에 적용시키는 trigger코드 ===========
-					--=== V_R_Board 생성시 컴파일 + commit; 필수==
+					##======= MAINBOARD에 적용시키는 trigger코드 ===========
+					##=== V_R_Board 생성시 컴파일 + commit; 필수==
 					
 					create or replace trigger trigger_Backup_mainBoard
 					    after insert
@@ -190,7 +193,7 @@ CREATE TABLE V_R_Board
 					
 					
 					
-					--====삭제트리거 =======
+					##====삭제트리거 =======
 					create or replace trigger trigger_delete_mainBoard
 					    after delete
 					    on mainBoard
@@ -200,16 +203,16 @@ CREATE TABLE V_R_Board
 					    
 					end trigger_delete_mainBoard;
 					
-					commit;
 					
-					--=======================================
+					
+					##=======================================
 
 
---------------------------------------------------------------------------
+##--------------------------------------------------------------------------
 
 
-------------------------- 8. Y_M_BOARD (게시글 작성자의 허용한시간 관련) -----------------------------------
---게시글의 작성자가 허용한 날짜와 시간대를 저장하는 테이블
+##------------------------- 8. Y_M_BOARD (게시글 작성자의 허용한시간 관련) -----------------------------------
+##게시글의 작성자가 허용한 날짜와 시간대를 저장하는 테이블
 CREATE TABLE Y_M_BOARD
 (
     bno NUMBER(20) NOT NULL,
@@ -237,8 +240,8 @@ create TABLE D_T_board
    M_day VARCHAR2(4000)
 );
 
------------------------- 10. REPLYBOARD ------------------------------------- 
---댓글과 관련된 정보가 저장되는 테이블 입니다
+##------------------------ 10. REPLYBOARD ------------------------------------- 
+##댓글과 관련된 정보가 저장되는 테이블 입니다
 
 CREATE TABLE REPLYBOARD
 (
@@ -250,8 +253,8 @@ CREATE TABLE REPLYBOARD
     R_updateDate DATE DEFAULT SYSDATE -- 답글수정 시간
 );
 
------------------------- 11.CATEGORYBOARD ----------------------------------
---카테고리의 대분류 중분류 소분류를 하나의 번호로 저장하는 테이블
+##------------------------ 11.CATEGORYBOARD ----------------------------------
+##카테고리의 대분류 중분류 소분류를 하나의 번호로 저장하는 테이블
 
 CREATE TABLE CATEGORYBOARD
 (
@@ -268,13 +271,13 @@ CREATE SEQUENCE CATE_SEQ
     NOCACHE -- 캐시 사용X
     NOCYCLE; 
 
------------------------------------------------------------------------------
+##-----------------------------------------------------------------------------
 
 
 
 
------------------------------- 12. IMGBOARD --------------------------------
---해당 게시글의 게시된 img파일의 이름을 저장하고 있는 테이블 입니다
+##------------------------------ 12. IMGBOARD --------------------------------
+##해당 게시글의 게시된 img파일의 이름을 저장하고 있는 테이블 입니다
 
 create TABLE IMGBOARD
 (
@@ -282,20 +285,20 @@ create TABLE IMGBOARD
    img VARCHAR2(60)
 );
 
-----------------------------------------------------------------------------
+##----------------------------------------------------------------------------
 
-----------------------------13.USERIMGBOARD------------------------------
--- 유저 이미지 테이블
+##----------------------------13.USERIMGBOARD------------------------------
+## 유저 이미지 테이블
 create TABLE USERIMGBOARD
 (
    bno NUMBER(10) unique NOT NULL,
    img VARCHAR2(60)
 );
 
----------------------------------------------------------------------------
+##---------------------------------------------------------------------------
 
-----------------------------14.TEXTBOARD------------------------------
---설명 1,2,3
+##----------------------------14.TEXTBOARD------------------------------
+##설명 1,2,3
 create TABLE TEXTBOARD
 (
    bno NUMBER(20) NOT NULL,
@@ -304,10 +307,10 @@ create TABLE TEXTBOARD
    text3 VARCHAR2(4000) 
 );
 
---------------------------------------------------------------------------
+##--------------------------------------------------------------------------
 
-----------------------------15.FAQBOARD------------------------------
--- FAQBOARD테이블 생성 쿼리
+##---------------------------15.FAQBOARD------------------------------
+## FAQBOARD테이블 생성 쿼리
 create table FAQBOARD(
     bno number(10) PRIMARY KEY,
     title varchar2(200) not null,
@@ -318,6 +321,6 @@ create table FAQBOARD(
 );
 create SEQUENCE FAQBOARD_SEQ INCREMENT BY 1 START WITH 1 nocache;
 
------------------------------------------------------------------------------
+##-----------------------------------------------------------------------------
 
 

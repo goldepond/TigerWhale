@@ -9,6 +9,7 @@ pom.properties
 
 .settings
 
-/target
+/sts/TigerWhale/target
+sts/TigerWhale/target
 
 APP_CONSTANT.java

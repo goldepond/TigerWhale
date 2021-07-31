@@ -7,9 +7,9 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tigerWhale.util.Criteria;
 import com.tigerWhale.command.FaqVO;
 import com.tigerWhale.faq.mapper.FaqMapper;
+import com.tigerWhale.util.FaqCriteria;
 
 @Service("faqService") // componentscan
 public class FaqServiceImpl implements FaqService {
@@ -31,7 +31,8 @@ public class FaqServiceImpl implements FaqService {
 	}
 
 	@Override
-	public ArrayList<FaqVO> getList(Criteria cri) {
+	public ArrayList<FaqVO> getList(FaqCriteria cri) {
+
 		// 퍼블릭은 그냥 퍼블릭이고 ArrayList은 타입형. Criteria()는
 		// Criteria cafe = new Criteria(); 이거랑 getList(Criteria cri)는 같은맥락이다
 		
@@ -73,6 +74,8 @@ public class FaqServiceImpl implements FaqService {
 	}
 	
 	
+	
+	
 	private char[] SimpleDataFormat(long time) {
 		// TODO Auto-generated method stub
 		return null;
@@ -97,7 +100,7 @@ public class FaqServiceImpl implements FaqService {
 	}
 
 	@Override
-	public int getTotal(Criteria cri) {
+	public int getTotal(FaqCriteria cri) {
 
 		return faqMapper.getTotal(cri);
 	}

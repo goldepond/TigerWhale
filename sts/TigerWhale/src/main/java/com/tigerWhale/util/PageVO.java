@@ -14,9 +14,9 @@ public class PageVO {
 	private int pageNum; //조회하는 페이지번호 (cri도 존재함)
 	private int amount; //보여질 데이터 개수
 	
-	private Criteria cri;
+	private FaqCriteria cri;
 	//생성자
-	public PageVO(Criteria cri, int total) {
+	public PageVO(FaqCriteria cri, int total) {
 		//번호, 개수, 총 게시글 수 초기화
 		this.pageNum = cri.getPageNum();
 		this.amount = cri.getAmount();

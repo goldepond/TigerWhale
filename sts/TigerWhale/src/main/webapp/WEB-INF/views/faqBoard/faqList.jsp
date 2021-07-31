@@ -7,7 +7,18 @@
 
 <br>
 <section>
-
+	<div class="container-fluid" style="padding: 0; margin: 0;">
+		<dic class="row">
+		<div class="col-xs-12" style="padding: 0; margin: 0;">
+			<div id="faqlist-top">
+				<section>
+					<div class="faqlist-bg"></div>
+					<h1>고객 문의</h1>
+				</section>
+			</div>
+		</div>
+		</dic>
+	</div>
 	
 	<div class="container">
 		<div class="row">
@@ -66,7 +77,7 @@
 														<th class="board-title">제목</th>
 														<th>작성자</th>
 														<th>등록일</th>
-														<th>답변일</th>
+														<th>수정일</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -79,12 +90,7 @@
 																${vo.timetotext}
 															</td>
 															<td>
-																<c:if test="${boardVO.reply != null}">
-																	${vo.replydate}
-																</c:if>
-																<c:if test="${boardVO.reply == null}">
-																	[답변대기]
-																</c:if>
+																${vo.timetotext2}
 															</td>
 														</tr>
 													</c:forEach>
@@ -100,7 +106,7 @@
 														<th class="board-title">제목</th>
 														<th>작성자</th>
 														<th>등록일</th>
-														<th>답변일</th>
+														<th>수정일</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -114,12 +120,7 @@
 																${vo.timetotext}
 															</td>
 															<td>
-																<c:if test="${boardVO.reply != null}">
-																${vo.replydate}
-																</c:if>
-																<c:if test="${boardVO.reply == null}">
-																	[답변대기]
-																</c:if>
+																${vo.timetotext2}
 															</td>
 														</tr>
 													</c:forEach>

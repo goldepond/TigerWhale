@@ -111,7 +111,7 @@ class UploadAdapter {
 		const data = new FormData()
 		data.append('upload', file)
 		//this.xhr.send(data)
-		
+		debugger;
 		for(var pair of data.entries()) {
    		console.log(pair[0]+ ', '+ pair[1]);
 		}
@@ -129,7 +129,7 @@ ClassicEditor.create( document.querySelector( '.ckeditor5' ), {
 			items: [
 				'undo',
 				'redo',
-				//'imageUpload',
+				'imageUpload',
 				'bold'
 			]
 		},

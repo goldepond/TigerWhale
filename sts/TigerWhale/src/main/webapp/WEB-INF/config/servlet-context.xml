@@ -11,6 +11,8 @@
 	<annotation-driven />
 
 	<resources mapping="/resources/**" location="/resources/" />
+<!-- 	<resources mapping="/ckeditor/**" location="/ckeditor/" /> -->
+	
 
 	<!-- 타일즈 설정파일 위치 지정 -->
 	<beans:bean
@@ -33,7 +35,6 @@
 	<!-- 뷰리졸버 -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
-
 		<beans:property name="suffix" value=".jsp" />
 		<beans:property name="order" value="2" />
 	</beans:bean>
@@ -51,7 +52,6 @@
 		<!-- 인코딩설정 -->
 		<beans:property name="defaultEncoding" value="utf-8" />
 	</beans:bean>
-
 
 
 </beans:beans>

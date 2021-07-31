@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tigerWhale.command.CustomerBoardVO;
 import com.tigerWhale.command.ReplyBoardVO;
 
 import com.tigerWhale.reply.service.ReplyService;
@@ -30,6 +31,7 @@ public class ReplyController {
 	
 	@PostMapping(value = "/replyRegist", produces = "application/json" ) //컨패스/reply/replyRegist
 	public int replyRegist(@RequestBody ReplyBoardVO vo) {
+		System.out.println("12321312");
 		System.out.println(vo);
 		int result = replyService.regist(vo);
 		System.out.println("성공실패:" + result);
@@ -73,7 +75,8 @@ public class ReplyController {
 	//수정요청
 	@PostMapping(value = "update", produces = "application/json")
 	public int update(@RequestBody ReplyBoardVO vo) {
-		
+		System.out.println(vo);
+		System.out.println("@@@@@@@@@@");
 		int count = replyService.pwCheck(vo);
 		
 		if(count == 1) { //비밀번호가 일치
@@ -103,27 +106,19 @@ public class ReplyController {
     
 //    =================================================================
     
+	//삭제요청 delete
+    @PostMapping(value = "charge", produces = "application/json")
+    public int charge(@RequestBody CustomerBoardVO vo) {
+    	System.out.println(vo);
+    	int customer =  replyService.customer(vo);
+        if(customer  == 1) {
+        	return 1;
+        } else {
+            return 0;
+        }
+
+    }
     
-    
-    
-    
-    
-    
-    
-    
-	//결제 요청
-	@PostMapping(value = "update", produces = "application/json")
-	public int detailPayment(@RequestBody ReplyBoardVO vo) {
-		
-		int count = replyService.pwCheck(vo);
-		
-		if(count == 1) { //비밀번호가 일치
-			return replyService.update(vo);
-		} else { //비밀번호가 일치하지 않기 때문에 실패반환
-			return 0; //실패의 의미
-		}
-	}
-	
 	
 	
 }

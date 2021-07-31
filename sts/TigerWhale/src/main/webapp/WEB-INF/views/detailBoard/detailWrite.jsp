@@ -69,7 +69,7 @@
 						<label>간략 소개</label> <input class="form-control" name='text' value="간략 소개" required>
 					</div>
 					<div class="form-group">
-						<label>대표 금액</label> <input class="form-control" id='money' name='money' value="1000" required>
+						<label>대표 금액</label> <input class="form-control" id='money' name='money' value="1000" type="text" required>
 					</div>
 
 					<hr />
@@ -198,7 +198,7 @@
 		strAdd += '<div class="option" id="option">'
 		strAdd += '<div class="form-group">'
 		strAdd += '		<label>세부 금액</label>'
-		strAdd += '		<input class="form-control" name="list[' + i + '].Money" value="123">'
+		strAdd += '		<input class="form-control" name="list[' + i + '].Money"  type="number"  value="123">'
 		strAdd += '</div>'
 		strAdd += '<br/>'
 		strAdd += '<div class="form-group">'

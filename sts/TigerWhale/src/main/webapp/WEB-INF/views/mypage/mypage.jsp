@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
     <section class="mypage">
         <div class="container">
             <div class="row">
@@ -10,18 +9,18 @@
                         <div class="account-info-container">
                             <div class="mypage-container">
                                 <h1 class="main">마이페이지</h1>
-                                <a href="../Wireframe(와이어프레임)/마이페이지 수정.html" class="profile-container underline">
+                                <a href="${pageContext.request.contextPath}/mypage/mypageModify" class="profile-container underline">
                                     <div class="thumb">
                                         <div class="thumb-image">
-                                            <img src="../image/default-profile.svg" class="user-picture" alt="기본이미지">
+                                            <img src="${pageContext.request.contextPath}/resources/img/image/default-profile.svg" class="user-picture" alt="기본이미지">
                                         </div>
                                     </div>
                                     <div class="user-info">
                                         <div class="user-name">
-                                            <span class="name">홍길동<!--이름 호출--></span>  고객님 
+                                            <span class="name">${usersVO.user_ID }</span>  고객님 
                                         </div>
                                         <div class="user-email">
-                                            <span class="glyphicon glyphicon-envelope"> xxx@naver.com<!--이메일 호출--></span>
+                                            <span class="glyphicon glyphicon-envelope"> ${usersVO.userEmail1}@${usersVO.userEmail2}<!--이메일 호출--></span>
                                         </div>
                                     </div>
                                     <div class="arrow">
@@ -32,9 +31,8 @@
                                 <ul class="account-info">
                                     <li class="item-container">
                                         <div class="item">
-                                            <div class="item-title">유저 평점</div>
-                                            <div class="item-info">수강생 평점</div>
-                                            <div class="item-info">강사 평점</div>
+                                            <div class="item-title">성별</div>
+                                            <div class="item-info">${usersVO.userGender }</div>                                          
                                         </div>
                                     </li>
                                     <li class="item-container">
@@ -47,19 +45,15 @@
                                     </li>
                                     <li class="item-container">
                                         <div class="item">
-                                            <div class="item-title">판매자 카테고리</div>
-                                            <div class="item-info">스포츠</div>
-                                        </div>
-                                        <div class="glyphicon glyphicon-chevron-right">
-                                        </div>
+                                            <div class="item-title">구매자 평점</div>
+                                            <div class="item-info">${usersVO.buyScore_AVG }</div>
+                                        </div>                                    
                                     </li>
                                     <li class="item-container">
                                         <div class="item">
-                                            <div class="item-title">선호 지역</div>
-                                            <div class="item-info">서울시 강남구</div>
-                                        </div>
-                                        <div class="glyphicon glyphicon-chevron-right">
-                                        </div>
+                                            <div class="item-title">거주 지역</div>
+                                            <div class="item-info">${usersVO.userAdress }</div>
+                                        </div>                                     
                                     </li>
                 
                                 </ul>
@@ -80,9 +74,9 @@
                                     </li>
                                 </ul>
                                 <ul class="account-info">
-                                    <li class="item-container">
+                                    <li class="item-container" onclick="location.href = '${pageContext.request.contextPath}/users/userLogout'">
                                         <div class="item">
-                                            <div class="item-title">환경설정</div>
+                                            <div class="item-title">로그아웃</div>
                                         </div>
                                         <div class="glyphicon glyphicon-chevron-right">
                                         </div>

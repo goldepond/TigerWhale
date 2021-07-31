@@ -10,6 +10,19 @@
 					  typeHandler="com.tigerWhale.util.LongHandler"/>
 		</resultMap> -->
   		
+  		
+  		
+  		
+   <update id="replyForm">
+   		UPDATE FAQBOARD 
+   		   SET
+   				 REPLY = #{reply},
+   				 REPLYDATE = SYSDATE
+   		 WHERE BNO = #{bno}
+   </update>
+   
+  		
+  		
   	<insert id="regist">
   		INSERT INTO FAQBOARD (
 			BNO,

@@ -14,10 +14,10 @@
 		<typeAlias type="com.tigerWhale.command.UsersVO" alias="UsersVO" />
 		<typeAlias type="com.tigerWhale.command.Y_M_boardVO" alias="Y_M_boardVO" />
 		<typeAlias type="com.tigerWhale.command.IMGBoardVO" alias="IMGBoardVO" />
-		<typeAlias type="com.tigerWhale.command.UserIMGBoardVO" alias="UserIMGBoardVO" />
 		<typeAlias type="com.tigerWhale.command.FaqVO" alias="FaqVO" />
 		<typeAlias type="com.tigerWhale.command.TextBoardVO" alias="TextBoardVO" />
 		<typeAlias type="com.tigerWhale.command.PopularBoardVO" alias="PopularBoardVO" />
+		<typeAlias type="com.tigerWhale.command.ThumbnailBoardVO" alias="ThumbnailBoardVO" />
 	</typeAliases>
 	
 	<!-- DB/java간 long데이터 형태 호환성을 위함. FAQ보드에서 사진데이터를 LONG형으로 DB저장하기 위함. -->

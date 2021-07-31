@@ -59,5 +59,8 @@
 	where orderNum = #{orderNum}
     </delete>
   	
-  	
+  	 <insert id="customer">
+		insert into CUSTOMERBOARD(rno, bno, user_ID, money)
+		values (#{rno}, #{bno}, #{user_ID}, #{money})
+  	</insert>
   </mapper>

@@ -7,8 +7,12 @@ public class SearchPageCriteria {
 	
 	private int pageNum; // 페이지 번호
 	private int amount; // 1페이지당 게시글 수
-	private int C_code; // 카테고리 분류 정보
+	private int c_code; // 카테고리 분류 정보
 	
+	//검색 타입
+	private String searchType;
+	private String searchType2;
+	private String typeValue;
 	//검색에 필요한 키워드
 	private String searchName;
 	

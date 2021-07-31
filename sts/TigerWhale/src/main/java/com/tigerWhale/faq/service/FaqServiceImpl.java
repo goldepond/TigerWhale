@@ -7,8 +7,10 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tigerWhale.util.Criteria;
 import com.tigerWhale.command.FaqVO;
 import com.tigerWhale.faq.mapper.FaqMapper;
+<<<<<<< HEAD
 import com.tigerWhale.util.FaqCriteria;
 
 @Service("faqService") // componentscan
@@ -17,6 +19,14 @@ public class FaqServiceImpl implements FaqService {
 	@Autowired
 	private FaqMapper faqMapper;
 
+
+	@Override
+	public int replyForm(FaqVO faqVo) {
+		return faqMapper.replyForm(faqVo);
+	}
+	
+	
+	
 	@Override
 	public int regist(FaqVO vo) {
 		return faqMapper.regist(vo);
@@ -24,6 +34,7 @@ public class FaqServiceImpl implements FaqService {
 
 	@Override
 	public ArrayList<FaqVO> getList(FaqCriteria cri) {
+
 		// 퍼블릭은 그냥 퍼블릭이고 ArrayList은 타입형. Criteria()는
 		// Criteria cafe = new Criteria(); 이거랑 getList(Criteria cri)는 같은맥락이다
 		
@@ -63,6 +74,8 @@ public class FaqServiceImpl implements FaqService {
 		return dateToText; 
 		//return faqMapper.getList(cri); //왜보내는거?
 	}
+	
+	
 	
 	
 	private char[] SimpleDataFormat(long time) {

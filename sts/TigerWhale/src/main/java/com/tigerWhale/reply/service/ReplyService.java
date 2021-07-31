@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.tigerWhale.command.CustomerBoardVO;
 import com.tigerWhale.command.ReplyBoardVO;
 import com.tigerWhale.util.ReplyCriteria;
 
@@ -15,5 +16,7 @@ public interface ReplyService {
 	public int pwCheck(ReplyBoardVO vo);  //비밀번호 확인
 	public int update(ReplyBoardVO vo); //수정
 	public int delete(ReplyBoardVO vo);
+	
+	public int customer(CustomerBoardVO vo); //구매자
 
 }

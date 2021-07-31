@@ -12,8 +12,15 @@
         <link rel="stylesheet" href="/publishing/TestWeb/resources/bootstrap/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
         <style>
-            .titlebox {
+            .write-wrap .titlebox {
                 width: 250px;
                 text-align: center;
                 height: 40px;
@@ -22,7 +29,9 @@
                 border-top: 1px solid #E1E1E1;
                 border-bottom: 1px solid #E1E1E1;
             }
-
+            .input-group .form-control {
+                z-index: -50;
+            }
             .t-control .t-title {
                 width: 100px;
                 min-width: 100px;
@@ -42,6 +51,13 @@
             .t-control .input-sm {
                 height: auto;
                 line-height: normal;
+            }
+
+            .input-group-addon {
+                background-color: white;
+                border: none;
+                vertical-align: middle;
+                padding-top: 0px;
             }
 
             /*td의 아래만 밑줄*/
@@ -106,45 +122,10 @@
                             </div>
 
                             <div id="addoption">
-                                <div class="option">
-    
-                                    <div class="form-group">
-                                        <label>금액</label>
-                                        <input class="form-control" name='bno' value="${vo.bno }">
-                                    </div>
-    
-                                    <div class="form-group">
-                                        <label>날짜</label>
-                                        <input class="form-control" name='bno' value="${vo.bno }">
-                                    </div>
-    
-                                    <div class="form-group">
-                                        <label for="addr-num">주소</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" name="addrZipNum" id="addrZipNum"
-                                                placeholder="우편번호" readonly>
-                                            <div class="input-group-addon">
-                                                <button type="button" class="btn btn-primary"
-                                                    onclick="goPopup()">주소찾기</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="addrBasic" id="addrBasic"
-                                            placeholder="기본주소">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="addrDetail" id="addrDetail"
-                                            placeholder="상세주소">
-                                    </div>
-    
-                                </div>
+
                             </div>
                             <button type="button" class="right btn btn-default btn_option" id="replyRegis">옵션
                                 추가하기</button>
-
-
-
 
                             <div class="form-group">
                                 <label>설명1</label>
@@ -198,9 +179,12 @@
                 strAdd += '</div>'
                 strAdd += '<div class="form-group">'
                 strAdd += '<label>날짜</label>'
-                strAdd += '<input class="form-control" name="bno" value="${vo.bno }">'
+                strAdd += '<label for="from">From</label>'
+                strAdd += '<input type="text" id="from" name="from">'
+                strAdd += '<label for="to">to</label>'
+                strAdd += '<input type="text" id="to" name="to">'
                 strAdd += '</div>'
-                strAdd += '<div class="form-group">'
+                strAdd += '<div class="form-group underSize">'
                 strAdd += '<label for="addr-num">주소</label>'
                 strAdd += '<div class="input-group">'
                 strAdd += '<input type="text" class="form-control" name="addrZipNum" id="addrZipNum"'
@@ -223,6 +207,38 @@
                 $("#addoption").html(strAdd);
                 console.log($("#addoption"));
 
+                $(function () {
+                var dateFormat = "mm/dd/yy",
+                    from = $("#from")
+                        .datepicker({
+                            defaultDate: "+1w",
+                            changeMonth: true,
+                            numberOfMonths: 3
+                        })
+                        .on("change", function () {
+                            to.datepicker("option", "minDate", getDate(this));
+                        }),
+                    to = $("#to").datepicker({
+                        defaultDate: "+1w",
+                        changeMonth: true,
+                        numberOfMonths: 3
+                    })
+                        .on("change", function () {
+                            from.datepicker("option", "maxDate", getDate(this));
+                        });
+
+                function getDate(element) {
+                    var date;
+                    try {
+                        date = $.datepicker.parseDate(dateFormat, element.value);
+                    } catch (error) {
+                        date = null;
+                    }
+
+                    return date;
+                }
+            });
+
             }
 
             //버튼 추가시 옵션 추가
@@ -232,3 +248,6 @@
     </body>
 
 </html>
+
+ 
+ 

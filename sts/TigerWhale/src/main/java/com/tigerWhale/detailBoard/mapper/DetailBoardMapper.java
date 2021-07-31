@@ -11,6 +11,7 @@ import com.tigerWhale.command.UserIMGBoardVO;
 import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.command.Y_M_boardVO;
 import com.tigerWhale.command.CategoryBoardVO;
+import com.tigerWhale.command.CustomerBoardVO;
 import com.tigerWhale.command.DetailBoardVO;
 import com.tigerWhale.command.ReplyBoardVO;
 import com.tigerWhale.command.TextBoardVO;
@@ -64,6 +65,7 @@ public interface DetailBoardMapper {
 	public int insertD_T_boardVO(@Param("bno") int bno, @Param("rno")int rno, @Param("M_day")  String M_day);
 	public int findRno();
 	public int findC_code(@Param("smallCategory") String smallCategory ,@Param("middleCategory") String middleCategory ,@Param("bigCategory")  String bigCategory);
-
+	public CustomerBoardVO getCustomerBoard(@Param("user_ID") String user_ID);
+	public int mainBoarddelete(@Param("bno") int bno);
 
 }

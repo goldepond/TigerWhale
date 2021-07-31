@@ -37,6 +37,7 @@ import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.command.Y_M_boardVO;
 import com.tigerWhale.command.APP_CONSTANT;
 import com.tigerWhale.command.CategoryBoardVO;
+import com.tigerWhale.command.CustomerBoardVO;
 import com.tigerWhale.command.DetailBoardVO;
 import com.tigerWhale.command.ReplyBoardVO;
 import com.tigerWhale.command.TextBoardVO;
@@ -114,10 +115,22 @@ public class DetailBoardController {
 		
 	}
 	
+	@RequestMapping("/detailDelete")
+	public String detailDelete(@RequestParam(value="bno") int bno ) {
+		int delte = detailBoardService.mainBoarddelete(bno);
+
+		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+		return "home";
+		
+		
+	}
+	
 	
 	
 	@RequestMapping("/detailPage")
-	public String detailPage(@RequestParam(value="bno") int bno, HttpServletRequest request, Model model) {
+	public String detailPage(HttpServletRequest request, Model model) {
+//@RequestParam(value="bno") int bno ,
+		int bno = 126;
 		System.out.println(bno);
 		//===============================================
 		
@@ -126,6 +139,9 @@ public class DetailBoardController {
 		HttpSession session = request.getSession();
 		UsersVO userVO =  (UsersVO)session.getAttribute("usersVO");
 		model.addAttribute("userVO", userVO);
+		//===============================================
+		
+		
 		//===============================================
 		ArrayList<DetailBoardVO> detaiBoardVO = detailBoardService.getBoardDetail(bno);
 		System.out.println("detiBoardVO  " + detaiBoardVO);
@@ -164,10 +180,6 @@ public class DetailBoardController {
 		System.out.println("IMGBoardVO  " + IMGBoardVO);
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
-//		UserIMGBoardVO userIMGBoardVO = detailBoardService.getUserIMGBoard(bno);
-//		System.out.println("userIMGBoardVO   " + userIMGBoardVO);
-//		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
-		
 		TextBoardVO textBoardVO  = detailBoardService.getTextBoard(bno);
 		System.out.println("textBoardVO " + textBoardVO );
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
@@ -180,11 +192,11 @@ public class DetailBoardController {
 		File folder = new File(APP_CONSTANT.UPLOAD_PATH +"\\detailPageImg");
 		String uploadPath = folder.getPath();
 		
-		
+		CustomerBoardVO customerBoardVO = detailBoardService.getCustomerBoard(user_ID);
 		
 
 		
-		
+		model.addAttribute("customerBoardVO", customerBoardVO);
 		model.addAttribute("m_boardVOFirst", m_boardVOFirst);
 		model.addAttribute("detaiBoardVO", detaiBoardVO);
 		model.addAttribute("d_T_boardVO", d_T_boardVO);
@@ -195,7 +207,6 @@ public class DetailBoardController {
 		model.addAttribute("m_boardVO", m_boardVO);
 		model.addAttribute("IMGBoardVO", IMGBoardVO);
 		model.addAttribute("textBoardVO", textBoardVO);
-//		model.addAttribute("userIMGBoardVO", userIMGBoardVO);
 		return "detailBoard/detailPage";
 	}
 	
@@ -221,8 +232,22 @@ public class DetailBoardController {
 		return "detailBoard/detailBuy";
 	}
 	
-	
-	
+	@RequestMapping("/detailCustomer")
+	public String detailCustomer( HttpServletRequest request ,Model model) throws Exception{
+		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("usersVO"));
+		
+		if(session.getAttribute("usersVO") != null)
+		{
+			model.addAttribute("usersVO", session.getAttribute("usersVO"));
+		}
+		
+		Y_M_boardVO ymBoardVO = detailBoardService.getY_M_One(123);
+		System.out.println(ymBoardVO);
+		
+		model.addAttribute("ymBoardVO", ymBoardVO);
+		return "detailBoard/detailBuy";
+	}
 	
 	
 	

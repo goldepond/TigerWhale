@@ -220,8 +220,8 @@ CREATE TABLE Y_M_BOARD
     Money NUMBER(20),-- 돈
     addrBasic VARCHAR2(4000),
     addrDetail VARCHAR2(4000),
-    day1 NUMBER(20), -- 허용기간이 시작되는 년도를 입력받음
-    day2 NUMBER(20),
+    day1 VARCHAR2(4000), -- 허용기간이 시작되는 년도를 입력받음
+    day2 VARCHAR2(4000),
     
     exText VARCHAR2(4000),
     entX VARCHAR2(4000),
@@ -233,7 +233,11 @@ create SEQUENCE Y_M_BOARD_SEQ INCREMENT BY 1 START WITH 1 NOCACHE;
 ------------------------ 9. D_T_BOARD -------------------------------------
 create TABLE D_T_board
 (
+<<<<<<< HEAD
    bno NUMBER(20) NOT NULL,
+=======
+	bno NUMBER(20) NOT NULL,
+>>>>>>> TACKBACKUP
    rno NUMBER(20) NOT NULL,
    M_day VARCHAR2(4000)
 );

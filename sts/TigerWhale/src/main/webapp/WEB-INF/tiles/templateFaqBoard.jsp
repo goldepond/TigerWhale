@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+
+<title>공사중 - 질문과답변</title>
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-theme.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.min.css">
@@ -21,9 +23,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
 <!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/category.css"> -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/faqALL.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/faq.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
-<title>Document</title>
+
+<!-- 
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+ -->
+
+<%-- <script src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/ckeditor/contents.css"> --%>
+
+<%-- 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/ckeditor5.css"> 
+ --%>
+
+
+
 </head>
 <body>
 	<tiles:insertAttribute name="header" />

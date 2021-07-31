@@ -35,10 +35,36 @@ public class LoginController {
 
 	
 	//로그인
+	@RequestMapping(value = "/kakaoLogin", method = RequestMethod.POST)
+	public String kakaoLogin(String kakao_ID, Model model, HttpSession session) {
+		
+		System.out.println(kakao_ID);
+		
+		UsersVO usersVO = usersService.kakaoLogin(kakao_ID);
+		
+		if(usersVO == null) {
+			model.addAttribute("kakao_ID", kakao_ID);
+			return "users/join";
+		} else {
+			session.setAttribute("kakaoVO", usersVO);
+			
+			return "forward:loginForm";
+		}
+		
+	}
+	
 	@RequestMapping(value = "/loginForm", method = RequestMethod.POST)
-	public ModelAndView loginForm(UsersVO vo) {
+	public ModelAndView loginForm(UsersVO vo, HttpSession session) {
+		
+		UsersVO kakaoVO = (UsersVO)session.getAttribute("kakaoVO");
+		UsersVO usersVO = null;			
 		System.out.println("1");
-		UsersVO usersVO = usersService.login(vo);
+		if(kakaoVO == null) {
+			usersVO = usersService.login(vo);
+		} else {
+			usersVO = usersService.login(kakaoVO);
+		}
+		
 		ModelAndView mv = new ModelAndView();
 		System.out.println("################################");
 		System.out.println(usersVO);

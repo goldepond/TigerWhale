@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<section>
 		<div class="container">
 			<div class="row">
@@ -10,7 +10,12 @@
 				<input type="hidden" id="userAdress" name="userAdress" value="주소">
 				<div class="form-group">
 				<label for="id">아이디</label>
-					<input type="text" class="form-control" placeholder="아이디는 영문(4~12글자)" name="user_ID" id="user_ID">
+					<c:if test="${kakao_ID eq null}">
+						<input type="text" class="form-control" placeholder="아이디는 영문(4~12글자)" name="user_ID" id="user_ID">
+					</c:if>
+					<c:if test="${kakao_ID ne null}">
+						<input type="text" class="form-control" name="user_ID" id="user_ID" value="${kakao_ID}" readonly>
+					</c:if>
 					<div class="input-group-addon">
 						<button type="button" class="btn btn-primary" id="idCheck1">아이디중복체크</button>
 					</div>

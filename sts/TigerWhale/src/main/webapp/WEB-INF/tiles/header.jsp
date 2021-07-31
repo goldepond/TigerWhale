@@ -23,7 +23,8 @@
 							</button>
 						</form>
 					</div>
-                    <c:if test="${sessionScope.userVO != null}">
+					
+                    <c:if test="${sessionScope.usersVO != null}">
                         <div class="icon-set header-div">
                             <span>
                                 <a href="${pageContext.request.contextPath}/mypage/mypage">
@@ -42,7 +43,7 @@
                             </span>
                         </div>
                     </c:if>
-                    <c:if test="${sessionScope.userVO == null}">
+                    <c:if test="${sessionScope.usersVO == null}">
                         <div class="login-btn">
                             <button type="button" class="btn btn-default btn1" onclick="location.href='${pageContext.request.contextPath }/users/userLogin'">
                                 로그인

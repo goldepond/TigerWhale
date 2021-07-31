@@ -31,6 +31,10 @@ public class UsersServiceImpl implements UsersService {
 		System.out.println(usersMapper.login(vo));
 		return usersMapper.login(vo);
 	}
+	@Override
+	public UsersVO kakaoLogin(String id) {
+		return usersMapper.kakaoLogin(id);
+	}
 
 	@Override
 	public UsersVO getInfo(String user_ID) {
@@ -38,28 +42,32 @@ public class UsersServiceImpl implements UsersService {
 	}
 
 	@Override
-	public void updateEmail(UsersVO vo) {
-		usersMapper.emailUpdate(vo);
+	public int emailUpdate(UsersVO vo) {
+		System.out.println("이메일 서비스");
+		return usersMapper.emailUpdate(vo);
 		
 	}
 
 	@Override
-	public void updatePhone(UsersVO vo) {
-		usersMapper.phoneUpdate(vo);
+	public int phoneUpdate(UsersVO vo) {
+		System.out.println("전화번호 서비스");
+		return usersMapper.phoneUpdate(vo);
 		
 	}
 
 	@Override
-	public void updatePW(UsersVO vo) {
-		usersMapper.passwordUpdate(vo);
+	public int passwordUpdate(UsersVO vo) {
+		System.out.println("비밀번호서비스");
+		return usersMapper.passwordUpdate(vo);
 		
 	}
 
 	@Override
-	public void deleteUsers(UsersVO vo) {
+	public UsersVO usersDelete(UsersVO vo) {
 		System.out.println("유저삭제");
-		usersMapper.usersDelete(vo);
+		return usersMapper.usersDelete(vo);
 		
 	}
+
 	
 }

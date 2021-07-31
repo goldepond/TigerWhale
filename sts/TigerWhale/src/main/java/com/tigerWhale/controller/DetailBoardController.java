@@ -32,7 +32,7 @@ import com.tigerWhale.command.MainBoardVO;
 import com.tigerWhale.command.MultiUploadIMGVO;
 import com.tigerWhale.command.MultipulD_TVO;
 import com.tigerWhale.command.MultipulY_MVO;
-import com.tigerWhale.command.UserIMGBoardVO;
+//import com.tigerWhale.command.UserIMGBoardVO;
 import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.command.Y_M_boardVO;
 import com.tigerWhale.command.APP_CONSTANT;
@@ -166,9 +166,9 @@ public class DetailBoardController {
 		System.out.println("IMGBoardVO  " + IMGBoardVO);
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
-		UserIMGBoardVO userIMGBoardVO = detailBoardService.getUserIMGBoard(bno);
-		System.out.println("userIMGBoardVO   " + userIMGBoardVO);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
+//		UserIMGBoardVO userIMGBoardVO = detailBoardService.getUserIMGBoard(bno);
+//		System.out.println("userIMGBoardVO   " + userIMGBoardVO);
+//		System.out.println("@@@@@@@@@@@@@@@@@@@@@");
 		
 		TextBoardVO textBoardVO  = detailBoardService.getTextBoard(bno);
 		System.out.println("textBoardVO " + textBoardVO );
@@ -197,7 +197,7 @@ public class DetailBoardController {
 		model.addAttribute("m_boardVO", m_boardVO);
 		model.addAttribute("IMGBoardVO", IMGBoardVO);
 		model.addAttribute("textBoardVO", textBoardVO);
-		model.addAttribute("userIMGBoardVO", userIMGBoardVO);
+//		model.addAttribute("userIMGBoardVO", userIMGBoardVO);
 		return "detailBoard/detailPage";
 	}
 	

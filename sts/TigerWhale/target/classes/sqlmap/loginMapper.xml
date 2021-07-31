@@ -18,6 +18,10 @@
 		from USERBOARD where user_ID = #{user_ID} and user_PW = #{user_PW}
 	</select>
 	
+	<select id="kakaoLogin" resultType="UsersVO">
+		select * from USERBOARD where user_ID = #{user_ID}
+	</select>
+	
 	<select id="getInfo" resultType="UsersVO">
 		select user_id,
 			user_ID,
@@ -39,20 +43,20 @@
 	
 	<update id="emailUpdate">
 		update USERBOARD set
-		userEmail1=#{userEmail1},
-		userEmail2=#{userEmail2}
+		userEmail1 = #{userEmail1},
+		userEmail2 = #{userEmail2}
 		where user_ID = #{user_ID}
 	</update>
 	
 	<update id="passwordUpdate">
 		update USERBOARD set
-		user_PW=#{user_PW}
-		where user_PW = #{user_PW}
+		user_PW = #{user_PW}
+		where user_ID = #{user_ID}
 	</update>
 	
 	<update id="phoneUpdate">
 		update USERBOARD set
-		userPhoneNumber=#{userPhoneNumber}
+		userPhoneNumber = #{userPhoneNumber}
 		where user_ID = #{user_ID}
 	</update>
 	

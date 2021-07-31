@@ -9,6 +9,8 @@ public interface UsersService {
 	public int join(UsersVO vo);// 가입
 
 	public UsersVO login(UsersVO vo);// 로그인
+	
+	public UsersVO kakaoLogin(String id); // 카카오 로그인
 
 	public UsersVO getInfo(String user_ID); // 회원 정보
 

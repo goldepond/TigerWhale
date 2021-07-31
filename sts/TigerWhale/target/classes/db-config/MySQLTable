@@ -235,7 +235,7 @@ CREATE TABLE Y_M_BOARD
     
 );
 
------------------------- 9. D_T_BOARD -------------------------------------
+##------------------------ 9. D_T_BOARD -------------------------------------
 create TABLE D_T_BOARD
 (
    bno INT(20) NOT NULL,
@@ -243,7 +243,20 @@ create TABLE D_T_BOARD
    M_day VARCHAR(4000)
 );
 
-##------------------------ 10. REPLYBOARD ------------------------------------- 
+
+##------------------------ 10. CUSTOMERBOARD ------------------------------------- 
+CREATE TABLE CUSTOMERBOARD
+(
+	BNO INT(20) NOT NULL,
+	RNO INT(20) NOT NULL,
+	MONEY INT(20) NOT NULL,
+	USER_ID VARCHAR(4000) NOT NULL,
+	SELLDAY DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+##------------------------ 11. REPLYBOARD ------------------------------------- 
 ##댓글과 관련된 정보가 저장되는 테이블 입니다
 
 CREATE TABLE REPLYBOARD
@@ -256,7 +269,7 @@ CREATE TABLE REPLYBOARD
     R_updateDate DATETIME DEFAULT CURRENT_TIMESTAMP ## 답글수정 시간
 );
 
-##------------------------ 11.CATEGORYBOARD ----------------------------------
+##------------------------ 12.CATEGORYBOARD ----------------------------------
 ##카테고리의 대분류 중분류 소분류를 하나의 번호로 저장하는 테이블
 
 CREATE TABLE CATEGORYBOARD
@@ -269,7 +282,7 @@ CREATE TABLE CATEGORYBOARD
 
 ##-----------------------------------------------------------------------------
 
-##------------------------------ 12. IMGBOARD --------------------------------
+##------------------------------ 13. IMGBOARD --------------------------------
 ##해당 게시글의 게시된 img파일의 이름을 저장하고 있는 테이블 입니다
 
 create TABLE IMGBOARD
@@ -282,7 +295,7 @@ create TABLE IMGBOARD
 
 ##---------------------------------------------------------------------------
 
-##----------------------------13.TEXTBOARD------------------------------
+##----------------------------14.TEXTBOARD------------------------------
 ##설명 1,2,3
 create TABLE TEXTBOARD
 (
@@ -294,7 +307,7 @@ create TABLE TEXTBOARD
 
 ##--------------------------------------------------------------------------
 
-##---------------------------14.FAQBOARD------------------------------
+##---------------------------15.FAQBOARD------------------------------
 ## FAQBOARD테이블 생성 쿼리
 create table FAQBOARD(
     bno INT(10) PRIMARY KEY AUTO_INCREMENT,

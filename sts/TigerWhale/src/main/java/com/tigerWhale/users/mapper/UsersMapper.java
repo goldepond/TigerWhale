@@ -8,6 +8,8 @@ public interface UsersMapper {
 	public int join(UsersVO vo); // 가입요청
 
 	public UsersVO login(UsersVO vo); // 로그인
+	
+	public UsersVO kakaoLogin(String id); // 카카오 로그인
 
 	public UsersVO getInfo(String user_ID);// 회원아이디로 정보를 가져오는 메서드
 

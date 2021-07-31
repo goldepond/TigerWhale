@@ -31,7 +31,7 @@ public class HeadController {
 	@GetMapping(value = "**/getHead/big", produces = "application/json; charset=utf8")
 	public ArrayList<CategoryBoardVO> getBig() {
 		
-		System.out.println("bigCate 출력");
+//		System.out.println("bigCate 출력");
 		ArrayList<CategoryBoardVO> bigList = headerService.getBig();
 		
 		return bigList;
@@ -41,8 +41,8 @@ public class HeadController {
 	@GetMapping(value = "**/getHead/mid/{bigCategory}", produces = "application/json; charset=utf8")
 	public ArrayList<CategoryBoardVO> getMid(@PathVariable("bigCategory") String bigCategory) {
 		
-		System.out.println("midopen");
-		System.out.println(bigCategory);
+//		System.out.println("midopen");
+//		System.out.println(bigCategory);
 		
 		ArrayList<CategoryBoardVO> midList = headerService.getMid(bigCategory);
 		System.out.println(midList.toString());
@@ -55,22 +55,22 @@ public class HeadController {
 												@PathVariable("big2") String big2) {
 		
 		String realName = bigCategory + "/" + big2;
-		System.out.println("midopen");
-		System.out.println(realName);
+//		System.out.println("midopen");
+//		System.out.println(realName);
 		
 		ArrayList<CategoryBoardVO> midList = headerService.getMid(realName);
-		System.out.println(midList.toString());
+//		System.out.println(midList.toString());
 		return midList;
 	}
 	
 	@ResponseBody
 	@GetMapping(value = "**/getHead/sm/{middleCategory}", produces = "application/json; charset=utf8")
 	public ArrayList<CategoryBoardVO> getSmall(@PathVariable("middleCategory") String middleCategory) {
-		System.out.println("smopen");
-		System.out.println(middleCategory);
+//		System.out.println("smopen");
+//		System.out.println(middleCategory);
 		
 		ArrayList<CategoryBoardVO> smList = headerService.getSmall(middleCategory);
-		System.out.println(smList.toString());
+//		System.out.println(smList.toString());
 		return smList;
 	}
 	
@@ -78,12 +78,12 @@ public class HeadController {
 	@GetMapping(value = "**/getHead/sm/{middleCategory}/{mid2}", produces = "application/json; charset=utf8")
 	public ArrayList<CategoryBoardVO> getSmall(@PathVariable("middleCategory") String middleCategory,
 												@PathVariable("mid2") String mid2) {
-		System.out.println("smopen");
-		System.out.println(middleCategory);
+//		System.out.println("smopen");
+//		System.out.println(middleCategory);
 		
 		String realName = middleCategory + "/" + mid2;
 		ArrayList<CategoryBoardVO> smList = headerService.getSmall(realName);
-		System.out.println(smList.toString());
+//		System.out.println(smList.toString());
 		return smList;
 	}
 }

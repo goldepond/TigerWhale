@@ -31,6 +31,10 @@ public class UsersServiceImpl implements UsersService {
 		System.out.println(usersMapper.login(vo));
 		return usersMapper.login(vo);
 	}
+	@Override
+	public UsersVO kakaoLogin(String id) {
+		return usersMapper.kakaoLogin(id);
+	}
 
 	@Override
 	public UsersVO getInfo(String user_ID) {

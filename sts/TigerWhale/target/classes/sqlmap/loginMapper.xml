@@ -18,6 +18,10 @@
 		from USERBOARD where user_ID = #{user_ID} and user_PW = #{user_PW}
 	</select>
 	
+	<select id="kakaoLogin" resultType="UsersVO">
+		select * from USERBOARD where user_ID = #{user_ID}
+	</select>
+	
 	<select id="getInfo" resultType="UsersVO">
 		select user_id,
 			user_ID,

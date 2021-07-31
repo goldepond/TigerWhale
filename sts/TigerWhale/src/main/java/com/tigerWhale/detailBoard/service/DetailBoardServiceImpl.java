@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.tigerWhale.command.D_T_boardVO;
 import com.tigerWhale.command.IMGBoardVO;
 import com.tigerWhale.command.MainBoardVO;
-import com.tigerWhale.command.UserIMGBoardVO;
 import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.command.Y_M_boardVO;
 import com.tigerWhale.command.CategoryBoardVO;
@@ -62,11 +61,6 @@ public class DetailBoardServiceImpl implements DetailBoardService {
 	@Override
 	public ArrayList<IMGBoardVO> getIMGBoard(int bno) {
 		return detailBoardMapper.getIMGBoard(bno);
-	}
-
-	@Override
-	public UserIMGBoardVO getUserIMGBoard(int bno) {
-		return detailBoardMapper.getUserIMGBoard(bno);
 	}
 
 	@Override

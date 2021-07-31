@@ -31,10 +31,6 @@
 		select * from IMGBoard where bno = #{bno}
 	</select>
 
-	<select id="getUserIMGBoard" resultType="UserIMGBoardVO">
-		select * from UserIMGBoard where bno = #{bno}
-	</select>
-
 	<select id="getTextBoard" resultType="TextBoardVO">
 		select * from textBoard where bno = #{bno}
 	</select>

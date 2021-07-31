@@ -120,7 +120,7 @@ public class DetailBoardController {
 		int delte = detailBoardService.mainBoarddelete(bno);
 
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		return "home";
+		return "mainPage";
 		
 		
 	}

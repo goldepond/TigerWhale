@@ -11,7 +11,7 @@
 					<div class="LeftModules">
 						<div class="GigBreadcrumb">
 							<!-- 카테고라ㅣ-->
-							<a href="###" class="vgig-site-map">${categoryBoardVO.bigCategory}</a><span>></span> <a href="###" class="vgig-site-map">${categoryBoardVO.middleCategory}</a><span>></span> <a href="###" class="vgig-site-map">${categoryBoardVO.smallCategory}</a>
+							<a class="vgig-site-map">${categoryBoardVO.bigCategory}</a><span>></span> <a class="vgig-site-map">${categoryBoardVO.middleCategory}</a><span>></span> <a class="vgig-site-map">${categoryBoardVO.smallCategory}</a>
 						</div>
 
 						<div class="GigMainGallery">
@@ -54,10 +54,10 @@
 							<div class="gig-navigation-box menuBtn">
 								<button class="share-btn btn-xss btn dropdown-toggle gig-navigation active sidenav" id="gig-navigation-title_A">설명1</button>
 
-								<button class="share-btn  btn dropdown-toggle gig-navigation active" id="gig-navigation-title_B">설명12</button>
+								<button class="share-btn btn dropdown-toggle gig-navigation active" id="gig-navigation-title_B">설명2</button>
 
 								<!--  -->
-								<button class="share-btn btn-xss btn dropdown-toggle gig-navigation active" id="gig-navigation-title_C">설명13</button>
+								<button class="share-btn btn-xss btn dropdown-toggle gig-navigation active" id="gig-navigation-title_C">설명3</button>
 
 
 							</div>
@@ -96,6 +96,7 @@
 					<div class="RightModules">
 						<div class="upBox">
 							<div class="GigBookMarks">
+								<!-- 
 								<div class="GigDetailShare">
 									<button class="share-btn btn-xss btn dropdown-toggle">*</button>
 								</div>
@@ -104,6 +105,7 @@
 										<span>찜하기</span>
 									</button>
 								</div>
+								 -->
 
 							</div>
 							<!------------------------------------->

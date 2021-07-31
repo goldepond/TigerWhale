@@ -7,10 +7,8 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tigerWhale.util.Criteria;
 import com.tigerWhale.command.FaqVO;
 import com.tigerWhale.faq.mapper.FaqMapper;
-<<<<<<< HEAD
 import com.tigerWhale.util.FaqCriteria;
 
 @Service("faqService") // componentscan

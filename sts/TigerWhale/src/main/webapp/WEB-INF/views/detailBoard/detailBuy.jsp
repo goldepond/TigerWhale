@@ -62,11 +62,15 @@
 														<label>금액</label> <input class="form-control" name='bno' value="${vo.bno}" readonly>
 													</div>
 													<div class="form-group" style="width: 40%; float: right;">
-														<label>전화번호</label> <input class="form-control" name='bno' value="${usersVO.userPhoneNumber}">
+														<label>전화번호</label> <input class="form-control" name='PhoneNumber' id="PhoneNumber"  value="${usersVO.userPhoneNumber}">
 													</div>
 
+														<label>이메일</label> 
 													<div class="form-group" style="width: 40%;">
-														<label>이메일</label> <input class="form-control" name='bno' value="${usersVO.userEmail1} @ ${userEmail2}">
+														<input class="form-control" id='email1' value="${usersVO.userEmail1}" style="width: 40%; float: left">
+														<p style=" float: left">&nbsp;@ &nbsp;</p>
+														<input class="form-control" id='email2' value="${usersVO.userEmail2}" style="width: 40%; ">
+										
 													</div>
 
 													<div class="form-group">
@@ -88,11 +92,9 @@
 
 												</div>
 												<div class="package-direct-order">
-													<button type="button" class="btn123">
-														<span>구매하기</span>
-
+													<button type="button" class="btn123"  onclick="requestPay()">
+														<span>결제하기</span>
 													</button>
-													<button onclick="requestPay()">결제하기</button>
 												</div>
 
 											</div>
@@ -125,53 +127,69 @@
 
 	function requestPay() {
 
+		
+		console.log($("#PhoneNumber").val()); //폰번호
+		console.log("${ymBoardVO.money}");//결제 금액
+		console.log($("#email1").val()+"@"+$("#email2").val());//이메일
+		console.log("${usersVO.userAdress}");
+		console.log("${usersVO.user_ID}");//유저 아이디
+		console.log("${ymBoardVO.rno}" + "${usersVO.user_ID}");//결제 이름
+		
+		
+		
+		
+		
 		IMP.request_pay({
 			pg : 'inicis', // version 1.1.0부터 지원.
 			pay_method : 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
-			name : '주문명:결제테스트',
+			name : "${mainBoardVO.title}"+"${ymBoardVO.rno}",
 			amount : 10, //판매 가격
-			buyer_email : 'iamport@siot.do',
-			buyer_name : '구매자이름',
-			buyer_tel : '010-1234-5678',
-			buyer_addr : '서울특별시 강남구 삼성동',
-			buyer_postcode : '123-456'
+			//"${ymBoardVO.money}"
+			buyer_email : $("#email1").val()+"@"+$("#email2").val(),
+			buyer_name : '${usersVO.user_ID}',
+			buyer_tel : $("#PhoneNumber").val(),
+			buyer_addr : "${usersVO.userAdress}"
 		}, function(rsp) {
 			if (rsp.success) {
 				var msg = '결제가 완료되었습니다.';
 				msg += '고유ID : ' + rsp.imp_uid;
 				msg += '고유ID타입 : ' + typeof(rsp.imp_uid);
+				
 				msg += '상점 거래ID : ' + rsp.merchant_uid;
 				msg += '상점 거래ID 타입 : ' + typeof(rsp.merchant_uid);
+				
 				msg += '결제 금액 : ' + rsp.paid_amount;
 				msg += '결제 금액 타입: ' + typeof(rsp.paid_amount);
+				
 				msg += '카드 승인번호 : ' + rsp.apply_num;
 				msg += '카드 승인번호 타입: ' + typeof(rsp.apply_num);
 				console.log(msg);
 				// jQuery로 HTTP 요청
 
 				jQuery.ajax({
-					url : "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
-					type : 'POST',
-					dataType : 'json',
-					data : {
-						imp_uid : rsp.imp_uid
-					//기타 필요한 데이터가 있으면 추가 전달
+					url : "../reply/charge", //cross-domain error가 발생하지 않도록 주의해주세요
+					type : "post",
+					contentType : "application/json; charset=UTF-8",
+					data : JSON.stringify( {
+						"bno" : "${ymBoardVO.rno}",
+						"rno" : "${mainBoardVO.bno}",
+						"user_ID" : "${usersVO.userAdress}",
+						"money" : rsp.paid_amount
+					}),
+					success : function(data) {
+						if (data == 1) {
+							alert("저장성공");
+							location.href="../detailBoard/detailPage?bno=${mainBoardVO.bno}";
+							
+
+						} else {
+							alert("비밀번호 오류");
+							console.log(data);
+						}
 					}
 				}).done(function(data) { // 응답 처리
 
-					if (everythings_fine) {
-						var msg = '결제가 완료되었습니다.';
-						msg += '\n고유ID : ' + rsp.imp_uid;
-						msg += '\n상점 거래ID : ' + rsp.merchant_uid;
-						msg += '\결제 금액 : ' + rsp.paid_amount;
-						msg += '카드 승인번호 : ' + rsp.apply_num;
-
-						alert(msg);
-					} else {
-						//[3] 아직 제대로 결제가 되지 않았습니다.
-						//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
-					}
 
 				})
 			} else {

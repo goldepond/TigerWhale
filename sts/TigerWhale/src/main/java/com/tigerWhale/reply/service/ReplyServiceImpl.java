@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tigerWhale.command.CustomerBoardVO;
 import com.tigerWhale.command.ReplyBoardVO;
 import com.tigerWhale.reply.mapper.ReplyMapper;
 import com.tigerWhale.util.ReplyCriteria;
@@ -47,6 +48,12 @@ public class ReplyServiceImpl implements ReplyService {
 	public int delete(ReplyBoardVO vo) {
 		// TODO Auto-generated method stub
 		return replymapper.delete(vo);
+	}
+
+	@Override
+	public int customer(CustomerBoardVO vo) {
+		// TODO Auto-generated method stub
+		return replymapper.customer(vo);
 	}
 
 }

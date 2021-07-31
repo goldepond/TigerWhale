@@ -116,7 +116,7 @@
 	</insert>
 	
 	
-		<select id="findRno" resultType="int">
+	<select id="findRno" resultType="int">
 		SELECT Y_M_BOARD_SEQ.NEXTVAL FROM DUAL
 	</select>
 	
@@ -127,4 +127,12 @@
 			middleCategory Like #{middleCategory} and
 			bigCategory Like #{bigCategory}
 	</select>
+	
+	<select id="getCustomerBoard" resultType="int" parameterType="map">
+			select * from CUSTOMERBOARD where user_ID = #{user_ID}  
+	</select>
+	
+	  <delete id="mainBoarddelete">
+        delete from mainboard where bno = #{bno}
+    </delete>
 </mapper>

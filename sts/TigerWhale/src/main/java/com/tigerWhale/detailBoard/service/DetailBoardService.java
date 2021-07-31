@@ -9,6 +9,7 @@ import com.tigerWhale.command.UserIMGBoardVO;
 import com.tigerWhale.command.UsersVO;
 import com.tigerWhale.command.Y_M_boardVO;
 import com.tigerWhale.command.CategoryBoardVO;
+import com.tigerWhale.command.CustomerBoardVO;
 import com.tigerWhale.command.DetailBoardVO;
 import com.tigerWhale.command.ReplyBoardVO;
 import com.tigerWhale.command.TextBoardVO;
@@ -51,7 +52,9 @@ public interface DetailBoardService {
 	
 	public int findC_code(String smallCategory , String middleCategory , String bigCategory);
 	
+	public CustomerBoardVO getCustomerBoard(String user_ID);
 	
+	public int mainBoarddelete(int bno);
 	
 }
 

@@ -79,6 +79,8 @@ Mentee - 게시판에 존재하는 게시물들에 대한 Read 기능 및 댓글
    SPA구조가 가지는 문제점인 뒤로 가기, 앞으로 가기의 문제점은 React-Router를 이용해 React에서 특정 URL로 링크 시켜준 뒤 해당 링크와 일치하는 경우 특정 컴포넌트를 보여주는 방식으로 해결할 수 있었습니다.
 
 1-4. 실행영상
+
+
 https://user-images.githubusercontent.com/37152976/130582077-595696e6-cf58-4b8d-84f3-7f8d94d57fef.mp4
 
 마치며
